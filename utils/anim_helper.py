@@ -14,10 +14,10 @@ def get_audio_duration(filepath):
             return 5.0
     return 5.0
 
-def combine_audio_clips(clip_paths, output_wav_path, silence_duration=1.5):
+def combine_audio_clips(clip_paths, output_wav_path, silence_duration=0):
     """
-    使用 ffmpeg 将多个音频片段拼接成一个 wav 文件，中间插入静音。
-    用于 Manim 的全局音频轨道。
+    使用 ffmpeg 将多个音频片段拼接成一个 wav 文件。
+    如果 silence_duration > 0，则在片段之间插入静音。
     """
     clips = [Path(p) for p in clip_paths]
     out_wav = Path(output_wav_path)
@@ -41,29 +41,34 @@ def combine_audio_clips(clip_paths, output_wav_path, silence_duration=1.5):
 
     # ffmpeg 滤镜构建
     n_clips = len(clips)
-    silence_filters = []
-    # 只需要 n-1 个静音段
-    for i in range(n_clips - 1):
-        silence_filters.append(f"anullsrc=r=24000:cl=mono:d={silence_duration}[s{i}]")
-
+    
     in_filters = []
     for i in range(n_clips):
         in_filters.append(f"[{i}:a]aformat=sample_fmts=fltp:sample_rates=24000:channel_layouts=mono[a{i}]")
 
-    # 拼接序列：a0 s0 a1 s1 ... an
-    concat_list = []
-    for i in range(n_clips):
-        concat_list.append(f"[a{i}]")
-        if i < n_clips - 1:
-            concat_list.append(f"[s{i}]")
-    
-    concat_str = "".join(concat_list)
-    # 计算 concat 的输入流数量：clips + (clips-1)
-    total_segments = n_clips + (n_clips - 1)
-    
-    filter_complex = ";".join(in_filters + silence_filters + [
-        f"{concat_str}concat=n={total_segments}:v=0:a=1,aresample=48000,aformat=sample_fmts=s16:channel_layouts=stereo[aout]"
-    ])
+    if silence_duration > 0:
+        silence_filters = []
+        for i in range(n_clips - 1):
+            silence_filters.append(f"anullsrc=r=24000:cl=mono:d={silence_duration}[s{i}]")
+        
+        concat_list = []
+        for i in range(n_clips):
+            concat_list.append(f"[a{i}]")
+            if i < n_clips - 1:
+                concat_list.append(f"[s{i}]")
+        
+        concat_str = "".join(concat_list)
+        total_segments = n_clips + (n_clips - 1)
+        
+        filter_complex = ";".join(in_filters + silence_filters + [
+            f"{concat_str}concat=n={total_segments}:v=0:a=1,aresample=48000,aformat=sample_fmts=s16:channel_layouts=stereo[aout]"
+        ])
+    else:
+        # 直接拼接
+        concat_str = "".join([f"[a{i}]" for i in range(n_clips)])
+        filter_complex = ";".join(in_filters + [
+            f"{concat_str}concat=n={n_clips}:v=0:a=1,aresample=48000,aformat=sample_fmts=s16:channel_layouts=stereo[aout]"
+        ])
 
     cmd = [
         "ffmpeg", "-y", "-hide_banner", "-loglevel", "error",
@@ -75,14 +80,64 @@ def combine_audio_clips(clip_paths, output_wav_path, silence_duration=1.5):
     subprocess.run(cmd, check=True)
     return str(out_wav)
 
-def wait_until_audio_end(scene: Scene, duration: float, elapsed: float, buffer: float = 0.2):
+def wait_until_audio_end(scene: Scene, duration: float, elapsed: float, buffer: float = 0.0):
     """
     根据音频时长和已消耗的动画时长，自动计算并执行 wait。
+    默认 buffer 设为 0，紧凑节奏。
     """
     remaining = duration - elapsed + buffer
     if remaining > 0:
         scene.wait(remaining)
-    else:
-        # 哪怕超时了，也至少停一小下缓冲
-        scene.wait(0.2)
 
+def play_timeline(scene: Scene, duration: float, steps: list):
+    """
+    根据权重自动分配时间并执行动画。
+    
+    Args:
+        scene: Manim Scene 实例 (通常传 self)
+        duration: 当前页面的可用总时长 (音频时长)
+        steps: list of (weight, animations)
+               animations: 单个 Animation 对象或 Animation 列表
+               
+    Returns:
+        elapsed_in_page: 该时间段内消耗的总时间
+    """
+    total_weight = sum(s[0] for s in steps)
+    if total_weight == 0: total_weight = 1
+    
+    # 预留一点点结尾缓冲，避免最后切太快
+    available_time = duration - 0.5 
+    if available_time < 0: available_time = 0
+    
+    unit_time = available_time / total_weight
+    elapsed_in_page = 0
+    
+    for weight, anims in steps:
+        if not isinstance(anims, (list, tuple)):
+            anims = [anims]
+        
+        step_duration = weight * unit_time
+        
+        # 动态计算 run_time (动画时间) 和 wait_time (停留时间)
+        # 策略：
+        # 1. 动画时间占 allocated time 的大部分，但不超过 2.5s (防止过慢)
+        # 2. 至少保留 0.2s 动画时间
+        
+        run_t = min(step_duration * 0.9, 2.5)
+        if run_t < 0.2: run_t = 0.2
+        
+        # 如果分配时间极短（比 0.2 还短），那就只能超时一点点，或者压缩 run_t
+        if step_duration < run_t:
+            run_t = step_duration 
+        
+        wait_t = step_duration - run_t
+        if wait_t < 0: wait_t = 0
+        
+        scene.play(*anims, run_time=run_t)
+        
+        if wait_t > 0.01:
+            scene.wait(wait_t)
+        
+        elapsed_in_page += (run_t + wait_t)
+    
+    return elapsed_in_page
