@@ -27,7 +27,7 @@ class Lesson3Vertical(Scene):
         FONT_SMALL = 24
         SAFE_BOTTOM_BUFF = 3.5
         SAFE_CENTER_UP = 0.6
-        TRANSITION_TIME = 0.5
+        TRANSITION_TIME = 0.2
 
         # ---------------------------------------------------------
         # 全局音频
@@ -39,7 +39,7 @@ class Lesson3Vertical(Scene):
             os.path.join(VOICE_DIR, "04_know_yourself.mp3"),
             os.path.join(VOICE_DIR, "05_ending.mp3"),
         ]
-        full_audio = combine_audio_clips(audio_clips, COMBINED_WAV, silence_duration=1.5)
+        full_audio = combine_audio_clips(audio_clips, COMBINED_WAV, silence_duration=0.5)
         self.add_sound(full_audio)
 
         # =========================================================
@@ -74,7 +74,7 @@ class Lesson3Vertical(Scene):
         
         wait_until_audio_end(self, page_duration, elapsed)
         self.play(*[FadeOut(mob) for mob in self.mobjects], run_time=TRANSITION_TIME)
-        self.wait(1.5)
+        self.wait(0.3)
 
         # =========================================================
         # 2. 真正的赢家 (不战而屈人之兵)
@@ -112,7 +112,7 @@ class Lesson3Vertical(Scene):
         
         wait_until_audio_end(self, page_duration, elapsed)
         self.play(*[FadeOut(mob) for mob in self.mobjects], run_time=TRANSITION_TIME)
-        self.wait(1.5)
+        self.wait(0.3)
 
         # =========================================================
         # 3. 解决问题的四个等级 (上兵伐谋...)
@@ -169,7 +169,7 @@ class Lesson3Vertical(Scene):
 
         wait_until_audio_end(self, page_duration, elapsed)
         self.play(*[FadeOut(mob) for mob in self.mobjects], run_time=TRANSITION_TIME)
-        self.wait(1.5)
+        self.wait(0.3)
 
         # =========================================================
         # 4. 胜利的数学题 (知彼知己)
@@ -221,7 +221,7 @@ class Lesson3Vertical(Scene):
 
         wait_until_audio_end(self, page_duration, elapsed)
         self.play(*[FadeOut(mob) for mob in self.mobjects], run_time=TRANSITION_TIME)
-        self.wait(1.5)
+        self.wait(0.3)
 
         # =========================================================
         # 5. 结尾互动：思考题
