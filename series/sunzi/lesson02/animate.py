@@ -54,7 +54,7 @@ class Lesson2Vertical(Scene):
             os.path.join(VOICE_DIR, "06_ending.mp3"),
         ]
         
-        full_audio = combine_audio_clips(audio_clips, COMBINED_WAV, silence_duration=0.5)
+        full_audio = combine_audio_clips(audio_clips, COMBINED_WAV, silence_duration=0)
         self.add_sound(full_audio)
 
         # =========================================================
@@ -124,7 +124,6 @@ class Lesson2Vertical(Scene):
         
         wait_until_audio_end(self, page_duration, elapsed)
         self.play(*[FadeOut(mob) for mob in self.mobjects], run_time=TRANSITION_TIME)
-        self.wait(1.0)
         # =========================================================
         # 3. 胜利第一招：五颗宝石
         # =========================================================
