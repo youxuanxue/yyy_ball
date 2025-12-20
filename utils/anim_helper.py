@@ -109,12 +109,11 @@ def combine_audio_clips(clip_paths, output_wav_path, silence_duration=0, bgm_fil
         # 注意：stream_loop只对输入文件有效，不能在filter里简单loop
         # 所以如果 loop=True，我们在构造 cmd 时添加 -stream_loop -1
         
-        # BGM 滤镜链: [bgm_raw] -> volume -> [bgm_vol]
-        # 然后 [voice][bgm_vol] amix -> [aout]
-        # 还要处理时长：amix duration=first (以人声长度为准，截断 BGM)
-        
-        bgm_filter = f"[{bgm_idx}:a]volume={bgm_volume}dB[bgm_vol]"
-        mix_filter = f"[voice][bgm_vol]amix=inputs=2:duration=first:dropout_transition=2[aout]"
+        # BGM 滤镜链: [bgm_raw] -> aformat -> volume -> [bgm_vol]
+        # 显式统一采样率，避免 amix 隐式转换可能的问题
+        bgm_filter = f"[{bgm_idx}:a]aformat=sample_rates=48000:channel_layouts=stereo,volume={bgm_volume}dB[bgm_vol]"
+        # normalize=0 防止 amix 自动降低音量导致人声变小
+        mix_filter = f"[voice][bgm_vol]amix=inputs=2:duration=first:dropout_transition=0:normalize=0[aout]"
         
         filter_complex_steps.append(bgm_filter)
         filter_complex_steps.append(mix_filter)
