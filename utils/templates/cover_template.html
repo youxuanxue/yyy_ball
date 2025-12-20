@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Cover</title>
+    <style>
+        /* Import Font: Noto Sans SC (Google Fonts) */
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700;900&display=swap');
+        /* Optional: Ma Shan Zheng for a more "Chinese calligraphy" feel if desired, 
+           but Noto Sans Black is safer and cleaner for modern designs. */
+
+        body {
+            margin: 0;
+            background-color: #111;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: 'Noto Sans SC', sans-serif;
+        }
+
+        /* 9:16 Vertical Canvas */
+        .canvas {
+            width: 1080px;
+            height: 1920px;
+            /* Deep, premium dark gradient background */
+            background: linear-gradient(135deg, #1e272e 0%, #0c1013 100%);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* --- 1. Background Glow / Atmosphere --- */
+        .glow {
+            position: absolute;
+            top: -200px;
+            left: -200px;
+            width: 1000px;
+            height: 1000px;
+            background: radial-gradient(circle, rgba(30,144,255,0.15) 0%, transparent 70%);
+            z-index: 0;
+            filter: blur(50px);
+        }
+        .glow-bottom {
+            position: absolute;
+            bottom: -300px;
+            right: -200px;
+            width: 1200px;
+            height: 1000px;
+            background: radial-gradient(circle, rgba(255,69,0,0.1) 0%, transparent 70%);
+            z-index: 0;
+            filter: blur(50px);
+        }
+
+        /* --- 2. Title Section (Top) --- */
+        .title-group {
+            z-index: 10;
+            margin-top: 380px; /* Shifted down by 100px (was 180px) */
+            text-align: center;
+            width: 90%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .title-sub {
+            font-size: 60px;
+            color: #fff;
+            letter-spacing: 10px;
+            opacity: 0.95;
+            margin-bottom: 20px;
+            font-weight: 700;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.6);
+        }
+
+        .title-main {
+            font-size: 150px; /* Big Impact */
+            font-weight: 900;
+            line-height: 1.1;
+            /* Gradient Text: Gold/Yellow */
+            background: linear-gradient(to bottom, #FFD700 10%, #FFA500 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            /* Drop shadow for depth */
+            filter: drop-shadow(0 8px 0px rgba(139, 69, 19, 0.6));
+            white-space: nowrap;
+        }
+
+        /* --- 3. VS Capsule (Middle) --- */
+        .vs-capsule {
+            z-index: 10;
+            margin-top: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            padding: 20px 40px;
+            border-radius: 100px;
+            border: 2px solid rgba(255,255,255,0.15);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+            transform: scale(1.1); /* Make it pop */
+        }
+
+        .tag {
+            padding: 15px 50px;
+            border-radius: 60px;
+            font-size: 55px;
+            font-weight: 900;
+            color: white;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+        
+        .tag-left { 
+            background: linear-gradient(135deg, #ff4757, #ff6b81); 
+            box-shadow: 0 8px 25px rgba(255, 71, 87, 0.5); 
+        }
+        
+        .tag-right { 
+            background: linear-gradient(135deg, #1e90ff, #70a1ff); 
+            box-shadow: 0 8px 25px rgba(30, 144, 255, 0.5); 
+        }
+        
+        .vs-text {
+            font-size: 80px;
+            font-weight: 900;
+            font-style: italic;
+            color: #FFD700;
+            margin: 0 40px;
+            text-shadow: 0 4px 15px rgba(255, 215, 0, 0.6);
+            position: relative;
+            top: -5px;
+        }
+
+        /* --- 4. Hero Image (Bottom) --- */
+        /* Container for background blending image */
+        .hero-bg-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .hero-bg-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* Mask: Fade out at top to keep title readable, but keep it visible */
+            -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, black 40%, black 100%);
+            mask-image: linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, black 40%, black 100%);
+            opacity: 0.5; /* Slightly more visible */
+            filter: saturate(0.6) contrast(1.1) blur(8px); /* Less blur to see texture */
+            transform: scale(1.1);
+        }
+
+        /* Main Subject Image (The Book/Character) */
+        .hero-main-container {
+            position: absolute;
+            bottom: 250px; 
+            z-index: 5;
+            width: 100%; /* Full width container */
+            display: flex;
+            justify-content: center;
+        }
+
+        .hero-main-img {
+            width: 56%; /* 75% * 0.75 = 56.25% */
+            height: auto;
+            object-fit: cover;
+            
+            /* Circular Mask - Telescope Effect */
+            border-radius: 50%;
+            aspect-ratio: 1 / 1;
+            
+            /* Telescope Lens Style Border */
+            /* Multiple borders using box-shadow to simulate lens housing */
+            border: 5px solid rgba(20, 20, 20, 0.9); /* Inner dark ring */
+            box-shadow: 
+                0 0 0 8px rgba(50, 50, 50, 1), /* Metallic grey ring */
+                0 0 0 15px rgba(200, 200, 200, 0.8), /* Outer highlighted ring */
+                inset 0 0 60px rgba(0,0,0,0.8), /* Inner vignette (shadow inside lens) */
+                0 0 0 16px rgba(0,0,0,0.5), /* Outer shadow line */
+                0 30px 80px rgba(0,0,0,0.8); /* Drop shadow for the whole object */
+            
+            /* Add a subtle lens reflection/glare overlay would need a pseudo-element, 
+               but simplistic approach is vignette via inset shadow above */
+        }
+        
+        /* Optional: Add a "crosshair" overlay using a pseudo-element on the container? 
+           CSS pseudo-elements on img tags are tricky. Better to add a div overlay. 
+        */
+        .telescope-overlay {
+            position: absolute;
+            width: 56%; /* Match image width */
+            aspect-ratio: 1 / 1;
+            border-radius: 50%;
+            pointer-events: none;
+            /* Telescope crosshair & reflection */
+            background: 
+                /* Horizontal line */
+                linear-gradient(to bottom, transparent 49.5%, rgba(255,255,255,0.3) 49.5%, rgba(255,255,255,0.3) 50.5%, transparent 50.5%),
+                /* Vertical line */
+                linear-gradient(to right, transparent 49.5%, rgba(255,255,255,0.3) 49.5%, rgba(255,255,255,0.3) 50.5%, transparent 50.5%),
+                /* Lens glare */
+                radial-gradient(circle at 70% 30%, rgba(255,255,255,0.2) 0%, transparent 20%);
+            z-index: 6; /* Above image */
+        }
+
+        /* --- 5. Footer (Brand) --- */
+        .footer {
+            position: absolute;
+            bottom: 50px;
+            z-index: 10;
+            font-size: 36px;
+            color: rgba(255,255,255,0.5);
+            letter-spacing: 5px;
+            font-weight: 400;
+            text-transform: uppercase;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="canvas">
+        <div class="glow"></div>
+        <div class="glow-bottom"></div>
+        
+        <!-- Title -->
+        <div class="title-group">
+            <div class="title-sub">{{ title_sub }}</div>
+            <div class="title-main">{{ title_main }}</div>
+        </div>
+
+        <!-- VS Badge -->
+        <div class="vs-capsule">
+            <div class="tag tag-left">{{ tag_left }}</div>
+            <div class="vs-text">VS</div>
+            <div class="tag tag-right">{{ tag_right }}</div>
+        </div>
+
+        <!-- Background Blended Image (Optional: same as main or different) -->
+        <div class="hero-bg-container">
+            <img src="{{ bg_image_path }}" class="hero-bg-img" alt="Background Texture">
+        </div>
+        
+        <!-- Main Subject Image -->
+        <div class="hero-main-container">
+            <img src="{{ main_image_path }}" class="hero-main-img" alt="Main Subject">
+            <div class="telescope-overlay"></div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">{{ footer_text }}</div>
+    </div>
+</body>
+</html>
+
