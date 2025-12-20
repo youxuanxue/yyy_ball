@@ -29,19 +29,8 @@
 ### 2. ⏱️ 自动化紧凑节奏 (Auto-Paced Timing)
 **原则**：短视频节奏必须紧凑，画面要紧跟甚至略快于声音。
 **核心机制**：
-*   使用 `utils.anim_helper.play_timeline` 自动管理时间。
 *   **并发拆解为串行**：避免使用 `(weight, [Anim1, Anim2])` 的并发形式，尽量拆分为两个独立的步骤 `(weight/2, Anim1), (weight/2, Anim2)`，获得更细腻的动画效果。
-*   **代码示例**：
-    ```python
-    # 权重: 标题(5) -> 内容(10) -> 结尾(5)
-    timeline_steps = [
-        (5, Write(title)),
-        (5, FadeIn(content_part1)), # 拆分
-        (5, FadeIn(content_part2)), # 拆分
-        (5, GrowFromCenter(icon))
-    ]
-    elapsed = play_timeline(self, page_duration, timeline_steps)
-    ```
+*   **转场时间扣除**：在计算每一页的停留时间时，**必须扣除转场动画（如 FadeOut）的耗时**。例如 `wait_until_audio_end(page_duration - TRANSITION_TIME)`，否则视频会越来越滞后于音频。
 
 ### 3. 📐 布局与排版 (Layout & Typography)
 **原则**：大字号、宽行距、留足边距，打造高级感。
@@ -53,22 +42,12 @@
     *   说明小字：**30-32**
 *   **行距**：使用 `line_spacing=1.4` 或 `1.5`，避免文字挤作一团。
 
-### 4. 🎵 AI 智能配乐 (Smart BGM Mixing)
-**原则**：背景音乐是灵魂，但不能喧宾夺主。
-**实现**：使用 `utils.gen_music_local.py` 生成音乐，用 `utils.anim_helper.combine_audio_clips` 自动混合。
-*   **禁用归一化**：代码已默认设置 `normalize=0`，防止人声被背景音乐压低。
-*   **音量标准**：背景音乐音量推荐设置为 **-10dB** 到 **-15dB**。
-*   **缓存机制**：如果修改了 BGM 配置无效，请修改输出文件名（如 `lessonX_full_v2.wav`）或手动删除缓存文件。
-    ```python
-    # animate.py 配置示例
-    full_audio = combine_audio_clips(
-        audio_clips, 
-        COMBINED_WAV_NEW, # 使用新文件名避开缓存
-        bgm_file="assets/bgm/smart_thinking.wav",
-        bgm_volume=-10, 
-        bgm_loop=True
-    )
-    ```
+### 4. 🎵 AI 智能配乐与音频管理 (Smart BGM & Audio)
+**原则**：
+1.  **文件命名**：严禁使用 `_v2`, `_new` 等后缀。文件名必须明确且固定，例如 `lesson5_full.wav`。
+2.  **音量控制**：背景音乐音量推荐设置为 **-10dB** 到 **-15dB**。
+3.  **音频修复**：在 Manim 渲染结束后的 `tear_down` 钩子中，必须调用音频检查函数（`utils.anim_helper.merge_audio_video_if_needed`），以防止生成的视频丢失音频。
+4.  **时长精准**：依赖 `ffprobe` 等工具获取精确的音频时长，避免因元数据误差导致的音画不同步。
 
 ### 5. ⚡️ 极速转场 (Ultra-fast Transition)
 **原则**：短视频切换必须干脆，不要拖泥带水。
@@ -87,21 +66,7 @@
 **实现**：
 *   **主视觉**：位置固定在屏幕中心略偏上，避免过大。
 *   **致辞固化**：每一课的第一页（封面）底部必须包含统一的致辞。
-*   **代码模板**：
-    ```python
-    # 底部固定致辞
-    footer = Text(
-        "致：\n爱思考的你\n喜欢动脑筋的你\n",
-        font=body_font, 
-        font_size=FONT_SMALL, 
-        color=GRAY,
-        line_spacing=1.2
-    ).to_edge(DOWN, buff=SAFE_BOTTOM_BUFF)
-    
-    # 主视觉（勋章/图标）
-    # 注意 buff=0.8 防止与 footer 重叠
-    medal_group.next_to(subtitle, DOWN, buff=0.8)
-    ```
+*   **标题自适应**：封面生成脚本应包含根据标题字数自动缩放字号的逻辑，防止长标题溢出。
 
 ## 📂 项目结构
 
@@ -180,6 +145,9 @@ uv run python series/sunzi/lessonXX/gen_voice.py
     音乐会保存在 `assets/music_candidates_local/`。
 2.  **挑选音乐**：试听并选择一首合适的，复制其路径。
 
+### 第三步半（可选）：清理旧音频
+如果之前生成过音频，建议手动清理 `media/sunzi/lessonXX/voice/` 下的旧文件，确保没有带有 `_v2` 等后缀的残留。
+
 ### 第四步：生成封面 (Cover)
 配置 `gen_cover.py` 中的标题和标签，然后运行：
 ```bash
@@ -189,15 +157,17 @@ uv run python series/sunzi/lessonXX/gen_cover.py
 
 ### 第五步：生成视频
 1.  修改 `animate.py`：
-    *   **插入封面首帧**：确保 `construct` 方法最开始包含了插入封面的逻辑（参考模板），以便作为视频默认封面。
+    *   **插入封面首帧**：确保 `construct` 方法最开始包含了插入封面的逻辑。
     *   配置 `bgm_file` 为刚才挑选的音乐路径。
     *   确保 `bgm_volume` 设置为 `-15` (推荐值)。
+    *   **音频文件名**：确保 `combine_audio_clips` 输出文件名为标准格式（如 `lessonX_full.wav`）。
+    *   **自动修复音频**：确保实现了 `tear_down` 方法并调用了 `merge_audio_video_if_needed`。
 2.  **渲染成品** (必须使用 `-qh` 高清模式以确保音质和画质)：
     ```bash
     # 高质量成品 (1080x1920, 60fps)
-    uv run manim -qh series/sunzi/lessonXX/animate.py ClassName
+    # 建议加上 --disable_caching 以确保逻辑变更生效
+    uv run manim -qh --disable_caching series/sunzi/lessonXX/animate.py ClassName
     ```
-    *注意：不要使用 `-pql` (低质量) 来预览音频混合效果，可能会有偏差。始终使用 `-qh` 生成最终版本。*
 
 ### 第六步：自动发布 (新增)
 确保 `media/` 下生成了视频和封面，并且 `series/` 下有 `social_media.md` 文案。

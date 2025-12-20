@@ -52,6 +52,19 @@ def generate_cover(
     env = Environment(loader=FileSystemLoader(template_dir))
     template = env.get_template("cover_template.html")
     
+    # Auto-scale font size based on title length
+    # Base: 150px for 6 chars (~900px width)
+    # 1080px width limit.
+    char_count = len(title_main)
+    if char_count <= 6:
+        font_size = 150
+    elif char_count == 7:
+        font_size = 130
+    elif char_count == 8:
+        font_size = 115
+    else:
+        font_size = 100
+
     html_content = template.render(
         title_main=title_main,
         title_sub=title_sub,
@@ -59,7 +72,8 @@ def generate_cover(
         tag_right=tag_right,
         main_image_path=main_img_src,
         bg_image_path=bg_img_src,
-        footer_text=footer_text
+        footer_text=footer_text,
+        title_font_size=font_size
     )
     
     # 4. Use Playwright to screenshot
