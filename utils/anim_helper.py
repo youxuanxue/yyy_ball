@@ -14,10 +14,14 @@ def get_audio_duration(filepath):
             return 5.0
     return 5.0
 
-def combine_audio_clips(clip_paths, output_wav_path, silence_duration=0):
+def combine_audio_clips(clip_paths, output_wav_path, silence_duration=0, bgm_file=None, bgm_volume=-20, bgm_loop=True):
     """
     使用 ffmpeg 将多个音频片段拼接成一个 wav 文件。
     如果 silence_duration > 0，则在片段之间插入静音。
+    支持添加背景音乐 (bgm_file)，并自动调整音量、循环和淡入淡出。
+    
+    bgm_volume: 背景音乐音量，单位 dB，默认 -20dB
+    bgm_loop: 是否循环播放背景音乐以填满总时长
     """
     clips = [Path(p) for p in clip_paths]
     out_wav = Path(output_wav_path)
@@ -26,30 +30,40 @@ def combine_audio_clips(clip_paths, output_wav_path, silence_duration=0):
     missing = [str(p) for p in clips if not p.exists()]
     if missing:
         raise FileNotFoundError(f"缺少音频文件：{missing}")
+    
+    # 如果指定了背景音乐，也检查是否存在
+    bgm_path = Path(bgm_file) if bgm_file else None
+    if bgm_path and not bgm_path.exists():
+        raise FileNotFoundError(f"缺少背景音乐文件：{bgm_path}")
 
-    # 检查是否需要重新生成（只有当输入文件比输出文件新时才生成）
-    if out_wav.exists():
-        newest_in = max(p.stat().st_mtime for p in clips)
-        if out_wav.stat().st_mtime >= newest_in:
-            print(f"Using cached combined audio: {out_wav}")
-            return str(out_wav)
+    # 检查是否需要重新生成（输入文件比输出文件新时才生成）
+    # 如果 bgm 存在，也要把 bgm 的修改时间考虑进去
+    newest_mtime = max(p.stat().st_mtime for p in clips)
+    if bgm_path:
+        newest_mtime = max(newest_mtime, bgm_path.stat().st_mtime)
+
+    if out_wav.exists() and out_wav.stat().st_mtime >= newest_mtime:
+        print(f"Using cached combined audio: {out_wav}")
+        return str(out_wav)
 
     print(f"Generating combined audio: {out_wav}")
     
     # 确保输出目录存在
     out_wav.parent.mkdir(parents=True, exist_ok=True)
 
-    # ffmpeg 滤镜构建
+    # ffmpeg 滤镜构建 - 1. 拼接人声 (Voice Chain)
     n_clips = len(clips)
     
     in_filters = []
+    # 使用 fltp + 48000 统一输入
     for i in range(n_clips):
-        in_filters.append(f"[{i}:a]aformat=sample_fmts=fltp:sample_rates=24000:channel_layouts=mono[a{i}]")
+        in_filters.append(f"[{i}:a]aformat=sample_fmts=fltp:sample_rates=48000:channel_layouts=mono[a{i}]")
 
+    # 构建人声拼接
     if silence_duration > 0:
         silence_filters = []
         for i in range(n_clips - 1):
-            silence_filters.append(f"anullsrc=r=24000:cl=mono:d={silence_duration}[s{i}]")
+            silence_filters.append(f"anullsrc=r=48000:cl=mono:d={silence_duration}[s{i}]")
         
         concat_list = []
         for i in range(n_clips):
@@ -59,24 +73,72 @@ def combine_audio_clips(clip_paths, output_wav_path, silence_duration=0):
         
         concat_str = "".join(concat_list)
         total_segments = n_clips + (n_clips - 1)
-        
-        filter_complex = ";".join(in_filters + silence_filters + [
-            f"{concat_str}concat=n={total_segments}:v=0:a=1,aresample=48000,aformat=sample_fmts=s16:channel_layouts=stereo[aout]"
-        ])
+        voice_chain = f"{concat_str}concat=n={total_segments}:v=0:a=1[voice_mono];[voice_mono]aformat=channel_layouts=stereo[voice]"
     else:
         # 直接拼接
         concat_str = "".join([f"[a{i}]" for i in range(n_clips)])
-        filter_complex = ";".join(in_filters + [
-            f"{concat_str}concat=n={n_clips}:v=0:a=1,aresample=48000,aformat=sample_fmts=s16:channel_layouts=stereo[aout]"
-        ])
+        voice_chain = f"{concat_str}concat=n={n_clips}:v=0:a=1[voice_mono];[voice_mono]aformat=channel_layouts=stereo[voice]"
 
+    filter_complex_steps = in_filters
+    if silence_duration > 0:
+        filter_complex_steps += silence_filters
+    
+    # 如果没有 BGM，直接输出 voice
+    if not bgm_path:
+        filter_complex_str = ";".join(filter_complex_steps + [
+            voice_chain.replace("[voice]", "[aout]") # 直接输出到 aout
+        ])
+        inputs = sum([["-i", str(p)] for p in clips], [])
+    else:
+        # 有 BGM，进行混合
+        # BGM 是第 n_clips 个输入 (index 从 0 开始，所以 index = n_clips)
+        bgm_idx = n_clips
+        
+        # 1. 生成 Voice Track
+        filter_complex_steps.append(voice_chain)
+        
+        # 2. 处理 BGM
+        # [voice] 是人声轨，我们可以用 apad 滤镜确保 voice 轨长度确定（或者不用，amix 默认取最长）
+        # 这里使用 sidechaincompressor 或者简单的 amix
+        # 简单方案：volume -> loop -> amix
+        
+        # 调整 BGM 音量
+        # loop=-1:size=32767 表示无限循环 (ffmpeg loop input option is easier)
+        # 但 ffmpeg filter 的 loop 比较复杂，我们用 -stream_loop 在 input 前
+        
+        # 注意：stream_loop只对输入文件有效，不能在filter里简单loop
+        # 所以如果 loop=True，我们在构造 cmd 时添加 -stream_loop -1
+        
+        # BGM 滤镜链: [bgm_raw] -> volume -> [bgm_vol]
+        # 然后 [voice][bgm_vol] amix -> [aout]
+        # 还要处理时长：amix duration=first (以人声长度为准，截断 BGM)
+        
+        bgm_filter = f"[{bgm_idx}:a]volume={bgm_volume}dB[bgm_vol]"
+        mix_filter = f"[voice][bgm_vol]amix=inputs=2:duration=first:dropout_transition=2[aout]"
+        
+        filter_complex_steps.append(bgm_filter)
+        filter_complex_steps.append(mix_filter)
+        
+        filter_complex_str = ";".join(filter_complex_steps)
+        
+        inputs = sum([["-i", str(p)] for p in clips], [])
+        
+        bgm_input_opts = []
+        if bgm_loop:
+            bgm_input_opts = ["-stream_loop", "-1"]
+        
+        inputs += bgm_input_opts + ["-i", str(bgm_path)]
+
+    # 构建完整命令
     cmd = [
         "ffmpeg", "-y", "-hide_banner", "-loglevel", "error",
-        *sum([["-i", str(p)] for p in clips], []),
-        "-filter_complex", filter_complex,
+        *inputs,
+        "-filter_complex", filter_complex_str,
         "-map", "[aout]",
         str(out_wav),
     ]
+    
+    # print("DEBUG CMD:", " ".join(cmd)) # 调试用
     subprocess.run(cmd, check=True)
     return str(out_wav)
 
