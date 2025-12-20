@@ -42,8 +42,19 @@ class Lesson3Vertical(Scene):
             os.path.join(VOICE_DIR, "05_ending.mp3"),
         ]
         
-        # 合并音频（仅用于视频背景音，实际播放靠 wait 控制）
-        full_audio = combine_audio_clips(audio_clips, COMBINED_WAV, silence_duration=0)
+        # 背景音乐配置
+        bgm_file = "assets/bgm/smart_thinking.wav"
+        
+        # 合并音频：包含人声(主) + 背景音乐(辅)
+        # combine_audio_clips 已经支持 bgm_file, bgm_volume, bgm_loop 参数
+        full_audio = combine_audio_clips(
+            audio_clips, 
+            COMBINED_WAV, 
+            silence_duration=0,
+            bgm_file=bgm_file,
+            bgm_volume=-15, # 调整为标准背景音量
+            bgm_loop=True
+        )
         self.add_sound(full_audio)
 
         # =========================================================
@@ -120,7 +131,7 @@ class Lesson3Vertical(Scene):
         # 标题(2) -> 引用(10, 很长) -> Box1(2) -> Box2(3, 重点)
         timeline_steps = [
             (2,  Write(p2_title)),
-            (15, Write(quote)),
+            (4, Write(quote)),
             (2,  FadeIn(group1, shift=LEFT)),
             (3, GrowFromCenter(group2)),
         ]
@@ -163,7 +174,7 @@ class Lesson3Vertical(Scene):
         # 权重
         # 标题(3) -> 四个等级各(8)
         timeline_steps = [
-            (4, Write(p3_title)),
+            (5, Write(p3_title)),
             (8, FadeIn(level_items[0], shift=DOWN * 0.5)),
             (8, FadeIn(level_items[1], shift=DOWN * 0.5)),
             (8, FadeIn(level_items[2], shift=DOWN * 0.5)),
@@ -256,3 +267,98 @@ class Lesson3Vertical(Scene):
         elapsed = play_timeline(self, page_duration, timeline_steps)
         wait_until_audio_end(self, page_duration, elapsed)
         self.wait(2.0)
+
+class Lesson3Cover(Scene):
+    def construct(self):
+        # 背景颜色
+        bg_color = "#1e272e"
+        self.camera.background_color = bg_color
+        
+        # ---------------------------------------------------------
+        # 1. 核心插图 (Background Layer) - 使用蒙版融合
+        # ---------------------------------------------------------
+        image_path = os.path.join(os.path.dirname(__file__), "../images/1.jpg")
+        
+        if os.path.exists(image_path):
+            main_image = ImageMobject(image_path)
+            
+            # 策略：放大图片，占据屏幕下半部分 2/3，并让顶部柔和过渡到背景
+            # 1. 调整大小：宽度占满屏幕
+            main_image.scale_to_fit_width(config.frame_width)
+            
+            # 2. 位置：底部对齐
+            main_image.to_edge(DOWN, buff=0)
+            
+            # 3. 创建蒙版 (Gradient Mask)
+            # 创建一个矩形，覆盖图片的上半部分，制造“渐隐”效果
+            # 颜色与背景色一致，透明度从 1 (不透明) 渐变到 0 (全透明)
+            mask_height = config.frame_height * 0.6 # 遮罩占据屏幕 60% 高度
+            mask = Rectangle(
+                width=config.frame_width, 
+                height=mask_height,
+                fill_color=bg_color,
+                stroke_width=0
+            )
+            # 放置在屏幕顶部
+            mask.to_edge(UP, buff=0)
+            
+            # 设置渐变透明度：上部 1，下部 0
+            # 注意：Manim 的 gradient 是针对颜色的，fill_opacity 也可以设为列表来实现渐变
+            # 这是一个垂直渐变
+            mask.set_fill(color=bg_color, opacity=[1, 1, 0]) 
+            # opacity=[1, 1, 0] 意味着：顶部不透明，中部不透明，底部透明
+            # 这样标题区域是纯背景色，图片上沿开始渐变
+            
+            # 添加图片和蒙版
+            self.add(main_image)
+            self.add(mask)
+
+        # ---------------------------------------------------------
+        # 2. 标题区域 (Top Layer)
+        # ---------------------------------------------------------
+        t1 = Text("最好的胜利", font="PingFang SC", font_size=65, color=WHITE)
+        t2 = Text("是不打架？", font="PingFang SC", font_size=95, weight=BOLD, color=YELLOW)
+        
+        # 加一点阴影让文字更立体，防止背景干扰
+        title_group = VGroup(t1, t2).arrange(DOWN, buff=0.3)
+        title_group.set_z_index(10) # 确保在最上层
+        title_group.to_edge(UP, buff=1.5)
+        
+        self.add(title_group)
+
+        # ---------------------------------------------------------
+        # 3. 核心冲突区域 (Middle Layer)
+        # ---------------------------------------------------------
+        # 左侧：打架 (红)
+        t_fight = Text("打架", font="PingFang SC", font_size=50, color=WHITE, weight=BOLD)
+        bg_fight = RoundedRectangle(corner_radius=0.2, height=1.2, width=2.5, color=RED, fill_opacity=1)
+        g_fight = VGroup(bg_fight, t_fight)
+        
+        # 右侧：智慧 (蓝)
+        t_brain = Text("智慧", font="PingFang SC", font_size=50, color=WHITE, weight=BOLD)
+        bg_brain = RoundedRectangle(corner_radius=0.2, height=1.2, width=2.5, color=BLUE, fill_opacity=1)
+        g_brain = VGroup(bg_brain, t_brain)
+        
+        # VS
+        t_vs = Text("VS", font_size=60, color=YELLOW, weight=BOLD, slant=ITALIC)
+        
+        vs_group = VGroup(g_fight, t_vs, g_brain).arrange(RIGHT, buff=0.4)
+        vs_group.set_z_index(10)
+        
+        # 放在标题下方
+        vs_group.next_to(title_group, DOWN, buff=1.0)
+        self.add(vs_group)
+
+        # ---------------------------------------------------------
+        # 4. 底部引导 (Bottom Layer)
+        # ---------------------------------------------------------
+        # 加一个半透明黑条在底部，确保副标题清晰
+        bottom_bar = Rectangle(width=config.frame_width, height=1.5, color=BLACK, fill_opacity=0.6, stroke_width=0)
+        bottom_bar.to_edge(DOWN, buff=0)
+        
+        subtitle = Text("—— 孙子兵法：谋攻篇 ——", font="PingFang SC", font_size=36, color=LIGHT_GRAY)
+        subtitle.move_to(bottom_bar)
+        
+        footer_group = VGroup(bottom_bar, subtitle)
+        footer_group.set_z_index(10)
+        self.add(footer_group)
