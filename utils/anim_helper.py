@@ -5,14 +5,29 @@ from manim import Scene
 from mutagen.mp3 import MP3
 
 def get_audio_duration(filepath):
-    """获取音频文件时长（秒），如果文件不存在或出错返回 5.0"""
-    if os.path.exists(filepath):
+    """获取音频文件时长（秒）"""
+    if not os.path.exists(filepath):
+        print(f"Error: Audio file not found: {filepath}")
+        return 5.0 # Fallback for dev, but ideally should raise
+        
+    # Prefer ffprobe for accuracy if available
+    try:
+        cmd = [
+            "ffprobe", 
+            "-v", "error", 
+            "-show_entries", "format=duration", 
+            "-of", "default=noprint_wrappers=1:nokey=1", 
+            filepath
+        ]
+        output = subprocess.check_output(cmd, text=True).strip()
+        return float(output)
+    except Exception as e:
+        print(f"Warning: ffprobe failed for {filepath}, falling back to mutagen. Error: {e}")
         try:
             audio = MP3(filepath)
             return audio.info.length
         except:
             return 5.0
-    return 5.0
 
 def combine_audio_clips(clip_paths, output_wav_path, silence_duration=0, bgm_file=None, bgm_volume=-20, bgm_loop=True):
     """
@@ -23,8 +38,9 @@ def combine_audio_clips(clip_paths, output_wav_path, silence_duration=0, bgm_fil
     bgm_volume: 背景音乐音量，单位 dB，默认 -20dB
     bgm_loop: 是否循环播放背景音乐以填满总时长
     """
-    clips = [Path(p) for p in clip_paths]
-    out_wav = Path(output_wav_path)
+    # Use absolute paths to avoid cwd issues in Manim
+    clips = [Path(p).resolve() for p in clip_paths]
+    out_wav = Path(output_wav_path).resolve()
     
     # 检查输入文件是否存在
     missing = [str(p) for p in clips if not p.exists()]
@@ -32,7 +48,7 @@ def combine_audio_clips(clip_paths, output_wav_path, silence_duration=0, bgm_fil
         raise FileNotFoundError(f"缺少音频文件：{missing}")
     
     # 如果指定了背景音乐，也检查是否存在
-    bgm_path = Path(bgm_file) if bgm_file else None
+    bgm_path = Path(bgm_file).resolve() if bgm_file else None
     if bgm_path and not bgm_path.exists():
         raise FileNotFoundError(f"缺少背景音乐文件：{bgm_path}")
 
@@ -202,3 +218,51 @@ def play_timeline(scene: Scene, duration: float, steps: list):
         elapsed_in_page += (run_t + wait_t)
     
     return elapsed_in_page
+
+def merge_audio_video_if_needed(video_path: str, audio_path: str):
+    """
+    检查视频是否有音轨，如果没有则将 audio_path 的音频合并进去。
+    """
+    video_p = Path(video_path)
+    audio_p = Path(audio_path)
+    
+    if not video_p.exists() or not audio_p.exists():
+        return
+
+    # Check for audio stream using ffprobe
+    check_cmd = [
+        "ffprobe", "-v", "error", "-select_streams", "a", 
+        "-show_entries", "stream=index", "-of", "csv=p=0", 
+        str(video_p)
+    ]
+    
+    try:
+        output = subprocess.check_output(check_cmd, text=True)
+        if output.strip():
+            # Already has audio
+            return
+    except subprocess.CalledProcessError:
+        pass # treat as no audio or error
+
+    # Merge audio
+    temp_output = video_p.with_name(f"{video_p.stem}_merged{video_p.suffix}")
+    print(f"Merging audio into video: {video_p} + {audio_p} -> {temp_output}")
+    
+    cmd = [
+        "ffmpeg", "-y", "-hide_banner", "-loglevel", "error",
+        "-i", str(video_p),
+        "-i", str(audio_p),
+        "-c:v", "copy",
+        "-c:a", "aac",
+        "-map", "0:v:0",
+        "-map", "1:a:0",
+        "-shortest",
+        str(temp_output)
+    ]
+    
+    subprocess.run(cmd, check=True)
+    
+    if temp_output.exists():
+        # Replace original
+        os.replace(temp_output, video_p)
+        print(f"Replaced original video with merged version: {video_p}")
