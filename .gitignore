@@ -75,5 +75,10 @@ media/
 .env
 
 # Generated Assets
-assets/music_candidates_local/
-assets/music_candidates/
+assets/
+
+auth_wx.json
+
+*.mp4
+*.mp3
+*.wav

@@ -1,0 +1,76 @@
+{
+    "meta": {
+        "project_name": "小小谋略家",
+        "lesson_number": "第x课",
+        "lesson_title": "",
+        "lesson_sub_title": ""
+    },
+    "wechat": {
+        "hashtags": [
+            "#孙子兵法",
+            "#小小谋略家",
+            "#国学启蒙",
+            "#宝妈收藏",
+            "#大语文素养课",
+            "#领导力启蒙",
+            "#批判思维",
+            "#情绪管理",
+            "#育儿干货",
+            "#财商启蒙",
+            "#历史启蒙",
+            "#家庭教育",
+            "#亲子教育干货",
+            "#思维训练",
+            "#高效学习"
+        ],
+        "title": "",
+        "description": ""
+    },
+    "scenes": [
+        {
+            "scene_index": 1,
+            "scene_type": "痛点 (引入)",
+            "voiceover_script": "",
+            "voiceover_words": 0
+        },
+        {
+            "scene_index": 2,
+            "scene_type": "知识 (是什么)",
+            "voiceover_script": "",
+            "voiceover_words": 0
+        },
+        {
+            "scene_index": 3,
+            "scene_type": "剖析 (为什么)",
+            "voiceover_script": "",
+            "voiceover_words": 0
+        },
+        {
+            "scene_index": 4,
+            "scene_type": "策略 (怎么做)",
+            "voiceover_script": "",
+            "voiceover_words": 0
+        },
+        {
+            "scene_index": 5,
+            "scene_type": "升华 (应用)",
+            "voiceover_script": "",
+            "voiceover_words": 0
+        },
+        {
+            "scene_index": 6,
+            "scene_type": "懿爸锦囊",
+            "voiceover_script": "最后，懿爸要考考你的谋略思维了：{question}。{options}。评论区告诉懿爸，挑战小小谋略家！",
+            "voiceover_words": 0,
+            "interactive_content": {
+                "question": "",
+                "options": [
+                    "A. 选项1",
+                    "B. 选项2",
+                    "C. 选项3"
+                ]
+            }
+        }
+    ]
+}
+
