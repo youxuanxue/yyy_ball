@@ -1,0 +1,6 @@
+[submodule "external/CosyVoice"]
+	path = external/CosyVoice
+	url = https://github.com/FunAudioLLM/CosyVoice.git
+[submodule "external/SadTalker"]
+	path = external/SadTalker
+	url = https://github.com/OpenTalker/SadTalker.git
