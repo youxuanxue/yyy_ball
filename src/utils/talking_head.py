@@ -359,6 +359,256 @@ def generate_talking_head(
         return False
 
 
+def generate_talking_head_from_video(
+    video_path: str,
+    audio_path: str,
+    output_path: str,
+    face_enhance: bool = True,
+    batch_size: int = 1,
+    preprocess: str = "full",
+    size: int = 512,
+    pose_style: int = 0,
+) -> bool:
+    """
+    从视频生成说话头像视频（保持原视频的动画和表情，只改变口型）
+    
+    这个方法会：
+    1. 从视频中提取第一帧作为源图片
+    2. 使用原视频作为参考视频（ref_pose 和 ref_eyeblink），保持原始动画
+    3. 使用新音频驱动口型
+    
+    Args:
+        video_path: 参考视频路径（包含人物动画）
+        audio_path: 驱动音频文件路径（MP3/WAV）
+        output_path: 输出视频路径
+        face_enhance: 是否启用面部增强
+        batch_size: 批处理大小
+        preprocess: 预处理模式 ('full', 'crop', 'extcrop', 'resize', 'full_no_alignment')
+        size: 输出视频尺寸
+        pose_style: 姿势风格 (0-45)
+    
+    Returns:
+        bool: 是否成功生成
+    """
+    import tempfile
+    
+    checks = check_sadtalker_installation()
+    
+    if not checks['pytorch_available']:
+        print("❌ 错误: PyTorch 未安装，无法生成说话头像")
+        return False
+    
+    if not checks['sadtalker_dir_exists']:
+        print("❌ 错误: SadTalker 未安装")
+        print("💡 请先安装 SadTalker: git clone https://github.com/OpenTalker/SadTalker.git external/SadTalker")
+        return False
+    
+    if not checks['models_downloaded']:
+        print("⚠️ 警告: 预训练模型未完全下载，生成可能失败")
+        print("💡 请参考 docs/talking_head_guide.md 下载模型")
+    
+    # 检查输入文件
+    if not os.path.exists(video_path):
+        print(f"❌ 错误: 视频文件不存在: {video_path}")
+        return False
+    
+    if not os.path.exists(audio_path):
+        print(f"❌ 错误: 音频文件不存在: {audio_path}")
+        return False
+    
+    # 转换为绝对路径
+    video_path = os.path.abspath(video_path)
+    audio_path = os.path.abspath(audio_path)
+    output_path = os.path.abspath(output_path)
+    
+    # 创建输出目录
+    output_dir = os.path.dirname(output_path)
+    if output_dir and not os.path.exists(output_dir):
+        os.makedirs(output_dir)
+    output_dir = os.path.abspath(output_dir)
+    
+    # 从视频中提取第一帧作为源图片
+    print("📸 从视频中提取第一帧...")
+    temp_dir = tempfile.mkdtemp()
+    first_frame_path = os.path.join(temp_dir, "first_frame.jpg")
+    
+    try:
+        # 使用 ffmpeg 提取第一帧
+        extract_cmd = [
+            "ffmpeg", "-y", "-i", video_path,
+            "-vf", "select=eq(n\\,0)",
+            "-vframes", "1",
+            first_frame_path
+        ]
+        result = subprocess.run(extract_cmd, capture_output=True, text=True)
+        if result.returncode != 0 or not os.path.exists(first_frame_path):
+            print(f"❌ 错误: 无法从视频提取第一帧")
+            print(f"错误信息: {result.stderr}")
+            return False
+        
+        print(f"✅ 已提取第一帧: {first_frame_path}")
+        
+        # 构建 SadTalker 命令
+        sadtalker_path = Path(__file__).parent.parent.parent / "external" / "SadTalker"
+        inference_script = sadtalker_path / "inference.py"
+        
+        if not inference_script.exists():
+            print(f"❌ 错误: SadTalker inference.py 不存在: {inference_script}")
+            return False
+        
+        # 构建命令参数（使用参考视频保持原始动画）
+        cmd = [
+            sys.executable,
+            str(inference_script),
+            "--driven_audio", audio_path,
+            "--source_image", first_frame_path,
+            "--ref_pose", video_path,  # 使用原视频作为姿态参考
+            "--ref_eyeblink", video_path,  # 使用原视频作为眨眼参考
+            "--result_dir", output_dir,
+            "--batch_size", str(batch_size),
+            "--size", str(size),
+            "--preprocess", preprocess,
+            "--pose_style", str(pose_style),
+        ]
+        
+        if face_enhance:
+            cmd.extend(["--enhancer", "gfpgan"])
+        
+        print(f"🎬 开始生成说话头像视频（保持原视频动画）...")
+        print(f"📹 参考视频: {video_path}")
+        print(f"📸 源图片: {first_frame_path}")
+        print(f"🎵 驱动音频: {audio_path}")
+        print(f"📹 输出: {output_path}")
+        print(f"⚙️  参数: face_enhance={face_enhance}, batch_size={batch_size}, size={size}")
+        print()
+        print("=" * 80)
+        print("📊 生成进度（实时更新）")
+        print("=" * 80)
+        
+        # 定义阶段标识
+        stage_markers = [
+            ('3DMM Extraction for source image', '阶段 1/5: 3DMM 提取（源图片）'),
+            ('3DMM Extraction for the reference video providing pose', '阶段 2/5: 3DMM 提取（参考视频姿态）'),
+            ('3DMM Extraction for the reference video providing eye blinking', '阶段 2/5: 3DMM 提取（参考视频眨眼）'),
+            ('audio2exp', '阶段 3/5: 音频到表情系数转换'),
+            ('audio2pose', '阶段 3/5: 音频到姿态系数转换'),
+            ('Face Renderer', '阶段 4/5: 动画生成（逐帧渲染）'),
+            ('face3d rendering', '阶段 4/5: 3D 人脸渲染'),
+            ('The generated video is named', '阶段 5/5: 视频编码完成'),
+            ('generated video is named', '阶段 5/5: 视频编码完成'),
+        ]
+        
+        last_stage = None
+        
+        def process_line(line):
+            """处理输出行，识别阶段并打印"""
+            nonlocal last_stage
+            line_stripped = line.strip()
+            
+            # 检查是否是新的阶段
+            for marker, stage_name in stage_markers:
+                if marker in line_stripped:
+                    if last_stage != stage_name:
+                        print(f"\n{'='*80}")
+                        print(f"📌 {stage_name}")
+                        print("-" * 80)
+                        last_stage = stage_name
+                    break
+            
+            # 打印进度条和重要信息
+            if line_stripped:
+                if '|' in line_stripped and ('%' in line_stripped or 'it/s' in line_stripped):
+                    print(f"  {line_stripped}")
+                elif any(keyword in line_stripped for keyword in ['Extraction', 'generated', 'named', 'Error', 'Warning']):
+                    print(f"  ℹ️  {line_stripped}")
+                elif line_stripped.startswith('Traceback') or 'Error' in line_stripped:
+                    print(f"  ❌ {line_stripped}")
+        
+        # 实时显示输出
+        process = subprocess.Popen(
+            cmd,
+            cwd=str(sadtalker_path),
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+            text=True,
+            bufsize=1,
+            universal_newlines=True
+        )
+        
+        # 实时读取并打印输出
+        output_lines = []
+        for line in process.stdout:
+            output_lines.append(line)
+            process_line(line)
+            sys.stdout.flush()
+        
+        # 等待进程完成
+        return_code = process.wait()
+        
+        if return_code != 0:
+            print("\n" + "=" * 80)
+            print("❌ 生成失败，完整错误信息：")
+            print("=" * 80)
+            print(''.join(output_lines))
+            raise subprocess.CalledProcessError(return_code, cmd, ''.join(output_lines))
+        
+        # 查找生成的视频文件
+        print("\n" + "=" * 80)
+        print("🔍 查找生成的视频文件...")
+        print("=" * 80)
+        
+        generated_file = None
+        
+        # 查找所有可能的 .mp4 文件
+        for root, dirs, files in os.walk(output_dir):
+            for file in files:
+                if file.endswith('.mp4') and not file.startswith('temp_'):
+                    file_path = os.path.join(root, file)
+                    if generated_file is None or os.path.getmtime(file_path) > os.path.getmtime(generated_file):
+                        generated_file = file_path
+        
+        if generated_file:
+            print(f"  📹 找到视频文件: {generated_file}")
+            file_size = os.path.getsize(generated_file) / (1024 * 1024)
+            print(f"  📦 文件大小: {file_size:.2f} MB")
+        else:
+            print(f"  ⚠️  未找到 .mp4 文件")
+        
+        # 重命名到目标路径
+        if generated_file and os.path.exists(generated_file) and generated_file != output_path:
+            print(f"  🔄 移动文件到目标位置...")
+            os.makedirs(os.path.dirname(output_path), exist_ok=True)
+            if os.path.exists(output_path):
+                os.remove(output_path)
+            os.rename(generated_file, output_path)
+            print(f"  ✅ 文件已移动到: {output_path}")
+        
+        if os.path.exists(output_path):
+            file_size = os.path.getsize(output_path) / (1024 * 1024)
+            print(f"\n✅ 成功生成: {output_path}")
+            print(f"📦 文件大小: {file_size:.2f} MB")
+            return True
+        else:
+            print(f"\n⚠️ 警告: 未找到输出文件: {output_path}")
+            return False
+            
+    except subprocess.CalledProcessError as e:
+        print(f"❌ 错误: 生成失败")
+        print(f"错误信息: {e.stderr if hasattr(e, 'stderr') else str(e)}")
+        return False
+    except Exception as e:
+        print(f"❌ 错误: {str(e)}")
+        return False
+    finally:
+        # 清理临时文件
+        try:
+            if os.path.exists(temp_dir):
+                import shutil
+                shutil.rmtree(temp_dir)
+        except:
+            pass
+
+
 def batch_generate_talking_heads(
     image_path: str,
     audio_dir: str,
@@ -433,7 +683,7 @@ def get_required_materials() -> Dict[str, List[str]]:
     """
     return {
         "已有": [
-            "✅ MP3 音频文件: series/sunzi/lesson10/voice/1.mp3"
+            "✅ MP3 音频文件: series/book_sunzibingfa/lesson10/voice/1.mp3"
         ],
         "需要准备": [
             "⚠️ 人物头像图片 (JPG/PNG, 512x512+, 正面人脸)",
@@ -466,9 +716,99 @@ def print_materials_checklist():
 
 
 if __name__ == "__main__":
-    # 打印安装状态
-    print_installation_status()
+    import argparse
     
-    # 打印素材清单
-    print_materials_checklist()
+    parser = argparse.ArgumentParser(
+        description="生成说话头像视频（使用 SadTalker）",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog="""
+示例:
+  # 从视频生成（保持原视频动画，只改变口型）
+  uv run python -m src.utils.talking_head \\
+      --video assets/voice/frank.mp4 \\
+      --audio series/book_sunzibingfa/lesson14/voice/1.mp3 \\
+      --output assets/voice/frank_talking.mp4
+
+  # 从图片生成
+  uv run python -m src.utils.talking_head \\
+      --image assets/avatars/character_01.jpg \\
+      --audio series/sunzi/lesson10/voice/1.mp3 \\
+      --output output.mp4
+
+  # 检查安装状态
+  uv run python -m src.utils.talking_head --check
+        """
+    )
+    
+    parser.add_argument("--image", type=str, help="人物头像图片路径")
+    parser.add_argument("--video", type=str, help="参考视频路径（保持原视频动画，只改变口型）")
+    parser.add_argument("--audio", type=str, help="音频文件路径")
+    parser.add_argument("--output", type=str, help="输出视频路径")
+    parser.add_argument("--face-enhance", action="store_true", default=True, help="启用面部增强（默认启用）")
+    parser.add_argument("--no-face-enhance", dest="face_enhance", action="store_false", help="禁用面部增强")
+    parser.add_argument("--batch-size", type=int, default=1, help="批处理大小（默认: 1）")
+    parser.add_argument("--size", type=int, default=512, help="输出视频尺寸（默认: 512）")
+    parser.add_argument("--preprocess", type=str, default="full", choices=["crop", "full"], help="预处理模式")
+    parser.add_argument("--still", action="store_true", help="保持头部静止（仅唇形动画，仅用于图片模式）")
+    parser.add_argument("--check", action="store_true", help="检查安装状态和素材准备情况")
+    
+    args = parser.parse_args()
+    
+    # 检查模式
+    if args.check:
+        print_installation_status()
+        print_materials_checklist()
+        sys.exit(0)
+    
+    # 验证参数
+    if not args.image and not args.video:
+        parser.error("必须指定 --image 或 --video 参数")
+    
+    if args.image and args.video:
+        parser.error("不能同时指定 --image 和 --video 参数")
+    
+    if not args.audio:
+        parser.error("必须指定 --audio 参数")
+    
+    if not args.output:
+        parser.error("必须指定 --output 参数")
+    
+    # 检查安装状态
+    checks = check_sadtalker_installation()
+    if not checks['pytorch_available']:
+        print("❌ 错误: PyTorch 未安装")
+        print("💡 请先安装: uv add torch torchvision torchaudio")
+        sys.exit(1)
+    
+    if not checks['sadtalker_dir_exists']:
+        print("❌ 错误: SadTalker 未安装")
+        print("💡 请先安装: git clone https://github.com/OpenTalker/SadTalker.git external/SadTalker")
+        sys.exit(1)
+    
+    # 执行生成
+    if args.video:
+        # 使用视频模式（保持原视频动画）
+        success = generate_talking_head_from_video(
+            video_path=args.video,
+            audio_path=args.audio,
+            output_path=args.output,
+            face_enhance=args.face_enhance,
+            batch_size=args.batch_size,
+            size=args.size,
+            preprocess=args.preprocess
+        )
+    else:
+        # 使用图片模式
+        success = generate_talking_head(
+            image_path=args.image,
+            audio_path=args.audio,
+            output_path=args.output,
+            face_enhance=args.face_enhance,
+            batch_size=args.batch_size,
+            size=args.size,
+            still=args.still,
+            preprocess=args.preprocess
+        )
+    
+    sys.exit(0 if success else 1)
 
