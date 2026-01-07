@@ -590,7 +590,7 @@ if __name__ == "__main__":
     import sys
     
     # Check if paths are provided via args, else use dummy defaults for testing syntax
-    video_file = Path("media/sunzi/lesson04/videos/animate/1920p60/Lesson4Vertical.mp4")
+    video_file = Path("media/book_sunzibingfa/lesson04/videos/animate/1920p60/Lesson4Vertical.mp4")
     
     # Demo logic
     if not video_file.exists():

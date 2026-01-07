@@ -2,6 +2,7 @@ import sys
 import argparse
 import time
 import json
+import shutil
 from pathlib import Path
 
 # Add project root to sys.path
@@ -13,16 +14,16 @@ from src.publish.wx_channel import WeChatChannelPublisher, VideoPublishTask
 
 def main():
     parser = argparse.ArgumentParser(description="Publish lesson video to WeChat Channel.")
-    parser.add_argument("lesson_path", help="Lesson path (e.g., sunzi/lesson05, sunzi/lesson06)")
+    parser.add_argument("lesson_path", help="Lesson path (e.g., book_sunzibingfa/lesson05, book_sunzibingfa/lesson06)")
     parser.add_argument("--debug", action="store_true", help="Enable debug mode (generate screenshots and HTML dumps)")
     args = parser.parse_args()
 
-    # Parse lesson path: sunzi/lesson0x -> series/sunzi/lesson0x
+    # Parse lesson path: book_sunzibingfa/lesson0x -> series/book_sunzibingfa/lesson0x
     lesson_path_str = args.lesson_path.strip()
     parts = lesson_path_str.split('/')
     
     if len(parts) != 2:
-        print(f"Invalid lesson path format. Expected: sunzi/lesson0x, got: {lesson_path_str}")
+        print(f"Invalid lesson path format. Expected: book_sunzibingfa/lesson0x, got: {lesson_path_str}")
         return
     
     series_name, lesson_dir_name = parts
@@ -142,6 +143,20 @@ def main():
             try:
                 print("请在浏览器中确认发布信息。完成后按回车键关闭浏览器...")
                 input()
+                
+                # After user confirms, move video to archive
+                print("\n正在将视频文件移动到归档目录...")
+                archive_dir = project_root / "video_archive" / series_name
+                archive_dir.mkdir(parents=True, exist_ok=True)
+                
+                # Move video file to archive
+                archive_video_path = archive_dir / video_path.name
+                if video_path.exists():
+                    shutil.move(str(video_path), str(archive_video_path))
+                    print(f"✓ 视频文件已移动到: {archive_video_path}")
+                else:
+                    print(f"⚠ 警告: 源视频文件不存在: {video_path}")
+                    
             except EOFError:
                 print("检测到非交互式环境，脚本将保持浏览器打开 5 分钟，然后自动关闭。")
                 time.sleep(300)

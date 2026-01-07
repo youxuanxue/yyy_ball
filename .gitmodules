@@ -4,3 +4,9 @@
 [submodule "external/SadTalker"]
 	path = external/SadTalker
 	url = https://github.com/OpenTalker/SadTalker.git
+[submodule "external/GFPGAN"]
+	path = external/GFPGAN
+	url = https://github.com/TencentARC/GFPGAN.git
+[submodule "external/basicsr"]
+	path = external/basicsr
+	url = https://github.com/xinntao/BasicSR.git
