@@ -10,7 +10,7 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")
 
 # 导入工具
 from src.utils.anim_helper import get_audio_duration, combine_audio_clips, load_png_icon
-from src.utils.voice import gen_voice_clips_from_json
+from src.utils.voice_edgetts import gen_voice_clips_from_json
 from src.utils.cover_generator import generate_cover
 
 # 默认配置（可以在 construct 中被 JSON 覆盖）
@@ -65,9 +65,9 @@ class SunziLessonVertical(Scene, ABC):
         self.cover_path = os.path.join(self.images_dir, "cover_design.png")
         
         # 源图片目录 (用于封面随机图等)
-        # 图片资源统一存放在 assets/images
+        # 图片资源统一存放在 series/cover/sunzibingfa
         project_root = os.path.abspath(os.path.join(self.lesson_dir, "../../.."))
-        self.source_images_dir = os.path.join(project_root, "assets", "images")
+        self.source_images_dir = os.path.join(project_root, "series", "cover", "sunzibingfa")
 
         # 尝试使用手写字体
         handwritten_fonts = ["Kaiti SC", "STKaiti", "KaiTi", "SimKai", "FandolKai"] # 常用楷体
@@ -293,10 +293,9 @@ class SunziLessonVertical(Scene, ABC):
         
         step_time = (page_duration - t_trans) / 7
 
-        q_mark = Text("?", font_size=self.font_title_size*2, color=YELLOW, weight=BOLD)
         q_text = Text("挑战小小谋略家", font=self.title_font, font_size=self.font_title_size, color=WHITE)
         q_bg = RoundedRectangle(width=5, height=1.2, corner_radius=0.6, color=BLUE, fill_opacity=0.8)
-        q_header = VGroup(q_mark, VGroup(q_bg, q_text)).arrange(DOWN, buff=0.3).to_edge(UP, buff=1.0)
+        q_header = VGroup(q_bg, q_text).move_to(UP * 4.0)
         
         # 设置问题文本，支持自动换行（保持字体大小不变）
         question_text = interactive_content.get("question", "")
@@ -323,21 +322,16 @@ class SunziLessonVertical(Scene, ABC):
         colors = [RED, GREEN, GRAY]
         for i, text in enumerate(options):
             color = colors[i] if i < len(colors) else WHITE
-            box = RoundedRectangle(width=8, height=1.5, color=color, fill_opacity=0.1)
-            txt = Text(text, font_size=self.font_body_size, color=WHITE).move_to(box)
+            box = RoundedRectangle(width=8, height=1.2, color=color, fill_opacity=0.1)
+            txt = Text(text, font_size=self.font_body_size*0.8, color=WHITE).move_to(box)
             item = VGroup(box, txt)
             opt_group.add(item)
             
-        opt_group.arrange(DOWN, buff=0.4).next_to(question, DOWN, buff=1.0)
-        
-        # 调整位置防溢出
-        if opt_group.get_bottom()[1] < -self.safe_bottom_buff:
-            VGroup(q_header, question, opt_group).shift(UP * 0.5)
+        opt_group.arrange(DOWN, buff=0.4).next_to(question, DOWN, buff=0.5)
         
         cta_text = Text("评论区告诉懿爸，挑战小小谋略家！", font_size=self.font_body_size, color=BLUE)
-        cta = VGroup(Triangle(color=BLUE, fill_opacity=1).scale(0.15).rotate(PI), cta_text).arrange(RIGHT).to_edge(DOWN, buff=self.safe_bottom_buff)
+        cta = VGroup(Triangle(color=BLUE, fill_opacity=1).scale(0.15).rotate(PI), cta_text).arrange(RIGHT).move_to(DOWN * 4.5)
         
-        self.play(Write(q_mark))
         self.play(FadeIn(q_bg, shift=UP), Write(q_text))
         self.play(Write(question), run_time=step_time)
         self.play(GrowFromCenter(opt_group[0]), run_time=step_time)

@@ -137,7 +137,7 @@ def generate_cover(
 if __name__ == "__main__":
     # Test run
     base_dir = os.path.dirname(os.path.abspath(__file__))
-    test_img = os.path.abspath(os.path.join(base_dir, "../../assets/images/1.jpg"))
+    test_img = os.path.abspath(os.path.join(base_dir, "../../series/cover/sunzibingfa/1.jpg"))
     generate_cover(
         output_path="test_cover.png",
         title_main="是不打架？",

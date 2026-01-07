@@ -1,124 +1,81 @@
 #!/bin/bash
-# SadTalker 模型下载脚本（兼容 macOS 和 Linux）
+# 下载 SadTalker 预训练模型（兼容 macOS 和 Linux）
 
 set -e
 
-PROJECT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-SADTALKER_DIR="$PROJECT_ROOT/external/SadTalker"
+SADTALKER_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)/external/SadTalker"
 CHECKPOINTS_DIR="$SADTALKER_DIR/checkpoints"
+GFPGAN_WEIGHTS_DIR="$SADTALKER_DIR/gfpgan/weights"
+
+echo "=========================================="
+echo "下载 SadTalker 预训练模型"
+echo "=========================================="
+echo "目标目录: $CHECKPOINTS_DIR"
+echo ""
+
+# 创建目录
+mkdir -p "$CHECKPOINTS_DIR"
+mkdir -p "$GFPGAN_WEIGHTS_DIR"
 
 # 检测下载工具
 if command -v wget &> /dev/null; then
-    DOWNLOAD_CMD="wget"
-    DOWNLOAD_FLAGS="-nc"
+    DOWNLOAD_CMD="wget -nc"
 elif command -v curl &> /dev/null; then
-    DOWNLOAD_CMD="curl"
-    DOWNLOAD_FLAGS="-L -C -"
+    DOWNLOAD_CMD="curl -L -o"
 else
     echo "❌ 错误: 未找到 wget 或 curl"
     exit 1
 fi
 
-echo "=========================================="
-echo "📥 SadTalker 模型下载脚本"
-echo "=========================================="
-echo ""
-echo "使用工具: $DOWNLOAD_CMD"
-echo ""
-
-# 创建目录
-mkdir -p "$CHECKPOINTS_DIR"
-cd "$SADTALKER_DIR"
-
-# 下载函数（带完整性检查）
+# 下载函数
 download_file() {
     local url=$1
     local output=$2
     local filename=$(basename "$output")
     
-    # 如果文件存在，检查是否损坏（对于 .tar 文件）
     if [ -f "$output" ]; then
-        if [[ "$filename" == *.tar ]] || [[ "$filename" == *.zip ]]; then
-            if unzip -t "$output" >/dev/null 2>&1 || tar -tzf "$output" >/dev/null 2>&1; then
-                echo "  ✅ 已存在且完整: $filename"
-                return 0
-            else
-                echo "  ⚠️  文件损坏，重新下载: $filename"
-                rm -f "$output"
-            fi
-        else
-            echo "  ⏭️  已存在: $filename"
-            return 0
-        fi
+        echo "✅ $filename 已存在，跳过下载"
+        return 0
     fi
     
-    echo "  📥 下载中: $filename"
-    if [ "$DOWNLOAD_CMD" = "wget" ]; then
-        wget --progress=bar:force "$url" -O "$output" 2>&1 | grep -E "(saved|100%)" || true
+    echo "📥 下载 $filename..."
+    if [ "$DOWNLOAD_CMD" = "wget -nc" ]; then
+        wget -nc "$url" -O "$output"
     else
-        curl -L --progress-bar "$url" -o "$output"
-    fi
-    
-    # 验证下载的文件
-    if [[ "$filename" == *.tar ]] || [[ "$filename" == *.zip ]]; then
-        if unzip -t "$output" >/dev/null 2>&1 || tar -tzf "$output" >/dev/null 2>&1; then
-            echo "  ✅ 下载完成并验证: $filename"
-        else
-            echo "  ❌ 下载的文件可能损坏: $filename"
-            echo "  💡 请重新运行脚本或手动下载"
+        # curl 方式
+        curl -L "$url" -o "$output" || {
+            echo "❌ 下载失败: $filename"
             return 1
-        fi
-    else
-        echo "  ✅ 下载完成: $filename"
+        }
     fi
+    echo "✅ $filename 下载完成"
 }
 
-echo "📦 下载核心模型..."
-echo ""
+cd "$SADTALKER_DIR"
 
-# 核心模型
-download_file \
-    "https://github.com/OpenTalker/SadTalker/releases/download/v0.0.2-rc/mapping_00109-model.pth.tar" \
-    "$CHECKPOINTS_DIR/mapping_00109-model.pth.tar"
+# 下载新版本模型（推荐）
+echo "📦 下载 SadTalker 核心模型..."
+download_file "https://github.com/OpenTalker/SadTalker/releases/download/v0.0.2-rc/mapping_00109-model.pth.tar" "$CHECKPOINTS_DIR/mapping_00109-model.pth.tar"
+download_file "https://github.com/OpenTalker/SadTalker/releases/download/v0.0.2-rc/mapping_00229-model.pth.tar" "$CHECKPOINTS_DIR/mapping_00229-model.pth.tar"
+download_file "https://github.com/OpenTalker/SadTalker/releases/download/v0.0.2-rc/SadTalker_V0.0.2_256.safetensors" "$CHECKPOINTS_DIR/SadTalker_V0.0.2_256.safetensors"
+download_file "https://github.com/OpenTalker/SadTalker/releases/download/v0.0.2-rc/SadTalker_V0.0.2_512.safetensors" "$CHECKPOINTS_DIR/SadTalker_V0.0.2_512.safetensors"
 
-download_file \
-    "https://github.com/OpenTalker/SadTalker/releases/download/v0.0.2-rc/mapping_00229-model.pth.tar" \
-    "$CHECKPOINTS_DIR/mapping_00229-model.pth.tar"
-
-download_file \
-    "https://github.com/OpenTalker/SadTalker/releases/download/v0.0.2-rc/SadTalker_V0.0.2_256.safetensors" \
-    "$CHECKPOINTS_DIR/SadTalker_V0.0.2_256.safetensors"
-
-download_file \
-    "https://github.com/OpenTalker/SadTalker/releases/download/v0.0.2-rc/SadTalker_V0.0.2_512.safetensors" \
-    "$CHECKPOINTS_DIR/SadTalker_V0.0.2_512.safetensors"
-
+# 下载 GFPGAN 增强模型
 echo ""
 echo "📦 下载 GFPGAN 增强模型..."
-echo ""
-
-# GFPGAN 增强模型
-mkdir -p "$SADTALKER_DIR/gfpgan/weights"
-
-download_file \
-    "https://github.com/xinntao/facexlib/releases/download/v0.1.0/alignment_WFLW_4HG.pth" \
-    "$SADTALKER_DIR/gfpgan/weights/alignment_WFLW_4HG.pth"
-
-download_file \
-    "https://github.com/xinntao/facexlib/releases/download/v0.1.0/detection_Resnet50_Final.pth" \
-    "$SADTALKER_DIR/gfpgan/weights/detection_Resnet50_Final.pth"
-
-download_file \
-    "https://github.com/TencentARC/GFPGAN/releases/download/v1.3.0/GFPGANv1.4.pth" \
-    "$SADTALKER_DIR/gfpgan/weights/GFPGANv1.4.pth"
-
-download_file \
-    "https://github.com/xinntao/facexlib/releases/download/v0.2.2/parsing_parsenet.pth" \
-    "$SADTALKER_DIR/gfpgan/weights/parsing_parsenet.pth"
+download_file "https://github.com/xinntao/facexlib/releases/download/v0.1.0/alignment_WFLW_4HG.pth" "$GFPGAN_WEIGHTS_DIR/alignment_WFLW_4HG.pth"
+download_file "https://github.com/xinntao/facexlib/releases/download/v0.1.0/detection_Resnet50_Final.pth" "$GFPGAN_WEIGHTS_DIR/detection_Resnet50_Final.pth"
+download_file "https://github.com/TencentARC/GFPGAN/releases/download/v1.3.0/GFPGANv1.4.pth" "$GFPGAN_WEIGHTS_DIR/GFPGANv1.4.pth"
+download_file "https://github.com/xinntao/facexlib/releases/download/v0.2.2/parsing_parsenet.pth" "$GFPGAN_WEIGHTS_DIR/parsing_parsenet.pth"
 
 echo ""
+echo "=========================================="
 echo "✅ 模型下载完成！"
+echo "=========================================="
 echo ""
-echo "📁 模型位置: $CHECKPOINTS_DIR"
+echo "已下载的模型文件："
+ls -lh "$CHECKPOINTS_DIR"/*.pth* "$CHECKPOINTS_DIR"/*.safetensors 2>/dev/null | awk '{print "  " $9 " (" $5 ")"}'
 echo ""
+echo "GFPGAN 模型文件："
+ls -lh "$GFPGAN_WEIGHTS_DIR"/*.pth 2>/dev/null | awk '{print "  " $9 " (" $5 ")"}'
 

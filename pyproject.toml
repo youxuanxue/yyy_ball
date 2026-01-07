@@ -11,6 +11,7 @@ dependencies = [
     "edge-tts>=7.2.7",
     "face-alignment==1.3.5",
     "facexlib==0.3.0",
+    # "gfpgan>=1.3.8",  # 注意：basicsr 依赖在 Python 3.13 上构建失败，如需使用请手动安装
     "fastapi==0.115.6",
     "fastapi-cli==0.0.4",
     "gdown==5.1.0",
@@ -28,6 +29,7 @@ dependencies = [
     "modelscope==1.20.0",
     "mutagen>=1.47.0",
     "networkx==3.1",
+    "noisereduce>=3.0.3",
     "numba>=0.63.1",
     "omegaconf==2.3.0",
     "onnxruntime>=1.23.2",
@@ -51,6 +53,7 @@ dependencies = [
     "tqdm>=4.67.1",
     "transformers>=4.57.3",
     "wget>=3.2",
+    "x-transformers==2.11.24",
     "yacs==0.1.8",
     # "cosyvoice>=0.0.8",  # 注意：包构建有问题，需要使用 uv run pip install cosyvoice 手动安装
 ]
