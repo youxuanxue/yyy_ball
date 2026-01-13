@@ -86,3 +86,6 @@ auth_wx.json
 iic/
 
 video_archive/
+**/media/
+**/voice/
+**/images/

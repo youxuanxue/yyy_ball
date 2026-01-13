@@ -58,8 +58,8 @@ hashtags：必须包含指定的基础标签，并根据内容新增 1-2 个。
 
 # Input Data
 
-origin.md: series/book_sunzibingfa/lesson15/origin.md
+origin.md: series/book_sunzibingfa/lesson17/origin.md
 
 script_template.json: series/template/sunzi/script_template.json
 
-请基于以上要求，为我生成对应的 series/book_sunzibingfa/lesson15/script.json。
+请基于以上要求，为我生成对应的 series/book_sunzibingfa/lesson17/script.json。

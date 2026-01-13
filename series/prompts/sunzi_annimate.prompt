@@ -86,7 +86,7 @@
 3. **时间管理注释：** 在 `step_time` 计算处，明确注释动作数量，确保注释与实际计算一致。
 
 ---
-script.json：series/book_sunzibingfa/lesson15/script.json
+script.json：series/book_sunzibingfa/lesson17/script.json
 animate_template.py：series/template/sunzi/animate_template.py
 
-**请根据上述规范，开始编写 `series/book_sunzibingfa/lesson15/animate.py`。**
+**请根据上述规范，开始编写 `series/book_sunzibingfa/lesson17/animate.py`。**
