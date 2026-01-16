@@ -30,7 +30,8 @@ JSON 规范：严格遵守 script_template.json 的字段结构。
 
 字数控制：每个场景的 voiceover_script 控制在 30-80 字之间，并在 voiceover_words 中标注实际字数。最后一个场景需要包含问题和ABC选项。
 
-WeChat 模块：
+## WeChat 模块
+
 title（标题，10字以内）：
 - **核心要求**：必须有悬念、冲击力或引发好奇
 - **创作技巧**：
@@ -54,12 +55,149 @@ description（描述，50字左右）：
 - **示例**："《孙子兵法》告诉我们：真正的领导不是事事插手，而是懂得放权。当孩子当班干部、做组长时，家长和老师该如何引导？这堂课教孩子学会信任、学会放手，培养真正的领导力。"
 - **避免**：过于学术化、生硬堆砌关键词、emoji过多影响阅读
 
-hashtags：必须包含指定的基础标签，并根据内容新增 1-2 个。
+hashtags（精简至10个左右，提高转化）：
+- **基础标签**（必须包含）：#孙子兵法 #小小谋略家 #国学启蒙 #育儿干货 #家庭教育 #宝妈收藏
+- **场景标签**（选1-2个）：#小学生必看 #亲子共读 #睡前故事
+- **互动引导标签**（必须包含，提升评论和关注）：#评论区告诉我你选哪个 #关注我学更多
+
+## YouTube 模块
+
+title（标题，60字以内）：
+- **格式**：【小小谋略家】+ 悬念标题 + 关键词 + ｜孙子兵法第X课
+- **示例**："【小小谋略家】成功有公式？2000年前孙武就说了！孩子必学的胜利法则｜孙子兵法第2课"
+
+description（描述，分段式）：
+- **结构**：
+  * 第1行：emoji + 痛点问题
+  * 第2-3行：核心内容概述
+  * "本集内容"列表：用 ✅ 列出3-5个要点
+  * 适合年龄 + 系列信息
+  * 💬 互动问题（与Scene 6呼应）
+  * 🔔 订阅引导
+- **示例**：
+```
+🎯 孩子努力了还是输？比赛、竞选、考试总差一点点？
+
+2000多年前，兵圣孙武就给出了胜利公式——「五事七计」大模型！
+
+本集内容：
+✅ 为什么有的人总能赢？
+✅ 孙武的「成功清单」是什么？
+✅ 道、天、地、将、法，五项检查法
+
+📚 适合年龄：4-12岁
+🎬 系列：小小谋略家·孙子兵法启蒙
+
+💬 互动问题：小明想竞选班长，他应该怎么做？评论区告诉懿爸！
+
+🔔 订阅频道，每周更新国学智慧课！
+```
+
+hashtags（10-15个，带#前缀，无空格）：
+- **中文标签**：#孙子兵法 #儿童国学 #国学启蒙 #育儿 #亲子教育 #小学生 #思维训练 #中华文化
+- **英文标签**（拓展海外华人）：#SunTzu #ArtOfWar #ChineseWisdom #KidsEducation
+- **内容相关标签**：根据本课主题新增1-2个，如 #成功法则 #目标规划
+
+# JSON 模板结构
+
+严格按照以下 JSON 结构生成 script.json：
+
+```json
+{
+    "meta": {
+        "project_name": "小小谋略家",
+        "lesson_number": "第X课",
+        "lesson_title": "课程主标题",
+        "lesson_sub_title": "课程副标题"
+    },
+    "wechat": {
+        "hashtags": [
+            "#孙子兵法",
+            "#小小谋略家",
+            "#国学启蒙",
+            "#育儿干货",
+            "#家庭教育",
+            "#宝妈收藏",
+            "#小学生必看",
+            "#亲子共读",
+            "#评论区告诉我你选哪个",
+            "#关注我学更多"
+        ],
+        "title": "标题（10字以内，可带emoji）",
+        "description": "描述（50字左右，带emoji）",
+        "heji": "我是小小谋略家",
+        "huodong":"全网征集小小谋略家"
+    },
+    "youtube": {
+        "title": "【小小谋略家】悬念标题+关键词｜孙子兵法第X课",
+        "description": "分段式描述（参考YouTube模块规范）",
+        "playlists": "《孙子兵法》小小谋略家",
+        "hashtags": [
+            "#孙子兵法",
+            "#儿童国学",
+            "#国学启蒙",
+            "#育儿",
+            "#亲子教育",
+            "#小学生",
+            "#思维训练",
+            "#中华文化",
+            "#SunTzu",
+            "#ArtOfWar",
+            "#ChineseWisdom",
+            "#KidsEducation"
+        ]
+    },
+    "scenes": [
+        {
+            "scene_index": 1,
+            "scene_type": "痛点 (引入)",
+            "voiceover_script": "口播稿内容",
+            "voiceover_words": 0
+        },
+        {
+            "scene_index": 2,
+            "scene_type": "知识 (是什么)",
+            "voiceover_script": "口播稿内容",
+            "voiceover_words": 0
+        },
+        {
+            "scene_index": 3,
+            "scene_type": "剖析 (为什么)",
+            "voiceover_script": "口播稿内容",
+            "voiceover_words": 0
+        },
+        {
+            "scene_index": 4,
+            "scene_type": "策略 (怎么做)",
+            "voiceover_script": "口播稿内容",
+            "voiceover_words": 0
+        },
+        {
+            "scene_index": 5,
+            "scene_type": "升华 (应用)",
+            "voiceover_script": "口播稿内容",
+            "voiceover_words": 0
+        },
+        {
+            "scene_index": 6,
+            "scene_type": "懿爸锦囊",
+            "voiceover_script": "最后，懿爸要考考你的谋略思维了：{问题}？A：选项1。B：选项2。C：选项3。评论区告诉懿爸，挑战小小谋略家！",
+            "voiceover_words": 0,
+            "interactive_content": {
+                "question": "问题内容",
+                "options": [
+                    "A. 选项1（通常为下策/反面典型）",
+                    "B. 选项2（智慧选项）",
+                    "C. 选项3（智慧选项）"
+                ]
+            }
+        }
+    ]
+}
+```
 
 # Input Data
 
-origin.md: series/book_sunzibingfa/lesson17/origin.md
+origin.md: series/book_sunzibingfa/lesson02/origin.md
 
-script_template.json: series/template/sunzi/script_template.json
-
-请基于以上要求，为我生成对应的 series/book_sunzibingfa/lesson17/script.json。
+请基于以上要求，为我生成对应的 series/book_sunzibingfa/lesson02/script.json。
