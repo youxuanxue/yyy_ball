@@ -198,6 +198,6 @@ hashtags（10-15个，带#前缀，无空格）：
 
 # Input Data
 
-origin.md: series/book_sunzibingfa/lesson02/origin.md
+origin.md: series/book_sunzibingfa/lesson03/origin.md
 
-请基于以上要求，为我生成对应的 series/book_sunzibingfa/lesson02/script.json。
+请基于以上要求，为我生成对应的 series/book_sunzibingfa/lesson03/script.json。
