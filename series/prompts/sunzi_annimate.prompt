@@ -221,8 +221,8 @@ class LessonXXVerticalScenes(SunziLessonVertical):
 
 # Input Data
 
-script.json：series/book_sunzibingfa/lesson02/script.json
+script.json：series/book_sunzibingfa/lesson03/script.json
 
 all_png_names.txt：assets/icons8/all_png_names.txt
 
-**请根据上述规范，开始编写 `series/book_sunzibingfa/lesson02/animate.py`。**
+**请根据上述规范，开始编写 `series/book_sunzibingfa/lesson03/animate.py`。**
