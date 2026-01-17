@@ -35,6 +35,7 @@ dependencies = [
     "onnxruntime>=1.23.2",
     "openai-whisper>=20250625",
     "openpyxl>=3.1.5",
+    "pillow",
     "playwright>=1.57.0",
     "pyarrow>=22.0.0",
     "pydub==0.25.1",
@@ -55,5 +56,8 @@ dependencies = [
     "wget>=3.2",
     "x-transformers==2.11.24",
     "yacs==0.1.8",
+    "google-api-python-client>=2.0.0",
+    "google-auth-httplib2>=0.2.0",
+    "google-auth-oauthlib>=1.2.0",
     # "cosyvoice>=0.0.8",  # 注意：包构建有问题，需要使用 uv run pip install cosyvoice 手动安装
 ]
