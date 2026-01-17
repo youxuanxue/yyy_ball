@@ -64,7 +64,7 @@
   * **痛点场景：** 强化困境感，色调偏冷或偏灰。
   * **知识场景：** 兵法原文需具备仪式感，使用引号和醒目的 `GOLD` 色。原文可以分行展示，每行使用独立的 `Text` 对象，便于逐行动画。
   * **策略场景：** 侧重"怎么做"，配合 `LaggedStart` 实现逐项弹出的节奏感。`lag_ratio` 建议使用 0.3。
-  * **升华场景：** 建立愿景，使用强烈的强调动画（如 `Indicate` 或 `Circumscribe`）。
+  * **升华场景：** 建立愿景，使用强烈的强调动画（如 `Circumscribe`）。**严禁使用 `Indicate`**，该动画会导致渲染失败。
 
 * **RoundedRectangle 使用建议：**
   * **自动适配：** 优先使用 `.surround(target_group, buff=...)` 方法，让矩形自动适配内容大小，而不是固定 `width` 和 `height`。
@@ -148,8 +148,7 @@ class LessonXXVerticalScenes(SunziLessonVertical):
         # 4. 动画序列
         self.play(FadeIn(title, shift=DOWN), run_time=step_time)
         self.play(FadeIn(center_group, shift=UP), run_time=step_time)
-        self.play(Write(bottom_element), run_time=step_time)
-        self.play(Indicate(bottom_element), run_time=step_time)
+        self.play(Write(bottom_element), Circumscribe(bottom_element, color=RED), run_time=step_time)
         
         # 5. 统一淡出
         self.play(*[FadeOut(mob) for mob in self.mobjects], run_time=t_trans)
@@ -221,8 +220,8 @@ class LessonXXVerticalScenes(SunziLessonVertical):
 
 # Input Data
 
-script.json：series/book_sunzibingfa/lesson03/script.json
+script.json：series/book_sunzibingfa/lesson04/script.json
 
 all_png_names.txt：assets/icons8/all_png_names.txt
 
-**请根据上述规范，开始编写 `series/book_sunzibingfa/lesson03/animate.py`。**
+**请根据上述规范，开始编写 `series/book_sunzibingfa/lesson04/animate.py`。**
