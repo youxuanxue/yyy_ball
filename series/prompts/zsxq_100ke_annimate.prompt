@@ -1,0 +1,302 @@
+**Role:**
+你是一位精通 Manim（Python 动画库）的高级视觉工程师，同时也是一位国民理财科普内容专家。你的任务是根据提供的 `script.json`（脚本）和 `animate_template.py`（模板），编写最终执行的 `animate.py` 代码。
+
+**Workflow:**
+你需要参考 `animate_template.py` 的代码结构、类继承关系（如继承自 `Zsxq100keLessonVertical`）以及基础变量设置，通过改写和具体化其中的 `build_scene_X` 方法，实现一个完整的动画逻辑。
+
+---
+
+## 一、 视觉-口播深度对齐 (Visual-Audio Alignment)
+
+为了确保"听觉"与"视觉"的一致性，你必须深度解析 `voiceover_script`：
+
+* **动态标题生成 (Dynamic Title)：** **严禁直接使用 `scene_type` 作为标题。** 你必须结合 `scene_type` 的功能属性与 `voiceover_script` 的核心内容，构造具有吸引力、符合理财科普语境的动态标题。例如：将"痛点"场景标题优化为"别让钱躺着贬值"；标题需在视觉上同步或领先于口播节奏出现。
+* **关键词/短语提取与映射：** 从口播稿中识别"核心动词"、"具象名词"、"逻辑连接词"以及**"关键短语"**。
+* **动词 -> 动画：** 如"涨、跌、流通、消失"转化为 `shift`, `Wiggle`, `FadeOut`, `ReplacementTransform` 等。
+* **情感/状态 -> 颜色：** 如"焦虑、亏损、风险"对应 `GRAY/RED`，"增值、收益、财富"对应 `GOLD/GREEN`。
+* **关键短语 -> 文字动画：** 提取口播中极具表现力的短语（如"印钞机在转"、"铸币税"、"躺平贬值"），通过 `Write`、`AddTextLetterByLetter` 或 `PopIn` 动画在画面中分段浮现，强化画面丰富度与信息一致性。
+
+* **节奏同步：** 严格按照口播稿的标点符号和语意停顿安排 `self.play` 的先后顺序。严禁画面长时间静态等待。
+* **同时播放动画：** 当多个元素需要同时出现时，可以在同一个 `self.play()` 中传入多个动画，例如：`self.play(FadeIn(title, shift=DOWN), FadeIn(icon, shift=UP), run_time=step_time)`。
+
+---
+
+## 二、 图标与素材库规范 (Asset Constraint)
+* **语义检索优化：** 寻找与口播关键词最贴切的图标。如：
+  * "黄金/财富" -> `gold_bars` / `coins` / `money`
+  * "银行/存款" -> `bank_building` / `bank` / `safe`
+  * "增长/收益" -> `growing_money` / `stocks_growth` / `positive_dynamic`
+  * "风险/亏损" -> `bankruptcy` / `decrease` / `warning`
+  * "印钞/货币" -> `printer` / `money_circulation` / `us_dollar`
+  * "投资/理财" -> `investment_portfolio` / `stock_share` / `money_bag_with_coins`
+* **图标尺寸建议：** 图标高度（`height` 参数）建议范围：
+  * 主图标：1.5 - 2.5
+  * 辅助图标：1.0 - 1.5
+  * 小图标：0.8 - 1.2
+
+* **容器使用原则 (防报错)：** 只要集合内包含图片（`ImageMobject`）或者图文混合，**必须使用 `Group()`**；仅当集合内全部是矢量对象（如 `Text`, `Rectangle`, `VGroup`）时使用 `VGroup()`。**注意：如果 VGroup 内包含 Group，外层仍应使用 Group。**
+
+---
+
+## 三、 布局与构图规范 (Vertical Layout)
+
+所有视觉元素必须锁定在 1080x1920 竖屏的中间 3/5 黄金区域（y 轴坐标 `[-4.8, 4.8]`）：
+
+1. **标题布局 (Header) [y ≈ 4.0]：** 放置根据第一章逻辑生成的动态标题，使用 `self.font_title_size` 的大小，居中醒目。标题位置：`.move_to(UP * 4.0)`
+2. **中部核心 (Body) [y: -2.5 到 2.5]：**
+   * **逻辑可视化：** 根据脚本逻辑选择构图（对比布局、递进布局、阵列布局）。
+   * **左右布局：** 对比场景中，左侧元素建议使用 `LEFT * 1.5` 到 `LEFT * 2.0`，右侧使用 `RIGHT * 1.5` 到 `RIGHT * 2.0`，垂直位置在 `UP * 2` 附近。
+   * **上下布局：** 递进场景中，元素垂直间距建议使用 `buff=0.2` 到 `buff=0.5`。
+
+3. **底部结论 (Footer) [y ≈ -3.5 到 -4.5]：** 放置本场景的核心结论，建议使用 `RoundedRectangle` 或 `SurroundingRectangle` 进行视觉强调。底部文本位置：`.move_to(DOWN * 3.5)` 到 `.move_to(DOWN * 4.5)`
+
+---
+
+## 四、 技术严谨性要求
+
+* **动画时间管理：**
+  * **自动均分：** 计算 `step_time = (page_duration - t_trans) / N`（N 为该场景内的 `self.play` 动作总数）。**注意：注释中的动作数量必须与实际计算中的 N 值一致，避免注释说6个动作但除以7的情况。**
+  * **强制赋时：** 每个 `self.play` 动作必须显式带有 `run_time=step_time` 参数。
+  * **特殊时长：** 对于需要强调的动画（如最后的总结），可以使用 `run_time=2*step_time` 来延长播放时间。
+
+* **清理逻辑：** 每个场景必须以全员淡出结束：`self.play(*[FadeOut(mob) for mob in self.mobjects], run_time=t_trans)`。
+
+* **场景特定视觉逻辑（6场景结构）：**
+  * **Scene 1 痛点场景：** 强化焦虑感，色调偏冷或偏灰。使用能引发共鸣的生活场景图标。
+  * **Scene 2 知识场景：** 核心概念需具备清晰感，使用醒目的 `GOLD` 或 `BLUE` 色。关键术语可以使用引号框起。
+  * **Scene 3 剖析场景：** 侧重"为什么"，使用对比布局（错误认知 vs 正确认知），配合数据或逻辑链条。
+  * **Scene 4 适用场景：** 具象化场景，使用人物或生活场景图标，帮助观众对号入座。
+  * **Scene 5 策略场景：** 侧重"怎么做"，配合 `LaggedStart` 实现逐项弹出的节奏感。`lag_ratio` 建议使用 0.3。
+  * **Scene 6 行动号召：** 使用强烈的强调动画（如 `Circumscribe`），引导互动。**严禁使用 `Indicate`**，该动画会导致渲染失败。
+
+* **RoundedRectangle 使用建议：**
+  * **自动适配：** 优先使用 `.surround(target_group, buff=...)` 方法，让矩形自动适配内容大小，而不是固定 `width` 和 `height`。
+  * **buff 参数：** `buff` 值建议范围 0.3 - 1.0，过大的 buff（如 2.0）可能导致矩形过大。对于金句框等强调场景，可以使用 0.5 - 1.0。
+  * **固定尺寸：** 如果必须使用固定尺寸，注意屏幕宽度为 9.0 单位，高度为 16.0 单位，确保矩形不超出屏幕。
+
+* **字体大小规范：只使用以下3种字体大小，严禁使用系数**
+  * **标题：** 使用 `font_size=self.font_title_size`（严禁使用 `* 0.8`、`* 0.9` 等系数）
+  * **正文：** 使用 `font_size=self.font_body_size`（严禁使用 `* 0.8`、`* 0.85`、`* 0.9` 等系数）
+  * **小字：** 使用 `font_size=self.font_small_size`（严禁使用 `* 0.7` 等系数）
+  * **重要：** 所有字体大小必须直接使用上述三种标准大小之一，不得进行任何乘法运算（如 `* 0.8`、`* 0.9` 等）。如果需要不同大小的文字，应根据内容类型选择对应的标准字体大小。
+
+---
+
+## 五、 理财主题色彩规范
+
+为保持"日日生金"系列的视觉一致性，请遵循以下色彩规范：
+
+| 语义 | 推荐颜色 | 使用场景 |
+|------|----------|----------|
+| 财富/增值/收益 | `GOLD`, `GOLD_A`, `YELLOW` | 正面概念、核心结论 |
+| 安全/稳健/正确 | `GREEN`, `GREEN_E` | 正确做法、增长趋势 |
+| 风险/亏损/错误 | `RED`, `RED_E` | 警示、错误认知 |
+| 焦虑/迷茫/困境 | `GRAY`, `DARK_GRAY` | 痛点场景 |
+| 知识/理性/专业 | `BLUE`, `BLUE_E` | 知识解释、专业概念 |
+| 行动/互动/号召 | `ORANGE`, `ORANGE_E` | CTA、行动建议 |
+
+---
+
+## 六、 输出要求
+
+1. **完整实现：** 输出完整的 `animate.py` 代码，包含类定义、所有 `build_scene` 方法以及图标选择。
+2. **设计注释：** 在关键动画代码处添加注释，说明你如何根据**口播关键词、关键短语**与**动态标题逻辑**设计了视觉表现。对于使用几何形状替代图标的情况，必须说明原因。
+3. **时间管理注释：** 在 `step_time` 计算处，明确注释动作数量，确保注释与实际计算一致。
+
+---
+
+## 七、 代码模板
+
+严格按照以下`animate_template.py` 模板结构生成 `animate.py`：
+
+```python
+import sys
+import os
+import numpy as np
+from manim import *
+
+# 将项目根目录加入 path
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../..")))
+
+# 导入工具
+from src.utils.anim_helper import get_audio_duration
+from src.animate import Zsxq100keLessonVertical  # 继承自 LessonVertical
+
+
+class LessonXXXVerticalScenes(Zsxq100keLessonVertical):
+    """
+    第XXX课：课程标题
+    布局规范：顶部1/5和底部1/5留白，内容集中在中间 3/5 (y: 4.8 到 -4.8)
+    """
+
+    def build_scene_1(self, scene):
+        """
+        场景1: 痛点/破冰/现状 (钩子引入) - 视觉逻辑：引发共鸣 -> 反常识观点 -> 抓住注意力
+        
+        口播稿关键词/短语：
+        - "关键词1" -> 对应视觉元素
+        - "关键词2" -> 对应动画效果
+        
+        动态标题：根据口播内容生成（而非直接使用"痛点"）
+        """
+        audio_file = self.audio_clips[0] if len(self.audio_clips) > 0 else None
+        page_duration = get_audio_duration(audio_file) if audio_file else 10.0
+        t_trans = self.transition_time
+        
+        # 时间管理：N个动作（列出具体动作）
+        step_time = (page_duration - t_trans) / N
+
+        # 1. 顶部动态标题 (y=4.0) - 根据口播内容生成吸引眼球的标题
+        title = Text(
+            "动态标题内容", 
+            font=self.title_font, 
+            font_size=self.font_title_size, 
+            color=GRAY  # 痛点场景用冷色调
+        ).move_to(UP * 4.0)
+        
+        # 2. 中部核心内容 (使用 Group 包裹图片)
+        center_icon = self.load_png_icon("icon_name", height=2.5).shift(UP * 0.5)
+        center_text = Text("关键短语", font=self.body_font, font_size=self.font_body_size, color=GRAY).next_to(center_icon, DOWN)
+        center_group = Group(center_icon, center_text)
+
+        # 3. 底部扎心结论
+        bottom_element = Text("扎心真相", font=self.title_font, font_size=self.font_title_size, color=RED).move_to(DOWN * 3.5)
+
+        # 4. 动画序列
+        self.play(FadeIn(title, shift=DOWN), run_time=step_time)
+        self.play(FadeIn(center_group, shift=UP), run_time=step_time)
+        self.play(Write(bottom_element), Circumscribe(bottom_element, color=RED), run_time=step_time)
+        
+        # 5. 统一淡出
+        self.play(*[FadeOut(mob) for mob in self.mobjects], run_time=t_trans)
+
+    def build_scene_2(self, scene):
+        """
+        场景2: 知识/是什么 (What) - 视觉逻辑：核心概念 -> 白话解释 -> 比喻类比
+        """
+        audio_file = self.audio_clips[1] if len(self.audio_clips) > 1 else None
+        page_duration = get_audio_duration(audio_file) if audio_file else 10.0
+        t_trans = self.transition_time
+        
+        # 时间管理：N个动作
+        step_time = (page_duration - t_trans) / N
+
+        # 1. 顶部：核心概念标题
+        title = Text("核心概念", font=self.title_font, font_size=self.font_title_size, color=GOLD).move_to(UP * 4.0)
+        
+        # 2. 中部：概念解释（可分行展示）
+        explain_line1 = Text("「简单说就是...」", font=self.body_font, font_size=self.font_body_size, color=BLUE).next_to(title, DOWN, buff=0.6)
+        
+        # 3. 图标辅助理解
+        main_icon = self.load_png_icon("icon_name", height=2.5).move_to(DOWN * 0.5)
+        
+        # 4. 底部一句话总结
+        summary = Text("一句话总结", font=self.title_font, font_size=self.font_title_size, color=GOLD).move_to(DOWN * 3.5)
+
+        # 动画序列
+        self.play(Write(title), run_time=step_time)
+        self.play(Write(explain_line1), run_time=step_time)
+        self.play(FadeIn(main_icon), run_time=step_time)
+        self.play(Write(summary), Circumscribe(summary, color=GOLD), run_time=step_time)
+
+        self.play(*[FadeOut(mob) for mob in self.mobjects], run_time=t_trans)
+
+    def build_scene_3(self, scene):
+        """
+        场景3: 剖析/认知矫正/为什么重要 (Why) - 视觉逻辑：误区展示 -> 真相揭露 -> 数据/逻辑支撑
+        建议使用左右对比布局：左侧错误认知（红/灰），右侧正确认知（绿/金）
+        """
+        audio_file = self.audio_clips[2] if len(self.audio_clips) > 2 else None
+        page_duration = get_audio_duration(audio_file) if audio_file else 10.0
+        t_trans = self.transition_time
+        
+        # 时间管理：N个动作
+        step_time = (page_duration - t_trans) / N
+
+        # 实现对比布局...
+        
+        self.play(*[FadeOut(mob) for mob in self.mobjects], run_time=t_trans)
+
+    def build_scene_4(self, scene):
+        """
+        场景4: 适用场景 (Where/When) - 视觉逻辑：具象化场景 -> 对号入座 -> 引发认同
+        使用生活场景图标，帮助观众判断是否与自己相关
+        """
+        audio_file = self.audio_clips[3] if len(self.audio_clips) > 3 else None
+        page_duration = get_audio_duration(audio_file) if audio_file else 10.0
+        t_trans = self.transition_time
+        
+        # 时间管理：N个动作
+        step_time = (page_duration - t_trans) / N
+
+        # 实现场景描述...
+        
+        self.play(*[FadeOut(mob) for mob in self.mobjects], run_time=t_trans)
+
+    def build_scene_5(self, scene):
+        """
+        场景5: 策略/应对/怎么做 (How) - 视觉逻辑：行动步骤 -> 逐项弹出 -> 强调可执行
+        使用 LaggedStart 实现逐项弹出效果
+        """
+        audio_file = self.audio_clips[4] if len(self.audio_clips) > 4 else None
+        page_duration = get_audio_duration(audio_file) if audio_file else 10.0
+        t_trans = self.transition_time
+        
+        # 时间管理：N个动作
+        step_time = (page_duration - t_trans) / N
+
+        # 策略步骤（使用 LaggedStart）
+        # self.play(LaggedStart(*[FadeIn(item) for item in items], lag_ratio=0.3), run_time=step_time)
+        
+        self.play(*[FadeOut(mob) for mob in self.mobjects], run_time=t_trans)
+
+    def build_scene_6(self, scene):
+        """
+        场景6: 行动号召 (Action) - 视觉逻辑：低门槛互动 -> 强调动画 -> 引导关注
+        """
+        audio_file = self.audio_clips[5] if len(self.audio_clips) > 5 else None
+        page_duration = get_audio_duration(audio_file) if audio_file else 10.0
+        t_trans = self.transition_time
+        
+        # 时间管理：N个动作
+        step_time = (page_duration - t_trans) / N
+
+        # 1. 核心CTA
+        cta_text = Text("点赞 + 关注", font=self.title_font, font_size=self.font_title_size, color=ORANGE).move_to(UP * 1.0)
+        
+        # 2. 互动图标
+        like_icon = self.load_png_icon("like", height=2.0).move_to(LEFT * 2 + DOWN * 1.5)
+        follow_icon = self.load_png_icon("add_user", height=2.0).move_to(RIGHT * 2 + DOWN * 1.5)
+        icons_group = Group(like_icon, follow_icon)
+        
+        # 3. 底部口号
+        slogan = Text("每天一课，日日生金！", font=self.title_font, font_size=self.font_title_size, color=GOLD).move_to(DOWN * 4.0)
+
+        # 动画序列
+        self.play(Write(cta_text), run_time=step_time)
+        self.play(FadeIn(icons_group, shift=UP), run_time=step_time)
+        self.play(Write(slogan), Circumscribe(slogan, color=GOLD), run_time=step_time)
+
+        # 不需要淡出，作为结尾画面
+        self.wait(step_time)
+
+    def get_cover_decoration_icons(self):
+        """
+        根据 build_scene_1 到 build_scene_6 的动画内容中用到的 png 图片
+        即script.json中的icons字段值，封面装饰图标不超过5个。
+        """
+        return ["gold_bars", "coins", "growing_money", "bank_building", "safe"]
+```
+
+**重要提醒：**
+- 类名 `LessonXXXVerticalScenes` 中的 `XXX` 需替换为实际课程编号（如 `Lesson001VerticalScenes`）
+- 中文引号使用「」而非""，避免 Python 语法错误
+- 6个场景结构：痛点 → 知识 → 剖析 → 适用场景 → 策略 → 行动号召
+
+---
+
+# Input Data
+
+script.json：series/book_zsxq_100ke/lesson001/script.json
+
+**请根据上述规范，开始编写 `series/book_zsxq_100ke/lesson001/animate.py`。**

@@ -25,8 +25,22 @@ GREEN_E = "#006400"  # Dark Green
 PURPLE_E = "#301934" # Dark Purple
 
 
-class SunziLessonVertical(Scene, ABC):
-    """孙子兵法课程动画基类（抽象类）"""
+class LessonVertical(Scene, ABC):
+    """
+    通用竖屏课程动画基类（抽象类）
+    
+    子类通过覆盖类属性来定制不同系列的配置：
+    - series_name: 系列名称，用于封面图目录 (如 "sunzibingfa", "zsxq_100ke")
+    - font_style: 字体风格 "classical" (楷体) 或 "modern" (黑体)
+    - default_decoration_icons: 默认封面装饰图标
+    - bgm_file_name: BGM 文件名
+    """
+    
+    # ========== 子类可覆盖的配置 ==========
+    series_name = "default"  # 封面图目录名，子类必须覆盖
+    font_style = "modern"    # "classical" 或 "modern"
+    default_decoration_icons = ["🔍", "💡", "📚"]  # 默认装饰图标
+    voice_name = "zh-CN-YunxiNeural"  # Edge TTS 语音，子类可覆盖
     
     def construct(self):
         # 获取子类的文件路径（通过模块获取）
@@ -48,6 +62,9 @@ class SunziLessonVertical(Scene, ABC):
         with open(self.script_json_path, 'r', encoding='utf-8') as f:
             self.script_data = json.load(f)
 
+        if 'icons' in self.script_data:
+            self.default_decoration_icons = self.script_data["icons"]
+
         self.setup_paths(self.script_json_path)
         self.prepare_resources()
         self.build_scenes()
@@ -64,15 +81,18 @@ class SunziLessonVertical(Scene, ABC):
         self.combined_wav_path = os.path.join(self.voice_dir, "full_audio.wav")
         self.cover_path = os.path.join(self.images_dir, "cover_design.png")
         
-        # 源图片目录 (用于封面随机图等)
-        # 图片资源统一存放在 series/cover/sunzibingfa
+        # 源图片目录 (用于封面随机图等) - 使用 series_name 配置
         project_root = os.path.abspath(os.path.join(self.lesson_dir, "../../.."))
-        self.source_images_dir = os.path.join(project_root, "series", "cover", "sunzibingfa")
+        self.source_images_dir = os.path.join(project_root, "series", "cover", self.series_name)
 
-        # 尝试使用手写字体
-        handwritten_fonts = ["Kaiti SC", "STKaiti", "KaiTi", "SimKai", "FandolKai"] # 常用楷体
-        self.title_font = handwritten_fonts[0]
-        self.body_font = handwritten_fonts[0]
+        # 根据 font_style 配置选择字体
+        if self.font_style == "classical":
+            fonts = ["Kaiti SC", "STKaiti", "KaiTi", "SimKai", "FandolKai"]  # 楷体
+        else:  # modern
+            fonts = ["PingFang SC", "Heiti SC", "STHeiti", "Helvetica Neue", "Microsoft YaHei"]  # 黑体
+        
+        self.title_font = fonts[0]
+        self.body_font = fonts[0]
 
         self.font_title_size = 48
         self.font_body_size = 36
@@ -88,15 +108,14 @@ class SunziLessonVertical(Scene, ABC):
         Returns:
             list: 图标列表，可以是 emoji 字符串或图标文件路径
         """
-        # 默认装饰图标
-        return ["🔍", "💡", "📚"]
+        return self.default_decoration_icons
     
     def find_icon_file_path(self, icon_name):
         """
         查找图标文件的路径（用于封面生成）
         
         Args:
-            icon_name: 图标名称（不含扩展名）
+            icon_name: 图标名称（支持带 .png 扩展名或不带扩展名）
             
         Returns:
             str: 图标文件路径，如果找不到则返回 None
@@ -104,6 +123,10 @@ class SunziLessonVertical(Scene, ABC):
         from pathlib import Path
         import json
         from difflib import SequenceMatcher
+        
+        # 兼容性处理：如果 icon_name 以 .png 结尾，去掉扩展名
+        if icon_name.lower().endswith('.png'):
+            icon_name = icon_name[:-4]
         
         icons8_dir = Path(self.project_root) / "assets" / "icons8"
         
@@ -169,9 +192,9 @@ class SunziLessonVertical(Scene, ABC):
 
         # 1. 语音
         if force_voice or not os.path.exists(self.voice_dir) or not os.listdir(self.voice_dir):
-            print("🎤 Generating voice clips...")
-            # 使用保存的 script_json_path
-            gen_voice_clips_from_json(self.script_json_path, self.voice_dir)
+            print(f"🎤 Generating voice clips (voice: {self.voice_name})...")
+            # 使用保存的 script_json_path 和子类指定的音色
+            gen_voice_clips_from_json(self.script_json_path, self.voice_dir, voice=self.voice_name)
 
         # 2. 封面
         if force_cover or not os.path.exists(self.cover_path):
@@ -218,6 +241,7 @@ class SunziLessonVertical(Scene, ABC):
                 
                 generate_cover(
                     output_path=self.cover_path,
+                    template_dir=self.source_images_dir,
                     title_main=meta.get("lesson_title", "未命名课程"),
                     title_sub=meta.get("lesson_sub_title", ""),
                     main_image_path=os.path.abspath(main_image),
@@ -235,7 +259,11 @@ class SunziLessonVertical(Scene, ABC):
                 filename = f"{idx}.mp3"
                 self.audio_clips.append(os.path.join(self.voice_dir, filename))
             
-        bgm_file = os.path.join(self.project_root, "assets/bgm/smart_thinking.wav") # 可以从 json global_settings 读取
+        # BGM 文件路径：series/bgm/{series_name}/bgm.wav
+        bgm_file = os.path.join(self.project_root, "series", "bgm", self.series_name, "bgm.wav")
+        if not os.path.exists(bgm_file):
+            print(f"⚠️ BGM not found at {bgm_file}, skipping BGM")
+            bgm_file = None
         
         full_audio = combine_audio_clips(
             self.audio_clips, 
@@ -280,6 +308,29 @@ class SunziLessonVertical(Scene, ABC):
                 # 如果没有对应的构建方法，抛出异常提示需要实现
                 raise NotImplementedError(f"build_scene_{scene_index} method not implemented for scene {scene_index}")
     
+    def load_png_icon(self, icon_name, height=2):
+        """
+        加载 PNG 图标（便捷方法）
+        
+        Args:
+            icon_name: 图标名称（不含扩展名）
+            height: 图标高度（Manim 单位，默认 2）
+            
+        Returns:
+            ImageMobject 或回退的图标对象
+        """
+        return load_png_icon(icon_name, project_root=self.project_root, height=height)
+
+
+# ========== 系列专用子类（仅配置差异） ==========
+
+class SunziLessonVertical(LessonVertical):
+    """孙子兵法课程动画基类"""
+    series_name = "sunzibingfa"
+    font_style = "classical"  # 楷体（古典风格）
+    default_decoration_icons = ["🔍", "💡", "📚"]
+    voice_name = "zh-CN-YunxiNeural"  # 云希 - 年轻男性，清晰自然
+    
     def build_scene_6(self, scene):
         """场景6: 懿爸锦囊（默认实现：处理互动内容）"""
         interactive_content = scene.get("interactive_content")
@@ -301,20 +352,13 @@ class SunziLessonVertical(Scene, ABC):
         question_text = interactive_content.get("question", "")
         # 手动处理文本换行，保持字体大小不变
         import textwrap
-        # 估算每行可容纳的字符数
-        # 在 Manim 中，frame_width=9.0，字体大小以像素为单位
-        # 经验值：每个中文字符在逻辑单位中的宽度约为 font_size / 30
-        # 或者更简单：根据 frame_width 和字体大小估算
-        # 假设 frame_width=9.0 时，大约可容纳 12-15 个中文字符（取决于字体大小）
-        # 使用更保守的估算：frame_width * 1.5 个字符（经验值）
         max_chars_per_line = max(10, int(config.frame_width * 1.8))  # 至少 10 个字符，避免为 0
-        # 使用 textwrap 自动换行
         wrapped_lines = textwrap.wrap(question_text, width=max_chars_per_line)
         question = Text(
-            "\n".join(wrapped_lines),  # 手动换行，保持字体大小
+            "\n".join(wrapped_lines),
             font=self.body_font, 
             font_size=self.font_body_size,
-            line_spacing=1.2  # 行间距
+            line_spacing=1.2
         ).next_to(q_header, DOWN, buff=0.8)
         
         options = interactive_content.get("options", [])
@@ -339,17 +383,11 @@ class SunziLessonVertical(Scene, ABC):
         self.play(GrowFromCenter(opt_group[2]), run_time=step_time)
         self.play(Write(cta), run_time=step_time)
         self.wait(step_time*2)
-    
-    def load_png_icon(self, icon_name, height=2):
-        """
-        加载 PNG 图标（便捷方法）
-        
-        Args:
-            icon_name: 图标名称（不含扩展名）
-            height: 图标高度（Manim 单位，默认 2）
-            
-        Returns:
-            ImageMobject 或回退的图标对象
-        """
-        return load_png_icon(icon_name, project_root=self.project_root, height=height)
-     
+
+
+class Zsxq100keLessonVertical(LessonVertical):
+    """日日生金（知识星球精品100课）动画基类"""
+    series_name = "zsxq_100ke"
+    font_style = "modern"  # 黑体（现代风格）
+    default_decoration_icons = ["💰", "📈", "🏦"]
+    voice_name = "zh-CN-YunjianNeural"  # 云健 - 成熟男性，沉稳专业

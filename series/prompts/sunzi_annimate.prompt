@@ -102,7 +102,7 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../.
 
 # 导入工具
 from src.utils.anim_helper import get_audio_duration
-from src.animate import SunziLessonVertical
+from src.animate import SunziLessonVertical  # 继承自 LessonVertical
 
 
 class LessonXXVerticalScenes(SunziLessonVertical):
@@ -220,8 +220,8 @@ class LessonXXVerticalScenes(SunziLessonVertical):
 
 # Input Data
 
-script.json：series/book_sunzibingfa/lesson04/script.json
+script.json：series/book_sunzibingfa/lesson06/script.json
 
 all_png_names.txt：assets/icons8/all_png_names.txt
 
-**请根据上述规范，开始编写 `series/book_sunzibingfa/lesson04/animate.py`。**
+**请根据上述规范，开始编写 `series/book_sunzibingfa/lesson06/animate.py`。**

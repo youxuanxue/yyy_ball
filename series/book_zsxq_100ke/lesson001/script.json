@@ -1,0 +1,60 @@
+{
+    "meta": {
+        "project_name": "日日生金",
+        "lesson_number": "第001课",
+        "lesson_title": "财富、黄金和避险",
+        "lesson_sub_title": "印钞机时代，没有真正的避风港"
+    },
+    "wechat": {
+        "hashtags": ["#理财小白必看", "#黄金避险", "#通货膨胀", "#财富管理", "#投资认知", "#金融常识"],
+        "title": "黄金能避险？💰真相扎心了",
+        "description": "很多人以为买黄金就能躺平，其实印钞机一开，什么都白搭💸 看完这期，你会明白为什么必须动起来！",
+        "heji": "",
+        "huodong": ""
+    },
+    "youtube": {
+        "title": "【日日生金】黄金避险是骗局？印钞机时代的残酷真相｜第001课",
+        "description": "📌 本期要点：\n00:00 为什么大家都觉得黄金能避险？\n00:30 马克思那句话到底什么意思\n01:00 1974年发生了什么？\n01:30 铸币税的惊人秘密\n02:00 普通人该怎么办？\n\n💡 适合人群：\n- 想买黄金抗通胀的朋友\n- 对理财感到迷茫的工薪族\n- 想搞懂货币本质的小白\n\n🔔 订阅频道，每天一课，日日生金！",
+        "playlists": "日日生金",
+        "tags": ["黄金", "避险", "通货膨胀", "理财", "投资", "货币", "印钞", "财富管理"]
+    },
+    "icons": ["gold_bars.png", "money_circulation.png", "printer.png", "coins.png", "bank_building.png", "us_dollar.png", "growing_money.png", "safe.png"],
+    "scenes": [
+        {
+            "scene_index": 1,
+            "scene_type": "痛点/破冰/现状 (钩子引入)",
+            "voiceover_script": "很多人一说到财富保值，第一反应就是买黄金。黄金嘛，闪闪发光，感觉拿在手里就踏实。但我要告诉你一个扎心的真相：印钞机发明以后，世界上就不存在真正能避险的东西了，黄金也不行。",
+            "voiceover_words": 84
+        },
+        {
+            "scene_index": 2,
+            "scene_type": "知识/是什么 (What)",
+            "voiceover_script": "马克思有句名言：货币天然不是黄金，但黄金天然是货币。啥意思呢？简单说就是，黄金这东西开采难、总量少，不是你想弄多少就弄多少，所以天生就值钱。过去的纸币，其实都是黄金的提货券。",
+            "voiceover_words": 85
+        },
+        {
+            "scene_index": 3,
+            "scene_type": "剖析/认知矫正/为什么重要 (Why)",
+            "voiceover_script": "问题的关键在于1974年。那一年美元放弃挂钩黄金，从此100块钱的纸币，印刷成本1块钱，剩下99块就是凭空印出来的铸币税。黄金避险的真正含义是：关键时刻你拿去换钱，有人肯要。但它不保值，更不增值。",
+            "voiceover_words": 93
+        },
+        {
+            "scene_index": 4,
+            "scene_type": "适用场景（Where/When）",
+            "voiceover_script": "咱们工薪族，辛辛苦苦攒了点钱，想找个安全的地方放着等升值，那你得当心了。存银行会被通胀稀释，囤黄金不涨反跌，这种情况每天都在发生。",
+            "voiceover_words": 72
+        },
+        {
+            "scene_index": 5,
+            "scene_type": "策略/应对/怎么做 (How)",
+            "voiceover_script": "记住这个核心逻辑：印钞机在转，你就不能停。第一，必须学点理财知识；第二，让钱动起来，别傻放着；第三，不断创造价值、创造收入。躺平等升值的时代，早就结束了。",
+            "voiceover_words": 75
+        },
+        {
+            "scene_index": 6,
+            "scene_type": "行动号召（Action）",
+            "voiceover_script": "如果今天这期让你有点收获，点个赞，让更多人看到。关注我，每天一课，咱们一起在印钞机时代跑赢大盘！",
+            "voiceover_words": 43
+        }
+    ]
+}

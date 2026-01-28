@@ -14,13 +14,13 @@
 
 Scene 1 痛点 (引入)：描述一个孩子在生活中经常遇到的尴尬或困苦场景（如：死记硬背、被拒绝）。
 
-Scene 2 知识 (是什么)：引出 origin.md 中的核心兵法原话（需包含中文原文），并简单解释字面意思。
+Scene 2 知识 (What是什么)：引出 origin.md 中的核心兵法原话（需包含中文原文），并简单解释字面意思。
 
-Scene 3 剖析 (为什么)：用孩子能懂的比喻（如：像小蚂蚁爬墙、像漏水的漏斗）解释为什么。
+Scene 3 剖析 (Why为什么)：用孩子能懂的比喻（如：像小蚂蚁爬墙、像漏水的漏斗）解释为什么。
 
-Scene 4 策略 (怎么做)：提供具体的“魔法咒语”（如：先停下3秒、找个帮手、换个跑道）。
+Scene 4 策略 (How怎么做)：提供具体的“魔法咒语”（如：先停下3秒、找个帮手、换个跑道）。
 
-Scene 5 升华 (应用)：总结金句，将道理扩展到金钱观、学习力或领导力。
+Scene 5 升华 (Where应用)：总结金句，将道理扩展到金钱观、学习力或领导力。
 
 Scene 6 懿爸锦囊：由“懿爸”发起互动提问，A选项通常为反面典型（对应兵法中的下策），B和C为智慧选项。
 
@@ -198,6 +198,6 @@ hashtags（10-15个，带#前缀，无空格）：
 
 # Input Data
 
-origin.md: series/book_sunzibingfa/lesson04/origin.md
+origin.md: series/book_sunzibingfa/lesson06/origin.md
 
-请基于以上要求，为我生成对应的 series/book_sunzibingfa/lesson04/script.json。
+请基于以上要求，为我生成对应的 series/book_sunzibingfa/lesson06/script.json。

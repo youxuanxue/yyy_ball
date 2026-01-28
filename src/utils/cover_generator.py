@@ -5,6 +5,7 @@ from playwright.sync_api import sync_playwright
 
 def generate_cover(
     output_path: str,
+    template_dir:str,
     title_main: str,
     title_sub: str,
     main_image_path: str,
@@ -39,7 +40,6 @@ def generate_cover(
     # 模板文件已移动到 series/template/sunzi/ 目录
     base_dir = os.path.dirname(os.path.abspath(__file__))
     project_root = os.path.abspath(os.path.join(base_dir, "../.."))
-    template_dir = os.path.join(project_root, "series", "template", "sunzi")
     
     # Ensure output directory exists
     os.makedirs(os.path.dirname(os.path.abspath(output_path)), exist_ok=True)
