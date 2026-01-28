@@ -89,3 +89,5 @@ video_archive/
 **/media/
 **/voice/
 **/images/
+
+config/

@@ -1,5 +1,4 @@
 """动画基类模块"""
-from .sunzi_lesson_vertical import SunziLessonVertical
+from .lesson_vertical import LessonVertical, SunziLessonVertical, Zsxq100keLessonVertical
 
-__all__ = ['SunziLessonVertical']
-
+__all__ = ['LessonVertical', 'SunziLessonVertical', 'Zsxq100keLessonVertical']
