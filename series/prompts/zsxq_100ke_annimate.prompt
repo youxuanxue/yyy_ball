@@ -70,9 +70,18 @@
   * **Scene 6 行动号召：** 使用强烈的强调动画（如 `Circumscribe`），引导互动。**严禁使用 `Indicate`**，该动画会导致渲染失败。
 
 * **RoundedRectangle 使用建议：**
-  * **自动适配：** 优先使用 `.surround(target_group, buff=...)` 方法，让矩形自动适配内容大小，而不是固定 `width` 和 `height`。
-  * **buff 参数：** `buff` 值建议范围 0.3 - 1.0，过大的 buff（如 2.0）可能导致矩形过大。对于金句框等强调场景，可以使用 0.5 - 1.0。
-  * **固定尺寸：** 如果必须使用固定尺寸，注意屏幕宽度为 9.0 单位，高度为 16.0 单位，确保矩形不超出屏幕。
+  * **自动适配宽度 + 固定高度：** 使用 `.surround(target_group, buff=...)` 时，**必须先指定 `height` 参数**。因为 `surround()` 自动计算的高度往往过大，效果很差。正确用法：
+    ```python
+    # 先指定 height，surround 只调整宽度
+    box = RoundedRectangle(height=1.0, corner_radius=0.3, color=GOLD, fill_opacity=0.15)
+    box.surround(text_content, buff=0.3)
+    ```
+  * **height 参数建议：** 根据内容类型选择合适的 `height`：
+    * 单行文本框：`height=1.0` 到 `height=1.2`
+    * 金句/强调框：`height=1.2` 到 `height=1.5`
+    * 多行内容框：`height=1.5` 到 `height=2.5`
+  * **buff 参数：** `buff` 值建议范围 0.3 - 0.8，过大的 buff（如 2.0）可能导致矩形过大。
+  * **固定尺寸：** 如果必须完全固定尺寸，注意屏幕宽度为 9.0 单位，高度为 16.0 单位，确保矩形不超出屏幕。
 
 * **字体大小规范：只使用以下3种字体大小，严禁使用系数**
   * **标题：** 使用 `font_size=self.font_title_size`（严禁使用 `* 0.8`、`* 0.9` 等系数）

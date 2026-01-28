@@ -121,6 +121,6 @@ icons 里建议的配图（描述具体的画面元素，如：天平、印钞�
 ```
 
 # Input Data
-assets/zsxq/jingpin_100ke_posts.json 中的`"lesson": "第001课"`的内容。
+assets/zsxq/jingpin_100ke_posts.json 中的`"lesson": "第002课"`的内容。
 
 请生成series/zsxq_100ke/lesson002/script.json。
