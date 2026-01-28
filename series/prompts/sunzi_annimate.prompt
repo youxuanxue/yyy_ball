@@ -1,14 +1,14 @@
 **Role:**
-你是一位精通 Manim（Python 动画库）的高级视觉工程师，同时也是一位少儿教育产品专家。你的任务是根据提供的 `script.json`（脚本）和 `animate_template.py`（模板），编写最终执行的 `animate.py` 代码。
+你是一位精通 Manim（Python 动画库）的高级视觉工程师，同时也是一位少儿教育产品专家。你的任务是根据提供的 `script.json`（脚本），编写最终执行的 `animate.py` 代码。
 
 **Workflow:**
-你需要参考 `animate_template.py` 的代码结构、类继承关系（如继承自 `SunziLessonVertical`）以及基础变量设置，通过改写和具体化其中的 `build_scene_X` 方法，实现一个完整的动画逻辑。**在编写代码前，你必须核对 `all_png_names.txt`，确保选用的图标完全合法。**
+你需要参考 `animate_template.py` 的代码结构、类继承关系（如继承自 `SunziLessonVertical`）以及基础变量设置，通过改写和具体化其中的 `build_scene_X` 方法，实现一个完整的动画逻辑。
 
 ---
 
 ## 一、 视觉-口播深度对齐 (Visual-Audio Alignment)
 
-为了确保“听觉”与“视觉”的一致性，你必须深度解析 `voiceover_script`：
+为了确保"听觉"与"视觉"的一致性，你必须深度解析 `voiceover_script`：
 
 * **动态标题生成 (Dynamic Title)：** **严禁直接使用 `scene_type` 作为标题。** 你必须结合 `scene_type` 的功能属性与 `voiceover_script` 的核心内容，构造具有吸引力、符合少儿语境的动态标题。例如：将"痛点"场景标题优化为"别让努力白费"；标题需在视觉上同步或领先于口播节奏出现。
 * **关键词/短语提取与映射：** 从口播稿中识别"核心动词"、"具象名词"、"逻辑连接词"以及**"关键短语"**。
@@ -23,11 +23,14 @@
 
 ## 二、 图标与素材库规范 (Asset Constraint)
 
-* **PNG 唯一合法性：** 所有通过 `self.load_png_icon(name)` 加载的图标，其文件名（不含扩展名）**必须存在于 `all_png_names.txt` 中**。严禁编造文件名。
 * **语义检索优化：** 寻找与口播关键词最贴切的图标。如：
-  * "思考/智慧" -> `brainstorm_skill` / `critical_thinking`
-  * "努力/拼命" -> `work_in_bed` / `worker`
-  * "快速/效率" -> `fast_forward` / `clock`
+  * "思考/智慧/谋略" -> `brainstorm_skill` / `critical_thinking` / `strategy`
+  * "努力/拼命/奋斗" -> `work_in_bed` / `worker` / `running`
+  * "快速/效率/时机" -> `fast_forward` / `clock` / `sprint`
+  * "战斗/竞争/对抗" -> `sword` / `shield` / `target` / `boxing`
+  * "胜利/成功/奖励" -> `trophy` / `medal` / `crown` / `star`
+  * "失败/困境/危险" -> `sad` / `crying` / `frustrated` / `warning`
+  * "团队/合作/军队" -> `team` / `group` / `collaboration`
 * **图标尺寸建议：** 图标高度（`height` 参数）建议范围：
   * 主图标：1.5 - 2.5
   * 辅助图标：1.0 - 1.5
@@ -60,11 +63,12 @@
 
 * **清理逻辑：** 每个场景必须以全员淡出结束：`self.play(*[FadeOut(mob) for mob in self.mobjects], run_time=t_trans)`。
 
-* **场景特定视觉逻辑：**
-  * **痛点场景：** 强化困境感，色调偏冷或偏灰。
-  * **知识场景：** 兵法原文需具备仪式感，使用引号和醒目的 `GOLD` 色。原文可以分行展示，每行使用独立的 `Text` 对象，便于逐行动画。
-  * **策略场景：** 侧重"怎么做"，配合 `LaggedStart` 实现逐项弹出的节奏感。`lag_ratio` 建议使用 0.3。
-  * **升华场景：** 建立愿景，使用强烈的强调动画（如 `Circumscribe`）。**严禁使用 `Indicate`**，该动画会导致渲染失败。
+* **场景特定视觉逻辑（5场景结构）：**
+  * **Scene 1 痛点场景：** 强化困境感，色调偏冷或偏灰。使用能引发少儿共鸣的生活场景图标。
+  * **Scene 2 知识场景：** 兵法原文需具备仪式感，使用引号和醒目的 `GOLD` 色。原文可以分行展示，每行使用独立的 `Text` 对象，便于逐行动画。
+  * **Scene 3 剖析场景：** 侧重"为什么"，使用对比布局（错误认知 vs 正确认知），配合具象化的类比。
+  * **Scene 4 策略场景：** 侧重"怎么做"，配合 `LaggedStart` 实现逐项弹出的节奏感。`lag_ratio` 建议使用 0.3。
+  * **Scene 5 升华场景：** 建立愿景，使用强烈的强调动画（如 `Circumscribe`）。**严禁使用 `Indicate`**，该动画会导致渲染失败。
 
 * **RoundedRectangle 使用建议：**
   * **自动适配宽度 + 固定高度：** 使用 `.surround(target_group, buff=...)` 时，**必须先指定 `height` 参数**。因为 `surround()` 自动计算的高度往往过大，效果很差。正确用法：
@@ -88,17 +92,32 @@
 
 ---
 
-## 五、 输出要求
+## 五、 孙子兵法主题色彩规范
+
+为保持"孙子兵法"系列的视觉一致性，请遵循以下色彩规范：
+
+| 语义 | 推荐颜色 | 使用场景 |
+|------|----------|----------|
+| 兵法原文/智慧/胜算 | `GOLD`, `GOLD_A`, `YELLOW` | 兵法金句、核心结论 |
+| 正确/胜利/成功 | `GREEN`, `GREEN_E` | 正确做法、胜利结果 |
+| 危险/失败/错误 | `RED`, `RED_E` | 警示、错误认知、失败后果 |
+| 困境/焦虑/迷茫 | `GRAY`, `DARK_GRAY` | 痛点场景、困境描述 |
+| 策略/行动/方法 | `BLUE`, `BLUE_E` | 策略建议、行动指南 |
+| 强调/重点/号召 | `ORANGE`, `ORANGE_E` | 重点强调、行动号召 |
+
+---
+
+## 六、 输出要求
 
 1. **完整实现：** 输出完整的 `animate.py` 代码，包含类定义、所有 `build_scene` 方法以及图标选择。
-2. **设计注释：** 在关键动画代码处添加注释，说明你如何根据**口播关键词、关键短语**与**动态标题逻辑**设计了视觉表现，并注明图标与 `all_png_names.txt` 的对应关系。对于使用几何形状替代图标的情况，必须说明原因。
+2. **设计注释：** 在关键动画代码处添加注释，说明你如何根据**口播关键词、关键短语**与**动态标题逻辑**设计了视觉表现。对于使用几何形状替代图标的情况，必须说明原因。
 3. **时间管理注释：** 在 `step_time` 计算处，明确注释动作数量，确保注释与实际计算一致。
 
 ---
 
-## 六、 代码模板
+## 七、 代码模板
 
-严格按照以下模板结构生成 `animate.py`：
+严格按照以下 `animate_template.py` 模板结构生成 `animate.py`：
 
 ```python
 import sys
@@ -116,13 +135,13 @@ from src.animate import SunziLessonVertical  # 继承自 LessonVertical
 
 class LessonXXVerticalScenes(SunziLessonVertical):
     """
-    第X课：课程标题
+    第XX课：课程标题
     布局规范：顶部1/5和底部1/5留白，内容集中在中间 3/5 (y: 4.8 到 -4.8)
     """
 
     def build_scene_1(self, scene):
         """
-        场景1: 痛点 (引入) - 视觉逻辑：提出问题 -> 现状展示 -> 严重后果
+        场景1: 痛点/破冰 (Hook) - 视觉逻辑：引发共鸣 -> 提出问题 -> 抓住注意力
         
         口播稿关键词/短语：
         - "关键词1" -> 对应视觉元素
@@ -137,22 +156,21 @@ class LessonXXVerticalScenes(SunziLessonVertical):
         # 时间管理：N个动作（列出具体动作）
         step_time = (page_duration - t_trans) / N
 
-        # 1. 顶部动态标题 (y=4.0)
+        # 1. 顶部动态标题 (y=4.0) - 根据口播内容生成吸引眼球的标题
         title = Text(
             "动态标题内容", 
             font=self.title_font, 
             font_size=self.font_title_size, 
-            color=YELLOW
+            color=GRAY  # 痛点场景用冷色调
         ).move_to(UP * 4.0)
         
         # 2. 中部核心内容 (使用 Group 包裹图片)
-        # 图标名称必须在 all_png_names.txt 中存在
         center_icon = self.load_png_icon("icon_name", height=2.5).shift(UP * 0.5)
-        center_text = Text("短语", font=self.body_font, font_size=self.font_body_size, color=GRAY).next_to(center_icon, DOWN)
+        center_text = Text("关键短语", font=self.body_font, font_size=self.font_body_size, color=GRAY).next_to(center_icon, DOWN)
         center_group = Group(center_icon, center_text)
 
-        # 3. 底部补充内容
-        bottom_element = Text("结论", font=self.title_font, font_size=self.font_title_size, color=RED).move_to(DOWN * 3.5)
+        # 3. 底部扎心结论
+        bottom_element = Text("扎心真相", font=self.title_font, font_size=self.font_title_size, color=RED).move_to(DOWN * 3.5)
 
         # 4. 动画序列
         self.play(FadeIn(title, shift=DOWN), run_time=step_time)
@@ -163,7 +181,9 @@ class LessonXXVerticalScenes(SunziLessonVertical):
         self.play(*[FadeOut(mob) for mob in self.mobjects], run_time=t_trans)
 
     def build_scene_2(self, scene):
-        """场景2: 知识 (是什么) - 视觉逻辑：引言 -> 兵法原文(分行) -> 具象化解释"""
+        """
+        场景2: 知识/是什么 (What) - 视觉逻辑：《孙子兵法》说 -> 兵法原文(分行) -> 白话解释
+        """
         audio_file = self.audio_clips[1] if len(self.audio_clips) > 1 else None
         page_duration = get_audio_duration(audio_file) if audio_file else 10.0
         t_trans = self.transition_time
@@ -178,11 +198,11 @@ class LessonXXVerticalScenes(SunziLessonVertical):
         quote_line1 = Text("「原文第一部分」", font=self.title_font, font_size=self.font_body_size, color=GOLD).next_to(who_says, DOWN, buff=0.4)
         quote_line2 = Text("「原文第二部分」", font=self.title_font, font_size=self.font_body_size, color=GOLD).next_to(quote_line1, DOWN, buff=0.2)
         
-        # 3. 中部图标
+        # 3. 中部图标辅助理解
         main_icon = self.load_png_icon("icon_name", height=2.5).move_to(DOWN * 0.5)
         
-        # 4. 底部解释
-        explain_text = Text("一句话解释", font=self.title_font, font_size=self.font_title_size, color=ORANGE).move_to(DOWN * 3.5)
+        # 4. 底部白话解释
+        explain_text = Text("一句话白话解释", font=self.title_font, font_size=self.font_title_size, color=ORANGE).move_to(DOWN * 3.5)
 
         # 动画序列
         self.play(Write(who_says), run_time=step_time)
@@ -194,44 +214,67 @@ class LessonXXVerticalScenes(SunziLessonVertical):
         self.play(*[FadeOut(mob) for mob in self.mobjects], run_time=t_trans)
 
     def build_scene_3(self, scene):
-        """场景3: 剖析 (为什么) - 视觉逻辑：对比/因果 -> 痛点深挖"""
-        # 参考 build_scene_1 和 build_scene_2 的结构
-        # 建议使用左右对比布局或上下递进布局
-        pass
+        """
+        场景3: 剖析/为什么重要 (Why) - 视觉逻辑：错误认知 -> 正确认知 -> 类比解释
+        建议使用左右对比布局：左侧错误认知（红/灰），右侧正确认知（绿/金）
+        """
+        audio_file = self.audio_clips[2] if len(self.audio_clips) > 2 else None
+        page_duration = get_audio_duration(audio_file) if audio_file else 10.0
+        t_trans = self.transition_time
+        
+        # 时间管理：N个动作
+        step_time = (page_duration - t_trans) / N
+
+        # 实现对比布局...
+        
+        self.play(*[FadeOut(mob) for mob in self.mobjects], run_time=t_trans)
 
     def build_scene_4(self, scene):
-        """场景4: 策略 (怎么做) - 视觉逻辑：行动指令 -> 逐项弹出"""
-        # 使用 LaggedStart 实现逐项弹出效果
+        """
+        场景4: 策略/怎么做 (How) - 视觉逻辑：行动步骤 -> 逐项弹出 -> 强调可执行
+        使用 LaggedStart 实现逐项弹出效果
+        """
+        audio_file = self.audio_clips[3] if len(self.audio_clips) > 3 else None
+        page_duration = get_audio_duration(audio_file) if audio_file else 10.0
+        t_trans = self.transition_time
+        
+        # 时间管理：N个动作
+        step_time = (page_duration - t_trans) / N
+
+        # 策略步骤（使用 LaggedStart）
         # self.play(LaggedStart(*[FadeIn(item) for item in items], lag_ratio=0.3), run_time=step_time)
-        pass
+        
+        self.play(*[FadeOut(mob) for mob in self.mobjects], run_time=t_trans)
 
     def build_scene_5(self, scene):
-        """场景5: 升华 (应用) - 视觉逻辑：错误 vs 正确 -> 愿景金句"""
-        # 底部使用 RoundedRectangle 制作金句框（必须先指定 height）
+        """
+        场景5: 升华/应用 (Apply) - 视觉逻辑：愿景展示 -> 金句总结 -> 强调动画
+        底部使用 RoundedRectangle 制作金句框
+        """
+        audio_file = self.audio_clips[4] if len(self.audio_clips) > 4 else None
+        page_duration = get_audio_duration(audio_file) if audio_file else 10.0
+        t_trans = self.transition_time
+        
+        # 时间管理：N个动作
+        step_time = (page_duration - t_trans) / N
+
+        # 金句框（必须先指定 height）
         # quote_bg = RoundedRectangle(height=1.2, corner_radius=0.4, color=GOLD, fill_opacity=0.15)
         # quote_bg.surround(quote_text, buff=0.5)
-        pass
+        
+        self.play(*[FadeOut(mob) for mob in self.mobjects], run_time=t_trans)
 
-    def get_cover_decoration_icons(self):
-        """
-        根据 build_scene_1 到 build_scene_5 的动画内容中用到的 png 图片，
-        选择封面装饰图标，不超过5个。
-        所有图标名称必须在 all_png_names.txt 中存在。
-        """
-        return ["icon1", "icon2", "icon3"]
 ```
 
 **重要提醒：**
-- 类名 `LessonXXVerticalScenes` 中的 `XX` 需替换为实际课程编号（如 `Lesson02VerticalScenes`）
+- 类名 `LessonXXVerticalScenes` 中的 `XX` 需替换为实际课程编号（如 `Lesson01VerticalScenes`）
 - 中文引号使用「」而非""，避免 Python 语法错误
-- 所有图标名称必须先在 `all_png_names.txt` 中核实存在
+- 5个场景结构：痛点 → 知识 → 剖析 → 策略 → 升华
 
 ---
 
 # Input Data
 
-script.json：series/book_sunzibingfa/lesson06/script.json
+script.json：series/book_sunzibingfa/lessonXX/script.json
 
-all_png_names.txt：assets/icons8/all_png_names.txt
-
-**请根据上述规范，开始编写 `series/book_sunzibingfa/lesson06/animate.py`。**
+**请根据上述规范，开始编写 `series/book_sunzibingfa/lessonXX/animate.py`。**
