@@ -56,7 +56,7 @@
 
 # Output Format
 严格按照以下 JSON 结构生成 series/book_zsxq_100ke/lessonXXX/script.json：
-icons 里建议的配图（描述具体的画面元素，如：天平、印钞机、甚至讽刺漫画风格），**必须存在于 `all_png_names.txt` 中**。严禁编造文件名。。
+icons 里建议的配图（描述具体的画面元素，如：天平、印钞机、甚至讽刺漫画风格），**必须存在于 `assets/icons8/icons_finance.txt` 中**。严禁编造文件名。
 ```json
 {
     "meta": {

@@ -57,13 +57,14 @@ series/book_sunzibingfa/
 |------|------|
 | 原始帖子数据 | `assets/zsxq/jingpin_100ke_posts.json` |
 | Prompt 模板 | `series/prompts/zsxq_100ke_script.prompt` |
-| 可用图标列表 | `assets/icons8/all_png_names.txt` |
+| 可用图标列表 | `assets/icons8/icons_finance.txt` |
 
 ### 操作步骤
 1. **读取 Prompt**：阅读 `series/prompts/zsxq_100ke_script.prompt` 获取完整指令
-2. **筛选数据**：从 posts.json 中找到 `"lesson": "第XXX课"` 的帖子
-3. **生成脚本**：按照 Prompt 要求生成 script.json
-4. **保存文件**：保存到 `series/book_zsxq_100ke/lessonXXX/script.json`
+2. **读取图标列表**：完整阅读 `assets/icons8/icons_finance.txt`（约500个理财相关图标）
+3. **筛选数据**：从 posts.json 中找到 `"lesson": "第XXX课"` 的帖子
+4. **生成脚本**：按照 Prompt 要求生成 script.json，icons 必须从图标列表中选取
+5. **保存文件**：保存到 `series/book_zsxq_100ke/lessonXXX/script.json`
 
 ---
 
@@ -107,13 +108,14 @@ lessonXXX/media/videos/animate/1920p60/LessonXXXVerticalScenes.mp4
 |------|------|
 | 原始素材 | `series/book_sunzibingfa/lessonXX/origin.md` |
 | Prompt 模板 | `series/prompts/sunzi_script.prompt` |
-| 可用图标列表 | `assets/icons8/all_png_names.txt` |
+| 可用图标列表 | `assets/icons8/icons_education.txt` |
 
 ### 操作步骤
 1. **读取 Prompt**：阅读 `series/prompts/sunzi_script.prompt` 获取完整指令
-2. **读取素材**：阅读 `series/book_sunzibingfa/lessonXX/origin.md`
-3. **生成脚本**：按照 Prompt 要求生成 script.json
-4. **保存文件**：保存到 `series/book_sunzibingfa/lessonXX/script.json`
+2. **读取图标列表**：完整阅读 `assets/icons8/icons_education.txt`（约500个教育相关图标）
+3. **读取素材**：阅读 `series/book_sunzibingfa/lessonXX/origin.md`
+4. **生成脚本**：按照 Prompt 要求生成 script.json，icons 必须从图标列表中选取
+5. **保存文件**：保存到 `series/book_sunzibingfa/lessonXX/script.json`
 
 ---
 
@@ -157,7 +159,7 @@ lessonXX/media/videos/animate/1920p60/LessonXXVerticalScenes.mp4
 
 ### 输出
 生成 `series/book_XXX/lessonXX/wechat.md`，风格要求：
-- 口语化，像朋友聊天
+- 口语化，像朋友聊天，字数适中，一定不能低于**900字**
 - 使用 `> 引用` 突出金句
 - 使用 `**加粗**` 强调关键点
 - 用 `---` 分隔段落
@@ -203,22 +205,23 @@ media-publisher --video ... --platform both --script ...
 ### 清理临时文件（默认执行）
 
 每个 lesson 目录下只需保留以下文件，其他均为临时文件应当清理：
+- `images/` - 封面设计图等图片资源
 - `animate.py` - 动画代码
 - `script.json` - 口播脚本  
 - `wechat.md` - 微信文章
 - `media/LessonXXXVerticalScenes.mp4` - 最终视频
 
 需要删除的临时文件/目录：
-- `images/` - 封面设计图
 - `__pycache__/` - Python 缓存
 - `voice/` - 语音 mp3 文件
-- `media/` 下的其他内容（partial_movie_files, texts 等 Manim 渲染缓存）
+- `media/` 下的其他内容（partial_movie_files, texts, wav 等 Manim 渲染缓存）
 
 ```bash
 # 清理日日生金所有课程的临时文件
 cd /Users/xuejiao/Codes/yyy_ball/series/book_zsxq_100ke
 for lesson_dir in lesson*/; do
-  rm -rf "$lesson_dir/images" "$lesson_dir/__pycache__" "$lesson_dir/voice"
+  rm -rf "$lesson_dir/__pycache__" "$lesson_dir/voice"
+  # 清理 media 目录，只保留最终视频
   mp4_file=$(find "$lesson_dir/media" -name "Lesson*VerticalScenes.mp4" 2>/dev/null | head -1)
   if [ -n "$mp4_file" ]; then
     mv "$mp4_file" "$lesson_dir/temp_video.mp4"
@@ -233,7 +236,8 @@ done
 # 清理孙子兵法所有课程的临时文件
 cd /Users/xuejiao/Codes/yyy_ball/series/book_sunzibingfa
 for lesson_dir in lesson*/; do
-  rm -rf "$lesson_dir/images" "$lesson_dir/__pycache__" "$lesson_dir/voice"
+  rm -rf "$lesson_dir/__pycache__" "$lesson_dir/voice"
+  # 清理 media 目录，只保留最终视频
   mp4_file=$(find "$lesson_dir/media" -name "Lesson*VerticalScenes.mp4" 2>/dev/null | head -1)
   if [ -n "$mp4_file" ]; then
     mv "$mp4_file" "$lesson_dir/temp_video.mp4"
