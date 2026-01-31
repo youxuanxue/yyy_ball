@@ -200,6 +200,56 @@ media-publisher --video ... --platform both --script ...
 
 ## 辅助脚本
 
+### 清理临时文件（默认执行）
+
+每个 lesson 目录下只需保留以下文件，其他均为临时文件应当清理：
+- `animate.py` - 动画代码
+- `script.json` - 口播脚本  
+- `wechat.md` - 微信文章
+- `media/LessonXXXVerticalScenes.mp4` - 最终视频
+
+需要删除的临时文件/目录：
+- `images/` - 封面设计图
+- `__pycache__/` - Python 缓存
+- `voice/` - 语音 mp3 文件
+- `media/` 下的其他内容（partial_movie_files, texts 等 Manim 渲染缓存）
+
+```bash
+# 清理日日生金所有课程的临时文件
+cd /Users/xuejiao/Codes/yyy_ball/series/book_zsxq_100ke
+for lesson_dir in lesson*/; do
+  rm -rf "$lesson_dir/images" "$lesson_dir/__pycache__" "$lesson_dir/voice"
+  mp4_file=$(find "$lesson_dir/media" -name "Lesson*VerticalScenes.mp4" 2>/dev/null | head -1)
+  if [ -n "$mp4_file" ]; then
+    mv "$mp4_file" "$lesson_dir/temp_video.mp4"
+    rm -rf "$lesson_dir/media"
+    mkdir -p "$lesson_dir/media"
+    mv "$lesson_dir/temp_video.mp4" "$lesson_dir/media/$(basename $mp4_file)"
+  else
+    rm -rf "$lesson_dir/media"
+  fi
+done
+
+# 清理孙子兵法所有课程的临时文件
+cd /Users/xuejiao/Codes/yyy_ball/series/book_sunzibingfa
+for lesson_dir in lesson*/; do
+  rm -rf "$lesson_dir/images" "$lesson_dir/__pycache__" "$lesson_dir/voice"
+  mp4_file=$(find "$lesson_dir/media" -name "Lesson*VerticalScenes.mp4" 2>/dev/null | head -1)
+  if [ -n "$mp4_file" ]; then
+    mv "$mp4_file" "$lesson_dir/temp_video.mp4"
+    rm -rf "$lesson_dir/media"
+    mkdir -p "$lesson_dir/media"
+    mv "$lesson_dir/temp_video.mp4" "$lesson_dir/media/$(basename $mp4_file)"
+  else
+    rm -rf "$lesson_dir/media"
+  fi
+done
+```
+
+> **注意**：此清理操作在完成视频渲染并确认视频正常后默认执行，以节省磁盘空间。
+
+---
+
 ### 创建课程目录
 ```bash
 # 日日生金（3位数编号）

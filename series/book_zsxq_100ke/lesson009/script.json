@@ -1,0 +1,60 @@
+{
+    "meta": {
+        "project_name": "日日生金",
+        "lesson_number": "第009课",
+        "lesson_title": "股票与股市全貌",
+        "lesson_sub_title": "上市的本质是什么"
+    },
+    "wechat": {
+        "hashtags": ["#理财", "#股票", "#上市", "#IPO", "#市盈率", "#投资入门"],
+        "title": "📈上市公司为什么值钱？",
+        "description": "💰 同样赚2000万，不上市值1600万，上市值4个亿？上市就像修仙飞升，拿到了割韭菜的资格证！搞懂股票的本质，才不会被割韭菜 🌱",
+        "heji": "",
+        "huodong": ""
+    },
+    "youtube": {
+        "title": "【日日生金】股票是什么？上市公司为什么值钱｜第009课",
+        "description": "📈 上市 = 修仙成功？\n\n本期内容：\n• 普通公司和上市公司有什么区别\n• 市盈率是怎么算的\n• 上市公司的壳为什么值钱\n• 股票价格由什么决定\n\n💡 搞懂股票的本质！\n\n#理财 #股票 #上市 #IPO #财商教育",
+        "playlists": "日日生金",
+        "tags": ["理财", "股票", "上市公司", "IPO", "市盈率", "投资入门"]
+    },
+    "icons": ["stocks_growth.png", "organization.png", "money_bag.png", "growing_money.png", "chart.png", "bank_building.png"],
+    "scenes": [
+        {
+            "scene_index": 1,
+            "scene_type": "痛点/破冰/现状 (钩子引入)",
+            "voiceover_script": "你是不是好奇，为什么同样一年赚2000万的公司，不上市只值1600万，上市了能值4个亿？差距这么大？因为上市就像修仙成功，从此你有了大规模割韭菜的资格。今天就来聊聊这个。",
+            "voiceover_words": 76
+        },
+        {
+            "scene_index": 2,
+            "scene_type": "知识/是什么 (What)",
+            "voiceover_script": "简单说，上市解决了两个问题。第一，让全天下人都知道你。第二，让全天下人都能买你的股份。普通公司想卖股份，得一个个谈。上市公司往交易所一挂，全国人民随便买。这就是公众公司的威力。",
+            "voiceover_words": 80
+        },
+        {
+            "scene_index": 3,
+            "scene_type": "剖析/认知矫正/为什么重要 (Why)",
+            "voiceover_script": "问题的关键在于市盈率。普通公司，银行只愿意按利润打8折贷款。上市公司，最低20倍市盈率起，利润2000万乘以20倍等于4个亿。有人愿意相信你未来5年10年的增长，这就是资本市场的魔力。",
+            "voiceover_words": 82
+        },
+        {
+            "scene_index": 4,
+            "scene_type": "适用场景（Where/When）",
+            "voiceover_script": "如果你想投资股票，就得理解这个逻辑。股价不只看今天赚多少，更看未来能赚多少。所以有些亏损公司股价也很高，因为大家赌它的未来。当然，赌错了就是韭菜。",
+            "voiceover_words": 70
+        },
+        {
+            "scene_index": 5,
+            "scene_type": "策略/应对/怎么做 (How)",
+            "voiceover_script": "记住这个原则：看市盈率看成长性。市盈率太高的，要么是真的有成长，要么是泡沫。优先选业绩稳定、市盈率合理的股票。对于新手，从指数基金开始，别一上来就挑个股。",
+            "voiceover_words": 75
+        },
+        {
+            "scene_index": 6,
+            "scene_type": "行动号召（Action）",
+            "voiceover_script": "现在你知道股票的本质了吧？下期咱们聊聊怎么防止被割韭菜。觉得有用就点赞收藏，每天一课，日日生金！",
+            "voiceover_words": 46
+        }
+    ]
+}

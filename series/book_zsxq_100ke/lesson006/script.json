@@ -1,0 +1,60 @@
+{
+    "meta": {
+        "project_name": "日日生金",
+        "lesson_number": "第006课",
+        "lesson_title": "金融界的天庭",
+        "lesson_sub_title": "一行三会，谁在管你的钱"
+    },
+    "wechat": {
+        "hashtags": ["#理财", "#央行", "#银保监", "#证监会", "#金融监管", "#理财入门"],
+        "title": "💰你的钱被谁管着？",
+        "description": "🏛️ 央妈、银保监、证监会，这些神仙级机构到底管什么？搞懂金融界的天庭，才能看清游戏规则！一行三会听起来高大上，其实和你的钱袋子息息相关 💡",
+        "heji": "",
+        "huodong": ""
+    },
+    "youtube": {
+        "title": "【日日生金】一行三会是什么？金融监管全解读｜第006课",
+        "description": "🏛️ 金融界的「天庭」，你知道多少？\n\n本期内容：\n• 央行为什么叫「央妈」\n• 银监保监为什么合并了\n• 证监会管的是什么\n• 这些机构和普通人有什么关系\n\n💡 搞懂监管架构，看清游戏规则！\n\n#理财 #金融监管 #央行 #银保监 #证监会 #财商教育",
+        "playlists": "日日生金",
+        "tags": ["理财", "央行", "银保监", "证监会", "金融监管", "一行三会"]
+    },
+    "icons": ["bank_building.png", "hierarchy.png", "government.png", "courthouse.png", "organization.png", "money.png"],
+    "scenes": [
+        {
+            "scene_index": 1,
+            "scene_type": "痛点/破冰/现状 (钩子引入)",
+            "voiceover_script": "你是不是觉得，央行、银保监、证监会这些名字离你很远？其实啊，你存的每一分钱，买的每一份理财，都在他们的眼皮子底下。这些机构就是金融界的天庭，今天咱们就来扒一扒，谁在管你的钱。",
+            "voiceover_words": 82
+        },
+        {
+            "scene_index": 2,
+            "scene_type": "知识/是什么 (What)",
+            "voiceover_script": "简单说，中国金融有三大监管机构。央行是央妈，管货币政策，决定印多少钱。银保监管银行和保险公司，就像银行的婆婆。证监会管股票和证券公司。这就叫一行两会，以前叫一行三会，银监和保监合并了。",
+            "voiceover_words": 85
+        },
+        {
+            "scene_index": 3,
+            "scene_type": "剖析/认知矫正/为什么重要 (Why)",
+            "voiceover_script": "问题的关键在于，有监管才有底线。银行能不能乱放贷？银保监说了算。上市公司能不能造假？证监会盯着。所有的金融玩家都在这个水池里扑腾，规则是他们定的，不懂规则就容易踩坑。",
+            "voiceover_words": 78
+        },
+        {
+            "scene_index": 4,
+            "scene_type": "适用场景（Where/When）",
+            "voiceover_script": "如果你买理财、炒股票、存大额资金，就得知道谁在管。遇到问题找对部门，买银行理财找银保监投诉，炒股被骗找证监会举报。搞清楚门道，关键时刻能救命。",
+            "voiceover_words": 66
+        },
+        {
+            "scene_index": 5,
+            "scene_type": "策略/应对/怎么做 (How)",
+            "voiceover_script": "记住这个口诀：央行管印钱，银保监管存钱，证监会管炒钱。买理财之前，先看是谁发的，银行的归银保监管，券商的归证监会管。有牌照的正规军，出了事至少能找到人。",
+            "voiceover_words": 73
+        },
+        {
+            "scene_index": 6,
+            "scene_type": "行动号召（Action）",
+            "voiceover_script": "现在你知道金融界的天庭了吧？下次买理财之前，先查查发行方有没有牌照。觉得有用就点赞收藏，咱们下期继续聊理财干货！",
+            "voiceover_words": 50
+        }
+    ]
+}

@@ -1,0 +1,60 @@
+{
+    "meta": {
+        "project_name": "日日生金",
+        "lesson_number": "第011课",
+        "lesson_title": "数字货币",
+        "lesson_sub_title": "央行数字货币与比特币"
+    },
+    "wechat": {
+        "hashtags": ["#理财", "#数字货币", "#比特币", "#央行", "#SWIFT", "#人民币国际化"],
+        "title": "💰数字货币和比特币是一回事吗？",
+        "description": "🪙 央行数字货币已经开始内测了！和微信支付宝有什么区别？和比特币是一回事吗？为什么要搞数字货币？一文讲清楚电子钱包的新玩法！",
+        "heji": "",
+        "huodong": ""
+    },
+    "youtube": {
+        "title": "【日日生金】数字货币vs比特币｜央行为什么要发数字货币｜第011课",
+        "description": "🪙 数字货币来了！\n\n本期内容：\n• 数字货币和微信支付宝有什么区别\n• 央行数字货币和比特币是一回事吗\n• 什么是M0 M1 M2\n• 为什么要推数字货币\n\n💡 搞懂电子钱包的新时代！\n\n#理财 #数字货币 #比特币 #央行 #财商教育",
+        "playlists": "日日生金",
+        "tags": ["理财", "数字货币", "比特币", "央行", "SWIFT", "人民币国际化"]
+    },
+    "icons": ["bitcoin.png", "money.png", "smartphone.png", "blockchain_technology.png", "globe.png", "bank_building.png"],
+    "scenes": [
+        {
+            "scene_index": 1,
+            "scene_type": "痛点/破冰/现状 (钩子引入)",
+            "voiceover_script": "你是不是觉得，数字货币就是比特币？其实完全是两码事。央行的数字货币已经在内测了，有国家背书，用来买东西不能拒绝。而比特币没有任何国家承认，说白了就是游戏币。今天咱们来分清楚。",
+            "voiceover_words": 79
+        },
+        {
+            "scene_index": 2,
+            "scene_type": "知识/是什么 (What)",
+            "voiceover_script": "简单说，央行数字货币就是电子版人民币。和微信支付宝不一样，那些是银行存款的电子化，而数字货币是真正的现金替代。每发一块数字货币，央行就销毁一块纸币，总量不变。这叫M0替代。",
+            "voiceover_words": 78
+        },
+        {
+            "scene_index": 3,
+            "scene_type": "剖析/认知矫正/为什么重要 (Why)",
+            "voiceover_script": "问题的关键在于，比特币没有国家背书，就是空气。央行数字货币有国家信用，有枪杆子保障。中国推数字货币，主要是为了人民币国际化，绕开美国控制的SWIFT系统，让跨境支付更方便。",
+            "voiceover_words": 80
+        },
+        {
+            "scene_index": 4,
+            "scene_type": "适用场景（Where/When）",
+            "voiceover_script": "如果你想了解未来支付趋势，数字货币是必修课。以后发工资、买东西可能都是数字货币。但如果有人拉你炒比特币发财，那就得小心了，没有背书的东西，涨跌全靠炒作。",
+            "voiceover_words": 72
+        },
+        {
+            "scene_index": 5,
+            "scene_type": "策略/应对/怎么做 (How)",
+            "voiceover_script": "记住这个判断标准：看有没有国家背书。央行数字货币可以放心用，以后会越来越普及。比特币之类的加密货币，投机可以，当资产配置很危险。普通人优先关注正规的数字人民币就好。",
+            "voiceover_words": 76
+        },
+        {
+            "scene_index": 6,
+            "scene_type": "行动号召（Action）",
+            "voiceover_script": "现在你分清数字货币和比特币了吧？可以关注一下数字人民币App。觉得有用就点赞收藏，咱们下期继续聊！",
+            "voiceover_words": 44
+        }
+    ]
+}
