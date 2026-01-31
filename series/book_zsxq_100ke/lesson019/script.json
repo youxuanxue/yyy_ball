@@ -1,0 +1,60 @@
+{
+    "meta": {
+        "project_name": "日日生金",
+        "lesson_number": "第19课",
+        "lesson_title": "为什么不建议你炒股",
+        "lesson_sub_title": "普通人在股市的真实处境"
+    },
+    "wechat": {
+        "hashtags": ["#炒股", "#股票投资", "#理财知识", "#基金投资", "#财商教育", "#日日生金"],
+        "title": "为啥不建议你炒股？📉",
+        "description": "一买就跌，一卖就涨？不是你运气差，是你根本不适合炒股！今天告诉你普通人在股市的真实处境，以及更好的选择💡",
+        "heji": "",
+        "huodong": ""
+    },
+    "youtube": {
+        "title": "【日日生金】为什么不建议你炒股｜第19课",
+        "description": "📚 日日生金·第19课\n\n普通人为什么不适合炒股？\n有什么更好的选择？\n\n本期内容：\n✅ 损失厌恶心理\n✅ 普通人在股市的利用价值\n✅ 基金是更好的选择\n\n#理财 #炒股 #基金投资",
+        "playlists": "日日生金",
+        "tags": ["理财", "炒股", "股票", "基金投资", "财商教育", "投资心理"]
+    },
+    "icons": ["stocks.png", "decrease.png", "sad.png", "thinking.png", "investment_portfolio.png", "thumbs_up.png"],
+    "scenes": [
+        {
+            "scene_index": 1,
+            "scene_type": "痛点/破冰/现状 (钩子引入)",
+            "voiceover_script": "你是不是也这样：一买股票就跌，一卖就涨？别以为是运气差，这是大部分散户的宿命。今天告诉你一个扎心的真相：普通人炒股，大概率是亏钱的。",
+            "voiceover_words": 62
+        },
+        {
+            "scene_index": 2,
+            "scene_type": "知识/是什么 (What)",
+            "voiceover_script": "诺贝尔经济学奖得主塞勒说：失去10块钱的痛苦，要捡到20块钱才能抵消。这叫损失厌恶。股票跌了20%，你要赚40%才能心理平衡。但中国股市80%的时间在跌。",
+            "voiceover_words": 72
+        },
+        {
+            "scene_index": 3,
+            "scene_type": "剖析/认知矫正/为什么重要 (Why)",
+            "voiceover_script": "问题的关键在于，普通人在股市里没有利用价值。大资金能带来信心和资源，散户能带来什么？只有手里那点小钱。你就是韭菜，被机构收割是常态。",
+            "voiceover_words": 66
+        },
+        {
+            "scene_index": 4,
+            "scene_type": "适用场景（Where/When）",
+            "voiceover_script": "什么人可以炒股？有闲钱、有时间、有专业知识，三样都占齐的人。普通上班族，工资是主要收入来源，根本没时间盯盘研究，炒股就是送钱。",
+            "voiceover_words": 64
+        },
+        {
+            "scene_index": 5,
+            "scene_type": "策略/应对/怎么做 (How)",
+            "voiceover_script": "普通人想参与股市，最好的方式是买公募基金。让专业的基金经理帮你选股，你只需要选一个靠谱的基金。记住：正规渠道买，别信群里的野生股神。",
+            "voiceover_words": 68
+        },
+        {
+            "scene_index": 6,
+            "scene_type": "行动号召（Action）",
+            "voiceover_script": "炒股不适合大多数人，认清这点很重要。觉得有收获的话，点个赞，关注我，咱们下期继续聊理财那些事儿。",
+            "voiceover_words": 42
+        }
+    ]
+}

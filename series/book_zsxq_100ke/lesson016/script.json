@@ -1,0 +1,60 @@
+{
+    "meta": {
+        "project_name": "日日生金",
+        "lesson_number": "第16课",
+        "lesson_title": "房子还值得买吗",
+        "lesson_sub_title": "房地产市场的新逻辑"
+    },
+    "wechat": {
+        "hashtags": ["#房地产", "#买房投资", "#理财知识", "#城市选择", "#财商教育", "#日日生金"],
+        "title": "房子还值得买吗？🏠",
+        "description": "房价会大跌吗？现在还能买房吗？别慌！今天告诉你房地产市场的新逻辑：地域分化、品质为王🏡 选对城市选对房，才是硬道理！",
+        "heji": "",
+        "huodong": ""
+    },
+    "youtube": {
+        "title": "【日日生金】房子还值得买吗？房地产新逻辑｜第16课",
+        "description": "📚 日日生金·第16课\n\n房地产市场逻辑已变！\n现在买房要看什么？\n\n本期内容：\n✅ 房价会大跌吗？\n✅ 地域分化意味着什么？\n✅ 什么样的房子保值？\n\n#理财 #房地产 #买房投资",
+        "playlists": "日日生金",
+        "tags": ["理财", "房地产", "买房", "投资", "财商教育", "城市选择"]
+    },
+    "icons": ["house.png", "real_estate.png", "increase.png", "decrease.png", "building.png", "city.png"],
+    "scenes": [
+        {
+            "scene_index": 1,
+            "scene_type": "痛点/破冰/现状 (钩子引入)",
+            "voiceover_script": "很多人问我，房价会不会大跌？现在还能买房吗？我告诉你一个扎心的真相：上头既不希望大涨，也不准大跌，要的是慢牛。但接下来，买房的逻辑完全变了。",
+            "voiceover_words": 68
+        },
+        {
+            "scene_index": 2,
+            "scene_type": "知识/是什么 (What)",
+            "voiceover_script": "新逻辑是什么？两个字：分化。从中央调控变成地方调控，各城市自己说了算。这意味着什么？好城市会更好，差城市会更差。闭眼买房躺赚的时代，一去不复返了。",
+            "voiceover_words": 70
+        },
+        {
+            "scene_index": 3,
+            "scene_type": "剖析/认知矫正/为什么重要 (Why)",
+            "voiceover_script": "问题的关键在于，过去买房买的是学区、户口这些附加值。现在呢？要素在放开，人们开始就房论房。小区品质、物业管理、户型设计，这些才是影响房价的核心因素。",
+            "voiceover_words": 74
+        },
+        {
+            "scene_index": 4,
+            "scene_type": "适用场景（Where/When）",
+            "voiceover_script": "如果你要买房，重点关注两类城市：一是有抢人政策、落户容易、贷款宽松的；二是产业发展健康、人口持续流入的核心都市圈。这两条占一条，房子就有底气。",
+            "voiceover_words": 72
+        },
+        {
+            "scene_index": 5,
+            "scene_type": "策略/应对/怎么做 (How)",
+            "voiceover_script": "记住三点：第一，选城市比选房子重要，先看产业和人口；第二，买品质房，好物业好户型，贬值慢；第三，关注各地人才政策，看落户条件和购房补贴，这是地方给你的红利。",
+            "voiceover_words": 76
+        },
+        {
+            "scene_index": 6,
+            "scene_type": "行动号召（Action）",
+            "voiceover_script": "买房这事儿，城市和品质是关键。觉得有收获的话，点个赞，关注我，咱们下期继续聊理财那些事儿。",
+            "voiceover_words": 40
+        }
+    ]
+}
