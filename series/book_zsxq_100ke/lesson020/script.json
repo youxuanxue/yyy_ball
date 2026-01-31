@@ -1,0 +1,60 @@
+{
+    "meta": {
+        "project_name": "日日生金",
+        "lesson_number": "第20课",
+        "lesson_title": "大投资人与公募基金",
+        "lesson_sub_title": "普通人如何借力大资本"
+    },
+    "wechat": {
+        "hashtags": ["#公募基金", "#基金投资", "#理财知识", "#投资入门", "#财商教育", "#日日生金"],
+        "title": "大户赚钱的秘密💰",
+        "description": "为什么好项目轮不到你？因为大户有议价权！今天聊聊公募基金，告诉你普通人如何借力大资本🏦",
+        "heji": "",
+        "huodong": ""
+    },
+    "youtube": {
+        "title": "【日日生金】大投资人与公募基金｜第20课",
+        "description": "📚 日日生金·第20课\n\n为什么优质项目和普通人绝缘？\n公募基金是你的翻身机会！\n\n本期内容：\n✅ 大户为什么赚钱？\n✅ 什么是公募基金？\n✅ 如何选择基金？\n\n#理财 #公募基金 #投资入门",
+        "playlists": "日日生金",
+        "tags": ["理财", "公募基金", "基金投资", "投资入门", "财商教育", "大资本"]
+    },
+    "icons": ["investment.png", "businessman.png", "group.png", "money_bag_with_coins.png", "bank.png", "growing_money.png"],
+    "scenes": [
+        {
+            "scene_index": 1,
+            "scene_type": "痛点/破冰/现状 (钩子引入)",
+            "voiceover_script": "你有没有想过，为什么好项目总是轮不到普通人？比亚迪、京东这种好公司，你想投也投不进去。因为大户有议价权，95%的优质项目和你我无缘。",
+            "voiceover_words": 62
+        },
+        {
+            "scene_index": 2,
+            "scene_type": "知识/是什么 (What)",
+            "voiceover_script": "公募基金就是把大家的钱凑在一起，交给专业的基金经理来投资。100块就能起买，门槛极低。它让普通人也能参与大资本的游戏，借力专业机构赚钱。",
+            "voiceover_words": 68
+        },
+        {
+            "scene_index": 3,
+            "scene_type": "剖析/认知矫正/为什么重要 (Why)",
+            "voiceover_script": "大户为什么赚钱？第一，沟通成本低，项目方愿意对接；第二，除了钱还能带资源。普通人单打独斗没有优势，但通过基金抱团，就能享受大资本的待遇。",
+            "voiceover_words": 70
+        },
+        {
+            "scene_index": 4,
+            "scene_type": "适用场景（Where/When）",
+            "voiceover_script": "什么人适合买公募基金？没时间研究个股的上班族；不想承担太大风险的保守派；想长期定投的年轻人。总之，不想花精力但想参与股市的，都可以选基金。",
+            "voiceover_words": 72
+        },
+        {
+            "scene_index": 5,
+            "scene_type": "策略/应对/怎么做 (How)",
+            "voiceover_script": "记住三点：第一，选择正规渠道买基金，银行、支付宝、天天基金都行；第二，看基金经理的历史业绩，至少管理3年以上；第三，定投比一次性买入更稳，分散风险。",
+            "voiceover_words": 76
+        },
+        {
+            "scene_index": 6,
+            "scene_type": "行动号召（Action）",
+            "voiceover_script": "公募基金是普通人参与资本市场的最佳方式。觉得有收获的话，点个赞，关注我，咱们下期继续聊理财那些事儿。",
+            "voiceover_words": 44
+        }
+    ]
+}

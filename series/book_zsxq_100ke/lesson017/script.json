@@ -1,0 +1,60 @@
+{
+    "meta": {
+        "project_name": "日日生金",
+        "lesson_number": "第17课",
+        "lesson_title": "底线思维与资产配置",
+        "lesson_sub_title": "不确定时代如何保护财富？"
+    },
+    "wechat": {
+        "hashtags": ["#资产配置", "#风险管理", "#理财知识", "#财富保护", "#财商教育", "#日日生金"],
+        "title": "底线思维保护财富💼",
+        "description": "世界越来越不确定，你的钱放哪里最安全？今天聊聊底线思维：先保住本金，再想赚钱💰 六保时代，普通人该买点什么？",
+        "heji": "",
+        "huodong": ""
+    },
+    "youtube": {
+        "title": "【日日生金】底线思维与资产配置｜第17课",
+        "description": "📚 日日生金·第17课\n\n不确定时代如何保护财富？\n底线思维告诉你答案！\n\n本期内容：\n✅ 什么是底线思维？\n✅ 如何做资产配置？\n✅ 普通人应该买什么？\n\n#理财 #资产配置 #风险管理",
+        "playlists": "日日生金",
+        "tags": ["理财", "资产配置", "风险管理", "财富保护", "财商教育", "投资策略"]
+    },
+    "icons": ["shield.png", "safe.png", "house.png", "gold_bars.png", "piggy_bank.png", "insurance.png"],
+    "scenes": [
+        {
+            "scene_index": 1,
+            "scene_type": "痛点/破冰/现状 (钩子引入)",
+            "voiceover_script": "世界变化太快了，今天这个政策，明天那个风险。很多人焦虑：我的钱放哪里才安全？今天告诉你一个思维方式：底线思维。先考虑最坏情况，再想怎么赚钱。",
+            "voiceover_words": 68
+        },
+        {
+            "scene_index": 2,
+            "scene_type": "知识/是什么 (What)",
+            "voiceover_script": "底线思维就是：假设最坏的情况发生，我还能保住什么？这不是悲观，而是理性。巴菲特说投资第一条规则是不要亏钱，第二条规则是记住第一条。这就是底线思维。",
+            "voiceover_words": 72
+        },
+        {
+            "scene_index": 3,
+            "scene_type": "剖析/认知矫正/为什么重要 (Why)",
+            "voiceover_script": "普通人最大的误区是追求高收益，忽略了风险。你想着赚20%，结果亏了50%。问题的关键在于，保住本金比赚钱更重要。先活下来，才能等到翻盘的机会。",
+            "voiceover_words": 70
+        },
+        {
+            "scene_index": 4,
+            "scene_type": "适用场景（Where/When）",
+            "voiceover_script": "什么时候最需要底线思维？就是市场特别不确定的时候。经济下行、政策变化、国际形势紧张，这些时候，别想着抄底捡便宜，先把自己的底线守住。",
+            "voiceover_words": 66
+        },
+        {
+            "scene_index": 5,
+            "scene_type": "策略/应对/怎么做 (How)",
+            "voiceover_script": "普通人的底线资产配置：第一，留够6个月生活费的现金或货币基金；第二，有套自住房，不是投资，是安身立命；第三，配置一份保险，防止大病返贫。这三样守住，再想别的。",
+            "voiceover_words": 80
+        },
+        {
+            "scene_index": 6,
+            "scene_type": "行动号召（Action）",
+            "voiceover_script": "底线思维不是胆小，是智慧。觉得有收获的话，点个赞，关注我，咱们下期继续聊理财那些事儿。",
+            "voiceover_words": 40
+        }
+    ]
+}

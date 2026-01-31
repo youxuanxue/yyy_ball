@@ -1,0 +1,60 @@
+{
+    "meta": {
+        "project_name": "日日生金",
+        "lesson_number": "第18课",
+        "lesson_title": "需求决定经济",
+        "lesson_sub_title": "为什么到处都在逼你花钱？"
+    },
+    "wechat": {
+        "hashtags": ["#经济学", "#消费需求", "#理财知识", "#宏观经济", "#财商教育", "#日日生金"],
+        "title": "为啥到处逼你花钱？💸",
+        "description": "降息、发券、搞促销，为什么国家到处在刺激消费？因为经济的本质是需求！今天用大白话聊聊供给和需求的关系🔄",
+        "heji": "",
+        "huodong": ""
+    },
+    "youtube": {
+        "title": "【日日生金】需求决定经济：为什么到处逼你花钱｜第18课",
+        "description": "📚 日日生金·第18课\n\n为什么国家要刺激消费？\n经济学的核心就两个字：需求！\n\n本期内容：\n✅ 供给和需求的关系\n✅ 为什么需求会萎缩？\n✅ 刺激消费的真正目的\n\n#理财 #经济学 #消费",
+        "playlists": "日日生金",
+        "tags": ["理财", "经济学", "消费需求", "宏观经济", "财商教育", "供给需求"]
+    },
+    "icons": ["shopping_cart.png", "money_circulation.png", "coupon.png", "decrease.png", "increase.png", "balance.png"],
+    "scenes": [
+        {
+            "scene_index": 1,
+            "scene_type": "痛点/破冰/现状 (钩子引入)",
+            "voiceover_script": "你有没有发现，到处都在逼你花钱？降息、发优惠券、搞消费补贴。这不是巧合，而是有深层原因的。今天告诉你，经济的本质只有两个字：需求。",
+            "voiceover_words": 62
+        },
+        {
+            "scene_index": 2,
+            "scene_type": "知识/是什么 (What)",
+            "voiceover_script": "两百多年来，经济学说到底就两件事：供给和需求。有需求才有供给，东西卖得出去，工厂才会生产，工人才有工资。需求一萎缩，整个链条就断了。",
+            "voiceover_words": 68
+        },
+        {
+            "scene_index": 3,
+            "scene_type": "剖析/认知矫正/为什么重要 (Why)",
+            "voiceover_script": "问题的关键在于，现代社会普遍面临需求萎缩。老百姓债务压顶，不敢花钱；政府搞基建，也不能无限借债。需求创造不出来，只能刺激，所以才到处逼你花钱。",
+            "voiceover_words": 72
+        },
+        {
+            "scene_index": 4,
+            "scene_type": "适用场景（Where/When）",
+            "voiceover_script": "当你看到降息、发消费券、搞促销的时候，说明经济需要刺激了。这时候反而是理性消费的好时机：政府给补贴的东西，该买就买；但别冲动消费，被营销牵着走。",
+            "voiceover_words": 74
+        },
+        {
+            "scene_index": 5,
+            "scene_type": "策略/应对/怎么做 (How)",
+            "voiceover_script": "记住三点：第一，大件消费等政策，有补贴再出手；第二，别被促销冲昏头，需要的才买；第三，理解经济周期，需求低迷时现金为王，复苏时再入场。",
+            "voiceover_words": 68
+        },
+        {
+            "scene_index": 6,
+            "scene_type": "行动号召（Action）",
+            "voiceover_script": "懂需求，才能看懂经济。觉得有收获的话，点个赞，关注我，咱们下期继续聊理财那些事儿。",
+            "voiceover_words": 38
+        }
+    ]
+}

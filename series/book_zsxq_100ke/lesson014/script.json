@@ -1,0 +1,60 @@
+{
+    "meta": {
+        "project_name": "日日生金",
+        "lesson_number": "第14课",
+        "lesson_title": "企业借钱的两条路",
+        "lesson_sub_title": "信用贷和抵押贷，到底怎么选？"
+    },
+    "wechat": {
+        "hashtags": ["#企业贷款", "#信用贷款", "#抵押贷款", "#理财知识", "#财商教育", "#日日生金"],
+        "title": "企业借钱有两条路💰",
+        "description": "你知道吗？企业借钱只有两种方式：信用贷和抵押贷🏦 规模大有利润的，银行追着给你放款；小企业只能拿房子抵押。今天聊聊借款的门道～",
+        "heji": "",
+        "huodong": ""
+    },
+    "youtube": {
+        "title": "【日日生金】企业借钱的两条路：信用贷vs抵押贷｜第14课",
+        "description": "📚 日日生金·第14课\n\n企业借钱只有两种方式！\n信用贷和抵押贷，到底怎么选？\n\n本期内容：\n✅ 什么是信用贷？什么是抵押贷？\n✅ 哪些企业能借到信用贷？\n✅ 金融科技如何改变借贷？\n\n#理财 #企业贷款 #投资入门",
+        "playlists": "日日生金",
+        "tags": ["理财", "企业贷款", "信用贷款", "抵押贷款", "财商教育", "金融知识"]
+    },
+    "icons": ["loan.png", "bank.png", "house.png", "document.png", "businessman.png", "credit_card.png"],
+    "scenes": [
+        {
+            "scene_index": 1,
+            "scene_type": "痛点/破冰/现状 (钩子引入)",
+            "voiceover_script": "你是不是觉得，企业要借钱，只要有实力就行？错！在中国，企业借钱只有两条路：要么你信用够硬，银行信任你；要么你有房子抵押，拿资产换钱。没有第三条路！",
+            "voiceover_words": 72
+        },
+        {
+            "scene_index": 2,
+            "scene_type": "知识/是什么 (What)",
+            "voiceover_script": "简单说，企业贷款就两种。一种叫信用贷，银行看你企业的规模、利润、现金流，觉得你靠谱就放款，不要抵押物。另一种叫抵押贷，你得拿房子押给银行，房子值多少钱，贷多少款。",
+            "voiceover_words": 78
+        },
+        {
+            "scene_index": 3,
+            "scene_type": "剖析/认知矫正/为什么重要 (Why)",
+            "voiceover_script": "问题的关键在于，能拿到信用贷的企业越来越少了。以前国企、上市公司能纯信用借钱，现在呢？民企想借信用贷难如登天。银行不是不想放，是不敢放，风险太大。",
+            "voiceover_words": 71
+        },
+        {
+            "scene_index": 4,
+            "scene_type": "适用场景（Where/When）",
+            "voiceover_script": "如果你是小企业主，银行主要看两个东西：税贷和征信贷。交的税多，证明你赚钱，银行就敢放款。征信好，从来不逾期，银行也愿意给你机会。这是金融科技带来的新路子。",
+            "voiceover_words": 74
+        },
+        {
+            "scene_index": 5,
+            "scene_type": "策略/应对/怎么做 (How)",
+            "voiceover_script": "记住三点：第一，别小看纳税记录，交的税越多，能借的钱越多；第二，保护好企业征信，两年内别逾期超过6次；第三，有房产的话，一抵给银行，利息最低，二抵给小贷，利息高但救急。",
+            "voiceover_words": 82
+        },
+        {
+            "scene_index": 6,
+            "scene_type": "行动号召（Action）",
+            "voiceover_script": "企业借钱这事儿，信用和资产是硬通货。觉得有收获的话，点个赞，关注我，咱们下期继续聊理财那些事儿。",
+            "voiceover_words": 44
+        }
+    ]
+}

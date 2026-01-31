@@ -1,0 +1,60 @@
+{
+    "meta": {
+        "project_name": "日日生金",
+        "lesson_number": "第15课",
+        "lesson_title": "征信是你的金融身份证",
+        "lesson_sub_title": "如何把自己变成银行想要的人？"
+    },
+    "wechat": {
+        "hashtags": ["#个人征信", "#信用记录", "#银行贷款", "#理财知识", "#财商教育", "#日日生金"],
+        "title": "征信是你的金融身份证💳",
+        "description": "你的房贷为啥比别人贵？信用卡额度为啥那么低？都是征信惹的祸！今天教你如何保护征信，把自己变成银行眼中的「优质客户」🏦",
+        "heji": "",
+        "huodong": ""
+    },
+    "youtube": {
+        "title": "【日日生金】征信是你的金融身份证｜第15课",
+        "description": "📚 日日生金·第15课\n\n你的征信决定了你能借多少钱！\n如何保护和利用好征信？\n\n本期内容：\n✅ 什么是征信？\n✅ 连3累6是什么意思？\n✅ 如何保护个人征信？\n\n#理财 #个人征信 #信用记录",
+        "playlists": "日日生金",
+        "tags": ["理财", "个人征信", "信用记录", "银行贷款", "财商教育", "信用卡"]
+    },
+    "icons": ["credit_card.png", "document.png", "bank.png", "warning.png", "shield.png", "check_mark.png"],
+    "scenes": [
+        {
+            "scene_index": 1,
+            "scene_type": "痛点/破冰/现状 (钩子引入)",
+            "voiceover_script": "你有没有想过，为什么你的房贷利率比别人高？为什么信用卡额度才几千块？很可能不是你没钱，而是你的征信出了问题。征信这东西，看不见摸不着，却决定了你能借多少钱。",
+            "voiceover_words": 75
+        },
+        {
+            "scene_index": 2,
+            "scene_type": "知识/是什么 (What)",
+            "voiceover_script": "征信其实就是你和金融机构打交道的记录本。你在银行借过多少钱、还过多少钱、有没有逾期，全都记在上面。这个记录由中国人民银行统一管理，银行放款前必查。",
+            "voiceover_words": 72
+        },
+        {
+            "scene_index": 3,
+            "scene_type": "剖析/认知矫正/为什么重要 (Why)",
+            "voiceover_script": "关键点来了：2年内连3累6，银行就不待见你了。什么意思？就是连续3次忘还款，或者累计6次逾期，你在银行眼里就成了高风险客户。贷款要么批不下来，要么利息高一截。",
+            "voiceover_words": 76
+        },
+        {
+            "scene_index": 4,
+            "scene_type": "适用场景（Where/When）",
+            "voiceover_script": "最容易踩坑的场景：网上那些让你查借款额度的广告，千万别点！输入身份证一查，就算你没借钱，也会在征信上留下一条查询记录。查多了，银行会觉得你很缺钱。",
+            "voiceover_words": 73
+        },
+        {
+            "scene_index": 5,
+            "scene_type": "策略/应对/怎么做 (How)",
+            "voiceover_script": "保护征信记住三点：第一，借呗花呗少用，它们都上征信；第二，信用卡别逾期，实在还不上先还最低还款；第三，每年去央行网站免费查一次自己的征信，心里有数。",
+            "voiceover_words": 76
+        },
+        {
+            "scene_index": 6,
+            "scene_type": "行动号召（Action）",
+            "voiceover_script": "征信就是你的金融身份证，好好保护它。觉得有用的话，点个赞，关注我，咱们下期继续聊理财那些事儿。",
+            "voiceover_words": 42
+        }
+    ]
+}
