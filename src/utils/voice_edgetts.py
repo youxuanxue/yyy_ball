@@ -9,6 +9,48 @@ import os
 import json
 
 
+# ============================================================================
+# 多音字发音修正表（同音字替换方案）
+# ============================================================================
+# Edge TTS 不支持自定义 SSML，因此使用同音字替换来修正多音字发音
+# 
+# 原理：将容易被误读的多音字替换为读音正确的同音字
+# 注意：替换仅用于语音合成，不影响原始文本内容
+#
+# 添加新词条：
+#   "误读的词": "正确读音的替换词",
+# ============================================================================
+PRONUNCIATION_FIXES = {
+    # "降"字：应读 jiàng（下降），Edge TTS 有时误读为 xiáng（投降）
+    # 使用"酱"（jiàng）替换"降"来确保正确读音
+    "降息": "酱息",
+    "降准": "酱准",
+    "降息降准": "酱息酱准",  # 优先匹配完整词组
+    "四大行": "四大航",
+    "农商行": "农商航",
+    "城商行": "城商航",
+    "大钱放大行": "大钱放大航",
+}
+
+
+def fix_pronunciation(text):
+    """
+    修正文本中的多音字发音问题（使用同音字替换）
+    
+    Args:
+        text: 原始文本
+        
+    Returns:
+        str: 替换后的文本（仅用于语音合成）
+    """
+    fixed_text = text
+    # 按照词条长度降序排列，优先匹配长词组
+    sorted_fixes = sorted(PRONUNCIATION_FIXES.items(), key=lambda x: len(x[0]), reverse=True)
+    for word, replacement in sorted_fixes:
+        fixed_text = fixed_text.replace(word, replacement)
+    return fixed_text
+
+
 def parse_json_script(file_path):
     """
     解析 JSON 脚本，提取口播内容。
@@ -236,8 +278,11 @@ async def generate_voice_for_scripts(scripts_dict, output_dir, voice="zh-CN-Xiao
         filename = key if key.endswith(".mp3") else f"{key}.mp3"
         output_file = os.path.join(output_dir, filename)
         
+        # 修正多音字发音问题
+        fixed_text = fix_pronunciation(text)
+        
         # 调用 Edge TTS
-        communicate = edge_tts.Communicate(text, voice)
+        communicate = edge_tts.Communicate(fixed_text, voice)
         await communicate.save(output_file)
         print(f"✅ 已生成: {filename}")
         

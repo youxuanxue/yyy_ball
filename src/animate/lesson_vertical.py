@@ -233,9 +233,12 @@ class LessonVertical(Scene, ABC):
                             icon_path = self.find_icon_file_path(icon)
                             if icon_path:
                                 decoration_icons_processed.append(icon_path)
-                            else:
-                                # 如果找不到，假设是 emoji，直接使用
+                            elif len(icon) <= 4:
+                                # 短字符串（如 emoji）可以直接使用
                                 decoration_icons_processed.append(icon)
+                            else:
+                                # 找不到图标文件，打印警告并跳过
+                                print(f"⚠️ 图标未找到，已跳过: {icon}")
                     else:
                         decoration_icons_processed.append(icon)
                 
@@ -390,4 +393,4 @@ class Zsxq100keLessonVertical(LessonVertical):
     series_name = "zsxq_100ke"
     font_style = "modern"  # 黑体（现代风格）
     default_decoration_icons = ["💰", "📈", "🏦"]
-    voice_name = "zh-CN-YunjianNeural"  # 云健 - 成熟男性，沉稳专业
+    voice_name = "zh-CN-XiaoxiaoNeural"  # 晓晓 - 年轻女性，活泼甜美
