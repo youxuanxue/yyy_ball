@@ -61,9 +61,9 @@ series/book_sunzibingfa/
 
 ### 操作步骤
 1. **读取 Prompt**：阅读 `series/prompts/zsxq_100ke_script.prompt` 获取完整指令
-2. **读取图标列表**：完整阅读 `assets/icons8/icons_finance.txt`（约500个理财相关图标）
+2. **读取图标列表**：完整阅读 `assets/icons8/icons_finance.txt`（格式：`图标名\t绝对路径`，使用第一列图标名）
 3. **筛选数据**：从 posts.json 中找到 `"lesson": "第XXX课"` 的帖子
-4. **生成脚本**：按照 Prompt 要求生成 script.json，icons 必须从图标列表中选取
+4. **生成脚本**：按照 Prompt 要求生成 script.json，icons 必须从图标列表中选取（只需图标名，不带路径）
 5. **保存文件**：保存到 `series/book_zsxq_100ke/lessonXXX/script.json`
 
 ---
@@ -112,9 +112,9 @@ lessonXXX/media/videos/animate/1920p60/LessonXXXVerticalScenes.mp4
 
 ### 操作步骤
 1. **读取 Prompt**：阅读 `series/prompts/sunzi_script.prompt` 获取完整指令
-2. **读取图标列表**：完整阅读 `assets/icons8/icons_education.txt`（约500个教育相关图标）
+2. **读取图标列表**：完整阅读 `assets/icons8/icons_education.txt`（格式：`图标名\t绝对路径`，使用第一列图标名）
 3. **读取素材**：阅读 `series/book_sunzibingfa/lessonXX/origin.md`
-4. **生成脚本**：按照 Prompt 要求生成 script.json，icons 必须从图标列表中选取
+4. **生成脚本**：按照 Prompt 要求生成 script.json，icons 必须从图标列表中选取（只需图标名，不带路径）
 5. **保存文件**：保存到 `series/book_sunzibingfa/lessonXX/script.json`
 
 ---

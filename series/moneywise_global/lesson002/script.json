@@ -1,0 +1,106 @@
+{
+    "meta": {
+        "project_name": "MoneyWise",
+        "lesson_number": "Lesson 2",
+        "lesson_title": "The 4 Rules of Real Money",
+        "lesson_sub_title": "How to Spot Scams and Fake Investments"
+    },
+    "seo": {
+        "primary_keyword": "real money vs fake money",
+        "secondary_keywords": ["how to spot investment scams", "what makes money valuable", "seigniorage explained", "cryptocurrency scams"],
+        "meta_title": "The 4 Rules of Real Money | MoneyWise",
+        "meta_description": "Learn the 4 essential rules that separate real investments from scams. Discover what makes money valuable and how to protect your wealth from fake assets.",
+        "slug": "4-rules-of-real-money",
+        "schema_type": "Article",
+        "estimated_read_time": "2 min read"
+    },
+    "social": {
+        "og_title": "Can You Spot Fake Money? The 4 Rules Every Investor Needs",
+        "og_description": "Most 'hot investments' are traps. Here's how to tell real value from hype.",
+        "twitter_card": "summary_large_image",
+        "pinterest_description": "4 rules to protect your money from scams and fake investments #personalfinance #investing #moneywise"
+    },
+    "youtube": {
+        "title": "MoneyWise: The 4 Rules of Real Money | Lesson 2",
+        "description": "Ever wonder why some investments crash to zero while others hold value? In this lesson, we reveal the 4 essential rules that separate real money from worthless assets.\n\n0:00 The Trap\n0:15 What Makes Money Real\n0:35 Why This Matters\n0:55 Who Falls for Scams\n1:15 The 4 Essentials\n\n#personalfinance #investing #scams #moneywise",
+        "tags": ["personal finance", "investing", "scams", "money tips", "financial literacy", "cryptocurrency"],
+        "playlists": "MoneyWise Series"
+    },
+    "blog": {
+        "category": "Investing",
+        "tags": ["investing basics", "scams", "fiat currency", "monetary theory"],
+        "related_posts": ["what-is-seigniorage", "how-to-avoid-investment-scams"],
+        "cta_type": "newsletter_signup",
+        "cta_text": "Get weekly tips to protect and grow your wealth"
+    },
+    "icons": [
+        "money.png",
+        "coins.png",
+        "gold_bars.png",
+        "banknotes.png",
+        "cryptocurrency.png",
+        "bitcoin.png",
+        "bank.png",
+        "shield.png",
+        "warning.png",
+        "danger.png",
+        "loss.png",
+        "profit.png",
+        "tax.png",
+        "stocks.png",
+        "thinking.png",
+        "question_mark.png",
+        "check_mark.png",
+        "thumbs_up.png",
+        "thumbs_down.png",
+        "light_bulb.png",
+        "checklist.png",
+        "safe.png",
+        "contract.png",
+        "businessman.png"
+    ],
+    "scenes": [
+        {
+            "scene_index": 1,
+            "scene_type": "Hook / Pain Point",
+            "voiceover_script": "Ever feel like the next 'big investment' is just a trap? From meme coins to overhyped startups, millions of people lose money chasing returns that were never real. The uncomfortable truth? Most of these 'assets' were designed to take your money from day one.",
+            "word_count": 46,
+            "h2_heading": "The Trap of Fake Investments"
+        },
+        {
+            "scene_index": 2,
+            "scene_type": "What It Is (The Concept)",
+            "voiceover_script": "Real money isn't just paper or code. Throughout history, currencies had value because they were backed by something—gold, government power, or productive assets. When governments mint money, the difference between production cost and face value is called seigniorage. It's a hidden tax we all pay.",
+            "word_count": 49,
+            "h2_heading": "What Makes Money Real"
+        },
+        {
+            "scene_index": 3,
+            "scene_type": "Why It Matters (The Stakes)",
+            "voiceover_script": "Here's the danger: when bad money floods the market, good money disappears. This is Gresham's Law. People hoard real assets and spend worthless ones. If you can't tell the difference, you end up holding the bag when the music stops—and it always stops.",
+            "word_count": 48,
+            "h2_heading": "Gresham's Law in Action"
+        },
+        {
+            "scene_index": 4,
+            "scene_type": "Who This Applies To (Relevance)",
+            "voiceover_script": "If you're chasing triple-digit returns in meme coins or unproven startups, ask yourself: am I the investor or the exit liquidity? Whenever something looks too good to be true, someone is probably getting rich—and it's not you.",
+            "word_count": 42,
+            "h2_heading": "Are You the Exit Liquidity?"
+        },
+        {
+            "scene_index": 5,
+            "scene_type": "How To Take Action (Strategy)",
+            "voiceover_script": "Before you invest, check these four essentials. One: Is it backed by real power or authority? Two: Does it have hard collateral? Three: Does it generate actual profit? Four: Can you pay taxes with it? If none of these apply, it's probably not money—it's a gamble.",
+            "word_count": 51,
+            "h2_heading": "The 4 Essentials Checklist"
+        },
+        {
+            "scene_index": 6,
+            "scene_type": "Call to Action (CTA)",
+            "voiceover_script": "Don't get wrecked. Stick to the four essentials. Want the full investment checklist? Subscribe to MoneyWise and start protecting your wealth today.",
+            "word_count": 26,
+            "h2_heading": ""
+        }
+    ]
+}
