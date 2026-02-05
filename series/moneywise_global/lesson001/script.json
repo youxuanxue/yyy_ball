@@ -1,0 +1,109 @@
+{
+    "meta": {
+        "project_name": "MoneyWise",
+        "lesson_number": "Lesson 1",
+        "lesson_title": "Why Gold Failed As An Inflation Hedge in 2025",
+        "lesson_sub_title": "The Truth About Safe Haven Assets"
+    },
+    "seo": {
+        "primary_keyword": "gold as inflation hedge",
+        "secondary_keywords": [
+            "gold price drop 2025",
+            "is gold safe investment",
+            "protecting wealth from inflation",
+            "fiat currency risks"
+        ],
+        "meta_title": "Why Gold Failed As An Inflation Hedge in 2025 | MoneyWise",
+        "meta_description": "Think gold protects you from inflation? In late 2025, gold plunged 10% while costs rose. Learn why the 'safe haven' myth is dangerous and what actually works.",
+        "slug": "gold-inflation-hedge-myth-2025",
+        "schema_type": "Article",
+        "estimated_read_time": "2 min read"
+    },
+    "social": {
+        "og_title": "Gold Crashed 10% in 2025: Is It Still Safe?",
+        "og_description": "In October 2025, gold dropped from $4,380 to under $4,000 in weeks. Here's why relying on gold for safety is a risky bet.",
+        "twitter_card": "summary_large_image",
+        "pinterest_description": "Gold failed as an inflation hedge in 2025. Here's what you need to know about protecting your wealth. #investing #gold #moneywise"
+    },
+    "youtube": {
+        "title": "MoneyWise: Why Gold Failed in 2025 (And What Works) | Lesson 1",
+        "description": "00:00 The 2025 Gold Crash\n00:20 The Fiat Reality\n00:40 Why Gold Sits Still\n01:00 Who Is At Risk\n01:15 The Real Strategy\n\nGold isn't the guaranteed safety net you think it is. In late 2025, it dropped nearly 10% in weeks. Here's the truth about protecting your wealth.\n\n#PersonalFinance #Investing #Gold #WealthBuilding",
+        "tags": ["gold price 2025", "inflation hedge", "investing basics", "wealth protection", "money tips"],
+        "playlists": "MoneyWise Series"
+    },
+    "blog": {
+        "category": "Personal Finance",
+        "tags": ["gold", "inflation", "market crash", "investing strategy"],
+        "related_posts": ["understanding-fiat-currency", "diversification-strategies-2026"],
+        "cta_type": "newsletter_signup",
+        "cta_text": "Join MoneyWise for weekly wealth-building strategies."
+    },
+    "icons": [
+        "gold_bars.png",
+        "decrease.png",
+        "us_dollar.png",
+        "currency_exchange.png",
+        "warning.png",
+        "investment.png",
+        "piggy_bank.png",
+        "thinking.png",
+        "safe.png",
+        "checklist.png",
+        "money_bag_with_coins.png",
+        "loss.png",
+        "shield.png",
+        "strategy.png",
+        "pie_chart.png",
+        "target.png",
+        "idea.png",
+        "real_estate.png",
+        "stocks.png",
+        "price_tag_usd.png",
+        "down_arrow.png",
+        "print.png"
+    ],
+    "scenes": [
+        {
+            "scene_index": 1,
+            "scene_type": "Hook / Pain Point",
+            "voiceover_script": "Think gold is your ultimate safety net when the world goes crazy? Think again. In October 2025, just when everyone expected safety, gold plunged from nearly $4,400 to below $4,000 in weeks. That's 10% of your 'safe' money wiped out instantly. If gold can't protect you, what will?",
+            "word_count": 48,
+            "h2_heading": "The 2025 Gold Crash Reality"
+        },
+        {
+            "scene_index": 2,
+            "scene_type": "What It Is (The Concept)",
+            "voiceover_script": "Here's the reality: since 1971, money hasn't been backed by gold—it's backed by faith. Modern currency is essentially a government IOU. Every time they print more to solve a crisis, your existing dollars lose value. It's a hidden tax that quietly erodes your purchasing power while you sleep.",
+            "word_count": 48,
+            "h2_heading": "The Hidden Tax of Printed Money"
+        },
+        {
+            "scene_index": 3,
+            "scene_type": "Why It Matters (The Stakes)",
+            "voiceover_script": "The problem is that gold doesn't produce anything. It just sits in a vault. And in a real liquidity crisis, like we saw in late 2025, even gold gets sold off to raise cash. It offers no guaranteed floor when panic hits the market, leaving you exposed when you need safety most.",
+            "word_count": 52,
+            "h2_heading": "Why Gold Fails in Crises"
+        },
+        {
+            "scene_index": 4,
+            "scene_type": "Who This Applies To (Relevance)",
+            "voiceover_script": "If you're hoarding gold coins for retirement, or sitting in cash waiting for the 'perfect crash' to buy cheap assets, this is your wake-up call. Relying on a single asset class—whether it's gold or cash—is a strategy for losing wealth, not preserving it.",
+            "word_count": 44,
+            "h2_heading": "Are You Overexposed?"
+        },
+        {
+            "scene_index": 5,
+            "scene_type": "How To Take Action (Strategy)",
+            "voiceover_script": "Real safety comes from a dynamic approach. First, diversify beyond just gold and cash. Second, invest in productive assets that generate income, like dividend stocks or rental properties. And third, keep adapting your strategy. Don't just sit on gold; make your money work for you.",
+            "word_count": 46,
+            "h2_heading": "The Real Wealth Protection Strategy"
+        },
+        {
+            "scene_index": 6,
+            "scene_type": "Call to Action (CTA)",
+            "voiceover_script": "Stop relying on outdated myths. Subscribe to MoneyWise for data-driven strategies that actually build wealth in 2026. Next up: how currencies really work.",
+            "word_count": 23,
+            "h2_heading": ""
+        }
+    ]
+}

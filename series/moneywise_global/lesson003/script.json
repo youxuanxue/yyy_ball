@@ -1,0 +1,107 @@
+{
+    "meta": {
+        "project_name": "MoneyWise",
+        "lesson_number": "Lesson 3",
+        "lesson_title": "How the Government Controls Your Money",
+        "lesson_sub_title": "Understanding Monetary and Fiscal Policy"
+    },
+    "seo": {
+        "primary_keyword": "monetary policy explained",
+        "secondary_keywords": ["fiscal policy basics", "Federal Reserve interest rates", "how government affects economy", "money supply explained"],
+        "meta_title": "How Government Controls Your Money | MoneyWise",
+        "meta_description": "Learn how the Federal Reserve and government fiscal policy affect your wallet. Understand interest rates, money supply, and why it matters for your finances.",
+        "slug": "how-government-controls-your-money",
+        "schema_type": "Article",
+        "estimated_read_time": "2 min read"
+    },
+    "social": {
+        "og_title": "The Two Levers That Control Your Money",
+        "og_description": "Ever wonder why interest rates change? Here's how the Fed and Congress control the economy.",
+        "twitter_card": "summary_large_image",
+        "pinterest_description": "Understanding monetary and fiscal policy for beginners #personalfinance #economy #moneywise"
+    },
+    "youtube": {
+        "title": "MoneyWise: How the Government Controls Your Money | Lesson 3",
+        "description": "In this lesson, we break down how the Federal Reserve and government spending affect your wallet every day.\n\n0:00 Introduction\n0:15 What is Monetary Policy?\n0:35 Why It Matters\n0:55 Who This Affects\n1:15 How to Use This Knowledge\n\n#personalfinance #economy #federalreserve #moneywise",
+        "tags": ["monetary policy", "fiscal policy", "Federal Reserve", "interest rates", "personal finance", "economy explained", "money supply"],
+        "playlists": "MoneyWise Series"
+    },
+    "blog": {
+        "category": "Economic Fundamentals",
+        "tags": ["monetary-policy", "fiscal-policy", "federal-reserve", "interest-rates"],
+        "related_posts": ["understanding-inflation", "how-interest-rates-affect-you"],
+        "cta_type": "newsletter_signup",
+        "cta_text": "Get weekly insights on how economic policy affects your money"
+    },
+    "icons": [
+        "bank.png",
+        "bank_building.png",
+        "money.png",
+        "cash.png",
+        "coins.png",
+        "dollar_coin.png",
+        "us_dollar.png",
+        "chart.png",
+        "line_chart.png",
+        "bar_chart.png",
+        "increase.png",
+        "decrease.png",
+        "percentage.png",
+        "calculator.png",
+        "businessman.png",
+        "government.png",
+        "policy_document.png",
+        "budget.png",
+        "debt.png",
+        "loan.png",
+        "credit_card.png",
+        "piggy_bank.png",
+        "savings.png",
+        "investment.png",
+        "stocks.png"
+    ],
+    "scenes": [
+        {
+            "scene_index": 1,
+            "scene_type": "Hook / Pain Point",
+            "voiceover_script": "Ever wonder why your savings account suddenly pays more interest, or why mortgage rates keep changing? It's not random. Behind the scenes, the government has two powerful levers that control how money flows through the entire economy and, ultimately, into your pocket.",
+            "word_count": 45,
+            "h2_heading": "Why Your Interest Rates Keep Changing"
+        },
+        {
+            "scene_index": 2,
+            "scene_type": "What It Is (The Concept)",
+            "voiceover_script": "The government manages the economy using two main tools. First, monetary policy, run by the Federal Reserve, controls interest rates and money supply. Second, fiscal policy, managed by Congress, controls government spending and taxes. Think of them as the gas pedal and brake for the entire economy.",
+            "word_count": 51,
+            "h2_heading": "The Two Levers: Monetary and Fiscal Policy"
+        },
+        {
+            "scene_index": 3,
+            "scene_type": "Why It Matters (The Stakes)",
+            "voiceover_script": "Here's what's happening right now: the Fed projects rates around 3.4% through 2026, down from recent highs. Meanwhile, the federal deficit is expected to hit 1.7 trillion dollars in 2026. These numbers directly affect your mortgage rates, loan costs, and even your job security. Understanding them isn't optional—it's essential.",
+            "word_count": 55,
+            "h2_heading": "Current Policy and Your Wallet"
+        },
+        {
+            "scene_index": 4,
+            "scene_type": "Who This Applies To (Relevance)",
+            "voiceover_script": "If you have a mortgage, carry any debt, invest in stocks, or simply want job security, these policies affect you daily. When the Fed cuts rates, borrowing gets cheaper. When government spending rises, certain sectors boom. Either way, you're playing in their game.",
+            "word_count": 47,
+            "h2_heading": "Who Needs to Pay Attention"
+        },
+        {
+            "scene_index": 5,
+            "scene_type": "How To Take Action (Strategy)",
+            "voiceover_script": "Here's your action plan: First, follow Fed announcements, they happen eight times a year and signal rate direction. Second, consider locking in fixed rates when cuts are expected. Third, understand which sectors benefit from government spending, like infrastructure and defense. Knowledge of these trends gives you an edge.",
+            "word_count": 51,
+            "h2_heading": "Three Steps to Stay Ahead"
+        },
+        {
+            "scene_index": 6,
+            "scene_type": "Call to Action (CTA)",
+            "voiceover_script": "Want to stay ahead of economic shifts? Subscribe to MoneyWise for weekly updates on how policy changes affect your finances. Knowledge is your best investment.",
+            "word_count": 28,
+            "h2_heading": ""
+        }
+    ]
+}

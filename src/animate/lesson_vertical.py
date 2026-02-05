@@ -41,6 +41,7 @@ class LessonVertical(Scene, ABC):
     font_style = "modern"    # "classical" 或 "modern"
     default_decoration_icons = ["🔍", "💡", "📚"]  # 默认装饰图标
     voice_name = "zh-CN-YunxiNeural"  # Edge TTS 语音，子类可覆盖
+    icon_list_file = "icons_finance.txt"  # 图标列表文件，子类可覆盖 (icons_finance.txt / icons_education.txt)
     
     def construct(self):
         # 获取子类的文件路径（通过模块获取）
@@ -110,6 +111,32 @@ class LessonVertical(Scene, ABC):
         """
         return self.default_decoration_icons
     
+    # 类级别缓存，按文件名缓存，避免重复读取
+    _icon_index_cache = {}
+    
+    @classmethod
+    def _load_icon_index(cls, project_root, icon_list_file):
+        """加载图标索引（带缓存，按文件名区分）"""
+        if icon_list_file in cls._icon_index_cache:
+            return cls._icon_index_cache[icon_list_file]
+        
+        from pathlib import Path
+        icons8_dir = Path(project_root) / "assets" / "icons8"
+        index = {}
+        
+        # 从指定的图标列表加载（格式：icon_name\tabsolute_path）
+        list_path = icons8_dir / icon_list_file
+        if list_path.exists():
+            with open(list_path, 'r', encoding='utf-8') as f:
+                for line in f:
+                    line = line.strip()
+                    if '\t' in line:
+                        name, path = line.split('\t', 1)
+                        index[name] = path
+        
+        cls._icon_index_cache[icon_list_file] = index
+        return index
+    
     def find_icon_file_path(self, icon_name):
         """
         查找图标文件的路径（用于封面生成）
@@ -121,62 +148,21 @@ class LessonVertical(Scene, ABC):
             str: 图标文件路径，如果找不到则返回 None
         """
         from pathlib import Path
-        import json
-        from difflib import SequenceMatcher
         
-        # 兼容性处理：如果 icon_name 以 .png 结尾，去掉扩展名
+        # 兼容性处理：去掉 .png 扩展名
         if icon_name.lower().endswith('.png'):
             icon_name = icon_name[:-4]
         
+        # 方法1: 从子类指定的图标列表查找（高效）
+        index = self._load_icon_index(self.project_root, self.icon_list_file)
+        if icon_name in index:
+            path = index[icon_name]
+            if Path(path).exists():
+                return path
+        
+        # 方法2: 递归搜索所有子目录（兜底）
         icons8_dir = Path(self.project_root) / "assets" / "icons8"
-        
-        # 定义所有子目录和对应的 metadata 文件
-        icon_sources = [
-            ("doodle", "doodle_png_metadata.json"),
-            ("plasticine", "plasticine_png_metadata.json"),
-            ("stickers", "stickers_png_metadata.json"),
-            ("color", "color_png_metadata.json"),
-        ]
-        
-        # 辅助函数：计算字符串相似度
-        def similarity(a, b):
-            return SequenceMatcher(None, a.lower(), b.lower()).ratio()
-        
-        # 方法1: 从所有 metadata 文件查找（精确匹配 + aliases）
-        for subdir, metadata_file in icon_sources:
-            metadata_path = icons8_dir / metadata_file
-            icon_dir = icons8_dir / subdir
-            
-            if not metadata_path.exists():
-                continue
-                
-            try:
-                with open(metadata_path, 'r', encoding='utf-8') as f:
-                    metadata = json.load(f)
-                
-                file_map = metadata.get("file_map", {})
-                
-                # 1.1 精确匹配文件名
-                if icon_name in file_map:
-                    icon_info = file_map[icon_name]
-                    subcategory = icon_info.get("subcategory", "")
-                    icon_path = icon_dir / subcategory / f"{icon_name}.png"
-                    if icon_path.exists():
-                        return str(icon_path.resolve())
-                
-                # 1.2 通过 aliases 查找
-                for filename, icon_info in file_map.items():
-                    aliases = icon_info.get("aliases", [])
-                    if icon_name in aliases:
-                        subcategory = icon_info.get("subcategory", "")
-                        icon_path = icon_dir / subcategory / f"{filename}.png"
-                        if icon_path.exists():
-                            return str(icon_path.resolve())
-            except Exception as e:
-                print(f"⚠️ 读取 metadata 失败 ({metadata_file}): {e}")
-        
-        # 方法2: 递归搜索所有子目录
-        for subdir, _ in icon_sources:
+        for subdir in ["color", "stickers", "plasticine", "doodle"]:
             icon_dir = icons8_dir / subdir
             if icon_dir.exists():
                 for png_file in icon_dir.rglob(f"{icon_name}.png"):
@@ -333,6 +319,7 @@ class SunziLessonVertical(LessonVertical):
     font_style = "classical"  # 楷体（古典风格）
     default_decoration_icons = ["🔍", "💡", "📚"]
     voice_name = "zh-CN-YunxiNeural"  # 云希 - 年轻男性，清晰自然
+    icon_list_file = "icons_education.txt"  # 教育类图标
     
     def build_scene_6(self, scene):
         """场景6: 懿爸锦囊（默认实现：处理互动内容）"""
@@ -394,3 +381,16 @@ class Zsxq100keLessonVertical(LessonVertical):
     font_style = "modern"  # 黑体（现代风格）
     default_decoration_icons = ["💰", "📈", "🏦"]
     voice_name = "zh-CN-XiaoxiaoNeural"  # 晓晓 - 年轻女性，活泼甜美
+    icon_list_file = "icons_finance.txt"  # 理财类图标
+
+class MoneyWiseLessonVertical(LessonVertical):
+    """MoneyWise (Global/Western) Series Base Class"""
+    series_name = "moneywise_global"
+    font_style = "modern"  # Maps to Helvetica/Arial in base class
+    voice_name = "en-US-AriaNeural" # Standard English Voice
+    icon_list_file = "icons_finance.txt"  # Finance icons
+    
+    # Override default colors if needed
+    COLOR_WEALTH = GOLD
+    COLOR_RISK = RED
+    COLOR_SAFE = GREEN
