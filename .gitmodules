@@ -3,10 +3,10 @@
 	url = https://github.com/FunAudioLLM/CosyVoice.git
 [submodule "external/SadTalker"]
 	path = external/SadTalker
-	url = https://github.com/OpenTalker/SadTalker.git
+	url = https://github.com/youxuanxue/SadTalker.git
 [submodule "external/GFPGAN"]
 	path = external/GFPGAN
 	url = https://github.com/TencentARC/GFPGAN.git
 [submodule "external/basicsr"]
 	path = external/basicsr
-	url = https://github.com/xinntao/BasicSR.git
+	url = https://github.com/youxuanxue/BasicSR.git
