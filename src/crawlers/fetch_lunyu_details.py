@@ -10,19 +10,25 @@ OUTPUT_FILE = "lunyu_details.json"
 HEADERS = {
     "accept": "application/json, text/plain, */*",
     "accept-language": "zh-CN,zh;q=0.9,en;q=0.8",
-    "cookie": "zsxq_access_token=${ZSXQ_ACCESS_TOKEN}; abtest_env=beta",
     "origin": "https://wx.zsxq.com",
     "referer": "https://wx.zsxq.com/",
     "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36",
     "x-version": "2.85.0"
 }
 
+
+def build_headers():
+    token = os.getenv("ZSXQ_ACCESS_TOKEN")
+    if not token:
+        raise RuntimeError("Missing ZSXQ_ACCESS_TOKEN environment variable.")
+    return {**HEADERS, "cookie": f"zsxq_access_token={token}; abtest_env=beta"}
+
 def fetch_topic_detail(topic_id):
     url = f"https://api.zsxq.com/v2/topics/{topic_id}/info"
     print(f"Fetching detail for: {topic_id}")
     
     try:
-        response = requests.get(url, headers=HEADERS, verify=False)
+        response = requests.get(url, headers=build_headers(), verify=False)
         if response.status_code == 200:
             return response.json()
         else:
