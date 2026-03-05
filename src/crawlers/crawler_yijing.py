@@ -11,7 +11,6 @@ COLUMN_ID = "481828511858" # 易经专栏ID
 HEADERS = {
     "accept": "application/json, text/plain, */*",
     "accept-language": "zh-CN,zh;q=0.9,en;q=0.8",
-    "cookie": "zsxq_access_token=${ZSXQ_ACCESS_TOKEN}; abtest_env=beta",
     "origin": "https://wx.zsxq.com",
     "priority": "u=1, i",
     "referer": "https://wx.zsxq.com/",
@@ -27,6 +26,13 @@ HEADERS = {
 
 OUTPUT_FILE = "yijing_column_posts.json"
 
+
+def build_headers():
+    token = os.getenv("ZSXQ_ACCESS_TOKEN")
+    if not token:
+        raise RuntimeError("Missing ZSXQ_ACCESS_TOKEN environment variable.")
+    return {**HEADERS, "cookie": f"zsxq_access_token={token}; abtest_env=beta"}
+
 def fetch_topics(end_time=None):
     """
     Fetch topics from the API.
@@ -40,7 +46,7 @@ def fetch_topics(end_time=None):
     print(f"Fetching: {url}")
     
     try:
-        response = requests.get(url, headers=HEADERS, verify=False) 
+        response = requests.get(url, headers=build_headers(), verify=False)
         if response.status_code == 200:
             return response.json()
         else:

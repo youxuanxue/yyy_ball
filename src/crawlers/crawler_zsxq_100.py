@@ -35,12 +35,14 @@ HEADERS = {
     "x-version": "2.87.0"
 }
 
-# Cookie 配置
-COOKIES = {
-    "sensorsdata2015jssdkcross": "%7B%22distinct_id%22%3A%2248415142825128%22%2C%22first_id%22%3A%2219b2ca4f6608a5-0614dbf86a314dc-1c525631-1405320-19b2ca4f6612b4f%22%2C%22props%22%3A%7B%22%24latest_traffic_source_type%22%3A%22%E7%9B%B4%E6%8E%A5%E6%B5%81%E9%87%8F%22%2C%22%24latest_search_keyword%22%3A%22%E6%9C%AA%E5%8F%96%E5%88%B0%E5%80%BC_%E7%9B%B4%E6%8E%A5%E6%89%93%E5%BC%80%22%2C%22%24latest_referrer%22%3A%22%22%7D%2C%22identities%22%3A%22eyIkaWRlbnRpdHlfY29va2llX2lkIjoiMTliMmNhNGY2NjA4YTUtMDYxNGRiZjg2YTMxNGRjLTFjNTI1NjMxLTE0MDUzMjAtMTliMmNhNGY2NjEyYjRmIiwiJGlkZW50aXR5X2xvZ2luX2lkIjoiNDg0MTUxNDI4MjUxMjgifQ%3D%3D%22%2C%22history_login_id%22%3A%7B%22name%22%3A%22%24identity_login_id%22%2C%22value%22%3A%2248415142825128%22%7D%7D",
-    "zsxq_access_token": "${ZSXQ_ACCESS_TOKEN}",
-    "abtest_env": "product"
-}
+def build_cookies():
+    token = os.getenv("ZSXQ_ACCESS_TOKEN")
+    if not token:
+        raise RuntimeError("Missing ZSXQ_ACCESS_TOKEN environment variable.")
+    return {
+        "zsxq_access_token": token,
+        "abtest_env": "product",
+    }
 
 # 输出目录
 OUTPUT_DIR = Path(__file__).parent.parent.parent / "assets" / "zsxq"
@@ -60,7 +62,7 @@ def fetch_topics(end_time=None):
     print(f"正在获取: {url}")
     
     try:
-        response = requests.get(url, headers=HEADERS, cookies=COOKIES, verify=False)
+        response = requests.get(url, headers=HEADERS, cookies=build_cookies(), verify=False)
         if response.status_code == 200:
             return response.json()
         else:
