@@ -159,6 +159,7 @@ lessonXX/media/videos/animate/1920p60/LessonXXVerticalScenes.mp4
 
 ### 输出
 生成 `series/book_XXX/lessonXX/wechat.md`，风格要求：
+- **标题**：使用 `script.json` 中的 `wechat.title` 作为文章标题（格式为 `# {wechat.title}`，已包含 `｜第X课` 后缀）
 - 口语化，像朋友聊天，字数适中，一定不能低于**900字**
 - 使用 `> 引用` 突出金句
 - 使用 `**加粗**` 强调关键点

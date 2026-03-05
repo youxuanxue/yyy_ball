@@ -1,0 +1,96 @@
+{
+    "meta": {
+        "project_name": "MoneyWise",
+        "lesson_number": "Lesson 8",
+        "lesson_title": "Where Can You Actually Invest Your Money?",
+        "lesson_sub_title": "Understanding Your Investment Options From Banks to Private Funds"
+    },
+    "seo": {
+        "primary_keyword": "investment options for beginners",
+        "secondary_keywords": ["where to invest money", "mutual funds vs private funds", "investment vehicles explained", "best places to invest money"],
+        "meta_title": "Investment Options Explained: Where Should You Put Your Money? | MoneyWise",
+        "meta_description": "Discover the key differences between banks, mutual funds, and private investments. Learn which investment option fits your goals and how much you need to start.",
+        "slug": "investment-options-explained-beginners-guide",
+        "schema_type": "Article",
+        "estimated_read_time": "2 min read"
+    },
+    "social": {
+        "og_title": "Where Should You Actually Invest Your Money?",
+        "og_description": "Banks, mutual funds, or private investments? Here's what you need to know before choosing.",
+        "twitter_card": "summary_large_image",
+        "pinterest_description": "Investment options explained simply. Learn the differences between savings accounts, mutual funds, and private investments. #investing #personalfinance #moneytips"
+    },
+    "youtube": {
+        "title": "MoneyWise: Investment Options Explained for Beginners | Lesson 8",
+        "description": "Ever wondered where you should actually put your money? In this video, we break down the main investment options available to everyday investors.\n\n0:00 The Money Question\n0:15 Understanding Your Options\n0:35 Key Differences\n0:55 Who Should Choose What\n1:10 Your Action Plan\n1:25 Next Steps\n\n#investing #personalfinance #moneytips #financialliteracy #wealthbuilding",
+        "tags": ["investment options", "where to invest money", "mutual funds", "savings accounts", "private equity", "investing for beginners", "personal finance", "MoneyWise"],
+        "playlists": "MoneyWise Series"
+    },
+    "blog": {
+        "category": "Investing",
+        "tags": ["investing basics", "money management", "financial planning"],
+        "related_posts": ["diversification-strategy", "risk-vs-reward-investing", "compound-interest-power"],
+        "cta_type": "newsletter_signup",
+        "cta_text": "Get weekly investing tips delivered to your inbox"
+    },
+    "icons": [
+        "money", "cash", "cash_in_hand", "coins", "coin_in_hand", "coin_wallet",
+        "dollar_bag", "dollar_coin", "us_dollar", "banknotes", "stack_of_money",
+        "investment", "investment_portfolio", "stocks", "bonds", "profit", "loss",
+        "growing_money", "money_transfer", "money_circulation", "money_box",
+        "bank", "bank_building", "bank_cards", "atm", "deposit", "withdrawal",
+        "safe", "safe_in", "budget", "loan", "fund_accounting",
+        "chart", "bar_chart", "line_chart", "pie_chart", "analytics", "statistics",
+        "financial_growth_analysis", "positive_dynamic", "increase", "percentage",
+        "business", "company", "management", "businessman", "businesswoman",
+        "briefcase", "handshake", "agreement", "signature", "document", "documents",
+        "lock", "secure", "shield", "privacy", "guarantee", "security_shield",
+        "people", "group", "crowd", "customer", "decision", "make_decision",
+        "question_mark", "questions", "idea", "light_bulb", "tips", "check_mark",
+        "target", "goal", "warning", "calculator", "ledger"
+    ],
+    "scenes": [
+        {
+            "scene_index": 1,
+            "scene_type": "Hook / Pain Point",
+            "voiceover_script": "Got some money saved up and wondering where to put it? You're not alone. Most people park their cash in a savings account and call it a day. But here's the thing—that's just one option, and it might not be the best one for you.",
+            "word_count": 47,
+            "h2_heading": "The Investment Question Everyone Faces"
+        },
+        {
+            "scene_index": 2,
+            "scene_type": "What It Is (The Concept)",
+            "voiceover_script": "There are really three main places for your money: banks, public funds like mutual funds and ETFs, and private investments. Banks are the easiest—anyone can open an account. Public funds let you pool money with others to buy stocks or bonds. Private investments? Those are exclusive clubs with much higher entry requirements.",
+            "word_count": 55,
+            "h2_heading": "The Three Main Investment Categories"
+        },
+        {
+            "scene_index": 3,
+            "scene_type": "Why It Matters (The Stakes)",
+            "voiceover_script": "Here's what most people miss: each option has different rules. Mutual funds let you start small but limit what they can invest in. Private funds might offer better returns, but they're typically only open to accredited investors with higher minimums. Your access level literally determines your investment universe.",
+            "word_count": 50,
+            "h2_heading": "Why Your Options Are Limited—And That's Okay"
+        },
+        {
+            "scene_index": 4,
+            "scene_type": "Who This Applies To (Relevance)",
+            "voiceover_script": "If you're just starting out with a few hundred dollars, stick with bank savings and low-cost index funds. Got more to work with? You can explore a wider range of options. The key is matching your current situation to the right vehicle.",
+            "word_count": 45,
+            "h2_heading": "Finding Your Investment Level"
+        },
+        {
+            "scene_index": 5,
+            "scene_type": "How To Take Action (Strategy)",
+            "voiceover_script": "Step one: Keep three to six months of expenses in a high-yield savings account for emergencies. Step two: Start investing the rest in low-cost index funds through your 401k or IRA. Step three: As your wealth grows, explore other options gradually. Simple, effective, proven.",
+            "word_count": 48,
+            "h2_heading": "Your Three-Step Investment Plan"
+        },
+        {
+            "scene_index": 6,
+            "scene_type": "Call to Action (CTA)",
+            "voiceover_script": "Ready to make your money work harder? Subscribe for more practical investing tips, and download our free guide on choosing your first investment. Your future self will thank you.",
+            "word_count": 30,
+            "h2_heading": ""
+        }
+    ]
+}

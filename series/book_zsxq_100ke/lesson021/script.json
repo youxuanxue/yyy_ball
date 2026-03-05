@@ -1,0 +1,72 @@
+{
+    "meta": {
+        "project_name": "日日生金",
+        "lesson_number": "第21课",
+        "lesson_title": "公募基金",
+        "lesson_sub_title": "普通人搭上大佬顺风车的秘密"
+    },
+    "wechat": {
+        "hashtags": ["#公募基金", "#基金入门", "#理财小白", "#指数基金", "#股票型基金", "#散户逆袭"],
+        "title": "95%的好项目你买不到？｜第21课",
+        "description": "普通人的钱太少，好项目看不上你？但有一种方式能让你搭上大佬的顺风车——公募基金💡 一文搞懂债基、指数基金、股票型基金的区别，三步走让钱帮你赚钱！",
+        "heji": "",
+        "huodong": ""
+    },
+    "youtube": {
+        "title": "【日日生金】95%的好项目你买不到？公募基金帮你搭上大佬顺风车｜第21课",
+        "description": "📌 本期要点：\n- 为什么95%的优质项目跟普通人绝缘？\n- 公募基金到底是什么？投资人、管理人、托管人三方关系\n- 债基、指数基金、股票型基金怎么选？\n- 散户真的干不过大户吗？\n- 三步走：从保守到进取的基金配置策略\n\n🔔 关注频道，每天学一点理财知识！\n\n#公募基金 #基金入门 #理财 #投资 #指数基金 #日日生金",
+        "playlists": "日日生金",
+        "tags": ["公募基金", "基金入门", "理财小白", "指数基金", "股票型基金", "散户投资", "基金定投", "理财知识"]
+    },
+    "icons": [
+        "money", "cash", "cash_in_hand", "coins", "coin_wallet", "dollar_bag",
+        "investment", "investment_portfolio", "stocks", "bonds", "profit", "loss",
+        "growing_money", "money_transfer", "money_circulation", "stack_of_coins",
+        "stack_of_money", "gold_bars", "safe", "bank", "bank_building", "bank_cards",
+        "chart", "bar_chart", "line_chart", "pie_chart", "analytics", "statistics",
+        "financial_growth_analysis", "positive_dynamic", "increase", "decrease",
+        "percentage", "calculator", "business", "businessman", "company", "management",
+        "handshake", "agreement", "presentation", "people", "group", "crowd",
+        "family", "man", "woman", "target", "goal", "idea", "light_bulb",
+        "question_mark", "check_mark", "warning", "thumbs_up", "like", "education",
+        "book", "brain", "arrow_up", "down_arrow"
+    ],
+    "scenes": [
+        {
+            "scene_index": 1,
+            "scene_type": "痛点/破冰/现状 (钩子引入)",
+            "voiceover_script": "你有没有发现，好的投资项目好像永远轮不到咱们普通人？别人投进去赚翻了，咱们连门都摸不着。这不是你的错，因为95%以上的优质项目，真的跟普通人绝缘。但有一种方式，能让你也搭上大佬的顺风车，今天咱们就来聊聊它。",
+            "voiceover_words": 89
+        },
+        {
+            "scene_index": 2,
+            "scene_type": "知识/是什么 (What)",
+            "voiceover_script": "简单说，基金就是大家把钱凑到一起，交给一个专业的人去投资。你可以把它想象成拼团，一个人买不起的好东西，一百个人一起买就够了。出钱的人叫投资人，管钱的人叫基金管理人，钱存在专门的银行账户里，那个银行叫托管人。三方按合同来，谁也别想乱来。",
+            "voiceover_words": 98
+        },
+        {
+            "scene_index": 3,
+            "scene_type": "剖析/认知矫正/为什么重要 (Why)",
+            "voiceover_script": "很多人觉得，我自己炒股不行吗？你想想，全世界80%的股市交易是专业基金在操盘，只有20%是散户。散户干得过大户吗？就像你觉得街边练拳的能打赢职业格斗选手吗？基金经理每天就研究这个，信息、资源、经验全面碾压，把钱交给专业的人，才是聪明的选择。",
+            "voiceover_words": 100
+        },
+        {
+            "scene_index": 4,
+            "scene_type": "适用场景（Where/When）",
+            "voiceover_script": "如果你每个月能攒下几百块闲钱，不想放银行吃灰；或者你想投资但不懂选股、没时间盯盘；又或者你看好某个行业却不知道买哪只股票，那公募基金就是为你量身定做的。一百块就能起投，门槛低到没朋友。",
+            "voiceover_words": 80
+        },
+        {
+            "scene_index": 5,
+            "scene_type": "策略/应对/怎么做 (How)",
+            "voiceover_script": "记住三步走。第一步，搞清自己能亏多少，保守就买债基货基，稳如老狗。第二步，看好大趋势就买指数基金，赌的是国运。第三步，想搏高收益就选股票型基金，但一定要看基金经理的历史业绩，别追网红经理，看三年以上排名才靠谱。",
+            "voiceover_words": 90
+        },
+        {
+            "scene_index": 6,
+            "scene_type": "行动号召（Action）",
+            "voiceover_script": "今天你搞懂公募基金了吗？觉得有用就点个赞，分享给身边还在盲目炒股的朋友。关注我，下期咱们聊聊私募基金到底是怎么回事。",
+            "voiceover_words": 45
+        }
+    ]
+}

@@ -1,0 +1,91 @@
+{
+    "meta": {
+        "project_name": "MoneyWise",
+        "lesson_number": "Lesson 16",
+        "lesson_title": "Become Who Banks Want to Lend To",
+        "lesson_sub_title": "Building a Credit Profile That Gets You Approved"
+    },
+    "seo": {
+        "primary_keyword": "improve credit profile",
+        "secondary_keywords": ["how to get approved for loans", "credit score improvement", "bank loan requirements", "build credit history"],
+        "meta_title": "Build a Credit Profile Banks Love | MoneyWise",
+        "meta_description": "Learn how to transform your financial profile into one that banks compete to approve for loans.",
+        "slug": "credit-profile-banks-want",
+        "schema_type": "Article",
+        "estimated_read_time": "2 min read"
+    },
+    "social": {
+        "og_title": "What Makes Banks Say Yes",
+        "og_description": "It's not luck. It's strategy. Build the profile banks want to see.",
+        "twitter_card": "summary_large_image",
+        "pinterest_description": "Credit profile tips. Get banks to compete for you. #creditbuilding #loans #personalfinance"
+    },
+    "youtube": {
+        "title": "MoneyWise: Be Who Banks Want to Lend To | Lesson 16",
+        "description": "Your credit profile determines your financial opportunities. Here's how to make banks want YOU.\n\n0:00 The Approval Game\n0:15 What Banks Really See\n0:35 The Trust Triangle\n0:50 Who Needs This\n1:05 Your Action Plan\n1:20 Start Building\n\n#creditscore #loans #personalfinance #banking #moneywise",
+        "tags": ["credit profile", "loan approval", "credit score", "personal finance", "banking", "financial planning"],
+        "playlists": "MoneyWise Series"
+    },
+    "blog": {
+        "category": "Debt Management",
+        "tags": ["credit score", "loans", "money management", "banking"],
+        "related_posts": ["borrowing-power", "loan-basics"],
+        "cta_type": "newsletter_signup",
+        "cta_text": "Get weekly credit-building tips delivered free"
+    },
+    "icons": [
+        "money", "cash", "coins", "dollar_bag", "us_dollar", "banknotes",
+        "bank", "bank_building", "loan", "debt", "credit_card", "credit_control",
+        "user", "businessman", "businesswoman", "people",
+        "chart", "bar_chart", "line_chart", "increase", "percentage",
+        "check_mark", "approve", "disapprove", "certificate",
+        "handshake", "agreement", "contract", "document",
+        "clock", "time", "calendar", "schedule",
+        "shield", "security_shield", "safe", "lock",
+        "star", "trophy", "medal", "target", "success"
+    ],
+    "scenes": [
+        {
+            "scene_index": 1,
+            "scene_type": "Hook / Pain Point",
+            "voiceover_script": "Banks don't approve people randomly. They have a checklist, and you either match it or you don't. The good news? That checklist isn't secret. Once you know exactly what banks look for, you can systematically become the person they want to lend to.",
+            "word_count": 45,
+            "h2_heading": "The Hidden Approval Checklist"
+        },
+        {
+            "scene_index": 2,
+            "scene_type": "What It Is (The Concept)",
+            "voiceover_script": "Banks evaluate three core areas: your track record, your current stability, and your capacity. Track record means payment history and credit age. Stability means consistent income and employment. Capacity means your debt-to-income ratio shows you can handle more debt responsibly.",
+            "word_count": 48,
+            "h2_heading": "The Three Things Banks Measure"
+        },
+        {
+            "scene_index": 3,
+            "scene_type": "Why It Matters (The Stakes)",
+            "voiceover_script": "A strong credit profile isn't just about getting approved. It's about getting better terms. The difference between a good and bad credit profile can mean thousands saved in interest, higher credit limits, and more negotiating power. You're not just qualifying; you're positioning.",
+            "word_count": 47,
+            "h2_heading": "Why Profile Matters More Than Score"
+        },
+        {
+            "scene_index": 4,
+            "scene_type": "Who This Applies To (Relevance)",
+            "voiceover_script": "This applies whether you're starting from zero, rebuilding after setbacks, or already established but want better offers. Everyone can optimize. Young adults building first credit, professionals seeking home loans, entrepreneurs needing capital: the rules work for all.",
+            "word_count": 44,
+            "h2_heading": "Whether Starting or Rebuilding"
+        },
+        {
+            "scene_index": 5,
+            "scene_type": "How To Take Action (Strategy)",
+            "voiceover_script": "Start simple. First, automate payments so you never miss one. Second, keep old accounts open for credit age. Third, maintain low utilization, ideally below thirty percent. Fourth, space out new credit applications. Small consistent actions compound into a powerful profile.",
+            "word_count": 46,
+            "h2_heading": "Four Moves to Strengthen Your Profile"
+        },
+        {
+            "scene_index": 6,
+            "scene_type": "Call to Action (CTA)",
+            "voiceover_script": "Ready to become the borrower banks compete for? Follow MoneyWise for weekly strategies that put you in control. Start building today.",
+            "word_count": 25,
+            "h2_heading": ""
+        }
+    ]
+}

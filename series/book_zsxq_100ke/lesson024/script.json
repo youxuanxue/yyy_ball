@@ -1,0 +1,72 @@
+{
+    "meta": {
+        "project_name": "日日生金",
+        "lesson_number": "第24课",
+        "lesson_title": "战略性房产投资",
+        "lesson_sub_title": "逻辑已变，下一个洼地在哪儿"
+    },
+    "wechat": {
+        "hashtags": ["#房产投资", "#城市扩容", "#经济治理溢价", "#买房攻略", "#都市圈", "#深圳"],
+        "title": "买房逻辑彻底变了！｜第24课",
+        "description": "上一轮房价靠城市化红利，这一轮靠经济治理溢价🔥 城市扩容三种方式决定哪里会涨！搞懂节点、枢纽、核心地段，下一个房价洼地你也能提前锁定🎯",
+        "heji": "",
+        "huodong": ""
+    },
+    "youtube": {
+        "title": "【日日生金】买房逻辑彻底变了！下一个房价洼地在哪｜第24课",
+        "description": "📌 本期要点：\n- 房价上涨的底层逻辑已经改变\n- 城市扩容的三种方式：新区、撤市设区、扩权\n- 什么是\"经济治理溢价\"？\n- 大深圳统筹合作示范区案例\n- 怎么判断哪些区域是下一个洼地？\n\n🔔 关注频道，每天学一点理财知识！\n\n#房产投资 #城市扩容 #买房 #理财 #日日生金",
+        "playlists": "日日生金",
+        "tags": ["房产投资", "城市扩容", "经济治理溢价", "买房攻略", "都市圈", "深圳", "撤市设区", "理财知识"]
+    },
+    "icons": [
+        "money", "cash", "dollar_bag", "coins", "stack_of_money", "growing_money",
+        "investment", "investment_portfolio", "profit", "budget", "loan", "deposit",
+        "bank", "bank_building", "house", "home", "real_estate", "apartment", "building",
+        "residence", "condo", "rent", "lease", "house_keys", "dollar_place_marker",
+        "chart", "bar_chart", "line_chart", "analytics", "statistics",
+        "financial_growth_analysis", "positive_dynamic", "increase", "decrease",
+        "percentage", "calculator", "business", "business_building", "company", "management",
+        "target", "goal", "search", "magnifying_glass", "globe", "network", "people",
+        "group", "man", "question_mark", "check_mark", "idea", "light_bulb", "brain",
+        "arrow_up", "calendar", "road", "transportation", "bus", "car", "document",
+        "report", "handshake", "agreement", "pin"
+    ],
+    "scenes": [
+        {
+            "scene_index": 1,
+            "scene_type": "痛点/破冰/现状 (钩子引入)",
+            "voiceover_script": "买房最让人头疼的是什么？缺钱。看得上的地方买不起，买得起的区域又不确定能不能涨。但你知道吗？房价上涨的底层逻辑已经变了。上一轮叫城市化红利，这一轮叫经济治理溢价。搞懂这个，你就知道下一个洼地在哪儿。",
+            "voiceover_words": 85
+        },
+        {
+            "scene_index": 2,
+            "scene_type": "知识/是什么 (What)",
+            "voiceover_script": "城市扩容有三种方式。第一种，本地划出一个重点打造的新区。第二种，周围的卫星城被划进来，撤市设区，变成都市圈的一部分。第三种，扩权，市县区一级获得更大的行政和经济管理权限。这三种方式，决定了哪些区域的房价会起飞。",
+            "voiceover_words": 88
+        },
+        {
+            "scene_index": 3,
+            "scene_type": "剖析/认知矫正/为什么重要 (Why)",
+            "voiceover_script": "核心逻辑是什么？真正有潜力的区域，不是本级领导说了算的，而是省级甚至国家一级有更高规划的地方。说白了就是好地方要让治理能力强的人来管。就像深圳为核心的大深圳统筹合作示范区，把优质资源集中给最能干的团队，这才是房价上涨的真正推手。",
+            "voiceover_words": 97
+        },
+        {
+            "scene_index": 4,
+            "scene_type": "适用场景（Where/When）",
+            "voiceover_script": "什么地方值得重点关注？三个关键词：扩容区域的节点位置、枢纽位置、核心关键地段。不是所有扩容区都会涨，要涨的是承担连接和聚集功能的点位。比如交通枢纽、产业聚集区、行政中心周边。",
+            "voiceover_words": 74
+        },
+        {
+            "scene_index": 5,
+            "scene_type": "策略/应对/怎么做 (How)",
+            "voiceover_script": "怎么判断？第一，关注国家级和省级的城市规划文件，看哪些区域被点名了。第二，看交通基建规划，地铁高铁通到哪，钱就流到哪。第三，看产业布局，有龙头企业入驻的片区潜力更大。第四，别追高，买在规划发布但还没大规模动工的阶段，性价比最高。",
+            "voiceover_words": 95
+        },
+        {
+            "scene_index": 6,
+            "scene_type": "行动号召（Action）",
+            "voiceover_script": "房产投资的逻辑已经变了，别再用老思路买房。关注我，带你看清每一轮财富机会的底层密码。",
+            "voiceover_words": 35
+        }
+    ]
+}

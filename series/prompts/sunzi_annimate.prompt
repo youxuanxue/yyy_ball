@@ -177,7 +177,8 @@ class LessonXXVerticalScenes(SunziLessonVertical):
         self.play(FadeIn(center_group, shift=UP), run_time=step_time)
         self.play(Write(bottom_element), Circumscribe(bottom_element, color=RED), run_time=step_time)
         
-        # 5. 统一淡出
+        # 5. 保存场景截图 & 统一淡出
+        self.save_scene_thumbnail(1)
         self.play(*[FadeOut(mob) for mob in self.mobjects], run_time=t_trans)
 
     def build_scene_2(self, scene):
@@ -211,6 +212,7 @@ class LessonXXVerticalScenes(SunziLessonVertical):
         self.play(FadeIn(main_icon), run_time=step_time)
         self.play(Write(explain_text), Circumscribe(explain_text, color=ORANGE), run_time=step_time)
 
+        self.save_scene_thumbnail(2)
         self.play(*[FadeOut(mob) for mob in self.mobjects], run_time=t_trans)
 
     def build_scene_3(self, scene):
@@ -227,6 +229,7 @@ class LessonXXVerticalScenes(SunziLessonVertical):
 
         # 实现对比布局...
         
+        self.save_scene_thumbnail(3)
         self.play(*[FadeOut(mob) for mob in self.mobjects], run_time=t_trans)
 
     def build_scene_4(self, scene):
@@ -244,6 +247,7 @@ class LessonXXVerticalScenes(SunziLessonVertical):
         # 策略步骤（使用 LaggedStart）
         # self.play(LaggedStart(*[FadeIn(item) for item in items], lag_ratio=0.3), run_time=step_time)
         
+        self.save_scene_thumbnail(4)
         self.play(*[FadeOut(mob) for mob in self.mobjects], run_time=t_trans)
 
     def build_scene_5(self, scene):
@@ -262,6 +266,7 @@ class LessonXXVerticalScenes(SunziLessonVertical):
         # quote_bg = RoundedRectangle(height=1.2, corner_radius=0.4, color=GOLD, fill_opacity=0.15)
         # quote_bg.surround(quote_text, buff=0.5)
         
+        self.save_scene_thumbnail(5)
         self.play(*[FadeOut(mob) for mob in self.mobjects], run_time=t_trans)
 
 ```
@@ -270,6 +275,7 @@ class LessonXXVerticalScenes(SunziLessonVertical):
 - 类名 `LessonXXVerticalScenes` 中的 `XX` 需替换为实际课程编号（如 `Lesson01VerticalScenes`）
 - 中文引号使用「」而非""，避免 Python 语法错误
 - 5个场景结构：痛点 → 知识 → 剖析 → 策略 → 升华
+- **场景截图：** 每个 `build_scene_X` 必须在最后的 FadeOut 之前调用 `self.save_scene_thumbnail(X)`，将当前画面保存为 `images/X.png`
 
 ---
 

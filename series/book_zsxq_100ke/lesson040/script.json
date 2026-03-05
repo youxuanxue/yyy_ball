@@ -1,0 +1,74 @@
+{
+    "meta": {
+        "project_name": "日日生金",
+        "lesson_number": "第40课",
+        "lesson_title": "政府工程怎么玩",
+        "lesson_sub_title": "BT、BOT、PPP、EPC全解析"
+    },
+    "wechat": {
+        "hashtags": ["#PPP模式", "#政府工程", "#基础设施", "#BT模式", "#投资知识", "#日日生金"],
+        "title": "政府修路的钱哪来的？｜第40课",
+        "description": "政府修桥铺路动辄几十亿，钱从哪来？BT先垫资、BOT收费权抵债、PPP公私合营、EPC智慧服务。四种玩法一文看懂🔧",
+        "heji": "",
+        "huodong": ""
+    },
+    "youtube": {
+        "title": "【日日生金】政府没钱怎么搞基建？BT、BOT、PPP、EPC全解析｜第40课",
+        "description": "📌 本期要点：\n- 政府工程动辄几十亿，钱从哪来？\n- BT模式：先干活后给钱\n- BOT模式：修好了你先经营\n- PPP模式：政府和企业合资干\n- EPC模式：我只出智慧不垫钱\n- 理财产品底层资产可能就是这些项目\n\n🔔 关注频道，每天学一点理财知识！\n\n#PPP #基建投资 #政府工程 #理财 #投资 #日日生金",
+        "playlists": "日日生金",
+        "tags": ["PPP模式", "BT模式", "BOT模式", "EPC模式", "基础设施", "政府工程", "投资知识", "日日生金"]
+    },
+    "icons": [
+        "money", "cash", "coins", "dollar_bag", "investment",
+        "investment_portfolio", "growing_money", "profit", "loss",
+        "money_transfer", "money_circulation", "stack_of_money",
+        "bank", "bank_building", "business", "business_building",
+        "business_buildings", "company", "small_business", "new_company",
+        "businessman", "management", "briefcase", "handshake",
+        "agreement", "presentation", "building", "house", "road",
+        "real_estate", "chart", "bar_chart", "line_chart",
+        "analytics", "financial_growth_analysis", "positive_dynamic",
+        "increase", "decrease", "percentage", "budget", "debt",
+        "document", "documents", "finance_document", "policy_document",
+        "certificate", "lock", "unlock", "shield", "check_mark",
+        "warning", "thumbs_up", "like", "star"
+    ],
+    "scenes": [
+        {
+            "scene_index": 1,
+            "scene_type": "痛点/破冰/现状 (钩子引入)",
+            "voiceover_script": "你有没有想过，政府修一条高速公路要几十个亿，这钱到底从哪来？地方政府作为管理部门，本身是不赚钱的，那这些桥、路、产业园，到底是怎么建起来的？今天给你揭开这个秘密。",
+            "voiceover_words": 70
+        },
+        {
+            "scene_index": 2,
+            "scene_type": "知识/是什么 (What)",
+            "voiceover_script": "政府工程主要有四种金融玩法。BT是建完了再给钱，BOT是建完了你先经营收费来抵债，PPP是政府和企业合资一起干，EPC是我只出设计和规划不垫钱。四个模式风险和收益各不相同。",
+            "voiceover_words": 78
+        },
+        {
+            "scene_index": 3,
+            "scene_type": "剖析/认知矫正/为什么重要 (Why)",
+            "voiceover_script": "很多人以为政府工程稳赚不赔，大错特错。BT模式先干活，工程尾款可能好几年要不回来。BOT看着能收费，可收费权不一定覆盖成本。PPP规模最大但烂尾风险不小，好几家上市公司都栽在这上面了。",
+            "voiceover_words": 80
+        },
+        {
+            "scene_index": 4,
+            "scene_type": "适用场景（Where/When）",
+            "voiceover_script": "如果你买银行理财或者信托产品，底层资产很可能就是给这类工程融资的。搞清楚BT、BOT、PPP的区别，你就知道这笔理财的风险在哪。发达地区的BT项目最安全，欠发达地区的PPP要小心。",
+            "voiceover_words": 78
+        },
+        {
+            "scene_index": 5,
+            "scene_type": "策略/应对/怎么做 (How)",
+            "voiceover_script": "选理财记住一个排序：BT优于BOT优于PPP。因为先给钱的肯定比拖着给的靠谱。还要看项目在哪个城市，财政强的东部省会最安全。如果有人给你推EPC相关的产品，那利润虽高但门槛也高，看清楚再投。",
+            "voiceover_words": 83
+        },
+        {
+            "scene_index": 6,
+            "scene_type": "行动号召（Action）",
+            "voiceover_script": "搞懂政府工程的金融逻辑，你看理财产品就通透了。点赞关注，每天一课日日生金。",
+            "voiceover_words": 32
+        }
+    ]
+}

@@ -176,7 +176,8 @@ class LessonXXXVerticalScenes(Zsxq100keLessonVertical):
         self.play(FadeIn(center_group, shift=UP), run_time=step_time)
         self.play(Write(bottom_element), Circumscribe(bottom_element, color=RED), run_time=step_time)
         
-        # 5. 统一淡出
+        # 5. 保存场景截图 & 统一淡出
+        self.save_scene_thumbnail(1)
         self.play(*[FadeOut(mob) for mob in self.mobjects], run_time=t_trans)
 
     def build_scene_2(self, scene):
@@ -208,6 +209,7 @@ class LessonXXXVerticalScenes(Zsxq100keLessonVertical):
         self.play(FadeIn(main_icon), run_time=step_time)
         self.play(Write(summary), Circumscribe(summary, color=GOLD), run_time=step_time)
 
+        self.save_scene_thumbnail(2)
         self.play(*[FadeOut(mob) for mob in self.mobjects], run_time=t_trans)
 
     def build_scene_3(self, scene):
@@ -224,6 +226,7 @@ class LessonXXXVerticalScenes(Zsxq100keLessonVertical):
 
         # 实现对比布局...
         
+        self.save_scene_thumbnail(3)
         self.play(*[FadeOut(mob) for mob in self.mobjects], run_time=t_trans)
 
     def build_scene_4(self, scene):
@@ -240,6 +243,7 @@ class LessonXXXVerticalScenes(Zsxq100keLessonVertical):
 
         # 实现场景描述...
         
+        self.save_scene_thumbnail(4)
         self.play(*[FadeOut(mob) for mob in self.mobjects], run_time=t_trans)
 
     def build_scene_5(self, scene):
@@ -257,6 +261,7 @@ class LessonXXXVerticalScenes(Zsxq100keLessonVertical):
         # 策略步骤（使用 LaggedStart）
         # self.play(LaggedStart(*[FadeIn(item) for item in items], lag_ratio=0.3), run_time=step_time)
         
+        self.save_scene_thumbnail(5)
         self.play(*[FadeOut(mob) for mob in self.mobjects], run_time=t_trans)
 
     def build_scene_6(self, scene):
@@ -286,7 +291,8 @@ class LessonXXXVerticalScenes(Zsxq100keLessonVertical):
         self.play(FadeIn(icons_group, shift=UP), run_time=step_time)
         self.play(Write(slogan), Circumscribe(slogan, color=GOLD), run_time=step_time)
 
-        # 不需要淡出，作为结尾画面
+        # 保存场景截图，不需要淡出，作为结尾画面
+        self.save_scene_thumbnail(6)
         self.wait(step_time)
 
 ```
@@ -295,6 +301,7 @@ class LessonXXXVerticalScenes(Zsxq100keLessonVertical):
 - 类名 `LessonXXXVerticalScenes` 中的 `XXX` 需替换为实际课程编号（如 `Lesson001VerticalScenes`）
 - 中文引号使用「」而非""，避免 Python 语法错误
 - 6个场景结构：痛点 → 知识 → 剖析 → 适用场景 → 策略 → 行动号召
+- **场景截图：** 每个 `build_scene_X` 必须在最后的 FadeOut（或最后一个场景的 `self.wait`）之前调用 `self.save_scene_thumbnail(X)`，将当前画面保存为 `images/X.png`
 
 ---
 

@@ -1,0 +1,91 @@
+{
+    "meta": {
+        "project_name": "MoneyWise",
+        "lesson_number": "Lesson 17",
+        "lesson_title": "How to Get the Cheapest Loan",
+        "lesson_sub_title": "Strategies to Lock in the Lowest Interest Rate"
+    },
+    "seo": {
+        "primary_keyword": "lowest interest rate loan",
+        "secondary_keywords": ["how to get cheap loans", "reduce loan interest", "compare loan rates", "loan shopping tips"],
+        "meta_title": "Get the Cheapest Loan Possible | MoneyWise",
+        "meta_description": "Learn proven strategies to secure loans with the lowest interest rates and save thousands over time.",
+        "slug": "cheapest-loan-lowest-rate",
+        "schema_type": "Article",
+        "estimated_read_time": "2 min read"
+    },
+    "social": {
+        "og_title": "Pay Less for Your Loan",
+        "og_description": "Same loan, different prices. Here's how to get the cheapest option every time.",
+        "twitter_card": "summary_large_image",
+        "pinterest_description": "Loan shopping secrets. Pay thousands less. #loans #interestrates #moneytips"
+    },
+    "youtube": {
+        "title": "MoneyWise: How to Get the Cheapest Loan | Lesson 17",
+        "description": "Not all loans are created equal. Learn how to find and secure the lowest rates available.\n\n0:00 The Price Gap\n0:15 What Determines Rates\n0:35 The Real Cost of 2%\n0:50 Who Benefits Most\n1:05 Rate-Hunting Strategy\n1:20 Start Saving\n\n#loans #interestrates #personalfinance #moneytips #moneywise",
+        "tags": ["loan rates", "interest rates", "personal finance", "loan shopping", "money saving", "financial literacy"],
+        "playlists": "MoneyWise Series"
+    },
+    "blog": {
+        "category": "Debt Management",
+        "tags": ["loans", "interest rates", "money tips", "money management"],
+        "related_posts": ["credit-profile-banks", "borrowing-power"],
+        "cta_type": "newsletter_signup",
+        "cta_text": "Get smart loan tips delivered weekly"
+    },
+    "icons": [
+        "money", "cash", "coins", "dollar_bag", "us_dollar", "banknotes",
+        "bank", "bank_building", "loan", "debt", "credit_card",
+        "percentage", "calculator", "decrease", "discount",
+        "chart", "bar_chart", "line_chart", "analytics", "compare",
+        "clock", "time", "calendar", "schedule",
+        "search", "magnifying_glass", "checklist", "document",
+        "handshake", "agreement", "negotiation", "contract",
+        "shield", "check_mark", "approve", "star", "trophy",
+        "warning", "idea", "light_bulb", "target"
+    ],
+    "scenes": [
+        {
+            "scene_index": 1,
+            "scene_type": "Hook / Pain Point",
+            "voiceover_script": "Two people borrow the same amount from different lenders. One pays back thirty thousand extra over time. The other pays fifteen thousand. Same loan, massive price difference. The second person didn't get lucky. They simply knew how to shop for loans.",
+            "word_count": 44,
+            "h2_heading": "The Hidden Price Gap"
+        },
+        {
+            "scene_index": 2,
+            "scene_type": "What It Is (The Concept)",
+            "voiceover_script": "Your interest rate depends on several factors: your credit profile, the loan type, the collateral offered, and importantly, who you borrow from. Different lenders price the same risk differently. Banks, credit unions, online lenders, and private lenders all have different cost structures and target customers.",
+            "word_count": 49,
+            "h2_heading": "What Determines Your Rate"
+        },
+        {
+            "scene_index": 3,
+            "scene_type": "Why It Matters (The Stakes)",
+            "voiceover_script": "On a hundred thousand dollar loan over twenty years, a two percent rate difference costs you over twenty thousand dollars extra. That's real money. Not negotiating, not comparing, not optimizing your profile before applying? Each mistake has a price tag.",
+            "word_count": 45,
+            "h2_heading": "The True Cost of Two Percent"
+        },
+        {
+            "scene_index": 4,
+            "scene_type": "Who This Applies To (Relevance)",
+            "voiceover_script": "This matters whether you're financing a car, buying a home, or taking a business loan. The bigger the loan and longer the term, the more these strategies save you. Even existing borrowers can refinance to better rates when conditions improve.",
+            "word_count": 44,
+            "h2_heading": "From Cars to Homes to Business"
+        },
+        {
+            "scene_index": 5,
+            "scene_type": "How To Take Action (Strategy)",
+            "voiceover_script": "First, build your profile before applying. Second, get quotes from at least three different lender types. Third, apply within a fourteen-day window so multiple inquiries count as one. Fourth, negotiate using competing offers as leverage. Lenders expect it.",
+            "word_count": 45,
+            "h2_heading": "Your Rate-Hunting Playbook"
+        },
+        {
+            "scene_index": 6,
+            "scene_type": "Call to Action (CTA)",
+            "voiceover_script": "Ready to never overpay on a loan again? Follow MoneyWise for weekly strategies that keep more money in your pocket. Smart borrowing starts here.",
+            "word_count": 27,
+            "h2_heading": ""
+        }
+    ]
+}

@@ -1,0 +1,141 @@
+{
+    "meta": {
+        "project_name": "MoneyWise",
+        "lesson_number": "Lesson 5",
+        "lesson_title": "Will Housing Prices Crash? The Truth About Real Estate",
+        "lesson_sub_title": "Why Home Prices Are Unlikely to Collapse"
+    },
+    "seo": {
+        "primary_keyword": "will housing prices crash",
+        "secondary_keywords": ["real estate market crash", "housing bubble", "should I buy a house now", "home prices prediction"],
+        "meta_title": "Will Housing Prices Crash? The Truth About Real Estate | MoneyWise",
+        "meta_description": "Waiting for a housing crash to buy? Learn why home prices rarely collapse and what really drives the real estate market. Smart strategies inside.",
+        "slug": "will-housing-prices-crash-truth-about-real-estate",
+        "schema_type": "Article",
+        "estimated_read_time": "2 min read"
+    },
+    "social": {
+        "og_title": "Will Housing Prices Crash? Here's What Most People Get Wrong",
+        "og_description": "The uncomfortable truth about waiting for a real estate crash.",
+        "twitter_card": "summary_large_image",
+        "pinterest_description": "Will housing prices crash? Learn the truth about real estate markets and why waiting might cost you more. #realestate #investing #homebuying"
+    },
+    "youtube": {
+        "title": "MoneyWise: Will Housing Prices Crash? | Lesson 5",
+        "description": "Should you wait for a housing crash before buying? In this video, we reveal:\n\n0:00 - The Housing Crash Myth\n0:15 - How Real Estate Really Works\n0:35 - Why Crashes Are Rare\n0:55 - Who Should Pay Attention\n1:10 - Smart Strategies\n1:25 - Take Action\n\nSubscribe for more money tips!\n\n#realestate #investing #housingmarket #personalfinance",
+        "tags": ["real estate", "housing market", "investing", "home buying", "personal finance", "housing crash"],
+        "playlists": "MoneyWise Series"
+    },
+    "blog": {
+        "category": "Investing",
+        "tags": ["real estate", "investing basics", "financial planning"],
+        "related_posts": ["is-renting-wasting-money", "how-to-save-for-down-payment"],
+        "cta_type": "newsletter_signup",
+        "cta_text": "Get weekly money tips delivered to your inbox"
+    },
+    "icons": [
+        "house",
+        "home",
+        "real_estate",
+        "apartment",
+        "building",
+        "residence",
+        "condo",
+        "rent",
+        "house_keys",
+        "bank",
+        "bank_building",
+        "money",
+        "cash",
+        "coins",
+        "dollar_bag",
+        "us_dollar",
+        "stack_of_money",
+        "growing_money",
+        "investment",
+        "stocks",
+        "chart",
+        "line_chart",
+        "bar_chart",
+        "analytics",
+        "statistics",
+        "increase",
+        "decrease",
+        "positive_dynamic",
+        "loss",
+        "profit",
+        "loan",
+        "debt",
+        "credit_card",
+        "budget",
+        "safe",
+        "shield",
+        "security_shield",
+        "lock",
+        "warning",
+        "question_mark",
+        "questions",
+        "decision",
+        "make_decision",
+        "family",
+        "people",
+        "user",
+        "businessman",
+        "pensioner",
+        "calendar",
+        "clock",
+        "hourglass",
+        "target",
+        "goal",
+        "checklist",
+        "check_mark",
+        "thumbs_up",
+        "light_bulb",
+        "idea",
+        "brain"
+    ],
+    "scenes": [
+        {
+            "scene_index": 1,
+            "scene_type": "Hook / Pain Point",
+            "voiceover_script": "Are you waiting for a housing crash before you buy? Many people believe home prices will eventually collapse, making homeownership affordable again. But here's the uncomfortable truth: that crash you're waiting for may never come.",
+            "word_count": 40,
+            "h2_heading": "The Housing Crash Everyone Keeps Waiting For"
+        },
+        {
+            "scene_index": 2,
+            "scene_type": "What It Is (The Concept)",
+            "voiceover_script": "Real estate isn't like stocks. It's deeply tied to government policy, banking systems, and the broader economy. For most families, their home represents their largest asset. For banks, mortgages are their most important collateral. This creates powerful forces that resist price crashes.",
+            "word_count": 47,
+            "h2_heading": "Why Real Estate Behaves Differently Than Stocks"
+        },
+        {
+            "scene_index": 3,
+            "scene_type": "Why It Matters (The Stakes)",
+            "voiceover_script": "Here's what many miss: governments have strong incentives to prevent housing crashes. A collapsing market means bank failures, retirement accounts wiped out, and economic chaos. That's why central banks often step in with rate cuts, stimulus, and buyer incentives when prices drop too far.",
+            "word_count": 49,
+            "h2_heading": "Why Governments Don't Let Housing Markets Collapse"
+        },
+        {
+            "scene_index": 4,
+            "scene_type": "Who This Applies To (Relevance)",
+            "voiceover_script": "If you're renting while waiting for a crash, you might be losing equity every month. If you own a home, you're likely more protected than you think. This especially matters for first-time buyers trying to time the market.",
+            "word_count": 42,
+            "h2_heading": "Who Needs to Rethink Their Housing Strategy"
+        },
+        {
+            "scene_index": 5,
+            "scene_type": "How To Take Action (Strategy)",
+            "voiceover_script": "Here's your action plan: First, stop trying to time the market. Buy when you can afford to hold long-term. Second, focus on cash flow, not just appreciation. Third, build an emergency fund before buying. Real estate rewards patience, not speculation.",
+            "word_count": 45,
+            "h2_heading": "Three Smart Real Estate Strategies"
+        },
+        {
+            "scene_index": 6,
+            "scene_type": "Call to Action (CTA)",
+            "voiceover_script": "Want to make smarter housing decisions? Subscribe for more insights on building wealth through real estate and beyond. Your financial future starts with understanding how money really works.",
+            "word_count": 30,
+            "h2_heading": ""
+        }
+    ]
+}

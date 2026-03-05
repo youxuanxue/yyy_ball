@@ -1,0 +1,91 @@
+{
+    "meta": {
+        "project_name": "MoneyWise",
+        "lesson_number": "Lesson 15",
+        "lesson_title": "Your Borrowing Power Explained",
+        "lesson_sub_title": "What Banks Actually Look For When You Apply for a Loan"
+    },
+    "seo": {
+        "primary_keyword": "borrowing power",
+        "secondary_keywords": ["how to get approved for a loan", "loan approval factors", "credit vs collateral loans", "business loan requirements"],
+        "meta_title": "What Banks Look for in Loan Applications | MoneyWise",
+        "meta_description": "Learn the key factors that determine your borrowing power and how to position yourself for loan approval.",
+        "slug": "borrowing-power-loan-approval-factors",
+        "schema_type": "Article",
+        "estimated_read_time": "2 min read"
+    },
+    "social": {
+        "og_title": "What Banks Actually Look For When You Apply",
+        "og_description": "Credit scores matter, but they're not everything. Here's what really determines your borrowing power.",
+        "twitter_card": "summary_large_image",
+        "pinterest_description": "Loan approval secrets. What banks really want. #personalfinance #loans #creditscores"
+    },
+    "youtube": {
+        "title": "MoneyWise: Your Borrowing Power Explained | Lesson 15",
+        "description": "Want to get approved for a loan? Learn what banks actually evaluate beyond your credit score.\n\n0:00 The Approval Question\n0:15 Credit vs Collateral\n0:35 Modern Lending Methods\n0:50 Who This Affects\n1:05 Boost Your Approval Odds\n1:20 Stay Informed\n\n#loans #creditscores #personalfinance #borrowing #moneywise",
+        "tags": ["borrowing power", "loan approval", "credit scores", "personal finance", "business loans", "financial literacy"],
+        "playlists": "MoneyWise Series"
+    },
+    "blog": {
+        "category": "Debt Management",
+        "tags": ["loans", "credit score", "money management"],
+        "related_posts": ["collateral-explained", "credit-score-basics"],
+        "cta_type": "newsletter_signup",
+        "cta_text": "Get weekly tips to improve your financial standing"
+    },
+    "icons": [
+        "money", "cash", "coins", "dollar_bag", "us_dollar", "banknotes",
+        "bank", "bank_building", "loan", "debt", "credit_card", "credit_control",
+        "certificate", "certification", "document", "policy_document",
+        "chart", "bar_chart", "line_chart", "analytics", "statistics",
+        "increase", "decrease", "percentage", "calculator",
+        "user", "businessman", "businesswoman", "company", "small_business",
+        "handshake", "agreement", "check_mark", "approve", "disapprove",
+        "house", "real_estate", "safe", "shield", "security_shield",
+        "warning", "question_mark", "light_bulb", "idea", "brain"
+    ],
+    "scenes": [
+        {
+            "scene_index": 1,
+            "scene_type": "Hook / Pain Point",
+            "voiceover_script": "Think getting a loan is all about your credit score? Think again. Banks evaluate multiple factors, and sometimes people with average credit get approved while those with great scores get denied. The difference? Understanding what lenders actually want from different types of borrowers.",
+            "word_count": 45,
+            "h2_heading": "The Loan Approval Puzzle"
+        },
+        {
+            "scene_index": 2,
+            "scene_type": "What It Is (The Concept)",
+            "voiceover_script": "Lenders use two main approaches. First, collateral-based lending: you have an asset, they'll loan against it. Your credit matters less because they can seize the collateral. Second, credit-based lending: no collateral, so they rely heavily on your payment history, income stability, and debt-to-income ratio.",
+            "word_count": 50,
+            "h2_heading": "Two Paths to Loan Approval"
+        },
+        {
+            "scene_index": 3,
+            "scene_type": "Why It Matters (The Stakes)",
+            "voiceover_script": "Today's lenders also use data-driven models. Some banks look at your tax payments to estimate business health. Others analyze your banking patterns over time. Consistent deposits, no overdrafts, and steady cash flow can sometimes matter more than a perfect credit score. The game is changing.",
+            "word_count": 49,
+            "h2_heading": "How Modern Lending Has Evolved"
+        },
+        {
+            "scene_index": 4,
+            "scene_type": "Who This Applies To (Relevance)",
+            "voiceover_script": "This affects you whether you're financing a home, starting a business, or need emergency funds. If traditional banks reject you, alternative lenders might approve you based on different criteria. Knowing the options expands your possibilities.",
+            "word_count": 39,
+            "h2_heading": "When to Explore Your Options"
+        },
+        {
+            "scene_index": 5,
+            "scene_type": "How To Take Action (Strategy)",
+            "voiceover_script": "To maximize approval chances, first build a paper trail: consistent income, regular banking activity, and on-time payments. Second, know your assets: home equity opens doors that credit alone can't. Third, shop around: different lenders weight factors differently. The right match exists.",
+            "word_count": 47,
+            "h2_heading": "Three Steps to Better Approval Odds"
+        },
+        {
+            "scene_index": 6,
+            "scene_type": "Call to Action (CTA)",
+            "voiceover_script": "Ready to understand your true borrowing power? Follow MoneyWise for weekly insights that help you work the financial system smarter. Your future starts with knowledge.",
+            "word_count": 28,
+            "h2_heading": ""
+        }
+    ]
+}

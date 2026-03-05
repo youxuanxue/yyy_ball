@@ -1,0 +1,92 @@
+{
+    "meta": {
+        "project_name": "MoneyWise",
+        "lesson_number": "Lesson 7",
+        "lesson_title": "What Are Underlying Assets?",
+        "lesson_sub_title": "The Hidden Truth Behind Every Investment"
+    },
+    "seo": {
+        "primary_keyword": "underlying assets",
+        "secondary_keywords": ["investment due diligence", "what is my money invested in", "financial transparency", "investment risk assessment"],
+        "meta_title": "What Are Underlying Assets? Know What You're Really Investing In | MoneyWise",
+        "meta_description": "Learn why understanding underlying assets is crucial for any investment. Discover how to see through complex financial products and protect your money.",
+        "slug": "underlying-assets-investment-guide",
+        "schema_type": "Article",
+        "estimated_read_time": "2 min read"
+    },
+    "social": {
+        "og_title": "The One Question That Can Save Your Investment",
+        "og_description": "Before you invest a single dollar, ask this: What's the underlying asset?",
+        "twitter_card": "summary_large_image",
+        "pinterest_description": "Investment tip: Always look through to the underlying asset #investing #moneywise #financialliteracy"
+    },
+    "youtube": {
+        "title": "MoneyWise: What Are Underlying Assets? The Hidden Truth | Lesson 7",
+        "description": "Ever wonder what your investment is actually funding? In this lesson, we break down underlying assets and why they matter.\n\n0:00 - The Problem With Complex Products\n0:30 - What Underlying Assets Really Are\n1:00 - Why This Matters For Your Money\n1:30 - How To Protect Yourself\n\n#MoneyWise #Investing #FinancialLiteracy #PersonalFinance",
+        "tags": ["underlying assets", "investment basics", "financial literacy", "money tips", "due diligence", "investment risk", "personal finance"],
+        "playlists": "MoneyWise Series"
+    },
+    "blog": {
+        "category": "Investing",
+        "tags": ["investing basics", "financial planning", "money management"],
+        "related_posts": ["why-diversification-matters", "how-to-read-fund-prospectus"],
+        "cta_type": "newsletter_signup",
+        "cta_text": "Get weekly money tips delivered to your inbox"
+    },
+    "icons": [
+        "money", "investment", "investment_portfolio", "stocks", "bonds", "profit", "loss",
+        "bank", "bank_building", "bank_cards", "safe", "safe_in", "safe_ok",
+        "chart", "bar_chart", "line_chart", "pie_chart", "analytics", "statistics",
+        "financial_growth_analysis", "positive_dynamic", "increase", "decrease",
+        "document", "documents", "report", "finance_document", "spreadsheet",
+        "search", "magnifying_glass", "filter", "question_mark", "questions",
+        "security_shield", "shield", "lock", "secure", "privacy", "protection_mask",
+        "warning", "exclamation_mark", "high_importance", "check", "check_mark", "error",
+        "building", "real_estate", "house", "home", "business", "business_building",
+        "target", "goal", "idea", "light_bulb", "brain", "critical_thinking"
+    ],
+    "scenes": [
+        {
+            "scene_index": 1,
+            "scene_type": "Hook / Pain Point",
+            "voiceover_script": "Ever bought an investment product and had no idea what your money actually funded? You're not alone. Many investments are wrapped in so many layers, the real asset underneath becomes invisible. And that's exactly how people lose money.",
+            "word_count": 42,
+            "h2_heading": "The Hidden Danger in Complex Investments"
+        },
+        {
+            "scene_index": 2,
+            "scene_type": "What It Is (The Concept)",
+            "voiceover_script": "An underlying asset is the real thing your investment ultimately funds. Think of it like a gift wrapped in multiple boxes. The underlying asset is what's inside the smallest box. It could be stocks, real estate, loans, or even just promises. Every financial product, no matter how fancy, has one.",
+            "word_count": 52,
+            "h2_heading": "What Are Underlying Assets?"
+        },
+        {
+            "scene_index": 3,
+            "scene_type": "Why It Matters (The Stakes)",
+            "voiceover_script": "Here's the problem: complex products can hide risky assets. A fund might look safe on paper, but if the underlying assets are junk bonds or speculative bets, your money's at risk. The packaging doesn't matter. What's inside does. If you can't identify the underlying asset, you can't assess the real risk.",
+            "word_count": 53,
+            "h2_heading": "Why Underlying Assets Matter for Your Wealth"
+        },
+        {
+            "scene_index": 4,
+            "scene_type": "Who This Applies To (Relevance)",
+            "voiceover_script": "This applies to anyone buying mutual funds, ETFs, bonds, or structured products. If you're investing in anything beyond a simple stock or savings account, you need to ask: what's the underlying asset? Especially if the returns sound too good to be true.",
+            "word_count": 45,
+            "h2_heading": "Who Needs to Understand Underlying Assets"
+        },
+        {
+            "scene_index": 5,
+            "scene_type": "How To Take Action (Strategy)",
+            "voiceover_script": "Before investing, ask three questions. First, what's the underlying asset? Is it real estate, stocks, or something else? Second, who manages these assets? Third, what happens if things go wrong? Read the fine print. If the answers aren't clear, walk away. Transparency protects your money.",
+            "word_count": 49,
+            "h2_heading": "How to Evaluate Any Investment"
+        },
+        {
+            "scene_index": 6,
+            "scene_type": "Call to Action (CTA)",
+            "voiceover_script": "Want more tips to protect and grow your wealth? Subscribe to MoneyWise and join thousands learning to make smarter financial decisions, one lesson at a time.",
+            "word_count": 28,
+            "h2_heading": ""
+        }
+    ]
+}

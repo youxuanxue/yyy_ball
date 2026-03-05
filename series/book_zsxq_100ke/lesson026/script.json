@@ -1,0 +1,70 @@
+{
+    "meta": {
+        "project_name": "日日生金",
+        "lesson_number": "第26课",
+        "lesson_title": "基金买入时机",
+        "lesson_sub_title": "指数基金和股票基金什么时候该出手"
+    },
+    "wechat": {
+        "hashtags": ["#基金买入时机", "#指数基金", "#股票型基金", "#宽基指数", "#定投策略", "#理财入门"],
+        "title": "基金到底啥时候买？｜第26课",
+        "description": "基金选好了却不知道啥时候下手？宽基、窄基、股票型基金买入时机完全不同！学会这套策略，再也不怕买在山顶上📈",
+        "heji": "",
+        "huodong": ""
+    },
+    "youtube": {
+        "title": "【日日生金】基金到底啥时候买？三种基金三种时机｜第26课",
+        "description": "📌 本期要点：\n- 宽基指数、窄基指数、股票型基金有什么区别？\n- 当前宏观环境下哪种基金有机会？\n- 什么时候买宽基？什么时候买窄基？\n- 实操策略：逢低买入+控制仓位\n- 普通人最靠谱的定投打法\n\n🔔 关注频道，每天学一点理财知识！\n\n#基金买入时机 #指数基金 #理财 #投资 #定投 #日日生金",
+        "playlists": "日日生金",
+        "tags": ["基金买入时机", "指数基金", "股票型基金", "宽基指数", "定投策略", "逢低买入", "理财知识", "投资入门"]
+    },
+    "icons": [
+        "money", "cash", "coins", "dollar_bag", "investment", "investment_portfolio",
+        "stocks", "bonds", "profit", "loss", "growing_money", "money_transfer",
+        "stack_of_coins", "stack_of_money", "gold_bars", "safe", "bank", "bank_building",
+        "chart", "bar_chart", "line_chart", "pie_chart", "analytics", "statistics",
+        "financial_growth_analysis", "positive_dynamic", "increase", "decrease",
+        "percentage", "calculator", "business", "businessman", "company", "handshake",
+        "presentation", "target", "goal", "idea", "light_bulb", "question_mark",
+        "check_mark", "warning", "thumbs_up", "clock", "calendar", "time",
+        "arrow_up", "down_arrow", "brain", "education", "search"
+    ],
+    "scenes": [
+        {
+            "scene_index": 1,
+            "scene_type": "痛点/破冰/现状 (钩子引入)",
+            "voiceover_script": "很多朋友问我，基金我都选好了，到底什么时候买呢？上周一买就跌，是不是我运气太差？别急，买基金这件事，时机比选品更重要。买对了时间，躺着就赚钱；买错了时间，神仙也救不了。今天咱们就聊聊指数基金和股票基金，到底什么时候该出手。",
+            "voiceover_words": 97
+        },
+        {
+            "scene_index": 2,
+            "scene_type": "知识/是什么 (What)",
+            "voiceover_script": "先说指数基金，分两种。沪深三百、中证五百叫宽基指数，跟着大盘涨跌走。还有窄基指数，像5G、医药，跟着某个行业走。股票型基金不一样，基金经理主动选股换股，哪里有风口追哪里。三种基金性格不同，买入时机自然也不一样。",
+            "voiceover_words": 91
+        },
+        {
+            "scene_index": 3,
+            "scene_type": "剖析/认知矫正/为什么重要 (Why)",
+            "voiceover_script": "眼下来看，外盘受贸易摩擦和各种不确定因素影响，宽基指数短期机会不大。行业指数也在轮动，像电风扇一样转，没有明确方向。但股票型基金反而有机会，因为基金经理能不断追踪热点、灵活换股。看清大环境再出手，才不会当接盘侠。",
+            "voiceover_words": 95
+        },
+        {
+            "scene_index": 4,
+            "scene_type": "适用场景（Where/When）",
+            "voiceover_script": "什么时候买宽基？大盘要涨之前，得提前一两个月埋伏。窄基指数呢？等某个行业有持续利好再下手。股票型基金随时可以关注，因为总有个股在涨。关键是别等到人人都喊牛市时才冲进去。",
+            "voiceover_words": 76
+        },
+        {
+            "scene_index": 5,
+            "scene_type": "策略/应对/怎么做 (How)",
+            "voiceover_script": "给你一个实操策略。选一只长期业绩靠前的成长价值型基金，每当大盘跌的时候就买进一千块。注意别一把梭哈，控制总仓位在可投资额度的百分之二十左右。越跌越买，等市场回暖你就赢了。定投加逢低买入，这是普通人最靠谱的打法。",
+            "voiceover_words": 96
+        },
+        {
+            "scene_index": 6,
+            "scene_type": "行动号召（Action）",
+            "voiceover_script": "记住，宽基等大势，窄基看行业，股票基金随时盯。觉得有用就点个赞，关注我，咱们下期继续聊买基金的门道。",
+            "voiceover_words": 43
+        }
+    ]
+}

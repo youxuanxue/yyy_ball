@@ -1,0 +1,92 @@
+{
+    "meta": {
+        "project_name": "MoneyWise",
+        "lesson_number": "Lesson 11",
+        "lesson_title": "Central Bank Digital Currency: The Future of Money",
+        "lesson_sub_title": "What CBDCs Mean for Your Savings and Financial Freedom"
+    },
+    "seo": {
+        "primary_keyword": "central bank digital currency",
+        "secondary_keywords": ["CBDC explained", "digital dollar", "digital currency vs cryptocurrency", "government digital money"],
+        "meta_title": "Central Bank Digital Currency Explained | MoneyWise",
+        "meta_description": "Discover what central bank digital currencies (CBDCs) mean for your money. Learn the key differences between CBDCs and Bitcoin, and how to prepare for the digital money revolution.",
+        "slug": "central-bank-digital-currency-explained",
+        "schema_type": "Article",
+        "estimated_read_time": "2 min read"
+    },
+    "social": {
+        "og_title": "CBDCs Are Coming: What This Means for Your Money",
+        "og_description": "Central banks worldwide are launching digital currencies. Here's what you need to know.",
+        "twitter_card": "summary_large_image",
+        "pinterest_description": "Central Bank Digital Currency explained - understand the future of money #CBDC #DigitalCurrency #MoneyWise #Finance"
+    },
+    "youtube": {
+        "title": "MoneyWise: Central Bank Digital Currency Explained | Lesson 11",
+        "description": "What is a Central Bank Digital Currency (CBDC)? How is it different from Bitcoin? And what does it mean for your savings?\n\nIn this video, we break down:\n- What CBDCs actually are\n- The key difference between CBDCs and crypto\n- Why governments are racing to create digital currencies\n- How to prepare for the digital money future\n\n#CBDC #DigitalCurrency #MoneyWise #PersonalFinance",
+        "tags": ["CBDC", "central bank digital currency", "digital dollar", "digital euro", "cryptocurrency vs CBDC", "future of money", "personal finance", "money education"],
+        "playlists": "MoneyWise Series"
+    },
+    "blog": {
+        "category": "Economic Fundamentals",
+        "tags": ["monetary policy", "banking", "fiat currency"],
+        "related_posts": ["what-is-money-supply", "understanding-central-banks"],
+        "cta_type": "newsletter_signup",
+        "cta_text": "Stay informed about digital currency developments"
+    },
+    "icons": [
+        "money", "cash", "coins", "banknotes", "currency", "currency_exchange",
+        "us_dollar", "euro", "british_pound", "cryptocurrency", "bitcoin", "blockchain_technology",
+        "bank", "bank_building", "bank_cards", "credit_card", "debit_card", "card_payment",
+        "mobile", "phone", "computer", "network", "globe", "world_markets",
+        "data_protection", "data_transfer", "data_backup", "security_shield", "shield", "lock",
+        "chart", "line_chart", "bar_chart", "analytics", "statistics",
+        "government", "policy_document", "document", "agreement", "signature",
+        "money_transfer", "money_circulation", "online_payment", "online_money_transfer",
+        "warning", "question_mark", "check_mark", "thumbs_up", "thumbs_down",
+        "person", "family", "people", "businessman", "customer"
+    ],
+    "scenes": [
+        {
+            "scene_index": 1,
+            "scene_type": "Hook / Pain Point",
+            "voiceover_script": "Imagine a world where the government can see every purchase you make, instantly freeze your bank account, or even program your money to expire. This isn't science fiction. Central banks worldwide are racing to create digital currencies that could fundamentally change how money works.",
+            "word_count": 47,
+            "h2_heading": "The Digital Money Revolution Is Here"
+        },
+        {
+            "scene_index": 2,
+            "scene_type": "What It Is (The Concept)",
+            "voiceover_script": "A Central Bank Digital Currency, or CBDC, is simply electronic cash issued directly by your country's central bank. Think of it as a digital version of the dollar bill in your pocket, but stored on your phone instead of your wallet. Unlike your bank balance, a CBDC is a direct liability of the central bank itself.",
+            "word_count": 55,
+            "h2_heading": "What Is a Central Bank Digital Currency?"
+        },
+        {
+            "scene_index": 3,
+            "scene_type": "Why It Matters (The Stakes)",
+            "voiceover_script": "Here's the critical difference most people miss. Bitcoin has no government backing. It's a peer-to-peer network maintained by anonymous computers. But a CBDC? It's backed by state power. You can pay taxes with it, and merchants must accept it. Every transaction can be tracked, traced, and potentially controlled.",
+            "word_count": 51,
+            "h2_heading": "CBDC vs Bitcoin: The Crucial Difference"
+        },
+        {
+            "scene_index": 4,
+            "scene_type": "Who This Applies To (Relevance)",
+            "voiceover_script": "If you have a bank account, use digital payments, or care about financial privacy, this affects you. CBDCs could make cross-border payments instant and cheap, but they could also give governments unprecedented visibility into your spending habits.",
+            "word_count": 41,
+            "h2_heading": "Who Needs to Understand CBDCs"
+        },
+        {
+            "scene_index": 5,
+            "scene_type": "How To Take Action (Strategy)",
+            "voiceover_script": "Here's your action plan. First, stay informed about your country's CBDC development. Second, diversify your assets. Don't keep all your wealth in any single form. Consider physical cash, traditional investments, and yes, even some cryptocurrency. Third, understand the privacy implications before adoption becomes mandatory.",
+            "word_count": 48,
+            "h2_heading": "How to Prepare for the CBDC Era"
+        },
+        {
+            "scene_index": 6,
+            "scene_type": "Call to Action (CTA)",
+            "voiceover_script": "Want to stay ahead of the digital money revolution? Subscribe to MoneyWise for weekly insights on protecting and growing your wealth in this changing financial landscape.",
+            "word_count": 28,
+            "h2_heading": ""
+        }
+    ]
+}

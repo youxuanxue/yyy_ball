@@ -1,0 +1,72 @@
+{
+    "meta": {
+        "project_name": "日日生金",
+        "lesson_number": "第34课",
+        "lesson_title": "定位战略与心智模式",
+        "lesson_sub_title": "用营销思维经营你自己"
+    },
+    "wechat": {
+        "hashtags": ["#定位理论", "#个人品牌", "#心智模式", "#职场营销", "#自我定位", "#日日生金"],
+        "title": "一句话说清楚你是谁？｜第34课",
+        "description": "海飞丝等于去屑，你等于什么？定位理论不只是商业武器，更是职场逆袭的核心密码。占领别人心智的人才能赢到最后🎯",
+        "heji": "",
+        "huodong": ""
+    },
+    "youtube": {
+        "title": "【日日生金】一句话说清楚你是谁？定位战略的秘密｜第34课",
+        "description": "📌 本期要点：\n- 从广告为王到渠道为王再到定位为王的演变\n- 什么是心智模式？品牌≠心智\n- 海飞丝=去屑，加多宝=凉茶，你=？\n- 如何用定位思维经营你的职场\n- 一句话定义自己的方法\n\n🔔 关注频道，每天学一点理财知识！\n\n#定位理论 #心智模式 #个人品牌 #职场 #营销策略 #日日生金",
+        "playlists": "日日生金",
+        "tags": ["定位理论", "心智模式", "个人品牌", "职场营销", "自我定位", "营销策略", "理财知识", "日日生金"]
+    },
+    "icons": [
+        "money", "cash", "business", "businessman", "businesswoman",
+        "company", "small_business", "marketing", "sales_performance",
+        "market_share", "shopping", "shopping_cart", "shop", "online_store",
+        "brand", "target", "goal", "business_goal", "mission",
+        "presentation", "management", "manager", "employee", "briefcase",
+        "handshake", "agreement", "brain", "head_with_brain", "light_bulb",
+        "idea", "idea_bank", "innovation", "concept", "critical_thinking",
+        "question_mark", "decision", "make_decision", "chart", "bar_chart",
+        "analytics", "people", "person", "crown", "star",
+        "winner", "prize", "thumbs_up", "like", "check_mark",
+        "personal_growth", "knowledge_sharing"
+    ],
+    "scenes": [
+        {
+            "scene_index": 1,
+            "scene_type": "痛点/破冰/现状 (钩子引入)",
+            "voiceover_script": "我问你一个问题，一句话说清楚你是谁，你能说出来吗？海飞丝等于去屑，百度等于搜索，你等于什么？说不清楚吧。这就是为什么你在职场上总觉得缺点什么，因为你没有定位。",
+            "voiceover_words": 67
+        },
+        {
+            "scene_index": 2,
+            "scene_type": "知识/是什么 (What)",
+            "voiceover_script": "定位理论说，客户买的不是产品，是心智。所谓心智就是深入骨子里的印象。海飞丝等于去屑，加多宝等于凉茶，品牌只是符号，心智才是你真正占领的地盘。谁先抢占心智，谁就赢了。",
+            "voiceover_words": 72
+        },
+        {
+            "scene_index": 3,
+            "scene_type": "剖析/认知矫正/为什么重要 (Why)",
+            "voiceover_script": "营销从广告为王到渠道为王再到定位为王，核心变了。以前嗓门大就赚钱，现在不行了。同质化时代，你跟别人打价格战补贴战都没用，客户薅完羊毛就跑。唯一的破局之道是在客户脑子里占个位置，简单直接干脆。",
+            "voiceover_words": 87
+        },
+        {
+            "scene_index": 4,
+            "scene_type": "适用场景（Where/When）",
+            "voiceover_script": "这个理论放在职场一样好使。想想你身边的人，小王教育口关系到位，小李北京人脉丰富，小宋理财专家。每个能记住的人都有一个清晰的标签。如果你在领导和客户心里没有标签，有机会也轮不到你。",
+            "voiceover_words": 78
+        },
+        {
+            "scene_index": 5,
+            "scene_type": "策略/应对/怎么做 (How)",
+            "voiceover_script": "三步打造你的个人定位。第一，想清楚你擅长什么做什么成本最低。第二，用一句话说清楚你是干嘛的。第三，反复在你的圈子里强化这个印象。找不到自己定位的话，先给竞争对手定位，你不想要的标签扣他头上。",
+            "voiceover_words": 86
+        },
+        {
+            "scene_index": 6,
+            "scene_type": "行动号召（Action）",
+            "voiceover_script": "一句话说清楚你是谁，你就赢了一半。从今天开始定位自己吧。点赞关注，下期聊公司融资全景。",
+            "voiceover_words": 38
+        }
+    ]
+}

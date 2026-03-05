@@ -310,6 +310,13 @@ class LessonVertical(Scene, ABC):
         """
         return load_png_icon(icon_name, project_root=self.project_root, height=height)
 
+    def save_scene_thumbnail(self, scene_index):
+        """保存当前帧为场景缩略图"""
+        os.makedirs(self.images_dir, exist_ok=True)
+        thumbnail_path = os.path.join(self.images_dir, f"{scene_index}.png")
+        self.camera.get_image().save(thumbnail_path)
+        print(f"Saved scene {scene_index} thumbnail: {thumbnail_path}")
+
 
 # ========== 系列专用子类（仅配置差异） ==========
 
