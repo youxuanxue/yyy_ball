@@ -1,0 +1,73 @@
+{
+    "meta": {
+        "project_name": "日日生金",
+        "lesson_number": "第36课",
+        "lesson_title": "企业估值的秘密",
+        "lesson_sub_title": "市盈率、市梦率与几倍退出"
+    },
+    "wechat": {
+        "hashtags": ["#企业估值", "#市盈率", "#PE估值", "#投资入门", "#理财知识", "#日日生金"],
+        "title": "公司到底值多少钱？｜第36课",
+        "description": "锅碗瓢盆好定价，公司怎么定？PE看利润、PB看资产、PS看流水、DCF看未来。四把尺子帮你看懂企业估值📊",
+        "heji": "",
+        "huodong": ""
+    },
+    "youtube": {
+        "title": "【日日生金】一家公司到底值多少钱？四大估值方法一次讲透｜第36课",
+        "description": "📌 本期要点：\n- 市盈率PE到底是什么意思？\n- 为什么82倍市盈率的科技股比5倍的银行股抢手？\n- 不赚钱的公司怎么估值？\n- PE、PB、PS、DCF四大方法对比\n- 投资机构怎么靠估值差赚几十倍？\n\n🔔 关注频道，每天学一点理财知识！\n\n#企业估值 #市盈率 #PE #投资 #理财 #日日生金",
+        "playlists": "日日生金",
+        "tags": ["企业估值", "市盈率", "PE估值", "PB估值", "PS估值", "DCF", "投资入门", "日日生金"]
+    },
+    "icons": [
+        "money", "cash", "coins", "dollar_bag", "investment",
+        "investment_portfolio", "stocks", "growing_money", "profit",
+        "loss", "money_transfer", "money_circulation", "stack_of_money",
+        "bank", "bank_building", "chart", "bar_chart", "line_chart",
+        "pie_chart", "analytics", "financial_growth_analysis", "positive_dynamic",
+        "increase", "decrease", "percentage", "calculation", "calculator",
+        "business", "business_building", "company", "small_business",
+        "new_company", "businessman", "businesswoman", "management",
+        "briefcase", "handshake", "presentation", "idea", "light_bulb",
+        "brain", "target", "goal", "question_mark", "questions",
+        "warning", "thumbs_up", "like", "arrow_up", "personal_growth",
+        "check_mark", "star", "crown"
+    ],
+    "scenes": [
+        {
+            "scene_index": 1,
+            "scene_type": "痛点/破冰/现状 (钩子引入)",
+            "voiceover_script": "你看新闻经常听到，某公司估值十亿、百亿。可一家公司到底值多少钱，你真能搞清楚吗？一个锅碗瓢盆容易定价，成本加品牌就完事了。但如果这个商品是一家公司，那水可就深了。",
+            "voiceover_words": 71
+        },
+        {
+            "scene_index": 2,
+            "scene_type": "知识/是什么 (What)",
+            "voiceover_script": "最主流的估值方法叫PE，也就是市盈率。简单说就是「多少年能回本」。五倍市盈率就是投一块钱五年回本，三十倍就是三十年。公司值多少钱？拿净利润乘以市盈率，一算就出来了。",
+            "voiceover_words": 74
+        },
+        {
+            "scene_index": 3,
+            "scene_type": "剖析/认知矫正/为什么重要 (Why)",
+            "voiceover_script": "很多人纳闷，八十倍市盈率的科技股有人抢，五倍的银行股没人碰，凭啥？因为科技公司利润增长快，牛市时大家容忍度更高。两个乘数同时涨，涨幅自然恐怖。银行两个都不涨，当然没人爱。",
+            "voiceover_words": 76
+        },
+        {
+            "scene_index": 4,
+            "scene_type": "适用场景（Where/When）",
+            "voiceover_script": "如果你要看创业公司融资、理解股票价格、或者评估一个项目值不值得投，估值就是你的标尺。下次有人说公司值多少亿，你淡淡问一句：PE法还是PS法估的？立马显得很专业。",
+            "voiceover_words": 72
+        },
+        {
+            "scene_index": 5,
+            "scene_type": "策略/应对/怎么做 (How)",
+            "voiceover_script": "记住四把尺子。赚钱的公司用PE看利润，有家底的用PB看净资产，烧钱的互联网用PS看流水，看长远的用DCF折现金流。搞清楚行业对标再估值，别被一个数字忽悠了。",
+            "voiceover_words": 72
+        },
+        {
+            "scene_index": 6,
+            "scene_type": "行动号召（Action）",
+            "voiceover_script": "估值不是玄学，四个方法就够你看懂大部分公司了。觉得有用就点个赞，关注我，每天一课日日生金。",
+            "voiceover_words": 38
+        }
+    ]
+}

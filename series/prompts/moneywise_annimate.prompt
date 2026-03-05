@@ -13,6 +13,7 @@ To ensure high retention on platforms like YouTube Shorts and TikTok (Western au
 1.  **Dynamic Titles:**
     *   Use the `h2_heading` field from `script.json` as the main title for each scene.
     *   Titles should appear at `UP * 3.5` or `UP * 4.0`.
+    *   **Title overflow (9:16 vertical):** `h2_heading` can be long (e.g. "Why Underlying Assets Matter for Your Wealth"). On 1080×1920, a single line often overflows left/right. **Always** wrap long titles: add `line_spacing=1.1` to every title `Text()`, and for titles longer than ~20 characters, insert a manual line break (`\n`) at a natural phrase boundary (e.g. `"Why Underlying Assets\nMatter for Your Wealth"`). Keep the same meaning; use a two-line string in code for that scene so the full title stays on-screen and centered.
 
 2.  **Keyword Visualization:**
     *   Analyze the `voiceover_script` (English) to identify key verbs and nouns.
@@ -54,6 +55,22 @@ To ensure high retention on platforms like YouTube Shorts and TikTok (Western au
     *   *Comparison:* Left (Risk/Old Way) vs Right (Solution/New Way).
     *   *Process:* Top-down flow or sequential appearance.
 *   **Footer (y ≈ -4.0):** Key takeaway or summary phrase.
+
+---
+
+## III.1 Title Overflow Fix (9:16 Vertical)
+
+**Problem:** Long `h2_heading` strings from `script.json` (e.g. "Why Underlying Assets Matter for Your Wealth", "The Investment Question Everyone Faces") render as one line and overflow the left/right edges of the 1080px-wide frame.
+
+**Fix (apply in every `build_scene_*`):**
+
+1. **Always set `line_spacing=1.1`** on every title `Text(...)` so multi-line titles look good.
+2. **Wrap long titles manually:** If `len(title_text) > 25` (or ~20 for shorter words), replace `title_text` with a two-line version using `\n` at a natural break (e.g. after a noun phrase or before "for/and/to"). Examples:
+    *   `"Why Underlying Assets Matter for Your Wealth"` → `"Why Underlying Assets\nMatter for Your Wealth"`
+    *   `"The Hidden Danger in Complex Investments"` → `"The Hidden Danger in\nComplex Investments"`
+    *   `"Who Needs to Understand Underlying Assets"` → `"Who Needs to Understand\nUnderlying Assets"`
+3. **Keep centering:** Use `.move_to(UP * 4.0)` (or 3.5 for CTA); Manim centers the whole `Text` (including multiple lines) at that point.
+4. **Per-scene override:** For a given scene, if the default `h2_heading` is long, use a condition like `if len(title_text) > 20: title_text = "Line One\nLine Two"` so the displayed title never overflows.
 
 ---
 
@@ -121,9 +138,11 @@ class LessonXXXVerticalScenes(MoneyWiseLessonVertical):
         step_time = (page_duration - t_trans) / N
 
         # 2. Visual Elements
-        # Title from script.json (h2_heading)
+        # Title from script.json (h2_heading). Wrap long titles to avoid overflow (see § III.1).
         title_text = scene_data.get("h2_heading", "Hook")
-        title = Text(title_text, font=self.title_font, font_size=self.font_title_size, color=self.COLOR_RISK).move_to(UP * 4.0)
+        if len(title_text) > 20:
+            title_text = "First Line\nSecond Line"  # Replace with natural phrase break for this scene
+        title = Text(title_text, font=self.title_font, font_size=self.font_title_size, color=self.COLOR_RISK, line_spacing=1.1).move_to(UP * 4.0)
         
         # Main Visual (Example: Downward trend or Warning)
         icon_name = "warning" # Replace with relevant icon from script
@@ -135,7 +154,8 @@ class LessonXXXVerticalScenes(MoneyWiseLessonVertical):
         self.play(icon.animate.scale(1.2), run_time=step_time) # Emphasis
         self.play(Flash(icon, color=RED), run_time=step_time)
 
-        # 4. Cleanup
+        # 4. Save scene thumbnail & Cleanup
+        self.save_scene_thumbnail(1)
         self.play(*[FadeOut(mob) for mob in self.mobjects], run_time=t_trans)
 
     def build_scene_2(self, scene_data):
@@ -150,13 +170,16 @@ class LessonXXXVerticalScenes(MoneyWiseLessonVertical):
         step_time = (page_duration - t_trans) / N
 
         title_text = scene_data.get("h2_heading", "Concept")
-        title = Text(title_text, font=self.title_font, font_size=self.font_title_size, color=GOLD).move_to(UP * 4.0)
+        if len(title_text) > 20:
+            title_text = "Concept\nLine Two"  # Natural break for this scene
+        title = Text(title_text, font=self.title_font, font_size=self.font_title_size, color=GOLD, line_spacing=1.1).move_to(UP * 4.0)
         
         # ... logic for explanation ...
         
         self.play(Write(title), run_time=step_time)
         # ... animations ...
         
+        self.save_scene_thumbnail(2)
         self.play(*[FadeOut(mob) for mob in self.mobjects], run_time=t_trans)
 
     # ... Implement build_scene_3 to build_scene_6 similarly ...
@@ -172,7 +195,7 @@ class LessonXXXVerticalScenes(MoneyWiseLessonVertical):
         N = 3
         step_time = (page_duration - t_trans) / N
 
-        title = Text("Subscribe for More", font=self.title_font, font_size=self.font_title_size, color=GOLD).move_to(UP * 3.5)
+        title = Text("Subscribe for More", font=self.title_font, font_size=self.font_title_size, color=GOLD, line_spacing=1.1).move_to(UP * 3.5)
         
         # CTA Icons
         # ...
@@ -180,6 +203,7 @@ class LessonXXXVerticalScenes(MoneyWiseLessonVertical):
         self.play(Write(title), run_time=step_time)
         # ...
         
+        self.save_scene_thumbnail(6)
         self.wait(step_time) # No FadeOut at the end
 ```
 
@@ -188,6 +212,8 @@ class LessonXXXVerticalScenes(MoneyWiseLessonVertical):
 2.  **Use `scene_data`**: The `build_scene_X` methods now receive `scene_data` (the dict from `script.json`). Use it to access `h2_heading`, `voiceover_script`, etc.
 3.  **English Text**: Ensure all `Text()` objects contain English strings derived from the script or appropriate for the context.
 4.  **Icons**: Use `self.load_png_icon("name")`. Check the `icons` list in `script.json` for available names.
+5.  **Title overflow**: For every scene, add `line_spacing=1.1` to title `Text()`, and if `h2_heading` is long (>20 chars), set `title_text` to a two-line string with `\n` at a natural phrase boundary so the title stays on-screen and centered (§ III.1).
+6.  **Scene Thumbnails**: Every `build_scene_X` must call `self.save_scene_thumbnail(X)` **before** the final FadeOut (or `self.wait` for the last scene). This captures the fully rendered frame as `images/X.png` for each scene.
 
 # Input Data
 

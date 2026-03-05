@@ -1,0 +1,91 @@
+{
+    "meta": {
+        "project_name": "MoneyWise",
+        "lesson_number": "Lesson 10",
+        "lesson_title": "The 4-Part Scam Test",
+        "lesson_sub_title": "How to Spot Investment Fraud Before You Lose Money"
+    },
+    "seo": {
+        "primary_keyword": "investment scam",
+        "secondary_keywords": ["how to spot investment fraud", "avoid financial scams", "investment red flags", "protect your money"],
+        "meta_title": "4 Red Flags to Spot an Investment Scam | MoneyWise",
+        "meta_description": "Learn the 4-part test to identify investment scams before you lose money. Discover what separates legitimate opportunities from fraud.",
+        "slug": "spot-investment-scam-4-part-test",
+        "schema_type": "Article",
+        "estimated_read_time": "2 min read"
+    },
+    "social": {
+        "og_title": "The 4-Part Test to Spot Any Investment Scam",
+        "og_description": "Before you invest a dime, run this simple 4-part test. It could save you thousands.",
+        "twitter_card": "summary_large_image",
+        "pinterest_description": "Investment scam red flags. 4-part test to protect your money. #personalfinance #scamalert #investing"
+    },
+    "youtube": {
+        "title": "MoneyWise: 4 Red Flags to Spot an Investment Scam | Lesson 10",
+        "description": "Ever been pitched an investment that seemed too good to be true? Learn the 4-part scam test that separates legitimate opportunities from fraud.\n\n0:00 The Problem\n0:15 The 4-Part Test\n0:35 Why It Matters\n0:50 Real Examples\n1:05 Your Action Steps\n1:20 Stay Protected\n\n#investmentscam #personalfinance #moneywise",
+        "tags": ["investment scam", "financial fraud", "money tips", "personal finance", "scam alert", "protect your money", "financial literacy"],
+        "playlists": "MoneyWise Series"
+    },
+    "blog": {
+        "category": "Personal Finance",
+        "tags": ["scams", "investing basics", "money management"],
+        "related_posts": ["cryptocurrency-basics", "stock-market-fundamentals"],
+        "cta_type": "newsletter_signup",
+        "cta_text": "Get weekly money tips to protect and grow your wealth"
+    },
+    "icons": [
+        "money", "cash", "coins", "dollar_bag", "us_dollar", "investment", "stocks", "profit", "loss",
+        "growing_money", "safe", "debt", "loan", "bank", "bank_building", "credit_card", "cheque",
+        "receipt", "invoice", "chart", "bar_chart", "line_chart", "analytics", "statistics",
+        "financial_growth_analysis", "increase", "decrease", "percentage", "calculator", "business",
+        "businessman", "handshake", "agreement", "signature", "contract", "warning", "shield",
+        "security_shield", "lock", "unlock", "secure", "guarantee", "question_mark", "questions",
+        "check_mark", "fail", "error", "thumbs_up", "thumbs_down", "approve", "disapprove",
+        "target", "goal", "light_bulb", "idea", "brain", "critical_thinking", "problem_solving",
+        "certificate", "certification", "document", "policy_document"
+    ],
+    "scenes": [
+        {
+            "scene_index": 1,
+            "scene_type": "Hook / Pain Point",
+            "voiceover_script": "Every year, people lose billions to investment scams. The pitch sounds perfect: guaranteed returns, exclusive access, limited time offer. But here's the truth: most scams share the same missing ingredients. And once you know what to look for, you'll never fall for them again.",
+            "word_count": 47,
+            "h2_heading": "Why Smart People Still Fall for Scams"
+        },
+        {
+            "scene_index": 2,
+            "scene_type": "What It Is (The Concept)",
+            "voiceover_script": "Every legitimate investment passes a simple 4-part test. First, licensing: is it regulated by authorities like the SEC? Second, credibility: does it have real assets or track record? Third, production: does it generate actual value? Fourth, obligation: what duties does the provider owe you? If any part fails, walk away.",
+            "word_count": 54,
+            "h2_heading": "The 4-Part Scam Detection Test"
+        },
+        {
+            "scene_index": 3,
+            "scene_type": "Why It Matters (The Stakes)",
+            "voiceover_script": "Scammers are masters at faking one or two elements. They'll show fake licenses, fabricate returns, or promise obligations they never intend to keep. But passing all four parts? That's nearly impossible to fake. The more boxes left unchecked, the bigger the red flag.",
+            "word_count": 47,
+            "h2_heading": "Why This Test Works Against Fraudsters"
+        },
+        {
+            "scene_index": 4,
+            "scene_type": "Who This Applies To (Relevance)",
+            "voiceover_script": "This applies to you if you've ever received a hot stock tip, been pitched a crypto opportunity, or considered an investment with unusually high returns. If something promises huge gains with zero risk, your scam radar should be going off.",
+            "word_count": 43,
+            "h2_heading": "When to Use the 4-Part Test"
+        },
+        {
+            "scene_index": 5,
+            "scene_type": "How To Take Action (Strategy)",
+            "voiceover_script": "Before investing anything, ask these four questions: Is this registered with regulators? Can I verify the track record independently? Does this create real economic value? What legal protections do I have? Write down the answers. If you can't answer all four confidently, keep your money in your pocket.",
+            "word_count": 51,
+            "h2_heading": "Your Pre-Investment Checklist"
+        },
+        {
+            "scene_index": 6,
+            "scene_type": "Call to Action (CTA)",
+            "voiceover_script": "Want more tools to protect your money? Follow MoneyWise for weekly tips on building wealth safely. Because the best return is keeping what you've already earned.",
+            "word_count": 28,
+            "h2_heading": ""
+        }
+    ]
+}

@@ -1,0 +1,150 @@
+{
+    "meta": {
+        "project_name": "MoneyWise",
+        "lesson_number": "Lesson 4",
+        "lesson_title": "Bank Tiers Explained: Choose the Right Bank for You",
+        "lesson_sub_title": "Big Banks vs Credit Unions vs Online Banks"
+    },
+    "seo": {
+        "primary_keyword": "types of banks",
+        "secondary_keywords": ["big banks vs credit unions", "online banks pros and cons", "how to choose a bank", "FDIC insured banks"],
+        "meta_title": "Bank Tiers Explained: Which Bank Type is Best? | MoneyWise",
+        "meta_description": "Not all banks are equal. Learn the difference between big banks, regional banks, credit unions, and online banks to find the right fit for your money.",
+        "slug": "types-of-banks-which-one-is-right-for-you",
+        "schema_type": "Article",
+        "estimated_read_time": "2 min read"
+    },
+    "social": {
+        "og_title": "Big Banks vs Credit Unions vs Online Banks - Which Wins?",
+        "og_description": "Find out which type of bank is best for your money goals. Quick guide inside!",
+        "twitter_card": "summary_large_image",
+        "pinterest_description": "Types of banks explained! Big banks vs credit unions vs online banks. Which one is right for you? #personalfinance #banking #moneytips"
+    },
+    "youtube": {
+        "title": "MoneyWise: Bank Tiers Explained - Which Bank is Best? | Lesson 4",
+        "description": "Not all banks are created equal! In this video, we break down the different types of banks:\n\n0:00 - The Problem with Choosing a Bank\n0:15 - Types of Banks Explained\n0:35 - Why Bank Type Matters\n0:55 - Who Should Use Which Bank\n1:10 - How to Choose Your Bank\n1:25 - Take Action\n\nSubscribe for more money tips!\n\n#personalfinance #banking #moneytips #financialliteracy",
+        "tags": ["personal finance", "banking", "money tips", "financial literacy", "credit unions", "online banks", "big banks"],
+        "playlists": "MoneyWise Series"
+    },
+    "blog": {
+        "category": "Personal Finance",
+        "tags": ["banking", "money tips", "financial planning"],
+        "related_posts": ["emergency-fund-basics", "high-yield-savings-accounts"],
+        "cta_type": "newsletter_signup",
+        "cta_text": "Get weekly money tips delivered to your inbox"
+    },
+    "icons": [
+        "bank",
+        "bank_building",
+        "bank_cards",
+        "bank_card_dollar",
+        "bank_euro",
+        "atm",
+        "credit_card",
+        "credit_control",
+        "debit_card",
+        "card_payment",
+        "card_security",
+        "card_wallet",
+        "cheque",
+        "check_book",
+        "money",
+        "cash",
+        "cash_in_hand",
+        "coins",
+        "dollar_bag",
+        "dollar_coin",
+        "us_dollar",
+        "us_dollar_circled",
+        "stack_of_money",
+        "safe",
+        "safe_ok",
+        "deposit",
+        "withdrawal",
+        "loan",
+        "debt",
+        "budget",
+        "investment",
+        "growing_money",
+        "money_transfer",
+        "online_payment",
+        "online_money_transfer",
+        "merchant_account",
+        "pos_terminal",
+        "business",
+        "business_building",
+        "small_business",
+        "company",
+        "building",
+        "customer",
+        "user",
+        "family",
+        "people",
+        "customer_support",
+        "online_support",
+        "mobile",
+        "computer",
+        "internet",
+        "network",
+        "security_shield",
+        "shield",
+        "lock",
+        "secure",
+        "privacy",
+        "check_mark",
+        "thumbs_up",
+        "question_mark",
+        "questions",
+        "decision",
+        "make_decision",
+        "target",
+        "goal",
+        "chart",
+        "analytics",
+        "statistics"
+    ],
+    "scenes": [
+        {
+            "scene_index": 1,
+            "scene_type": "Hook / Pain Point",
+            "voiceover_script": "Ever walked into a bank and wondered if you're getting the best deal? Here's the truth: not all banks are created equal. Some charge hidden fees while others pay you more interest. Choosing the wrong bank could cost you hundreds every year.",
+            "word_count": 45,
+            "h2_heading": "Why Your Bank Choice Matters More Than You Think"
+        },
+        {
+            "scene_index": 2,
+            "scene_type": "What It Is (The Concept)",
+            "voiceover_script": "Think of banks like a pyramid. At the top, you have the big national banks like Chase, Bank of America, and Wells Fargo. Below them are regional banks serving specific areas. Then come credit unions, member-owned institutions. And finally, online banks with no physical branches but often better rates.",
+            "word_count": 52,
+            "h2_heading": "The Four Types of Banks Explained"
+        },
+        {
+            "scene_index": 3,
+            "scene_type": "Why It Matters (The Stakes)",
+            "voiceover_script": "Here's what most people miss: big banks have convenience but often pay the lowest interest rates. Online banks typically offer rates ten times higher on savings. Credit unions often have lower loan rates. The type of bank you choose directly impacts how fast your money grows or how much you pay in fees.",
+            "word_count": 54,
+            "h2_heading": "How Different Banks Affect Your Wallet"
+        },
+        {
+            "scene_index": 4,
+            "scene_type": "Who This Applies To (Relevance)",
+            "voiceover_script": "If you value face-to-face service and have complex needs, traditional banks work well. If you want higher interest rates and rarely visit branches, online banks shine. If you prefer community focus and lower fees, credit unions are your match.",
+            "word_count": 42,
+            "h2_heading": "Which Bank Type Matches Your Lifestyle"
+        },
+        {
+            "scene_index": 5,
+            "scene_type": "How To Take Action (Strategy)",
+            "voiceover_script": "Here's your action plan: First, check if your current bank is FDIC insured, that protects your deposits. Second, compare interest rates on savings accounts across bank types. Third, calculate your annual fees. A simple switch could put hundreds back in your pocket each year.",
+            "word_count": 48,
+            "h2_heading": "Three Steps to Finding Your Perfect Bank"
+        },
+        {
+            "scene_index": 6,
+            "scene_type": "Call to Action (CTA)",
+            "voiceover_script": "Ready to make smarter money moves? Subscribe for more tips that help you keep more of what you earn. Your financial future starts with small, smart choices today.",
+            "word_count": 29,
+            "h2_heading": ""
+        }
+    ]
+}

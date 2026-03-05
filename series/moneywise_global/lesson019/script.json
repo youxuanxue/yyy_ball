@@ -1,0 +1,91 @@
+{
+    "meta": {
+        "project_name": "MoneyWise",
+        "lesson_number": "Lesson 19",
+        "lesson_title": "Why Cash Flow Beats Net Worth",
+        "lesson_sub_title": "The Real Measure of Financial Freedom"
+    },
+    "seo": {
+        "primary_keyword": "cash flow vs net worth",
+        "secondary_keywords": ["passive income", "financial freedom", "wealth building", "income streams"],
+        "meta_title": "Cash Flow vs Net Worth: What Really Matters | MoneyWise",
+        "meta_description": "Discover why focusing on cash flow rather than net worth leads to true financial freedom faster.",
+        "slug": "cash-flow-beats-net-worth",
+        "schema_type": "Article",
+        "estimated_read_time": "2 min read"
+    },
+    "social": {
+        "og_title": "The Real Wealth Metric",
+        "og_description": "Net worth looks good on paper. Cash flow pays your bills. Here's what actually matters.",
+        "twitter_card": "summary_large_image",
+        "pinterest_description": "Cash flow vs net worth explained. Focus on what really matters. #cashflow #wealth #finance"
+    },
+    "youtube": {
+        "title": "MoneyWise: Why Cash Flow Beats Net Worth | Lesson 19",
+        "description": "Stop chasing net worth. Learn why cash flow is the true measure of financial freedom.\n\n0:00 The Millionaire Trap\n0:15 Cash Flow Explained\n0:35 Freedom Formula\n0:50 Who Needs This Shift\n1:05 Building Cash Flow\n1:20 Start Flowing\n\n#cashflow #networth #financialfreedom #passiveincome #moneywise",
+        "tags": ["cash flow", "net worth", "passive income", "financial freedom", "wealth building", "financial literacy"],
+        "playlists": "MoneyWise Series"
+    },
+    "blog": {
+        "category": "Personal Finance",
+        "tags": ["passive income", "financial freedom", "money management", "investing basics"],
+        "related_posts": ["debt-tool-not-trap", "leverage-wealth"],
+        "cta_type": "newsletter_signup",
+        "cta_text": "Learn to build cash flow with weekly strategies"
+    },
+    "icons": [
+        "money", "cash", "coins", "dollar_bag", "us_dollar", "banknotes",
+        "money_circulation", "money_flow", "income", "revenue",
+        "house", "real_estate", "building", "apartment",
+        "chart", "bar_chart", "line_chart", "increase", "decrease",
+        "clock", "time", "calendar", "hourglass",
+        "calculator", "percentage", "scales", "balance",
+        "check_mark", "approve", "freedom", "unlock",
+        "beach", "vacation", "lifestyle", "happy",
+        "wallet", "bank", "piggy_bank", "safe"
+    ],
+    "scenes": [
+        {
+            "scene_index": 1,
+            "scene_type": "Hook / Pain Point",
+            "voiceover_script": "A millionaire on paper can be broke in reality. All their wealth tied up in a house they can't sell, retirement accounts they can't touch, and a business that demands their presence. Meanwhile, someone with half the net worth lives freely. The difference? Cash flow.",
+            "word_count": 48,
+            "h2_heading": "The Millionaire Who's Broke"
+        },
+        {
+            "scene_index": 2,
+            "scene_type": "What It Is (The Concept)",
+            "voiceover_script": "Net worth is what you own minus what you owe. It's a snapshot. Cash flow is money coming in versus money going out each month. It's a movie. Net worth measures wealth accumulation. Cash flow measures financial freedom. You can have high net worth and zero freedom.",
+            "word_count": 49,
+            "h2_heading": "Snapshot vs Movie"
+        },
+        {
+            "scene_index": 3,
+            "scene_type": "Why It Matters (The Stakes)",
+            "voiceover_script": "Financial freedom has a simple formula: when passive income exceeds living expenses, you're free. Notice it's not about how much you've accumulated, but how much flows in without your active work. Focus on net worth and you might retire rich but stressed. Focus on cash flow and you buy your time back.",
+            "word_count": 52,
+            "h2_heading": "The Freedom Formula"
+        },
+        {
+            "scene_index": 4,
+            "scene_type": "Who This Applies To (Relevance)",
+            "voiceover_script": "This mindset shift helps everyone. High earners who feel trapped despite big paychecks. Savers wondering why growing accounts don't feel like progress. Retirees who realize they can't easily access their wealth. Cash flow thinking changes how you build and deploy assets.",
+            "word_count": 44,
+            "h2_heading": "When to Shift Your Focus"
+        },
+        {
+            "scene_index": 5,
+            "scene_type": "How To Take Action (Strategy)",
+            "voiceover_script": "Build cash flow intentionally. First, track monthly inflows versus outflows. Second, convert assets to income producers: rental properties, dividend stocks, royalty streams. Third, reinvest cash flow to create more cash flow. The snowball effect works here too. Start small, grow consistently.",
+            "word_count": 46,
+            "h2_heading": "Three Steps to Build Cash Flow"
+        },
+        {
+            "scene_index": 6,
+            "scene_type": "Call to Action (CTA)",
+            "voiceover_script": "Ready to measure wealth the way that matters? Follow MoneyWise for weekly strategies that build real financial freedom. Let the cash flow.",
+            "word_count": 26,
+            "h2_heading": ""
+        }
+    ]
+}

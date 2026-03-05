@@ -1,0 +1,73 @@
+{
+    "meta": {
+        "project_name": "日日生金",
+        "lesson_number": "第38课",
+        "lesson_title": "增资扩股与定向增发",
+        "lesson_sub_title": "本轮牛市的底色"
+    },
+    "wechat": {
+        "hashtags": ["#定向增发", "#增资扩股", "#牛市", "#股市知识", "#上市公司融资", "#日日生金"],
+        "title": "牛市是怎么来的？｜第38课",
+        "description": "上市公司的定增新规一改，门槛降低折扣加大锁定期缩短，资本市场瞬间引爆。一文看懂增资扩股与定向增发🔥",
+        "heji": "",
+        "huodong": ""
+    },
+    "youtube": {
+        "title": "【日日生金】定增新规引爆牛市——增资扩股怎么玩？｜第38课",
+        "description": "📌 本期要点：\n- 什么是增资扩股？举例秒懂\n- 上市公司定向增发的三大限制\n- 2020定增新规改了什么？\n- 为什么说定增是这轮牛市的底色？\n- 投资人到底怎么靠定增赚钱？\n\n🔔 关注频道，每天学一点理财知识！\n\n#定向增发 #增资扩股 #牛市 #股市 #投资 #日日生金",
+        "playlists": "日日生金",
+        "tags": ["定向增发", "增资扩股", "牛市", "股市入门", "上市公司融资", "投资知识", "理财知识", "日日生金"]
+    },
+    "icons": [
+        "money", "cash", "coins", "dollar_bag", "investment",
+        "investment_portfolio", "stocks", "growing_money", "profit",
+        "loss", "money_transfer", "money_circulation", "stack_of_money",
+        "bank", "bank_building", "chart", "bar_chart", "line_chart",
+        "analytics", "financial_growth_analysis", "positive_dynamic",
+        "increase", "decrease", "percentage", "calculation", "calculator",
+        "business", "business_building", "company", "small_business",
+        "new_company", "businessman", "businesswoman", "management",
+        "briefcase", "handshake", "agreement", "presentation", "idea",
+        "people", "group", "lock", "unlock", "check_mark",
+        "warning", "thumbs_up", "like", "arrow_up", "personal_growth",
+        "star", "crown", "target"
+    ],
+    "scenes": [
+        {
+            "scene_index": 1,
+            "scene_type": "痛点/破冰/现状 (钩子引入)",
+            "voiceover_script": "炒股的朋友经常看到新闻说某某公司定增了，股价就开始动。到底什么是定增？为什么说这一轮牛市的底色就是定增新规？搞不清楚这个，你连股市为什么涨都看不明白。",
+            "voiceover_words": 68
+        },
+        {
+            "scene_index": 2,
+            "scene_type": "知识/是什么 (What)",
+            "voiceover_script": "简单说，增资扩股就是公司引进新股东，资本金增加了叫增资，总股本扩张了叫扩股。上市公司上市以后钱不够花，再找人投钱，就叫定向增发，简称定增。定向的意思是只卖给特定的机构投资者，不是谁都能买。",
+            "voiceover_words": 85
+        },
+        {
+            "scene_index": 3,
+            "scene_type": "剖析/认知矫正/为什么重要 (Why)",
+            "voiceover_script": "过去定增有三个坑。第一，名额少创业板最多五个人买，每人分十亿压力山大。第二，只打九折安全垫太薄。第三，锁定期十二到三十六个月，黄花菜都凉了。这三条卡着，谁也赚不了钱。",
+            "voiceover_words": 77
+        },
+        {
+            "scene_index": 4,
+            "scene_type": "适用场景（Where/When）",
+            "voiceover_script": "如果你炒股，看到某公司公告定增，就要关注两个事。谁来买了？说明有机构看好。价格打几折？折扣大说明安全垫厚。尤其是定增新规之后，很多基金专门做定增策略，收益相当可观。",
+            "voiceover_words": 74
+        },
+        {
+            "scene_index": 5,
+            "scene_type": "策略/应对/怎么做 (How)",
+            "voiceover_script": "二零二零年定增新规做了三个改变。名额从五个放宽到三十五个，折扣从九折变成八折，锁定期从十二个月缩到六个月。门槛降了、折扣大了、周期短了，有钱赚大家都抢着上，这就是牛市的底色。",
+            "voiceover_words": 80
+        },
+        {
+            "scene_index": 6,
+            "scene_type": "行动号召（Action）",
+            "voiceover_script": "搞懂定增逻辑，你看股市新闻就完全不一样了。点赞关注，每天一课日日生金。",
+            "voiceover_words": 31
+        }
+    ]
+}

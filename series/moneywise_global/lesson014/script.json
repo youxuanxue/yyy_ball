@@ -1,0 +1,91 @@
+{
+    "meta": {
+        "project_name": "MoneyWise",
+        "lesson_number": "Lesson 14",
+        "lesson_title": "Why Collateral is King in Lending",
+        "lesson_sub_title": "The Asset Banks Trust Most When You Borrow"
+    },
+    "seo": {
+        "primary_keyword": "loan collateral",
+        "secondary_keywords": ["what is collateral", "secured vs unsecured loans", "home equity lending", "mortgage collateral"],
+        "meta_title": "Why Collateral Matters for Getting a Loan | MoneyWise",
+        "meta_description": "Learn why lenders prefer certain collateral over others and how real estate became the gold standard for secured lending.",
+        "slug": "loan-collateral-why-it-matters",
+        "schema_type": "Article",
+        "estimated_read_time": "2 min read"
+    },
+    "social": {
+        "og_title": "The Asset Banks Trust Most When You Borrow",
+        "og_description": "Why real estate dominates as loan collateral and what it means for your borrowing power.",
+        "twitter_card": "summary_large_image",
+        "pinterest_description": "Collateral explained. Why banks love real estate. #personalfinance #loans #realestate"
+    },
+    "youtube": {
+        "title": "MoneyWise: Why Collateral is King in Lending | Lesson 14",
+        "description": "Ever wonder why banks ask for collateral? Learn why certain assets are trusted more than others and how this affects your borrowing options.\n\n0:00 The Collateral Question\n0:15 What Makes Good Collateral\n0:35 Why Real Estate Wins\n0:50 Who This Affects\n1:05 Using This Knowledge\n1:20 Stay Informed\n\n#collateral #loans #realestate #personalfinance #moneywise",
+        "tags": ["loan collateral", "secured loans", "real estate", "personal finance", "money tips", "borrowing", "financial literacy"],
+        "playlists": "MoneyWise Series"
+    },
+    "blog": {
+        "category": "Personal Finance",
+        "tags": ["loans", "real estate", "money management"],
+        "related_posts": ["lending-license-basics", "credit-score-fundamentals"],
+        "cta_type": "newsletter_signup",
+        "cta_text": "Get weekly insights on smart borrowing strategies"
+    },
+    "icons": [
+        "money", "cash", "coins", "dollar_bag", "us_dollar", "banknotes",
+        "bank", "bank_building", "loan", "debt", "credit_card",
+        "house", "home", "real_estate", "apartment", "building", "rent",
+        "safe", "safe_ok", "lock", "unlock", "secure", "shield", "security_shield",
+        "chart", "bar_chart", "line_chart", "increase", "decrease", "percentage",
+        "calculator", "profit", "loss", "growing_money", "investment",
+        "warning", "check_mark", "approve", "disapprove", "question_mark",
+        "handshake", "agreement", "document", "certificate",
+        "car", "warehouse", "gold_bars", "stocks"
+    ],
+    "scenes": [
+        {
+            "scene_index": 1,
+            "scene_type": "Hook / Pain Point",
+            "voiceover_script": "When you borrow money, lenders face a simple problem: what if you don't pay back? Their solution? They want something of yours to hold. But here's what most people don't realize: not all collateral is created equal. Some assets make lenders feel safe. Others make them nervous.",
+            "word_count": 49,
+            "h2_heading": "The Lender's Dilemma"
+        },
+        {
+            "scene_index": 2,
+            "scene_type": "What It Is (The Concept)",
+            "voiceover_script": "Collateral is an asset you pledge as security for a loan. If you stop paying, the lender can seize it. Good collateral has three qualities: it's easy to value, it holds its worth over time, and it's easy to sell. Cars, equipment, and inventory can work. But real estate? That's the gold standard.",
+            "word_count": 54,
+            "h2_heading": "What Makes Collateral Valuable"
+        },
+        {
+            "scene_index": 3,
+            "scene_type": "Why It Matters (The Stakes)",
+            "voiceover_script": "Why does real estate dominate? Property values are relatively stable and well-documented. Banks typically lend sixty to seventy percent of home value, leaving room for price drops. And when people risk losing their home, they prioritize that payment. That's why mortgage default rates stay low even during economic stress.",
+            "word_count": 50,
+            "h2_heading": "Why Real Estate Rules Collateral"
+        },
+        {
+            "scene_index": 4,
+            "scene_type": "Who This Applies To (Relevance)",
+            "voiceover_script": "This matters if you're seeking a loan. Have a home with equity? You'll get better rates and higher limits. Trying to borrow against a car or business inventory? Expect tougher terms. Understanding this helps you negotiate smarter and know what lenders really want.",
+            "word_count": 45,
+            "h2_heading": "How This Affects Your Borrowing"
+        },
+        {
+            "scene_index": 5,
+            "scene_type": "How To Take Action (Strategy)",
+            "voiceover_script": "Before borrowing, assess your collateral options. First, calculate your home equity: current value minus what you owe. Second, consider how quickly you need funds. Home equity loans take longer but offer better rates. Third, never pledge assets you can't afford to lose. That vacation property might secure a loan, but default means losing it.",
+            "word_count": 54,
+            "h2_heading": "Smart Collateral Decisions"
+        },
+        {
+            "scene_index": 6,
+            "scene_type": "Call to Action (CTA)",
+            "voiceover_script": "Want to make smarter borrowing decisions? Follow MoneyWise for weekly tips on using the financial system to your advantage. Your assets, your leverage.",
+            "word_count": 26,
+            "h2_heading": ""
+        }
+    ]
+}

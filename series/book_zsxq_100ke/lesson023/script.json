@@ -1,0 +1,71 @@
+{
+    "meta": {
+        "project_name": "日日生金",
+        "lesson_number": "第23课",
+        "lesson_title": "私募基金",
+        "lesson_sub_title": "巴菲特的赚钱方式跟你想的不一样"
+    },
+    "wechat": {
+        "hashtags": ["#私募基金", "#股权投资", "#理财知识", "#LP和GP", "#巴菲特", "#投资入门"],
+        "title": "巴菲特靠什么身家百亿？｜第23课",
+        "description": "巴菲特赚的不是炒股的钱，而是管私募基金的钱💼 LP、GP、100万起投是什么意思？私募股权投资为什么能翻几千倍？普通人该不该碰？一期讲透！",
+        "heji": "",
+        "huodong": ""
+    },
+    "youtube": {
+        "title": "【日日生金】巴菲特靠什么身家百亿？私募基金全解析｜第23课",
+        "description": "📌 本期要点：\n- 私募基金的\"私\"到底是什么意思？\n- LP和GP分别是谁？100万起投门槛有多高？\n- 私募证券 vs 私募股权：哪个更赚钱？\n- 孙正义投阿里翻了几千倍的秘密\n- 普通人该不该碰私募基金？\n\n🔔 关注频道，每天学一点理财知识！\n\n#私募基金 #股权投资 #理财 #投资 #日日生金",
+        "playlists": "日日生金",
+        "tags": ["私募基金", "股权投资", "LP", "GP", "巴菲特", "投资入门", "理财知识", "基金投资"]
+    },
+    "icons": [
+        "money", "cash", "cash_in_hand", "dollar_bag", "dollar_coin", "coins", "coin_wallet",
+        "banknotes", "stack_of_coins", "stack_of_money", "investment", "investment_portfolio",
+        "stocks", "bonds", "profit", "loss", "growing_money", "money_bag_with_coins",
+        "gold_bars", "safe", "budget", "deposit", "bank", "bank_building", "bank_cards",
+        "credit_card", "chart", "bar_chart", "line_chart", "pie_chart", "analytics",
+        "statistics", "financial_growth_analysis", "positive_dynamic", "increase", "decrease",
+        "percentage", "calculator", "business", "businessman", "businesswoman", "company",
+        "company_assets", "management", "manager", "handshake", "agreement", "signature",
+        "briefcase", "presentation", "meeting", "conference", "people", "group", "man",
+        "target", "goal", "question_mark", "check_mark", "warning", "brain", "light_bulb"
+    ],
+    "scenes": [
+        {
+            "scene_index": 1,
+            "scene_type": "痛点/破冰/现状 (钩子引入)",
+            "voiceover_script": "你知道巴菲特和高瓴资本的张磊，他们靠什么身家百亿吗？不是炒股票，而是管私募基金。私募基金这个词听着高大上，很多人觉得跟自己没关系。但你必须搞懂它，因为未来你的钱可能会跟它打交道。",
+            "voiceover_words": 77
+        },
+        {
+            "scene_index": 2,
+            "scene_type": "知识/是什么 (What)",
+            "voiceover_script": "私募基金的私，不是私营企业，而是私下不公开。它不能像公募基金那样打广告，只能小范围募集。出钱的人叫LP，就是有限合伙人，最多只能有49个。管钱的人叫GP，就是普通合伙人。起投门槛一百万，直接把大多数人拦在外面了。",
+            "voiceover_words": 92
+        },
+        {
+            "scene_index": 3,
+            "scene_type": "剖析/认知矫正/为什么重要 (Why)",
+            "voiceover_script": "私募主要投两种标的。第一种是证券类，帮你炒股，找个专业的人替你操盘。第二种厉害了，叫股权投资基金，投的是没上市的企业。当年孙正义投阿里就是这种，年化回报几千倍。它赚的是两笔钱的乘法：企业利润增长乘以市盈率提高，翻倍再翻倍。",
+            "voiceover_words": 97
+        },
+        {
+            "scene_index": 4,
+            "scene_type": "适用场景（Where/When）",
+            "voiceover_script": "私募适合什么人呢？说实话，适合那些资产已经积累到一定程度、能承受高风险的人。你手里如果只有几十万存款，是你的养老钱救命钱，那真不建议碰。因为好项目难找，靠谱的基金管理人更难找。",
+            "voiceover_words": 77
+        },
+        {
+            "scene_index": 5,
+            "scene_type": "策略/应对/怎么做 (How)",
+            "voiceover_script": "普通人该怎么做？第一，先把基本盘打好，公募基金、指数基金这些低门槛的工具用起来。第二，持续学习，看懂商业模式和投资逻辑。第三，等你资产到了一定规模，再拿出一小部分闲钱试水私募。记住，是闲钱，亏了不心疼的那种。千万别借钱投私募。",
+            "voiceover_words": 94
+        },
+        {
+            "scene_index": 6,
+            "scene_type": "行动号召（Action）",
+            "voiceover_script": "私募离普通人有点远，但理解它能帮你看清财富全貌。觉得有用就点个赞，关注我，下期见。",
+            "voiceover_words": 35
+        }
+    ]
+}

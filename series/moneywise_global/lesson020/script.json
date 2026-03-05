@@ -1,0 +1,91 @@
+{
+    "meta": {
+        "project_name": "MoneyWise",
+        "lesson_number": "Lesson 20",
+        "lesson_title": "The Wealth Formula Banks Use",
+        "lesson_sub_title": "Assets Minus Liabilities Equals Your True Position"
+    },
+    "seo": {
+        "primary_keyword": "personal balance sheet",
+        "secondary_keywords": ["assets vs liabilities", "calculate net worth", "wealth building basics", "financial position"],
+        "meta_title": "Master Your Personal Balance Sheet | MoneyWise",
+        "meta_description": "Learn the exact formula banks use to evaluate wealth and how to apply it to build your own financial empire.",
+        "slug": "wealth-formula-balance-sheet",
+        "schema_type": "Article",
+        "estimated_read_time": "2 min read"
+    },
+    "social": {
+        "og_title": "Think Like a Bank",
+        "og_description": "Banks have a simple formula for wealth. Here's how to use it to build yours.",
+        "twitter_card": "summary_large_image",
+        "pinterest_description": "The wealth formula explained. Assets minus liabilities. #networth #wealth #finance"
+    },
+    "youtube": {
+        "title": "MoneyWise: The Wealth Formula Banks Use | Lesson 20",
+        "description": "Understand the fundamental equation behind all wealth building.\n\n0:00 The Bank's Secret\n0:15 The Formula Explained\n0:35 Why It Matters\n0:50 Everyone Needs This\n1:05 Building Your Balance\n1:20 Start Tracking\n\n#networth #balancesheet #wealthbuilding #personalfinance #moneywise",
+        "tags": ["balance sheet", "net worth", "assets", "liabilities", "wealth building", "financial literacy"],
+        "playlists": "MoneyWise Series"
+    },
+    "blog": {
+        "category": "Personal Finance",
+        "tags": ["personal finance", "money management", "financial planning", "investing basics"],
+        "related_posts": ["cash-flow-networth", "debt-tool-trap"],
+        "cta_type": "newsletter_signup",
+        "cta_text": "Master wealth building with weekly strategies"
+    },
+    "icons": [
+        "money", "cash", "coins", "dollar_bag", "us_dollar", "banknotes",
+        "bank", "bank_building", "loan", "debt", "credit_card",
+        "house", "real_estate", "building", "car",
+        "chart", "bar_chart", "line_chart", "increase", "decrease",
+        "calculator", "percentage", "scales", "balance",
+        "document", "spreadsheet", "checklist", "clipboard",
+        "plus", "minus", "equals", "math",
+        "check_mark", "approve", "target", "trophy",
+        "piggy_bank", "safe", "wallet", "briefcase"
+    ],
+    "scenes": [
+        {
+            "scene_index": 1,
+            "scene_type": "Hook / Pain Point",
+            "voiceover_script": "When banks evaluate businesses, they use one simple document: the balance sheet. Assets on one side, liabilities on the other. The difference reveals everything. What if you applied this same lens to your personal finances? Most people never do, and it costs them.",
+            "word_count": 46,
+            "h2_heading": "The Document Banks Trust Most"
+        },
+        {
+            "scene_index": 2,
+            "scene_type": "What It Is (The Concept)",
+            "voiceover_script": "The formula is simple. Assets are everything you own with value: cash, investments, property, vehicles. Liabilities are everything you owe: mortgages, car loans, credit card balances, student debt. Assets minus liabilities equals your net worth. Positive means wealth. Negative means work to do.",
+            "word_count": 48,
+            "h2_heading": "The Wealth Equation"
+        },
+        {
+            "scene_index": 3,
+            "scene_type": "Why It Matters (The Stakes)",
+            "voiceover_script": "Knowing your number changes behavior. When you see assets growing and liabilities shrinking, you're motivated. When the opposite happens, you catch it early. This single calculation, updated monthly, reveals whether your financial decisions are actually working or just feeling productive.",
+            "word_count": 45,
+            "h2_heading": "Why Tracking Transforms Results"
+        },
+        {
+            "scene_index": 4,
+            "scene_type": "Who This Applies To (Relevance)",
+            "voiceover_script": "This applies to everyone with money, which means everyone. Students just starting out set a baseline. Mid-career professionals track progress toward goals. Pre-retirees ensure they're on target. The wealthy use it to manage complex portfolios. One formula, universal application.",
+            "word_count": 44,
+            "h2_heading": "From Students to the Wealthy"
+        },
+        {
+            "scene_index": 5,
+            "scene_type": "How To Take Action (Strategy)",
+            "voiceover_script": "Build your balance sheet now. First, list every asset and its current value. Second, list every liability and the balance owed. Third, calculate the difference. Fourth, update monthly and watch the trend. Growing assets and shrinking liabilities means you're winning.",
+            "word_count": 46,
+            "h2_heading": "Four Steps to Your Balance Sheet"
+        },
+        {
+            "scene_index": 6,
+            "scene_type": "Call to Action (CTA)",
+            "voiceover_script": "Ready to see your true financial position? Follow MoneyWise for weekly strategies that grow your assets and shrink your liabilities. Know your number.",
+            "word_count": 27,
+            "h2_heading": ""
+        }
+    ]
+}

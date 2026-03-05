@@ -1,0 +1,144 @@
+{
+    "meta": {
+        "project_name": "MoneyWise",
+        "lesson_number": "Lesson 6",
+        "lesson_title": "Who Regulates Your Money? Understanding Financial Regulators",
+        "lesson_sub_title": "The Fed, SEC, FDIC and Why They Matter to You"
+    },
+    "seo": {
+        "primary_keyword": "financial regulators",
+        "secondary_keywords": ["what does the SEC do", "FDIC insurance explained", "Federal Reserve role", "who regulates banks"],
+        "meta_title": "Financial Regulators Explained: Fed, SEC, FDIC | MoneyWise",
+        "meta_description": "Learn how financial regulators like the Fed, SEC, and FDIC protect your money. Understanding who watches over your investments and bank accounts.",
+        "slug": "financial-regulators-explained-fed-sec-fdic",
+        "schema_type": "Article",
+        "estimated_read_time": "2 min read"
+    },
+    "social": {
+        "og_title": "Who Actually Protects Your Money? Meet the Financial Regulators",
+        "og_description": "The Fed, SEC, FDIC - what do they actually do for you?",
+        "twitter_card": "summary_large_image",
+        "pinterest_description": "Financial regulators explained! Learn how the Fed, SEC, and FDIC protect your money and investments. #personalfinance #investing #moneytips"
+    },
+    "youtube": {
+        "title": "MoneyWise: Who Regulates Your Money? | Lesson 6",
+        "description": "Ever wondered who's watching over your money? In this video:\n\n0:00 - Why Regulators Matter\n0:15 - The Big Three Explained\n0:35 - How They Protect You\n0:55 - Who Should Care\n1:10 - What You Can Do\n1:25 - Take Action\n\nSubscribe for more money tips!\n\n#personalfinance #investing #federalreserve #SEC #FDIC",
+        "tags": ["personal finance", "investing", "federal reserve", "SEC", "FDIC", "financial literacy", "money tips"],
+        "playlists": "MoneyWise Series"
+    },
+    "blog": {
+        "category": "Economic Fundamentals",
+        "tags": ["federal reserve", "banking", "investing basics"],
+        "related_posts": ["how-interest-rates-work", "is-my-money-safe-in-banks"],
+        "cta_type": "newsletter_signup",
+        "cta_text": "Get weekly money tips delivered to your inbox"
+    },
+    "icons": [
+        "bank",
+        "bank_building",
+        "bank_cards",
+        "shield",
+        "security_shield",
+        "lock",
+        "secure",
+        "safe",
+        "safe_ok",
+        "money",
+        "cash",
+        "coins",
+        "dollar_bag",
+        "us_dollar",
+        "stack_of_money",
+        "stocks",
+        "investment",
+        "investment_portfolio",
+        "chart",
+        "line_chart",
+        "bar_chart",
+        "analytics",
+        "statistics",
+        "policy_document",
+        "document",
+        "documents",
+        "certificate",
+        "certification",
+        "check_mark",
+        "approve",
+        "guarantee",
+        "warning",
+        "question_mark",
+        "questions",
+        "info",
+        "help",
+        "faq",
+        "business",
+        "business_building",
+        "company",
+        "management",
+        "office",
+        "businessman",
+        "people",
+        "family",
+        "user",
+        "customer",
+        "pensioner",
+        "retired",
+        "insurance",
+        "deposit",
+        "withdrawal",
+        "credit_card",
+        "debit_card",
+        "loan",
+        "debt",
+        "target",
+        "goal",
+        "checklist",
+        "light_bulb",
+        "idea",
+        "brain"
+    ],
+    "scenes": [
+        {
+            "scene_index": 1,
+            "scene_type": "Hook / Pain Point",
+            "voiceover_script": "Ever wonder who's actually watching over your money? When banks fail or investments go wrong, there are powerful agencies working behind the scenes to protect you. Understanding who they are could save you from financial disaster.",
+            "word_count": 40,
+            "h2_heading": "Who's Really Protecting Your Money?"
+        },
+        {
+            "scene_index": 2,
+            "scene_type": "What It Is (The Concept)",
+            "voiceover_script": "Think of financial regulators as referees in a game. The Federal Reserve controls money supply and interest rates. The SEC watches over stocks and investments. The FDIC insures your bank deposits. Together, they keep the financial system stable and protect everyday investors.",
+            "word_count": 47,
+            "h2_heading": "The Big Three Financial Regulators Explained"
+        },
+        {
+            "scene_index": 3,
+            "scene_type": "Why It Matters (The Stakes)",
+            "voiceover_script": "Here's why this matters: the FDIC insures your deposits up to two hundred fifty thousand dollars. If your bank fails, you're protected. The SEC requires companies to disclose risks before you invest. Without these watchdogs, your savings would be far more vulnerable.",
+            "word_count": 48,
+            "h2_heading": "How Regulators Protect Your Wealth"
+        },
+        {
+            "scene_index": 4,
+            "scene_type": "Who This Applies To (Relevance)",
+            "voiceover_script": "This applies to everyone with a bank account, retirement fund, or investment portfolio. Whether you have a hundred dollars or a million saved, these regulators are working to protect your financial future every single day.",
+            "word_count": 39,
+            "h2_heading": "Why Every Saver and Investor Should Care"
+        },
+        {
+            "scene_index": 5,
+            "scene_type": "How To Take Action (Strategy)",
+            "voiceover_script": "Here's what you can do: First, verify your bank is FDIC insured. Second, check your broker is SEC registered. Third, stay under the two hundred fifty thousand dollar limit per bank to maximize protection. Knowledge of these rules is your first line of defense.",
+            "word_count": 48,
+            "h2_heading": "Three Steps to Maximize Your Protection"
+        },
+        {
+            "scene_index": 6,
+            "scene_type": "Call to Action (CTA)",
+            "voiceover_script": "Want to understand how the financial system really works? Subscribe for more insights that help you protect and grow your wealth. Your money deserves smart protection.",
+            "word_count": 28,
+            "h2_heading": ""
+        }
+    ]
+}

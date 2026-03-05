@@ -1,0 +1,74 @@
+{
+    "meta": {
+        "project_name": "日日生金",
+        "lesson_number": "第37课",
+        "lesson_title": "债券市场全貌",
+        "lesson_sub_title": "理财和金融市场的基石"
+    },
+    "wechat": {
+        "hashtags": ["#债券市场", "#国债", "#理财知识", "#银行理财", "#金融基础", "#日日生金"],
+        "title": "你的钱去哪了？｜第37课",
+        "description": "你买的银行理财、微信余额宝，底层全是债券。中国债券市场108万亿，三级结构一看就懂📈",
+        "heji": "",
+        "huodong": ""
+    },
+    "youtube": {
+        "title": "【日日生金】你的理财钱去哪了？中国债券市场全貌｜第37课",
+        "description": "📌 本期要点：\n- 中国债券市场108万亿，全球第二大\n- 国债、金融债、企业债三级结构\n- 银行理财的底层资产是什么？\n- 债券评级AAA、AA+到底什么意思？\n- 为什么外资抢着买中国国债？\n\n🔔 关注频道，每天学一点理财知识！\n\n#债券市场 #国债 #理财 #银行理财 #金融基础 #日日生金",
+        "playlists": "日日生金",
+        "tags": ["债券市场", "国债", "金融债", "企业债", "债券评级", "理财知识", "银行理财", "日日生金"]
+    },
+    "icons": [
+        "money", "cash", "coins", "dollar_bag", "banknotes",
+        "investment", "investment_portfolio", "stocks", "bonds",
+        "growing_money", "profit", "loss", "money_transfer",
+        "money_circulation", "stack_of_money", "safe", "safe_ok",
+        "bank", "bank_building", "bank_cards", "credit_card",
+        "chart", "bar_chart", "line_chart", "analytics",
+        "financial_growth_analysis", "positive_dynamic", "increase",
+        "decrease", "percentage", "business", "business_building",
+        "company", "businessman", "management", "briefcase",
+        "handshake", "agreement", "shield", "security_shield",
+        "lock", "guarantee", "document", "documents", "finance_document",
+        "certificate", "globe", "world_markets", "warning",
+        "check_mark", "thumbs_up", "like", "star", "arrow_up"
+    ],
+    "scenes": [
+        {
+            "scene_index": 1,
+            "scene_type": "痛点/破冰/现状 (钩子引入)",
+            "voiceover_script": "你在银行买的理财、微信里的余额宝，你知道这些钱最后跑到哪里去了吗？很多人以为是银行拿去放贷了，其实不全是。真相是——你的钱大部分买了债券。中国的债券市场超过一百万亿，是金融市场的基石。",
+            "voiceover_words": 81
+        },
+        {
+            "scene_index": 2,
+            "scene_type": "知识/是什么 (What)",
+            "voiceover_script": "债券说白了就是标准化的借条。借钱就要打借条，约定利率、期限、抵押物。中国的债券分三级：第一级国债，国家借钱最安全；第二级金融债，银行保险借的；第三级企业债，公司借的。安全性依次递减。",
+            "voiceover_words": 80
+        },
+        {
+            "scene_index": 3,
+            "scene_type": "剖析/认知矫正/为什么重要 (Why)",
+            "voiceover_script": "很多人以为国债收益低不值得买，大错特错。中国五年期国债利率百分之二点四，美国国债才零点二，是我们的十分之一。外资抢着买中国国债，持有了百分之十。银行给你保本的理财，底层就是拿你的钱买了国债。",
+            "voiceover_words": 83
+        },
+        {
+            "scene_index": 4,
+            "scene_type": "适用场景（Where/When）",
+            "voiceover_script": "如果你买银行理财年化二到三个点，底层就是国债。买年化四到六个点的，底层是AA加以上的企业债。搞清楚这些，下次挑理财产品就不会被销售忽悠了，知道自己的钱到底买了什么。",
+            "voiceover_words": 72
+        },
+        {
+            "scene_index": 5,
+            "scene_type": "策略/应对/怎么做 (How)",
+            "voiceover_script": "记住三条原则。第一，看评级，AA加以上的才靠谱。第二，看发行方，国企省会城市优先。第三，看利率，收益越高风险越大，超过百分之六就要警惕了。底层逻辑就一句话：安全第一，收益第二。",
+            "voiceover_words": 78
+        },
+        {
+            "scene_index": 6,
+            "scene_type": "行动号召（Action）",
+            "voiceover_script": "搞懂债券市场，你对理财产品就看得透了。觉得有用就点个赞，关注我，每天一课日日生金。",
+            "voiceover_words": 35
+        }
+    ]
+}

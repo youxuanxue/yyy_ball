@@ -110,7 +110,7 @@ icons 至少50个建议的配图（描述具体的画面元素，如：战争、
     },
     "wechat": {
         "hashtags": ["#tag1","#tag2","#tag3","#tag4","#tag5","#tag6"],
-        "title": "标题（10字以内，可带emoji）",
+        "title": "标题（10字以内，不能包含emoji等特殊符号）",
         "description": "描述（50字左右，带emoji）",
         "heji": "我是小小谋略家",
         "huodong": "全网征集小小谋略家"

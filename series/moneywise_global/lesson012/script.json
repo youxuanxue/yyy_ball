@@ -1,0 +1,81 @@
+{
+    "meta": {
+        "project_name": "MoneyWise",
+        "lesson_number": "Lesson 12",
+        "lesson_title": "Think Like the Best Decision-Makers",
+        "lesson_sub_title": "Why Independent Thinking Protects Your Money"
+    },
+    "seo": {
+        "primary_keyword": "independent thinking money",
+        "secondary_keywords": ["understand motives before investing", "don't be the sucker", "critical thinking finance", "decision making wealth", "see the full picture money"],
+        "meta_title": "Think Like the Best Decision-Makers | MoneyWise",
+        "meta_description": "Learn why independent, comprehensive thinking protects your wealth. Understand motives, spot patterns, and avoid being the sucker at the table.",
+        "slug": "think-like-best-decision-makers",
+        "schema_type": "Article",
+        "estimated_read_time": "2 min read"
+    },
+    "social": {
+        "og_title": "Think Like the Best Decision-Makers",
+        "og_description": "The game rule: find the rationality behind every move. If you can't, you might be the one being played.",
+        "twitter_card": "summary_large_image",
+        "pinterest_description": "Independent thinking for your money. Understand motives, spot patterns. #personalfinance #criticalthinking #MoneyWise"
+    },
+    "youtube": {
+        "title": "MoneyWise: Think Like the Best Decision-Makers | Lesson 12",
+        "description": "Why do smart people still get outplayed? Learn the mindset that separates those who protect their wealth from those who lose it.\n\n0:00 The Trap\n0:15 What Top Thinkers Do\n0:35 Why Motives Matter\n0:50 Who Gets Played\n1:05 Your Action Steps\n1:20 Stay Sharp\n\n#independentthinking #personalfinance #moneywise #criticalthinking",
+        "tags": ["independent thinking", "personal finance", "decision making", "critical thinking", "wealth protection", "money mindset", "financial literacy"],
+        "playlists": "MoneyWise Series"
+    },
+    "blog": {
+        "category": "Personal Finance",
+        "tags": ["investing basics", "money management"],
+        "related_posts": ["spot-investment-scam-4-part-test", "central-bank-digital-currency-explained"],
+        "cta_type": "newsletter_signup",
+        "cta_text": "Get weekly insights on protecting and growing your wealth"
+    },
+    "icons": ["brain", "light_bulb", "idea", "critical_thinking", "problem_solving", "decision", "make_decision", "question_mark", "questions", "target", "goal", "chart", "analytics", "bar_chart", "line_chart", "money", "cash", "investment", "stocks", "handshake", "agreement", "person", "people", "businessman", "warning", "shield", "security_shield", "check_mark", "fail", "thumbs_up", "thumbs_down", "book", "education", "learning", "document", "policy_document", "search", "magnifying_glass", "filter", "globe", "network", "communication", "management", "manager", "crown", "star", "certificate", "approve", "disapprove", "error", "idea_bank", "innovation", "concept", "brainstorm_skill", "answers", "tips", "checklist", "to_do_list", "task", "project", "business_goal", "mission", "contract", "signature", "report", "data_sheet", "target", "business_goal"],
+    "scenes": [
+        {
+            "scene_index": 1,
+            "scene_type": "Hook / Pain Point",
+            "voiceover_script": "Ever wonder why smart people still get outplayed with their money? They follow the crowd, trust the pitch, and never ask whose interests are really being served. Here's the uncomfortable truth: if you can't find the rationality behind someone's move, you might be the one being played.",
+            "word_count": 52,
+            "h2_heading": "Why Smart People Still Get Outplayed"
+        },
+        {
+            "scene_index": 2,
+            "scene_type": "What It Is (The Concept)",
+            "voiceover_script": "The best decision-makers think in two ways. First, they group similar situations and learn from patterns. History repeats; so do market cycles and human motives. Second, they ask why. What does this person want? What's their incentive? Simply put, they don't take words at face value. They look for the rationality behind every action.",
+            "word_count": 62,
+            "h2_heading": "How Top Thinkers See the Full Picture"
+        },
+        {
+            "scene_index": 3,
+            "scene_type": "Why It Matters (The Stakes)",
+            "voiceover_script": "The key issue is this: there are no bored people and no real fools at the money table. If someone does something that seems irrational to you, and you can't find the reason behind it, the gap is in your thinking. The common mistake is believing the surface story. The real story is always about incentives, position, and who benefits.",
+            "word_count": 68,
+            "h2_heading": "There Are No Fools at the Table"
+        },
+        {
+            "scene_index": 4,
+            "scene_type": "Who This Applies To (Relevance)",
+            "voiceover_script": "This applies to you if you've ever taken a hot tip without asking who gains, signed a contract without reading the fine print, or trusted an expert without checking their incentives. When you find yourself nodding along to a pitch, pause. Ask: whose interest does this serve?",
+            "word_count": 52,
+            "h2_heading": "When to Question What You Hear"
+        },
+        {
+            "scene_index": 5,
+            "scene_type": "How To Take Action (Strategy)",
+            "voiceover_script": "Step one: before any money decision, list who benefits and how. Step two: look for similar past cases. What happened when others did this? Step three: assume everyone is rational. If an action seems stupid, you're missing information. Find it. The simple rule: if you can't explain their motive, don't bet your money.",
+            "word_count": 68,
+            "h2_heading": "Your Pre-Decision Checklist"
+        },
+        {
+            "scene_index": 6,
+            "scene_type": "Call to Action (CTA)",
+            "voiceover_script": "Want to sharpen your thinking and protect your wealth? Follow MoneyWise for weekly tips on seeing the full picture before you commit your money.",
+            "word_count": 28,
+            "h2_heading": ""
+        }
+    ]
+}

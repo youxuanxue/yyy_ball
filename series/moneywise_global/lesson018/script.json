@@ -1,0 +1,91 @@
+{
+    "meta": {
+        "project_name": "MoneyWise",
+        "lesson_number": "Lesson 18",
+        "lesson_title": "Debt Is a Tool Not a Trap",
+        "lesson_sub_title": "How Smart People Use Borrowed Money to Build Wealth"
+    },
+    "seo": {
+        "primary_keyword": "good debt vs bad debt",
+        "secondary_keywords": ["using debt to build wealth", "smart borrowing", "leverage money", "debt strategy"],
+        "meta_title": "Debt as a Wealth-Building Tool | MoneyWise",
+        "meta_description": "Learn how successful people use debt strategically to accelerate wealth building while avoiding the traps.",
+        "slug": "debt-tool-not-trap",
+        "schema_type": "Article",
+        "estimated_read_time": "2 min read"
+    },
+    "social": {
+        "og_title": "Why Rich People Borrow Money",
+        "og_description": "Debt isn't always bad. Here's how to make it work FOR you instead of against you.",
+        "twitter_card": "summary_large_image",
+        "pinterest_description": "Good debt vs bad debt explained. Use leverage wisely. #debt #wealthbuilding #finance"
+    },
+    "youtube": {
+        "title": "MoneyWise: Debt Is a Tool Not a Trap | Lesson 18",
+        "description": "Stop fearing all debt. Learn to distinguish wealth-building debt from wealth-destroying debt.\n\n0:00 The Debt Paradox\n0:15 Good vs Bad Debt\n0:35 The Leverage Effect\n0:50 Who Should Use Debt\n1:05 Smart Debt Rules\n1:20 Use Wisely\n\n#debt #leverage #wealthbuilding #personalfinance #moneywise",
+        "tags": ["good debt", "bad debt", "leverage", "wealth building", "personal finance", "financial strategy"],
+        "playlists": "MoneyWise Series"
+    },
+    "blog": {
+        "category": "Debt Management",
+        "tags": ["debt payoff", "money management", "investing basics", "financial planning"],
+        "related_posts": ["cheapest-loan", "credit-profile"],
+        "cta_type": "newsletter_signup",
+        "cta_text": "Master debt strategy with weekly insights"
+    },
+    "icons": [
+        "money", "cash", "coins", "dollar_bag", "us_dollar", "banknotes",
+        "bank", "bank_building", "loan", "debt", "credit_card",
+        "house", "real_estate", "building", "apartment",
+        "chart", "bar_chart", "line_chart", "increase", "decrease",
+        "car", "shopping", "shopping_cart", "gift",
+        "calculator", "percentage", "scales", "balance",
+        "check_mark", "approve", "disapprove", "warning",
+        "idea", "light_bulb", "brain", "target", "rocket",
+        "shield", "lock", "key", "tool"
+    ],
+    "scenes": [
+        {
+            "scene_index": 1,
+            "scene_type": "Hook / Pain Point",
+            "voiceover_script": "Why do wealthy people borrow money when they could pay cash? It seems backwards, but there's a secret: debt isn't inherently good or bad. It's a tool. Used correctly, it accelerates wealth. Used poorly, it destroys it. The difference is strategy.",
+            "word_count": 45,
+            "h2_heading": "The Debt Paradox"
+        },
+        {
+            "scene_index": 2,
+            "scene_type": "What It Is (The Concept)",
+            "voiceover_script": "Good debt puts money in your pocket. Think rental properties, business investments, or education that increases earning power. Bad debt takes money out. Think credit cards for lifestyle spending, car loans on depreciating assets, or borrowing for vacations. The test: does it generate returns?",
+            "word_count": 48,
+            "h2_heading": "Good Debt Versus Bad Debt"
+        },
+        {
+            "scene_index": 3,
+            "scene_type": "Why It Matters (The Stakes)",
+            "voiceover_script": "Here's leverage in action. Invest a hundred thousand of your own money, earn ten percent, you make ten thousand. But invest twenty thousand and borrow eighty, earn the same ten percent, you make ten thousand on only twenty thousand invested. That's fifty percent return on your cash.",
+            "word_count": 49,
+            "h2_heading": "The Power of Leverage"
+        },
+        {
+            "scene_index": 4,
+            "scene_type": "Who This Applies To (Relevance)",
+            "voiceover_script": "This matters for anyone building wealth. First-time home buyers can leverage into appreciating assets. Entrepreneurs can scale faster than savings allow. Investors can amplify returns. But leverage also amplifies losses, so it's not for everyone or every situation.",
+            "word_count": 44,
+            "h2_heading": "When Leverage Makes Sense"
+        },
+        {
+            "scene_index": 5,
+            "scene_type": "How To Take Action (Strategy)",
+            "voiceover_script": "Follow three rules. First, only borrow for assets that appreciate or generate income. Second, ensure the return exceeds the interest cost. Third, never leverage beyond what you can survive losing. Conservative leverage builds wealth. Aggressive leverage builds nightmares.",
+            "word_count": 44,
+            "h2_heading": "Three Rules for Smart Debt"
+        },
+        {
+            "scene_index": 6,
+            "scene_type": "Call to Action (CTA)",
+            "voiceover_script": "Ready to master the tool that builds empires? Follow MoneyWise for weekly strategies that separate smart borrowers from struggling ones. Use debt wisely.",
+            "word_count": 27,
+            "h2_heading": ""
+        }
+    ]
+}

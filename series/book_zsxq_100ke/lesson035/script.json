@@ -1,0 +1,73 @@
+{
+    "meta": {
+        "project_name": "日日生金",
+        "lesson_number": "第35课",
+        "lesson_title": "从种子到上市",
+        "lesson_sub_title": "一家公司的融资全景"
+    },
+    "wechat": {
+        "hashtags": ["#创业融资", "#天使投资", "#ABC轮", "#IPO上市", "#风险投资", "#日日生金"],
+        "title": "从idea到敲钟要几步？｜第35课",
+        "description": "种子轮只要一个想法，天使轮写份PPT就有人给钱，C轮过后就能上市敲钟。一文看懂一家公司从零到上市的融资全景图📈",
+        "heji": "",
+        "huodong": ""
+    },
+    "youtube": {
+        "title": "【日日生金】从一个想法到上市敲钟——融资全景｜第35课",
+        "description": "📌 本期要点：\n- 种子轮、天使轮、A轮有什么区别？\n- B轮C轮公司已经赚钱为什么还要融资？\n- IPO到底是什么意思？\n- 融资额度从几十万到几十亿是怎么涨上去的？\n- 种子看运气天使看人品A轮看产品\n\n🔔 关注频道，每天学一点理财知识！\n\n#创业融资 #天使投资 #IPO #风险投资 #创业 #日日生金",
+        "playlists": "日日生金",
+        "tags": ["创业融资", "天使投资", "ABC轮", "IPO上市", "风险投资", "创业知识", "理财知识", "日日生金"]
+    },
+    "icons": [
+        "money", "cash", "coins", "dollar_bag", "investment",
+        "investment_portfolio", "stocks", "growing_money", "profit",
+        "money_transfer", "money_circulation", "stack_of_money",
+        "bank", "bank_building", "chart", "bar_chart", "line_chart",
+        "analytics", "financial_growth_analysis", "positive_dynamic",
+        "increase", "percentage", "business", "business_building",
+        "company", "small_business", "new_company", "businessman",
+        "businesswoman", "management", "manager", "briefcase",
+        "handshake", "agreement", "presentation", "idea", "light_bulb",
+        "brain", "target", "goal", "business_goal", "people",
+        "group", "crown", "star", "winner", "check_mark",
+        "warning", "thumbs_up", "like", "arrow_up", "personal_growth"
+    ],
+    "scenes": [
+        {
+            "scene_index": 1,
+            "scene_type": "痛点/破冰/现状 (钩子引入)",
+            "voiceover_script": "你去面试的时候有没有注意过，招聘网站上写着A轮B轮C轮，知道啥意思吗？很多人天天说创业投资，可从头到尾一家公司怎么从一个想法变成上市公司，大多数人完全搞不清楚。今天一次给你讲明白。",
+            "voiceover_words": 79
+        },
+        {
+            "scene_index": 2,
+            "scene_type": "知识/是什么 (What)",
+            "voiceover_script": "公司融资分三个阶段。早期有种子轮天使轮A轮，种子就是一个idea，天使是你写了份商业计划书有人给钱，A轮是公司跑起来了要验证模式。中期是B轮C轮，扩张复制冲刺上市。后期就是IPO，全国人民都能买你的股票了。",
+            "voiceover_words": 91
+        },
+        {
+            "scene_index": 3,
+            "scene_type": "剖析/认知矫正/为什么重要 (Why)",
+            "voiceover_script": "很多人以为拿到融资就成功了，大错特错。种子轮融几十万靠运气，十个能活一个就不错。A轮验证模式靠产品，B轮拼数据，C轮看利润。每一轮都是生死考验，钱不是白给的，投资人要的是几十倍回报。",
+            "voiceover_words": 82
+        },
+        {
+            "scene_index": 4,
+            "scene_type": "适用场景（Where/When）",
+            "voiceover_script": "搞清楚融资阶段有什么用？找工作时，A轮公司风险大但股权值钱，C轮公司稳但想发财要看上市。投资时，C轮pre-IPO是高端投资的抢手货，好公司不多，能上车都是暴赚。场面上聊天也不会露怯。",
+            "voiceover_words": 80
+        },
+        {
+            "scene_index": 5,
+            "scene_type": "策略/应对/怎么做 (How)",
+            "voiceover_script": "记住这个口诀：种子看运气，天使看人品，A轮看产品，B轮看数据，C轮看利润，上市看行情。选工作看公司在哪一轮，做投资看基金持仓哪些pre-IPO。把这个框架记住，你就比百分之九十的人看得清楚。",
+            "voiceover_words": 86
+        },
+        {
+            "scene_index": 6,
+            "scene_type": "行动号召（Action）",
+            "voiceover_script": "从idea到敲钟，每一步都是真金白银的考验。搞懂融资逻辑，你看公司的眼光就不一样了。点赞关注，日日生金每天一课。",
+            "voiceover_words": 44
+        }
+    ]
+}

@@ -1,0 +1,92 @@
+{
+    "meta": {
+        "project_name": "MoneyWise",
+        "lesson_number": "Lesson 13",
+        "lesson_title": "The Hidden Power of Lending Licenses",
+        "lesson_sub_title": "Why Only Certain Institutions Can Legally Loan You Money"
+    },
+    "seo": {
+        "primary_keyword": "lending license",
+        "secondary_keywords": ["who can lend money legally", "bank lending regulations", "financial institution license", "loan provider requirements"],
+        "meta_title": "Why Lending Licenses Matter for Your Finances | MoneyWise",
+        "meta_description": "Discover why only licensed institutions can legally lend money and how this protects you from predatory lenders. Learn the financial system basics.",
+        "slug": "lending-license-who-can-loan-money",
+        "schema_type": "Article",
+        "estimated_read_time": "2 min read"
+    },
+    "social": {
+        "og_title": "The Hidden Power Behind Who Can Lend You Money",
+        "og_description": "Not everyone can legally loan you money. Here's why that matters for your financial safety.",
+        "twitter_card": "summary_large_image",
+        "pinterest_description": "Lending licenses explained. Why banks profit from lending. #personalfinance #banking #loans"
+    },
+    "youtube": {
+        "title": "MoneyWise: Why Only Banks Can Legally Lend Money | Lesson 13",
+        "description": "Ever wonder why banks make so much money from loans? The secret is in the license. Learn why lending regulations exist and how they affect you.\n\n0:00 The Lending Game\n0:15 What a Lending License Means\n0:35 Why This Matters\n0:50 Who This Affects\n1:05 What You Can Do\n1:20 Stay Informed\n\n#lending #personalfinance #banking #moneywise",
+        "tags": ["lending license", "bank loans", "financial regulations", "personal finance", "money tips", "banking system", "financial literacy"],
+        "playlists": "MoneyWise Series"
+    },
+    "blog": {
+        "category": "Personal Finance",
+        "tags": ["banking", "loans", "money management"],
+        "related_posts": ["understanding-bank-types", "credit-score-basics"],
+        "cta_type": "newsletter_signup",
+        "cta_text": "Get weekly money tips to understand the financial system better"
+    },
+    "icons": [
+        "money", "cash", "coins", "dollar_bag", "us_dollar", "banknotes", "currency",
+        "bank", "bank_building", "bank_cards", "loan", "debt", "credit_card",
+        "credit_control", "certificate", "certification", "document", "policy_document",
+        "lock", "unlock", "secure", "shield", "security_shield", "guarantee",
+        "business", "business_building", "company", "small_business", "office",
+        "handshake", "agreement", "signature", "contract", "receipt", "invoice",
+        "chart", "bar_chart", "line_chart", "analytics", "statistics",
+        "percentage", "calculator", "profit", "loss", "growing_money",
+        "warning", "check_mark", "approve", "disapprove", "question_mark",
+        "light_bulb", "idea", "brain", "critical_thinking"
+    ],
+    "scenes": [
+        {
+            "scene_index": 1,
+            "scene_type": "Hook / Pain Point",
+            "voiceover_script": "Here's something most people don't realize: making money in finance isn't about having the best strategies. The most profitable move? Simply being allowed to lend money. Banks earn billions not because they're smarter, but because they hold a license that others can't get.",
+            "word_count": 45,
+            "h2_heading": "The Secret Behind Bank Profits"
+        },
+        {
+            "scene_index": 2,
+            "scene_type": "What It Is (The Concept)",
+            "voiceover_script": "In most countries, you can't just lend money to strangers and charge interest. That requires a financial institution license. Banks and credit unions have it. Most businesses don't. This license lets them collect deposits, make loans, and legally pursue repayment. Without it, lending to the public is actually illegal.",
+            "word_count": 52,
+            "h2_heading": "What a Lending License Actually Means"
+        },
+        {
+            "scene_index": 3,
+            "scene_type": "Why It Matters (The Stakes)",
+            "voiceover_script": "This licensing system exists to protect you. Licensed lenders must follow strict rules about interest rates, disclosures, and collection practices. Unlicensed lenders? They operate in shadows with no consumer protection. That's why payday loan shops and loan sharks can charge outrageous rates while banks compete on fairness.",
+            "word_count": 49,
+            "h2_heading": "Why Lending Regulations Protect You"
+        },
+        {
+            "scene_index": 4,
+            "scene_type": "Who This Applies To (Relevance)",
+            "voiceover_script": "This affects you whenever you need to borrow money. Whether it's a mortgage, car loan, or personal credit line, always verify your lender is properly licensed. If someone offers you a loan outside the banking system, proceed with extreme caution.",
+            "word_count": 42,
+            "h2_heading": "Who Needs to Know About Lending Licenses"
+        },
+        {
+            "scene_index": 5,
+            "scene_type": "How To Take Action (Strategy)",
+            "voiceover_script": "Before borrowing, take these steps. First, verify the lender is registered with financial regulators like the FDIC or your state banking authority. Second, compare rates from multiple licensed lenders. Third, read all disclosures carefully. Licensed lenders must provide clear terms. If they won't, that's a red flag.",
+            "word_count": 50,
+            "h2_heading": "Your Safe Borrowing Checklist"
+        },
+        {
+            "scene_index": 6,
+            "scene_type": "Call to Action (CTA)",
+            "voiceover_script": "Want to understand how the financial system really works? Follow MoneyWise for more insights that protect your money. Knowledge is your best defense.",
+            "word_count": 25,
+            "h2_heading": ""
+        }
+    ]
+}

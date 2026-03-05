@@ -1,0 +1,71 @@
+{
+    "meta": {
+        "project_name": "日日生金",
+        "lesson_number": "第28课",
+        "lesson_title": "财富归集",
+        "lesson_sub_title": "追回你浪费的一半家产"
+    },
+    "wechat": {
+        "hashtags": ["#财富归集", "#零钱理财", "#理财习惯", "#积少成多", "#零钱投资", "#日日生金"],
+        "title": "你的钱在悄悄蒸发？｜第28课",
+        "description": "87%的人零钱都在闲置！中国人零钱规模超2万亿，不归集就莫名其妙花没了。三个方法帮你追回浪费的一半家产💪",
+        "heji": "",
+        "huodong": ""
+    },
+    "youtube": {
+        "title": "【日日生金】追回你浪费的一半家产——财富归集的秘密｜第28课",
+        "description": "📌 本期要点：\n- 你知道自己到底有多少钱吗？\n- 87%的人零钱都是闲置的\n- 什么是财富归集？为什么买房的人财务更健康？\n- 零钱理财三大要点\n- 如何把短期收入变成长期投资\n\n🔔 关注频道，每天学一点理财知识！\n\n#财富归集 #零钱理财 #理财 #投资 #理财习惯 #日日生金",
+        "playlists": "日日生金",
+        "tags": ["财富归集", "零钱理财", "理财习惯", "积少成多", "基金定投", "个人理财", "投资入门", "理财知识"]
+    },
+    "icons": [
+        "money", "cash", "cash_in_hand", "coins", "coin_in_hand", "coin_wallet",
+        "dollar_bag", "investment", "growing_money", "money_transfer",
+        "money_circulation", "money_box", "money_bag_with_coins", "stack_of_coins",
+        "stack_of_money", "bank", "bank_building", "bank_cards", "credit_card",
+        "card_wallet", "chart", "bar_chart", "line_chart", "analytics",
+        "financial_growth_analysis", "positive_dynamic", "increase", "percentage",
+        "calculator", "budget", "deposit", "house", "home", "real_estate",
+        "shopping", "shopping_cart", "online_payment", "business", "businessman",
+        "target", "goal", "idea", "light_bulb", "question_mark", "check_mark",
+        "warning", "thumbs_up", "brain", "calendar", "phone", "arrow_up"
+    ],
+    "scenes": [
+        {
+            "scene_index": 1,
+            "scene_type": "痛点/破冰/现状 (钩子引入)",
+            "voiceover_script": "我问你一个问题：你现在有多少钱？别说大概，说个精确数字。说不出来对吧？那再问，你明天立刻能拿出去花的活钱有多少？更说不清了吧。告诉你一个扎心的事实，百分之八十七以上的人零钱都是闲置的。你口袋里的钱，正在悄悄蒸发。",
+            "voiceover_words": 94
+        },
+        {
+            "scene_index": 2,
+            "scene_type": "知识/是什么 (What)",
+            "voiceover_script": "什么叫财富归集？就是把散落在各处的零钱，集中起来去投资。中国人零钱规模超两万亿，这些钱躺在微信、支付宝、银行卡里睡大觉。零钱不归集的后果就是莫名其妙花没了，回头还不知道花哪儿了。你的一半家产，就这么无声无息流失了。",
+            "voiceover_words": 96
+        },
+        {
+            "scene_index": 3,
+            "scene_type": "剖析/认知矫正/为什么重要 (Why)",
+            "voiceover_script": "你知道为什么早买房的人财务状况反而更好吗？不是因为房子涨了多少，而是买房强制把零钱归集了。每个月还房贷，就是被迫把零钱变成长期资产。个人财富管理最重要的事，就是短期收入长期投资化，别让钱在口袋里躺着贬值。",
+            "voiceover_words": 94
+        },
+        {
+            "scene_index": 4,
+            "scene_type": "适用场景（Where/When）",
+            "voiceover_script": "什么情况最该做零钱归集？第一，每月工资到手别留太多活钱。第二，年终奖、报销款到账就投。第三，微信红包、零散进账，凑整了马上买基金。只要工作稳定身体健康，不必给自己留太高余地。",
+            "voiceover_words": 75
+        },
+        {
+            "scene_index": 5,
+            "scene_type": "策略/应对/怎么做 (How)",
+            "voiceover_script": "三个实操要点。第一，尽量不把收入零钱化，账上有钱马上投出去。第二，零钱也要追求收益，凑够几百块就买一次基金，积少成多。第三，建个专门的投资账户，所有闲钱都往里汇，让归集变成习惯。钱包的元气，来自每一笔零钱的归集。",
+            "voiceover_words": 92
+        },
+        {
+            "scene_index": 6,
+            "scene_type": "行动号召（Action）",
+            "voiceover_script": "理财就是积少成多，积小胜为大胜。从今天开始归集你的零钱吧。点赞关注，下期聊十万块钱怎么配置。",
+            "voiceover_words": 41
+        }
+    ]
+}

@@ -1,0 +1,72 @@
+{
+    "meta": {
+        "project_name": "日日生金",
+        "lesson_number": "第25课",
+        "lesson_title": "区块链与数字货币",
+        "lesson_sub_title": "大白话讲透区块链和数字人民币"
+    },
+    "wechat": {
+        "hashtags": ["#区块链", "#数字货币", "#数字人民币", "#比特币", "#理财防骗", "#信用"],
+        "title": "区块链到底是啥玩意？｜第25课",
+        "description": "比特币暴涨暴跌，各种币圈大佬喊你上车🚗 区块链说白了就是共享数据库，数字人民币和比特币完全两码事！记住：没有国家信用背书的币都是资金盘⚠️",
+        "heji": "",
+        "huodong": ""
+    },
+    "youtube": {
+        "title": "【日日生金】区块链到底是什么？数字货币靠不靠谱｜第25课",
+        "description": "📌 本期要点：\n- 区块链的本质：共享数据库\n- 区块链数据的五大特征\n- 人民银行数字货币 ≠ 比特币\n- 国家为什么要搞数字货币？防洗钱+国际博弈\n- 没有国家信用背书的币都是资金盘\n\n🔔 关注频道，每天学一点理财知识！\n\n#区块链 #数字货币 #理财 #投资 #日日生金",
+        "playlists": "日日生金",
+        "tags": ["区块链", "数字货币", "数字人民币", "比特币", "SWIFT", "理财防骗", "信用", "理财知识"]
+    },
+    "icons": [
+        "bitcoin", "bitcoin_accepted", "bitcoin_market", "ethereum", "cryptocurrency",
+        "blockchain_technology", "money", "cash", "coins", "dollar_bag", "banknotes",
+        "currency", "currency_exchange", "us_dollar", "dollar_coin", "stack_of_coins",
+        "stack_of_money", "bank", "bank_building", "money_transfer", "money_circulation",
+        "online_payment", "online_money_transfer", "data_protection", "data_transfer",
+        "data_backup", "data_quality", "data_sheet", "security_shield", "shield", "lock",
+        "unlock", "secure", "privacy", "cyber_security", "firewall", "computer", "mobile",
+        "desktop", "network", "internet", "globe", "connected", "link", "cloud",
+        "cloud_storage", "chart", "bar_chart", "analytics", "statistics", "brain",
+        "light_bulb", "idea", "question_mark", "warning", "check_mark", "people",
+        "group", "man", "search", "magnifying_glass", "error"
+    ],
+    "scenes": [
+        {
+            "scene_index": 1,
+            "scene_type": "痛点/破冰/现状 (钩子引入)",
+            "voiceover_script": "比特币暴涨暴跌，各种数字货币满天飞。你是不是也被人拉进过什么区块链投资群？大佬们天天喊你上车，搞得你心里痒痒的。但区块链到底是个什么东西？数字货币靠不靠谱？今天咱们用大白话把它讲透。",
+            "voiceover_words": 79
+        },
+        {
+            "scene_index": 2,
+            "scene_type": "知识/是什么 (What)",
+            "voiceover_script": "区块链说白了就是一个共享数据库。以前的数据库是中心化的，一个单位收集整理存在自己电脑里，想改就能改。区块链恰恰相反，数据存在好多素不相识的人的电脑里，不归任何一家管。五个特征：不可伪造、全程留痕、可以追溯、公开透明、集体维护。",
+            "voiceover_words": 94
+        },
+        {
+            "scene_index": 3,
+            "scene_type": "剖析/认知矫正/为什么重要 (Why)",
+            "voiceover_script": "为什么国家要搞数字货币？两个大目的。第一，防洗钱、方便征税。每一笔钱去了哪儿都记录在案，想逃税？门都没有。第二，国际贸易结算。现在跨国转账都得走美国的SWIFT系统，人家随时能卡你脖子。数字货币能帮咱们绕开这个限制，这是大国博弈的金融武器。",
+            "voiceover_words": 98
+        },
+        {
+            "scene_index": 4,
+            "scene_type": "适用场景（Where/When）",
+            "voiceover_script": "注意了，人民银行的数字货币并不是基于区块链发行的。它本质上是把造币技术数字化了，只是在流通和监管环节用了区块链技术。这跟市面上那些山寨币完全是两码事，千万别搞混了。",
+            "voiceover_words": 69
+        },
+        {
+            "scene_index": 5,
+            "scene_type": "策略/应对/怎么做 (How)",
+            "voiceover_script": "记住一个铁律：没有国家信用背书的币，不管它技术多牛，本质上都是资金盘。你看到的暴富故事，背后都是无数人血本无归。创造信用是世界上最难的事，也是一个人最大的价值。与其追各种空气币，不如好好经营自己的信用和能力。",
+            "voiceover_words": 91
+        },
+        {
+            "scene_index": 6,
+            "scene_type": "行动号召（Action）",
+            "voiceover_script": "区块链是好技术，但别被人拿它当幌子割你韭菜。觉得有用就转发给身边的朋友，关注我，下期见。",
+            "voiceover_words": 37
+        }
+    ]
+}

@@ -1,0 +1,70 @@
+{
+    "meta": {
+        "project_name": "日日生金",
+        "lesson_number": "第27课",
+        "lesson_title": "客户分级与买入建议",
+        "lesson_sub_title": "找到属于你的投资风格"
+    },
+    "wechat": {
+        "hashtags": ["#投资风格", "#客户分级", "#基金配置", "#风险承受", "#理财规划", "#日日生金"],
+        "title": "你是哪类投资人？｜第27课",
+        "description": "别人赚钱的基金你买了就亏？因为你根本不知道自己是哪类投资者！稳健型、进取型、激进型，三种人三种买法，对号入座才能赚到钱💰",
+        "heji": "",
+        "huodong": ""
+    },
+    "youtube": {
+        "title": "【日日生金】你是哪类投资人？三种风格三种买法｜第27课",
+        "description": "📌 本期要点：\n- 为什么别人推荐的基金你买了就亏？\n- 投资者的三种分类：稳健型、进取型、激进型\n- 每种类型分别该买什么基金？\n- 为什么认清自己比选基金更重要？\n- 三类人的具体操作策略\n\n🔔 关注频道，每天学一点理财知识！\n\n#投资风格 #客户分级 #理财 #基金 #投资策略 #日日生金",
+        "playlists": "日日生金",
+        "tags": ["投资风格", "客户分级", "基金配置", "风险承受", "理财规划", "指数基金", "ETF", "投资策略"]
+    },
+    "icons": [
+        "money", "cash", "coins", "dollar_bag", "investment", "investment_portfolio",
+        "stocks", "bonds", "profit", "loss", "growing_money", "stack_of_coins",
+        "safe", "bank", "bank_building", "chart", "bar_chart", "line_chart",
+        "pie_chart", "analytics", "statistics", "financial_growth_analysis",
+        "positive_dynamic", "increase", "decrease", "percentage", "calculator",
+        "business", "businessman", "businesswoman", "company", "target", "goal",
+        "user", "user_male", "user_female", "person", "group", "people", "customer",
+        "idea", "light_bulb", "question_mark", "check_mark", "warning",
+        "thumbs_up", "thumbs_down", "brain", "education", "star", "rating"
+    ],
+    "scenes": [
+        {
+            "scene_index": 1,
+            "scene_type": "痛点/破冰/现状 (钩子引入)",
+            "voiceover_script": "你是不是经常看到别人推荐基金就跟着买，结果别人赚了你亏了？原因很简单，每个人的风险承受能力不一样。就好比吃辣，有人无辣不欢，有人一口就上火。投资也是一样，适合别人的不一定适合你。今天咱们聊聊，怎么找到属于你的投资风格。",
+            "voiceover_words": 98
+        },
+        {
+            "scene_index": 2,
+            "scene_type": "知识/是什么 (What)",
+            "voiceover_script": "我把投资者分成三类。第一类稳健型，希望年赚百分之三十左右，亏损不超百分之二十。第二类进取型，追求百分之五十以上回报，能扛百分之三十亏损。第三类激进型，就想翻倍，赔了也认。你是哪一类？先搞清楚再谈买什么。",
+            "voiceover_words": 89
+        },
+        {
+            "scene_index": 3,
+            "scene_type": "剖析/认知矫正/为什么重要 (Why)",
+            "voiceover_script": "为什么分类这么重要？因为买错了类型的基金，你根本拿不住。稳健的人买了激进基金，一跌百分之二十就慌了割肉；激进的人买了稳健基金，嫌赚得少半途而废。结果两头不讨好，什么都是就什么都不是。认清自己，才是投资的第一课。",
+            "voiceover_words": 94
+        },
+        {
+            "scene_index": 4,
+            "scene_type": "适用场景（Where/When）",
+            "voiceover_script": "那三类人分别买什么？稳健型买沪深三百指数增强基金，大盘跌时分两三次买进。进取型买证券全指数基金，等券商板块普跌时入场。激进型就选一个最看好的行业，5G、芯片、科技，挑一个就够了。",
+            "voiceover_words": 79
+        },
+        {
+            "scene_index": 5,
+            "scene_type": "策略/应对/怎么做 (How)",
+            "voiceover_script": "具体怎么操作？稳健型等大盘跌时分批买入，不追高。进取型等券商板块普跌时一把买进，买完拿着别动。激进型就重仓一个行业，信就信到底，别今天追5G明天追芯片，来回切换只会两头挨打。记住：认清自己，只做一类人该做的事。",
+            "voiceover_words": 93
+        },
+        {
+            "scene_index": 6,
+            "scene_type": "行动号召（Action）",
+            "voiceover_script": "投资没有万能策略，只有适合你的策略。点赞关注，下期咱们聊聊怎么把零钱变成真正的财富。",
+            "voiceover_words": 38
+        }
+    ]
+}

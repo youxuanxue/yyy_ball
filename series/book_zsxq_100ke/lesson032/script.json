@@ -1,0 +1,72 @@
+{
+    "meta": {
+        "project_name": "日日生金",
+        "lesson_number": "第32课",
+        "lesson_title": "内循环与外循环",
+        "lesson_sub_title": "经济大棋局与你的钱袋子"
+    },
+    "wechat": {
+        "hashtags": ["#内循环", "#外循环", "#经济格局", "#房价", "#股市", "#日日生金"],
+        "title": "内循环到底跟你有啥关系？｜第32课",
+        "description": "内外循环不只是国家战略，跟你的房子和股票息息相关！为什么中西部房价要跌，股市要走慢牛？搞懂这个逻辑你就赢了💰",
+        "heji": "",
+        "huodong": ""
+    },
+    "youtube": {
+        "title": "【日日生金】内循环到底跟你的钱袋子有啥关系？｜第32课",
+        "description": "📌 本期要点：\n- 什么是外循环？为什么说中国以前是世界工厂？\n- 外循环的三大致命弱点\n- 内循环凭什么能玩转？全球只有两个半国家够格\n- 内循环对房价和股市意味着什么？\n- 普通人该怎么抓住这一波机会？\n\n🔔 关注频道，每天学一点理财知识！\n\n#内循环 #外循环 #经济格局 #房价 #股市 #日日生金",
+        "playlists": "日日生金",
+        "tags": ["内循环", "外循环", "经济格局", "房价走势", "股市趋势", "慢牛", "产业升级", "日日生金"]
+    },
+    "icons": [
+        "money", "cash", "coins", "dollar_bag", "stocks", "growing_money",
+        "money_circulation", "money_transfer", "stack_of_money", "bank_building",
+        "chart", "bar_chart", "line_chart", "analytics", "positive_dynamic",
+        "increase", "decrease", "globe", "world_markets", "business",
+        "business_building", "company", "house", "home", "real_estate",
+        "apartment", "building", "shopping", "shopping_cart", "supply_chain",
+        "logistics", "warehouse", "car", "factory", "investment",
+        "investment_portfolio", "financial_growth_analysis", "target", "goal",
+        "people", "businessman", "family", "idea", "brain",
+        "warning", "question_mark", "check_mark", "thumbs_up", "like",
+        "arrow_up", "down_arrow", "circular_arrows"
+    ],
+    "scenes": [
+        {
+            "scene_index": 1,
+            "scene_type": "痛点/破冰/现状 (钩子引入)",
+            "voiceover_script": "你有没有想过，为什么TikTok被美国一打压就很被动？为什么有些城市房价一直阴跌？这些看似不相关的事，背后都藏着同一个逻辑：内循环和外循环。搞懂这四个字，你就看清了中国经济的下一盘大棋。",
+            "voiceover_words": 78
+        },
+        {
+            "scene_index": 2,
+            "scene_type": "知识/是什么 (What)",
+            "voiceover_script": "外循环就是替别人打工。发达国家有钱有技术，我们接单加工再出口，赚辛苦钱。内循环就是中国人买中国货，把利润留在国内，推动产业升级。全世界能玩内循环的只有两个半：中美加半个欧盟。中国有市场有工业底子，具备这个条件。",
+            "voiceover_words": 92
+        },
+        {
+            "scene_index": 3,
+            "scene_type": "剖析/认知矫正/为什么重要 (Why)",
+            "voiceover_script": "外循环有三大致命伤。第一好东西全出口，自己人用不上。第二高端技术被卡脖子。第三国际一风吹草动经济就抖三抖。韩国就是典型，世界经济的金丝雀。中国不能走这条老路，必须让市场回到自己手里。",
+            "voiceover_words": 81
+        },
+        {
+            "scene_index": 4,
+            "scene_type": "适用场景（Where/When）",
+            "voiceover_script": "内循环跟你的钱袋子直接相关。中西部非省会城市房价长期阴跌，房住不炒不会松。东部核心城市温和上涨后会横盘。而股市呢，国家希望走慢牛，有技术的科技股会涨得吓人。普通人买基金就够了。",
+            "voiceover_words": 78
+        },
+        {
+            "scene_index": 5,
+            "scene_type": "策略/应对/怎么做 (How)",
+            "voiceover_script": "给你三个判断方向。第一，别在三四线城市赌房价反弹。第二，关注国产替代的科技板块，进口替代就是最大的内循环红利。第三，买基金跟着慢牛走，别想着一夜暴富，细水长流才是真赢家。",
+            "voiceover_words": 74
+        },
+        {
+            "scene_index": 6,
+            "scene_type": "行动号召（Action）",
+            "voiceover_script": "看懂内循环就是看懂了未来十年的财富方向。点赞关注，下期聊聊投资心态管理。",
+            "voiceover_words": 33
+        }
+    ]
+}

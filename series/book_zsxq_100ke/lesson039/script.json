@@ -1,0 +1,74 @@
+{
+    "meta": {
+        "project_name": "日日生金",
+        "lesson_number": "第39课",
+        "lesson_title": "汇率的秘密",
+        "lesson_sub_title": "人民币升值对我们的影响"
+    },
+    "wechat": {
+        "hashtags": ["#汇率", "#人民币升值", "#外汇", "#理财知识", "#经济常识", "#日日生金"],
+        "title": "人民币升值好不好？｜第39课",
+        "description": "贬值利出口、升值利进口，可对普通人到底有啥影响？汇率背后的逻辑一文讲透💡",
+        "heji": "",
+        "huodong": ""
+    },
+    "youtube": {
+        "title": "【日日生金】人民币升值对你有什么影响？汇率一次讲透｜第39课",
+        "description": "📌 本期要点：\n- 汇率到底是什么？\n- 人民币贬值为什么利于出口？\n- 人民币升值对股市和房价有什么影响？\n- 中国从负外汇储备到世界工厂靠什么？\n- 升值时代普通人该注意什么？\n\n🔔 关注频道，每天学一点理财知识！\n\n#汇率 #人民币 #外汇 #经济 #理财 #日日生金",
+        "playlists": "日日生金",
+        "tags": ["汇率", "人民币升值", "人民币贬值", "外汇", "经济常识", "投资知识", "理财知识", "日日生金"]
+    },
+    "icons": [
+        "money", "cash", "coins", "dollar_bag", "banknotes",
+        "currency", "currency_exchange", "dollar_euro_exchange",
+        "us_dollar", "us_dollar_circled", "euro", "japanese_yen",
+        "british_pound", "investment", "stocks", "growing_money",
+        "profit", "loss", "money_transfer", "money_circulation",
+        "stack_of_money", "bank", "bank_building", "chart",
+        "bar_chart", "line_chart", "analytics", "positive_dynamic",
+        "increase", "decrease", "globe", "world_markets",
+        "business", "business_building", "company", "businessman",
+        "shopping", "shopping_cart", "house", "real_estate",
+        "car", "airplane", "warning", "shield", "check_mark",
+        "arrow_up", "down_arrow", "thumbs_up", "like", "star",
+        "people", "family", "question_mark"
+    ],
+    "scenes": [
+        {
+            "scene_index": 1,
+            "scene_type": "痛点/破冰/现状 (钩子引入)",
+            "voiceover_script": "最近人民币涨了好几千个基点，新闻天天说升值。可是人民币升值对咱老百姓到底是好事还是坏事？很多人一头雾水。今天用大白话给你讲清楚，汇率这件事其实没那么复杂。",
+            "voiceover_words": 69
+        },
+        {
+            "scene_index": 2,
+            "scene_type": "知识/是什么 (What)",
+            "voiceover_script": "汇率就是两种货币之间兑换的比例，通俗说就是你的钱在别人那里值多少。一美元换七块人民币，七就是汇率。你的钱越值钱，换的外币越多，叫升值。反过来就是贬值。",
+            "voiceover_words": 68
+        },
+        {
+            "scene_index": 3,
+            "scene_type": "剖析/认知矫正/为什么重要 (Why)",
+            "voiceover_script": "很多人以为货币升值就是好事，其实要辩证看。贬值的时候，老外拿一块钱能买我们更多东西，出口好做赚外汇。但升值的时候反过来，出口企业压力山大。中国靠贬值成了世界工厂，这是历史的选择。",
+            "voiceover_words": 80
+        },
+        {
+            "scene_index": 4,
+            "scene_type": "适用场景（Where/When）",
+            "voiceover_script": "如果你做外贸、有海外投资、孩子要留学、或者计划出国旅游，汇率直接影响你的钱包。人民币升值，出国消费更便宜了。做外贸的就要小心了，利润可能被汇率吃掉一大块。",
+            "voiceover_words": 72
+        },
+        {
+            "scene_index": 5,
+            "scene_type": "策略/应对/怎么做 (How)",
+            "voiceover_script": "升值时代关注三件事。第一，外资涌入会推高股市，北上资金天天买就是他们在动。第二，房住不炒不动摇，热钱不会涌进房市。第三，降息预期利好房贷族，每个月能省一点钱。顺势而为才是正道。",
+            "voiceover_words": 82
+        },
+        {
+            "scene_index": 6,
+            "scene_type": "行动号召（Action）",
+            "voiceover_script": "汇率影响着你的钱包、股市和经济大盘，值得每个人了解。觉得有用就点赞关注，每天一课日日生金。",
+            "voiceover_words": 37
+        }
+    ]
+}

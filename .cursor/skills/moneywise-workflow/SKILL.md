@@ -56,8 +56,13 @@ This skill automates the production of MoneyWise videos for the global audience 
 **Command**:
 ```bash
 cd /Users/xuejiao/Codes/yyy_ball/series/moneywise_global/lessonXXX
-uv run manim -qh animate.py LessonXXXVerticalScenes
+uv run manim -qh --disable_caching animate.py LessonXXXVerticalScenes; echo "Render done (exit: $?)"
 ```
+
+**Note**: 
+- `--disable_caching` helps prevent Manim from hanging after rendering.
+- Using `;` instead of `&&` ensures the echo runs regardless of exit code.
+- If terminal appears stuck after "File ready at...", the video is ready - proceed to Step 4.
 
 **Output**:
 -   `/Users/xuejiao/Codes/yyy_ball/series/moneywise_global/lessonXXX/media/videos/animate/1920p60/LessonXXXVerticalScenes.mp4`
@@ -101,12 +106,12 @@ uv run media-publisher \
 -   **Video ID**: From Step 4 output.
 -   **Video File**: `/Users/xuejiao/Codes/yyy_ball/series/moneywise_global/lessonXXX/media/videos/animate/1920p60/LessonXXXVerticalScenes.mp4`
 -   **Script**: `/Users/xuejiao/Codes/yyy_ball/series/moneywise_global/lessonXXX/script.json`
--   **Template**: `/Users/xuejiao/Codes/yyy-oversea/money-site/src/content/videos/_TEMPLATE.mdx`
+-   **Template**: `/Users/xuejiao/Codes/yyy-oversea/money-site/src/content/videos/_TEMPLATE.mdx.example`
 
 **Instructions**:
 1.  Read the **Template** and **Script**.
     -   Note: `blog.category` and `blog.tags` must match values in `taxonomy.ts`. If a new category/tag is needed, update `taxonomy.ts` first during Step 1.
-3.  Create a new file: `/Users/xuejiao/Codes/yyy-oversea/money-site/src/content/videos/{videoid}.mdx` (replace `{videoid}` with the actual ID).
+3.  Create a new file: `/Users/xuejiao/Codes/yyy-oversea/money-site/src/content/videos/lessonXXX_{videoid}.mdx` (replace `{videoid}` with the actual ID).
 4.  Fill in the template using local files:
     -   `videoId`: The ID from Step 4 output.
     -   `title`: From script `meta.lesson_title`.
