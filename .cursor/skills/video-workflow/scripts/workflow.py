@@ -194,11 +194,6 @@ def publish_lesson(
     """发布课程视频"""
     config = get_series_config(series)
     lesson_num = normalize_lesson_num(lesson_num, config["num_digits"])
-    status = check_lesson_status(series, lesson_num)
-
-    if not status.get("video"):
-        print("❌ 错误: 视频不存在，请先渲染")
-        return False
 
     resolved_media_publisher_dir = resolve_media_publisher_dir(media_publisher_dir)
     if not resolved_media_publisher_dir:
@@ -206,6 +201,12 @@ def publish_lesson(
         print("   请通过以下任一方式指定：")
         print("   1) --media-publisher-dir /path/to/media-publisher")
         print("   2) export MEDIA_PUBLISHER_DIR=/path/to/media-publisher")
+        return False
+
+    status = check_lesson_status(series, lesson_num)
+
+    if not status.get("video"):
+        print("❌ 错误: 视频不存在，请先渲染")
         return False
 
     video_path = status.get("video_path")

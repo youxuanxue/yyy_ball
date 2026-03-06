@@ -49,11 +49,16 @@ jobs:
             .cursor/skills/video-workflow/scripts/lesson_num.py \
             .cursor/skills/video-workflow/tests/test_create_lesson.py \
             .cursor/skills/video-workflow/tests/test_workflow.py \
-            .cursor/skills/video-workflow/tests/test_skill_docs_consistency.py
+            .cursor/skills/video-workflow/tests/test_skill_docs_consistency.py \
+            scripts/tests/test_sync_skills.py
 
       - name: Run workflow skill tests
         run: |
           uv run python -m unittest discover -s .cursor/skills/video-workflow/tests -p "test_*.py"
+
+      - name: Run sync tooling tests
+        run: |
+          uv run python -m unittest discover -s scripts/tests -p "test_*.py"
 
       - name: Run local skill consistency checks
         run: |

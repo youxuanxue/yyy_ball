@@ -104,6 +104,26 @@ class TestWorkflowScript(unittest.TestCase):
         self.assertNotEqual(proc.returncode, 0)
         self.assertIn("非法课程编号", proc.stdout + proc.stderr)
 
+    def test_cli_publish_requires_media_publisher_path(self):
+        env = os.environ.copy()
+        env.pop("MEDIA_PUBLISHER_DIR", None)
+        proc = subprocess.run(
+            [
+                sys.executable,
+                str(SCRIPT_PATH),
+                "--series",
+                "sunzi",
+                "publish",
+                "06",
+            ],
+            cwd=WORKSPACE_ROOT,
+            capture_output=True,
+            text=True,
+            env=env,
+        )
+        self.assertNotEqual(proc.returncode, 0)
+        self.assertIn("找不到 media-publisher 目录", proc.stdout + proc.stderr)
+
 
 if __name__ == "__main__":
     unittest.main()
