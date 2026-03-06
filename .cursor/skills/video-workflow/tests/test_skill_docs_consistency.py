@@ -26,13 +26,14 @@ class TestSkillDocsConsistency(unittest.TestCase):
             WORKSPACE_ROOT / ".cursor" / "skills",
             WORKSPACE_ROOT / ".claude" / "skills",
         ]
-        legacy_token = "/Users/xuejiao"
+        legacy_tokens = ["/Users/", "/home/ubuntu/Codes/"]
         offenders = []
         for root in roots:
             for path in root.rglob("*.md"):
                 text = path.read_text(encoding="utf-8")
-                if legacy_token in text:
-                    offenders.append(str(path))
+                for token in legacy_tokens:
+                    if token in text:
+                        offenders.append(f"{path} ({token})")
         self.assertEqual(offenders, [], f"Legacy hardcoded path found in: {offenders}")
 
 

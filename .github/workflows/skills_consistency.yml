@@ -40,6 +40,8 @@ jobs:
             scripts/sync_skills.py \
             .cursor/skills/video-workflow/scripts/workflow.py \
             .cursor/skills/video-workflow/scripts/create_lesson.py \
+            .cursor/skills/video-workflow/scripts/lesson_num.py \
+            .cursor/skills/video-workflow/tests/test_create_lesson.py \
             .cursor/skills/video-workflow/tests/test_workflow.py \
             .cursor/skills/video-workflow/tests/test_skill_docs_consistency.py
 

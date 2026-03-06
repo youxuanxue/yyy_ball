@@ -1,9 +1,7 @@
 import importlib.util
-import io
 import os
 import tempfile
 import unittest
-from contextlib import redirect_stdout
 from pathlib import Path
 from unittest.mock import patch
 
@@ -42,9 +40,14 @@ class TestWorkflowScript(unittest.TestCase):
         self.assertEqual(class_name, "Lesson06VerticalScenes")
 
     def test_invalid_lesson_num_exits(self):
-        with redirect_stdout(io.StringIO()):
-            with self.assertRaises(SystemExit):
-                self.workflow.get_lesson_dir("zsxq", "abc")
+        with self.assertRaises(ValueError):
+            self.workflow.get_lesson_dir("zsxq", "abc")
+
+    def test_invalid_lesson_num_range(self):
+        with self.assertRaises(ValueError):
+            self.workflow.get_lesson_dir("sunzi", "0")
+        with self.assertRaises(ValueError):
+            self.workflow.get_lesson_dir("sunzi", "100")
 
     def test_resolve_media_publisher_dir_priority(self):
         with tempfile.TemporaryDirectory() as env_dir, tempfile.TemporaryDirectory() as cli_dir:

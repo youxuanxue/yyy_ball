@@ -46,13 +46,15 @@ def check_local() -> int:
     except FileNotFoundError as exc:
         errors.append(str(exc))
 
-    legacy_token = "/Users/xuejiao"
+    legacy_tokens = ["/Users/", "/home/ubuntu/Codes/"]
     for root in (CURSOR_SKILLS_DIR, CLAUDE_SKILLS_DIR):
         if not root.exists():
             continue
         for md_file in root.rglob("*.md"):
-            if legacy_token in md_file.read_text(encoding="utf-8"):
-                errors.append(f"legacy hardcoded path in {md_file}")
+            text = md_file.read_text(encoding="utf-8")
+            for token in legacy_tokens:
+                if token in text:
+                    errors.append(f"legacy hardcoded path in {md_file}: contains {token}")
 
     if errors:
         print("❌ Local skill checks failed:")

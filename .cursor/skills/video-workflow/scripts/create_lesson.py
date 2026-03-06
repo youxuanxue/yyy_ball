@@ -12,6 +12,12 @@ import argparse
 import sys
 from pathlib import Path
 
+SCRIPT_DIR = Path(__file__).resolve().parent
+if str(SCRIPT_DIR) not in sys.path:
+    sys.path.insert(0, str(SCRIPT_DIR))
+
+from lesson_num import normalize_lesson_num
+
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent.parent.parent
 
 # 系列配置
@@ -22,7 +28,7 @@ SERIES_CONFIG = {
         "num_digits": 3,  # 3位数编号 (001-999)
         "script_prompt": "zsxq_100ke_script.prompt",
         "animate_prompt": "zsxq_100ke_annimate.prompt",
-        "data_source": "posts.json",
+        "data_source": "assets/zsxq/jingpin_100ke_posts.json",
     },
     "sunzi": {
         "name": "孙子兵法（小小谋略家）",
@@ -46,29 +52,14 @@ SERIES_CONFIG = {
 def get_series_config(series: str) -> dict:
     """获取系列配置"""
     if series not in SERIES_CONFIG:
-        print(f"❌ 错误: 未知系列 '{series}'，可选: {list(SERIES_CONFIG.keys())}")
-        sys.exit(1)
+        raise ValueError(f"未知系列 '{series}'，可选: {list(SERIES_CONFIG.keys())}")
     return SERIES_CONFIG[series]
-
-
-def normalize_lesson_num(series: str, lesson_num: str) -> str:
-    """归一化课程编号，兼容 001 / 01 / lesson001 / lesson01"""
-    config = get_series_config(series)
-    cleaned = lesson_num.strip()
-    if cleaned.lower().startswith("lesson"):
-        cleaned = cleaned[6:]
-
-    if not cleaned.isdigit():
-        print(f"❌ 错误: 非法课程编号 '{lesson_num}'，请使用纯数字或 lesson+数字")
-        sys.exit(1)
-
-    return cleaned.zfill(config["num_digits"])
 
 
 def create_lesson_dir(series: str, lesson_num: str):
     """创建课程目录"""
     config = get_series_config(series)
-    lesson_num = normalize_lesson_num(series, lesson_num)
+    lesson_num = normalize_lesson_num(lesson_num, config["num_digits"])
     lesson_dir = config["dir"] / f"lesson{lesson_num}"
 
     if not config["dir"].exists():
@@ -126,7 +117,11 @@ def main():
     parser.add_argument("lesson", help="课程编号 (如 002 / 07 / 021)")
     
     args = parser.parse_args()
-    create_lesson_dir(args.series, args.lesson)
+    try:
+        create_lesson_dir(args.series, args.lesson)
+    except ValueError as exc:
+        print(f"❌ 错误: {exc}")
+        sys.exit(1)
 
 
 if __name__ == "__main__":

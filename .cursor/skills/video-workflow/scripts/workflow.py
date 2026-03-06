@@ -17,6 +17,12 @@ import sys
 from pathlib import Path
 from typing import Optional
 
+SCRIPT_DIR = Path(__file__).resolve().parent
+if str(SCRIPT_DIR) not in sys.path:
+    sys.path.insert(0, str(SCRIPT_DIR))
+
+from lesson_num import normalize_lesson_num
+
 # 项目路径
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent.parent.parent
 DEFAULT_MEDIA_PUBLISHER_DIR = Path.home() / "Codes" / "yyy_monkey" / "media-publisher"
@@ -50,36 +56,21 @@ SERIES_CONFIG = {
 def get_series_config(series: str) -> dict:
     """获取系列配置"""
     if series not in SERIES_CONFIG:
-        print(f"❌ 错误: 未知系列 '{series}'，可选: {list(SERIES_CONFIG.keys())}")
-        sys.exit(1)
+        raise ValueError(f"未知系列 '{series}'，可选: {list(SERIES_CONFIG.keys())}")
     return SERIES_CONFIG[series]
-
-
-def normalize_lesson_num(series: str, lesson_num: str) -> str:
-    """归一化课程编号，兼容 001 / 01 / lesson001 / lesson01"""
-    config = get_series_config(series)
-    cleaned = lesson_num.strip()
-    if cleaned.lower().startswith("lesson"):
-        cleaned = cleaned[6:]
-
-    if not cleaned.isdigit():
-        print(f"❌ 错误: 非法课程编号 '{lesson_num}'，请使用纯数字或 lesson+数字")
-        sys.exit(1)
-
-    return cleaned.zfill(config["num_digits"])
 
 
 def get_lesson_dir(series: str, lesson_num: str) -> Path:
     """获取课程目录路径"""
     config = get_series_config(series)
-    lesson_num = normalize_lesson_num(series, lesson_num)
+    lesson_num = normalize_lesson_num(lesson_num, config["num_digits"])
     return config["dir"] / f"{config['lesson_prefix']}{lesson_num}"
 
 
 def get_class_name(series: str, lesson_num: str) -> str:
     """获取 Manim 类名"""
     config = get_series_config(series)
-    lesson_num = normalize_lesson_num(series, lesson_num)
+    lesson_num = normalize_lesson_num(lesson_num, config["num_digits"])
     return f"Lesson{lesson_num}{config['class_suffix']}"
 
 
@@ -107,7 +98,7 @@ def check_lesson_status(series: str, lesson_num: str) -> dict:
     """检查课程各资源的状态"""
     config = get_series_config(series)
     lesson_dir = get_lesson_dir(series, lesson_num)
-    lesson_num = normalize_lesson_num(series, lesson_num)
+    lesson_num = normalize_lesson_num(lesson_num, config["num_digits"])
 
     status = {
         "series": series,
@@ -143,7 +134,7 @@ def render_lesson(
 ):
     """渲染课程视频"""
     config = get_series_config(series)
-    lesson_num = normalize_lesson_num(series, lesson_num)
+    lesson_num = normalize_lesson_num(lesson_num, config["num_digits"])
     lesson_dir = get_lesson_dir(series, lesson_num)
     class_name = get_class_name(series, lesson_num)
 
@@ -205,7 +196,7 @@ def publish_lesson(
 ):
     """发布课程视频"""
     config = get_series_config(series)
-    lesson_num = normalize_lesson_num(series, lesson_num)
+    lesson_num = normalize_lesson_num(lesson_num, config["num_digits"])
     status = check_lesson_status(series, lesson_num)
 
     if not status.get("video"):
@@ -260,7 +251,7 @@ def publish_lesson(
 def print_status(series: str, lesson_num: str):
     """打印课程状态"""
     config = get_series_config(series)
-    lesson_num = normalize_lesson_num(series, lesson_num)
+    lesson_num = normalize_lesson_num(lesson_num, config["num_digits"])
     status = check_lesson_status(series, lesson_num)
 
     print(f"\n📊 [{config['name']}] 第{lesson_num}课 状态:")
@@ -358,40 +349,48 @@ def main():
     args = parser.parse_args()
     success = True
 
-    if args.command == "status":
-        print_status(args.series, args.lesson)
+    try:
+        if args.command == "status":
+            print_status(args.series, args.lesson)
 
-    elif args.command == "render":
-        success = render_lesson(
-            args.series,
-            args.lesson,
-            args.force_cover,
-            args.force_voice,
-            args.quality,
-        )
-
-    elif args.command == "render-all":
-        start = int(args.start)
-        end = int(args.end)
-        success = True
-        for i in range(start, end + 1):
-            item_success = render_lesson(
+        elif args.command == "render":
+            success = render_lesson(
                 args.series,
-                str(i),
+                args.lesson,
                 args.force_cover,
                 args.force_voice,
                 args.quality,
             )
-            success = success and item_success
 
-    elif args.command == "publish":
-        success = publish_lesson(
-            args.series,
-            args.lesson,
-            args.platform,
-            args.privacy,
-            args.media_publisher_dir,
-        )
+        elif args.command == "render-all":
+            cfg = get_series_config(args.series)
+            start = int(normalize_lesson_num(args.start, cfg["num_digits"]))
+            end = int(normalize_lesson_num(args.end, cfg["num_digits"]))
+            if start > end:
+                raise ValueError(f"起始课程编号不能大于结束课程编号: {args.start} > {args.end}")
+
+            success = True
+            for i in range(start, end + 1):
+                item_success = render_lesson(
+                    args.series,
+                    str(i),
+                    args.force_cover,
+                    args.force_voice,
+                    args.quality,
+                )
+                success = success and item_success
+
+        elif args.command == "publish":
+            success = publish_lesson(
+                args.series,
+                args.lesson,
+                args.platform,
+                args.privacy,
+                args.media_publisher_dir,
+            )
+    except ValueError as exc:
+        print(f"❌ 错误: {exc}")
+        sys.exit(1)
 
     if not success:
         sys.exit(1)
