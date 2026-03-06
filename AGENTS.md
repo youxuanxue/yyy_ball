@@ -36,6 +36,14 @@ Two `.cursor/skills/` files document the full production workflows — read them
 - `.cursor/skills/video-workflow/SKILL.md` — 日日生金 + 孙子兵法 workflow (Chinese)
 - `.cursor/skills/moneywise-workflow/SKILL.md` — MoneyWise Global workflow (English)
 
+### External skills (auto-synced)
+
+The update script clones the repo specified by the `AGENT_SKILLS_REPO` env var (or its hardcoded default) into `~/.cache/agent-skills` and rsyncs two skill directories into `~/.cursor/skills/`:
+- `inspur-ppt-gen` — PPT generation from templates
+- `ppt-content-planning` — Slide content planning
+
+If `AGENT_SKILLS_GIT_TOKEN` is set (as a Cursor secret), it is used for private repo access. Token is never printed to logs.
+
 ### Source architecture
 
 ```
@@ -54,6 +62,7 @@ src/crawlers/                    # Data crawlers (ZSXQ, Lunyu, Yijing) — optio
 - System packages: `ffmpeg`, `libpango1.0-dev`, `libcairo2-dev`, `pkg-config`
 - Playwright Chromium browser (`uv run playwright install chromium`)
 - `.venv` (8.4 GB), `~/.cache/uv` (8.5 GB), `~/.cache/ms-playwright` (613 MB) are all pre-populated in the snapshot; `uv sync` takes <100 ms on warm start.
+- `rsync` (installed for skills sync)
 
 ### Non-obvious caveats
 
