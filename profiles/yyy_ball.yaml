@@ -5,8 +5,6 @@ managed_skills:
 
 local:
   cursor_skills_dir: .cursor/skills
-  claude_skills_dir: .claude/skills
-  moneywise_mirror: true
 
 agent_skills:
   repo_url_env: AGENT_SKILLS_REPO

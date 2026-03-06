@@ -13,7 +13,6 @@ WORKSPACE_ROOT = Path(__file__).resolve().parent.parent
 MANAGED_TARGETS = [
     Path(".cursor/skills/video-workflow"),
     Path(".cursor/skills/moneywise-workflow"),
-    Path(".claude/skills/moneywise-workflow"),
 ]
 
 

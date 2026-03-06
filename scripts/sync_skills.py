@@ -28,12 +28,6 @@ def ensure_path_exists(path: Path, description: str) -> None:
         raise FileNotFoundError(f"{description} not found: {path}")
 
 
-def compare_text_file(path_a: Path, path_b: Path) -> bool:
-    text_a = path_a.read_text(encoding="utf-8").replace("\r\n", "\n").rstrip() + "\n"
-    text_b = path_b.read_text(encoding="utf-8").replace("\r\n", "\n").rstrip() + "\n"
-    return text_a == text_b
-
-
 def file_digest(path: Path) -> str:
     h = hashlib.sha256()
     with path.open("rb") as fp:
@@ -113,20 +107,17 @@ def check_local() -> int:
     """Validate local skill consistency."""
     errors = []
 
-    cursor_moneywise = CURSOR_SKILLS_DIR / "moneywise-workflow" / "SKILL.md"
-    claude_moneywise = CLAUDE_SKILLS_DIR / "moneywise-workflow" / "SKILL.md"
-    try:
-        ensure_path_exists(cursor_moneywise, "Cursor moneywise skill")
-        ensure_path_exists(claude_moneywise, "Claude moneywise skill")
-        if not compare_text_file(cursor_moneywise, claude_moneywise):
-            errors.append("moneywise SKILL.md mismatch between .cursor and .claude")
-    except FileNotFoundError as exc:
-        errors.append(str(exc))
+    for skill in SKILLS:
+        try:
+            ensure_path_exists(CURSOR_SKILLS_DIR / skill / "SKILL.md", f"Cursor skill {skill}")
+        except FileNotFoundError as exc:
+            errors.append(str(exc))
+
+    if CLAUDE_SKILLS_DIR.exists():
+        errors.append(f".claude/skills should be removed, but still exists: {CLAUDE_SKILLS_DIR}")
 
     legacy_tokens = ["/Users/", "/home/ubuntu/Codes/"]
-    for root in (CURSOR_SKILLS_DIR, CLAUDE_SKILLS_DIR):
-        if not root.exists():
-            continue
+    for root in (CURSOR_SKILLS_DIR,):
         for md_file in root.rglob("*.md"):
             text = md_file.read_text(encoding="utf-8")
             for token in legacy_tokens:
@@ -140,17 +131,6 @@ def check_local() -> int:
         return 1
 
     print("✅ Local skill checks passed")
-    return 0
-
-
-def sync_local_moneywise() -> int:
-    """Sync .cursor moneywise skill into .claude."""
-    src = CURSOR_SKILLS_DIR / "moneywise-workflow" / "SKILL.md"
-    dst = CLAUDE_SKILLS_DIR / "moneywise-workflow" / "SKILL.md"
-    ensure_path_exists(src, "Source moneywise skill")
-    dst.parent.mkdir(parents=True, exist_ok=True)
-    shutil.copy2(src, dst)
-    print(f"✅ Synced {src} -> {dst}")
     return 0
 
 
@@ -187,7 +167,6 @@ def import_from_agent_repo(agent_dir: Path) -> int:
         shutil.copytree(src, dst)
         print(f"✅ Imported {src} -> {dst}")
 
-    print("ℹ️ 建议随后执行: uv run python scripts/sync_skills.py sync-local-moneywise")
     return 0
 
 
@@ -196,8 +175,6 @@ def parse_args() -> argparse.Namespace:
     subparsers = parser.add_subparsers(dest="command", required=True)
 
     subparsers.add_parser("check-local", help="check local skill consistency")
-    subparsers.add_parser("sync-local-moneywise", help="sync .cursor moneywise skill to .claude")
-
     export_parser = subparsers.add_parser("export", help="export local skills to agent-skills repo")
     export_parser.add_argument("--agent-dir", required=True, help="path to local clone of agent-skills")
 
@@ -221,8 +198,6 @@ def main() -> None:
     try:
         if args.command == "check-local":
             code = check_local()
-        elif args.command == "sync-local-moneywise":
-            code = sync_local_moneywise()
         elif args.command == "export":
             code = export_to_agent_repo(Path(args.agent_dir).expanduser().resolve())
         elif args.command == "import":

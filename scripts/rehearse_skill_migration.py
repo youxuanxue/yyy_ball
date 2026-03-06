@@ -17,7 +17,6 @@ ROLLBACK_SCRIPT = WORKSPACE_ROOT / "scripts" / "rollback_skills.py"
 MANAGED_TARGETS = [
     Path(".cursor/skills/video-workflow"),
     Path(".cursor/skills/moneywise-workflow"),
-    Path(".claude/skills/moneywise-workflow"),
 ]
 
 
@@ -51,7 +50,6 @@ def rehearse(agent_dir: Path, keep_backup: bool) -> int:
     try:
         run_cmd([sys.executable, str(SYNC_SCRIPT), "export", "--agent-dir", str(agent_dir)], WORKSPACE_ROOT)
         run_cmd([sys.executable, str(SYNC_SCRIPT), "import", "--agent-dir", str(agent_dir)], WORKSPACE_ROOT)
-        run_cmd([sys.executable, str(SYNC_SCRIPT), "sync-local-moneywise"], WORKSPACE_ROOT)
         run_cmd([sys.executable, str(SYNC_SCRIPT), "check-local"], WORKSPACE_ROOT)
         run_cmd(
             [

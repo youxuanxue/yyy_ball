@@ -5,7 +5,6 @@ on:
   pull_request:
     paths:
       - ".cursor/skills/**"
-      - ".claude/skills/**"
       - "scripts/sync_skills.py"
       - "scripts/rehearse_skill_migration.py"
       - "scripts/rollback_skills.py"
@@ -17,7 +16,6 @@ on:
       - main
     paths:
       - ".cursor/skills/**"
-      - ".claude/skills/**"
       - "scripts/sync_skills.py"
       - "scripts/rehearse_skill_migration.py"
       - "scripts/rollback_skills.py"
@@ -26,35 +24,6 @@ on:
       - ".github/workflows/skills_consistency.yml"
 
 jobs:
-  moneywise-hash:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Verify moneywise docs normalized hash
-        run: |
-          python3 - <<'PY'
-          import hashlib
-          from pathlib import Path
-
-          def norm(path: Path) -> bytes:
-              text = path.read_text(encoding="utf-8").replace("\r\n", "\n").rstrip() + "\n"
-              return text.encode("utf-8")
-
-          a = Path(".cursor/skills/moneywise-workflow/SKILL.md")
-          b = Path(".claude/skills/moneywise-workflow/SKILL.md")
-          if not a.exists() or not b.exists():
-              raise SystemExit(f"missing files: {a} or {b}")
-
-          ha = hashlib.sha256(norm(a)).hexdigest()
-          hb = hashlib.sha256(norm(b)).hexdigest()
-          print(f"cursor_sha256={ha}")
-          print(f"claude_sha256={hb}")
-          if ha != hb:
-              raise SystemExit("moneywise SKILL.md hash mismatch")
-          PY
-
   validate-skills:
     runs-on: ubuntu-latest
     steps:
