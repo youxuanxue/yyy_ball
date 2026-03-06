@@ -178,6 +178,38 @@ uv run python src/publish/publish_lesson.py book_sunzibingfa/lesson05
   - **CosyVoice**: AI 语音合成（位于 `external/CosyVoice`）
   - **SadTalker**: 说话头像生成（位于 `external/SadTalker`）
 
+## 🧩 Skills 维护（agent-skills）
+
+项目内工作流技能位于 `.cursor/skills/`，可通过脚本进行一致性检查和导入导出：
+
+```bash
+# 1) 本地一致性检查（硬编码路径、必需 skill 文件、禁用 .claude/skills）
+uv run python scripts/sync_skills.py check-local
+
+# 2) 将本地 skills 导出到 agent-skills 仓库
+uv run python scripts/sync_skills.py export --agent-dir /path/to/agent-skills
+
+# 3) 从 agent-skills 仓库导入到本地
+uv run python scripts/sync_skills.py import --agent-dir /path/to/agent-skills
+
+# 4) 对比本地与 agent-skills 的差异摘要
+uv run python scripts/sync_skills.py report --agent-dir /path/to/agent-skills
+
+# 5) 演练迁移链路（export -> import -> check -> rollback）
+uv run python scripts/rehearse_skill_migration.py --agent-dir /path/to/agent-skills
+
+# 6) 如需手动回滚，使用备份目录恢复
+uv run python scripts/rollback_skills.py --backup-dir /tmp/skill_migration_backup_xxx
+```
+
+CI 已内置自动校验（`.github/workflows/skills_consistency.yml`），在修改 skills 相关文件时会自动执行：
+- 语法检查（workflow/sync 脚本）
+- workflow skill 单元测试
+- 本地一致性检查（必需 skill 文件 + 硬编码路径 + 禁用 `.claude/skills`）
+- 导出到 `agent-skills` 目录结构的 smoke test
+
+技能维护 profile：`profiles/yyy_ball.yaml`。
+
 ## 📄 许可证
 
 本项目仅供学习和研究使用。
