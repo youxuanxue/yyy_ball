@@ -132,3 +132,5 @@ uv run python .cursor/skills/video-workflow/scripts/workflow.py \
    - `duration`: Use `ffprobe` and convert to ISO-8601 `PT{M}M{S}S`.
    - `category`, `tags`, `keywords`: from `script.blog` / `script.seo`.
    - Content sections: map from `script.json` scenes.
+
+---

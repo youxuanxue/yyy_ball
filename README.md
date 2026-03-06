@@ -178,6 +178,24 @@ uv run python src/publish/publish_lesson.py book_sunzibingfa/lesson05
   - **CosyVoice**: AI 语音合成（位于 `external/CosyVoice`）
   - **SadTalker**: 说话头像生成（位于 `external/SadTalker`）
 
+## 🧩 Skills 维护（agent-skills）
+
+项目内工作流技能位于 `.cursor/skills/`，可通过脚本进行一致性检查和导入导出：
+
+```bash
+# 1) 本地一致性检查（硬编码路径、.cursor/.claude 漂移）
+uv run python scripts/sync_skills.py check-local
+
+# 2) 将本地 skills 导出到 agent-skills 仓库
+uv run python scripts/sync_skills.py export --agent-dir /path/to/agent-skills
+
+# 3) 从 agent-skills 仓库导入到本地
+uv run python scripts/sync_skills.py import --agent-dir /path/to/agent-skills
+
+# 4) 导入后同步 moneywise 的 .claude 副本
+uv run python scripts/sync_skills.py sync-local-moneywise
+```
+
 ## 📄 许可证
 
 本项目仅供学习和研究使用。
