@@ -196,6 +196,12 @@ uv run python scripts/sync_skills.py import --agent-dir /path/to/agent-skills
 uv run python scripts/sync_skills.py sync-local-moneywise
 ```
 
+CI 已内置自动校验（`.github/workflows/skills_consistency.yml`），在修改 skills 相关文件时会自动执行：
+- 语法检查（workflow/sync 脚本）
+- workflow skill 单元测试
+- 本地一致性检查（`.cursor/.claude` 漂移 + 硬编码路径）
+- 导出到 `agent-skills` 目录结构的 smoke test
+
 ## 📄 许可证
 
 本项目仅供学习和研究使用。

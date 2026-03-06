@@ -1,0 +1,60 @@
+name: skills-consistency
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - ".cursor/skills/**"
+      - ".claude/skills/**"
+      - "scripts/sync_skills.py"
+      - "README.md"
+      - ".github/workflows/skills_consistency.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - ".cursor/skills/**"
+      - ".claude/skills/**"
+      - "scripts/sync_skills.py"
+      - "README.md"
+      - ".github/workflows/skills_consistency.yml"
+
+jobs:
+  validate-skills:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Setup uv
+        uses: astral-sh/setup-uv@v4
+
+      - name: Python syntax checks
+        run: |
+          uv run python -m py_compile \
+            scripts/sync_skills.py \
+            .cursor/skills/video-workflow/scripts/workflow.py \
+            .cursor/skills/video-workflow/scripts/create_lesson.py \
+            .cursor/skills/video-workflow/tests/test_workflow.py \
+            .cursor/skills/video-workflow/tests/test_skill_docs_consistency.py
+
+      - name: Run workflow skill tests
+        run: |
+          uv run python -m unittest discover -s .cursor/skills/video-workflow/tests -p "test_*.py"
+
+      - name: Run local skill consistency checks
+        run: |
+          uv run python scripts/sync_skills.py check-local
+
+      - name: Export smoke test (agent-skills layout)
+        run: |
+          tmp_dir="$(mktemp -d)"
+          mkdir -p "$tmp_dir/agent-skills"
+          uv run python scripts/sync_skills.py export --agent-dir "$tmp_dir/agent-skills"
+          test -f "$tmp_dir/agent-skills/skills/video-workflow/SKILL.md"
+          test -f "$tmp_dir/agent-skills/skills/moneywise-workflow/SKILL.md"
