@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 """
-创建新课程目录（支持日日生金和孙子兵法两个系列）
+创建新课程目录（支持日日生金、孙子兵法、MoneyWise 三个系列）
 
 用法:
-    python create_lesson.py --series zsxq 002    # 创建日日生金 lesson002 目录
-    python create_lesson.py --series sunzi 07    # 创建孙子兵法 lesson07 目录
+    python create_lesson.py --series zsxq 002       # 创建日日生金 lesson002 目录
+    python create_lesson.py --series sunzi 07       # 创建孙子兵法 lesson07 目录
+    python create_lesson.py --series moneywise 021  # 创建 MoneyWise lesson021 目录
 """
 
 import argparse
@@ -31,6 +32,14 @@ SERIES_CONFIG = {
         "animate_prompt": "sunzi_annimate.prompt",
         "data_source": "origin.md",
     },
+    "moneywise": {
+        "name": "MoneyWise Global",
+        "dir": PROJECT_ROOT / "series" / "moneywise_global",
+        "num_digits": 3,  # 3位数编号 (001-999)
+        "script_prompt": "moneywise_script.prompt",
+        "animate_prompt": "moneywise_annimate.prompt",
+        "data_source": "assets/zsxq/jingpin_100ke_posts.json",
+    },
 }
 
 
@@ -42,12 +51,30 @@ def get_series_config(series: str) -> dict:
     return SERIES_CONFIG[series]
 
 
+def normalize_lesson_num(series: str, lesson_num: str) -> str:
+    """归一化课程编号，兼容 001 / 01 / lesson001 / lesson01"""
+    config = get_series_config(series)
+    cleaned = lesson_num.strip()
+    if cleaned.lower().startswith("lesson"):
+        cleaned = cleaned[6:]
+
+    if not cleaned.isdigit():
+        print(f"❌ 错误: 非法课程编号 '{lesson_num}'，请使用纯数字或 lesson+数字")
+        sys.exit(1)
+
+    return cleaned.zfill(config["num_digits"])
+
+
 def create_lesson_dir(series: str, lesson_num: str):
     """创建课程目录"""
     config = get_series_config(series)
-    lesson_num = lesson_num.zfill(config["num_digits"])
+    lesson_num = normalize_lesson_num(series, lesson_num)
     lesson_dir = config["dir"] / f"lesson{lesson_num}"
-    
+
+    if not config["dir"].exists():
+        print(f"❌ 系列目录不存在: {config['dir']}")
+        sys.exit(1)
+
     if lesson_dir.exists():
         print(f"⚠️ 目录已存在: {lesson_dir}")
         return
@@ -67,27 +94,36 @@ def create_lesson_dir(series: str, lesson_num: str):
     
     if series == "zsxq":
         print(f"\n💡 提示：直接告诉 AI「制作日日生金第 {lesson_num} 课」即可")
-    else:
+    elif series == "sunzi":
         print(f"\n💡 提示：直接告诉 AI「制作孙子兵法第 {lesson_num} 课」即可")
+    else:
+        print(f"\n💡 提示：直接告诉 AI「制作 MoneyWise 第 {lesson_num} 课」即可")
 
 
 def main():
     parser = argparse.ArgumentParser(
-        description="创建新课程目录（支持日日生金和孙子兵法）",
+        description="创建新课程目录（支持日日生金、孙子兵法、MoneyWise）",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 示例:
-  %(prog)s --series zsxq 002    创建日日生金 lesson002 目录
-  %(prog)s --series sunzi 07    创建孙子兵法 lesson07 目录
+  %(prog)s --series zsxq 002       创建日日生金 lesson002 目录
+  %(prog)s --series sunzi 07       创建孙子兵法 lesson07 目录
+  %(prog)s --series moneywise 021  创建 MoneyWise lesson021 目录
 
 系列代号:
-  zsxq   - 日日生金（精品100课），3位数编号
-  sunzi  - 孙子兵法（小小谋略家），2位数编号
+  zsxq      - 日日生金（精品100课），3位数编号
+  sunzi     - 孙子兵法（小小谋略家），2位数编号
+  moneywise - MoneyWise Global，3位数编号
         """
     )
-    parser.add_argument("--series", "-s", choices=["zsxq", "sunzi"], default="zsxq",
-                        help="系列代号: zsxq (日日生金) 或 sunzi (孙子兵法)")
-    parser.add_argument("lesson", help="课程编号 (如 002 或 07)")
+    parser.add_argument(
+        "--series",
+        "-s",
+        choices=["zsxq", "sunzi", "moneywise"],
+        default="zsxq",
+        help="系列代号: zsxq / sunzi / moneywise",
+    )
+    parser.add_argument("lesson", help="课程编号 (如 002 / 07 / 021)")
     
     args = parser.parse_args()
     create_lesson_dir(args.series, args.lesson)

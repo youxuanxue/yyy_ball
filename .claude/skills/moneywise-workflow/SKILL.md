@@ -1,29 +1,31 @@
 ---
 name: moneywise-workflow
-description: Use this skill when the user asks to create MoneyWise videos, generate lesson content, produce YouTube Shorts, or mentions "moneywise", "lesson XXX", or video production workflow for the global/English audience.
+description: MoneyWise global video production workflow. Converts lessons into YouTube Shorts and website content.
 ---
 
 # MoneyWise Global Video Workflow
 
-This skill automates the production of MoneyWise videos for the global audience (English). It converts lessons into YouTube Shorts and website content.
+This skill automates the production of MoneyWise videos for the global audience (English).
 
-## When This Skill Applies
+## Runtime Configuration
 
-This skill activates when the user's request involves:
-- Creating MoneyWise video content
-- Generating lesson scripts or animations
-- Producing YouTube Shorts for MoneyWise
-- Publishing videos to YouTube
-- Creating MDX content for the MoneyWise website
+Run commands from the project root (`yyy_ball` repo):
+
+```bash
+# Required for publish step
+export MEDIA_PUBLISHER_DIR=/path/to/media-publisher
+
+# Optional for website-content step
+export MONEYWISE_SITE_DIR=/path/to/money-site
+```
 
 ## Workflow Overview
 
-The complete workflow consists of 5 steps:
-1. Generate Script (`script.json`)
-2. Generate Animation (`animate.py`)
-3. Render Video (Manim)
-4. Publish to YouTube Shorts
-5. Generate Website Content (MDX)
+1. **Generate Script**: Create `script.json` from source content.
+2. **Generate Animation**: Create `animate.py` using Manim.
+3. **Render Video**: Render video (`manim` or helper workflow script).
+4. **Publish**: Upload to YouTube Shorts (`workflow.py publish`).
+5. **Website Content**: Generate MDX for the MoneyWise website.
 
 ---
 
@@ -33,14 +35,14 @@ The complete workflow consists of 5 steps:
 
 **Inputs**:
 - **Lesson Number**: `XXX` (e.g., `001`)
-- **Source Content**: `/Users/xuejiao/Codes/yyy_ball/assets/zsxq/jingpin_100ke_posts.json`
-- **Prompt**: `/Users/xuejiao/Codes/yyy_ball/series/prompts/moneywise_script.prompt`
+- **Source Content**: `assets/zsxq/jingpin_100ke_posts.json`
+- **Prompt**: `series/prompts/moneywise_script.prompt`
 
 **Instructions**:
-1. Read the **Source Content** file. Search for the entry corresponding to Lesson `XXX` (Note: search for "第XXX课" or similar identifier).
+1. Read the **Source Content** file. Search lesson `XXX` (e.g. "第XXX课").
 2. Read the **Prompt** file.
-3. Create directory if needed: `/Users/xuejiao/Codes/yyy_ball/series/moneywise_global/lessonXXX/`
-4. Generate `/Users/xuejiao/Codes/yyy_ball/series/moneywise_global/lessonXXX/script.json` following the prompt's instructions.
+3. Ensure directory exists: `series/moneywise_global/lessonXXX/`.
+4. Generate `series/moneywise_global/lessonXXX/script.json`.
 
 ---
 
@@ -49,13 +51,13 @@ The complete workflow consists of 5 steps:
 **Goal**: Create the Manim animation code.
 
 **Inputs**:
-- **Script**: `/Users/xuejiao/Codes/yyy_ball/series/moneywise_global/lessonXXX/script.json`
-- **Prompt**: `/Users/xuejiao/Codes/yyy_ball/series/prompts/moneywise_annimate.prompt`
+- **Script**: `series/moneywise_global/lessonXXX/script.json`
+- **Prompt**: `series/prompts/moneywise_annimate.prompt`
 
 **Instructions**:
 1. Read the **Script** file generated in Step 1.
 2. Read the **Prompt** file.
-3. Generate `/Users/xuejiao/Codes/yyy_ball/series/moneywise_global/lessonXXX/animate.py`.
+3. Generate `series/moneywise_global/lessonXXX/animate.py`.
 
 ---
 
@@ -63,18 +65,24 @@ The complete workflow consists of 5 steps:
 
 **Goal**: Render the MP4 video file.
 
-**Command**:
+**Command (direct)**:
 ```bash
-cd /Users/xuejiao/Codes/yyy_ball/series/moneywise_global/lessonXXX && uv run manim -qh --disable_caching animate.py LessonXXXVerticalScenes; echo "Render done (exit: $?)"
+cd series/moneywise_global/lessonXXX
+uv run manim -qh --disable_caching animate.py LessonXXXVerticalScenes; echo "Render done (exit: $?)"
 ```
 
-**Notes**:
-- `--disable_caching` prevents Manim from hanging after rendering.
-- Using `;` ensures the echo runs regardless of exit code.
-- If terminal appears stuck after "File ready at...", the video is ready - proceed to Step 4.
+**Command (helper script, recommended)**:
+```bash
+uv run python .cursor/skills/video-workflow/scripts/workflow.py --series moneywise render XXX --quality qh
+```
+
+**Note**:
+- `--disable_caching` helps prevent Manim from hanging after rendering.
+- Using `;` instead of `&&` ensures the echo runs regardless of exit code.
+- If terminal appears stuck after "File ready at...", the video is usually ready.
 
 **Output**:
-- `/Users/xuejiao/Codes/yyy_ball/series/moneywise_global/lessonXXX/media/videos/animate/1920p60/LessonXXXVerticalScenes.mp4`
+- `series/moneywise_global/lessonXXX/media/videos/animate/1920p60/LessonXXXVerticalScenes.mp4`
 
 ---
 
@@ -83,20 +91,22 @@ cd /Users/xuejiao/Codes/yyy_ball/series/moneywise_global/lessonXXX && uv run man
 **Goal**: Upload video and get the Video ID.
 
 **Prerequisites**:
-- Credentials at `/Users/xuejiao/Codes/yyy_monkey/config/youtube_credentials.json`
+- Credentials are available to the `media-publisher` repo.
+- `MEDIA_PUBLISHER_DIR` points to the `media-publisher` directory.
 
-**Command**:
+**Command (recommended)**:
 ```bash
-cd /Users/xuejiao/Codes/yyy_monkey/media-publisher && [ -d config ] || ln -s ../config config && uv run media-publisher \
-    --video "/Users/xuejiao/Codes/yyy_ball/series/moneywise_global/lessonXXX/media/videos/animate/1920p60/LessonXXXVerticalScenes.mp4" \
-    --platform youtube \
-    --script "/Users/xuejiao/Codes/yyy_ball/series/moneywise_global/lessonXXX/script.json" \
-    --privacy private
+uv run python .cursor/skills/video-workflow/scripts/workflow.py \
+  --series moneywise \
+  --media-publisher-dir "$MEDIA_PUBLISHER_DIR" \
+  publish XXX \
+  --platform youtube \
+  --privacy private
 ```
 
 **Post-Condition**:
-- Capture the **Video ID** (e.g., `dQw4w9WgXcQ`) from the output.
-- If the command hangs or asks for authentication, run manually in terminal to complete OAuth flow.
+- Capture the **Video ID** from output (e.g. `dQw4w9WgXcQ`).
+- OAuth may require manual confirmation in terminal/browser.
 
 ---
 
@@ -105,22 +115,20 @@ cd /Users/xuejiao/Codes/yyy_monkey/media-publisher && [ -d config ] || ln -s ../
 **Goal**: Create a content page for the MoneyWise website.
 
 **Inputs**:
-- **Video ID**: From Step 4 output
-- **Video File**: `/Users/xuejiao/Codes/yyy_ball/series/moneywise_global/lessonXXX/media/videos/animate/1920p60/LessonXXXVerticalScenes.mp4`
-- **Script**: `/Users/xuejiao/Codes/yyy_ball/series/moneywise_global/lessonXXX/script.json`
-- **Template**: `/Users/xuejiao/Codes/yyy-oversea/money-site/src/content/videos/_TEMPLATE.mdx.example`
+- **Video ID**: From Step 4 output.
+- **Video File**: `series/moneywise_global/lessonXXX/media/videos/animate/1920p60/LessonXXXVerticalScenes.mp4`
+- **Script**: `series/moneywise_global/lessonXXX/script.json`
+- **Template**: `$MONEYWISE_SITE_DIR/src/content/videos/_TEMPLATE.mdx.example`
 
 **Instructions**:
-1. Read the **Template** and **Script**.
-2. Note: `blog.category` and `blog.tags` must match values in `taxonomy.ts`. Update `taxonomy.ts` first if new category/tag is needed.
-3. Create file: `/Users/xuejiao/Codes/yyy-oversea/money-site/src/content/videos/lessonXXX_{videoid}.mdx`
-4. Fill in template fields:
-   - `videoId`: The ID from Step 4
-   - `title`: From `script.meta.lesson_title`
-   - `description`: From `script.seo.meta_description`
-   - `publishDate`: Today's date
-   - `duration`: Get via `ffprobe -v error -show_entries format=duration -of csv=p=0 {video_path}`, convert to ISO 8601 `PT{M}M{S}S`
-   - `category`: From `script.blog.category`
-   - `tags`: From `script.blog.tags`
-   - `keywords`: From `script.seo.primary_keyword` and `script.seo.secondary_keywords`
-   - **Content Sections**: Map `script.json` scenes to MDX sections per template comments
+1. Read **Template** and **Script**.
+2. Ensure `blog.category` / `blog.tags` values match `taxonomy.ts`.
+3. Create: `$MONEYWISE_SITE_DIR/src/content/videos/lessonXXX_{videoid}.mdx`.
+4. Fill template fields:
+   - `videoId`: ID from Step 4.
+   - `title`: `script.meta.lesson_title`.
+   - `description`: `script.seo.meta_description`.
+   - `publishDate`: Today.
+   - `duration`: Use `ffprobe` and convert to ISO-8601 `PT{M}M{S}S`.
+   - `category`, `tags`, `keywords`: from `script.blog` / `script.seo`.
+   - Content sections: map from `script.json` scenes.
