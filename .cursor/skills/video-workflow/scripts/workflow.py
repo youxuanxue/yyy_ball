@@ -25,7 +25,6 @@ from lesson_num import normalize_lesson_num
 
 # 项目路径
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent.parent.parent
-DEFAULT_MEDIA_PUBLISHER_DIR = Path.home() / "Codes" / "yyy_monkey" / "media-publisher"
 
 # 系列配置
 SERIES_CONFIG = {
@@ -75,7 +74,7 @@ def get_class_name(series: str, lesson_num: str) -> str:
 
 
 def resolve_media_publisher_dir(media_publisher_dir: Optional[str] = None) -> Optional[Path]:
-    """解析 media-publisher 目录，优先级：CLI 参数 > 环境变量 > 兼容默认路径"""
+    """解析 media-publisher 目录，优先级：CLI 参数 > 环境变量"""
     candidates = []
 
     if media_publisher_dir:
@@ -84,8 +83,6 @@ def resolve_media_publisher_dir(media_publisher_dir: Optional[str] = None) -> Op
     env_dir = os.getenv("MEDIA_PUBLISHER_DIR")
     if env_dir:
         candidates.append(Path(env_dir).expanduser())
-
-    candidates.append(DEFAULT_MEDIA_PUBLISHER_DIR)
 
     for candidate in candidates:
         if candidate.exists() and candidate.is_dir():
@@ -209,7 +206,6 @@ def publish_lesson(
         print("   请通过以下任一方式指定：")
         print("   1) --media-publisher-dir /path/to/media-publisher")
         print("   2) export MEDIA_PUBLISHER_DIR=/path/to/media-publisher")
-        print(f"   3) 使用兼容默认路径: {DEFAULT_MEDIA_PUBLISHER_DIR}")
         return False
 
     video_path = status.get("video_path")

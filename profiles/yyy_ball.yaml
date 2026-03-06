@@ -1,0 +1,25 @@
+project: yyy_ball
+managed_skills:
+  - video-workflow
+  - moneywise-workflow
+
+local:
+  cursor_skills_dir: .cursor/skills
+  claude_skills_dir: .claude/skills
+  moneywise_mirror: true
+
+agent_skills:
+  repo_url_env: AGENT_SKILLS_REPO
+  repo_url_default: "<set-in-env-or-setup-script>"
+  skills_subdir: skills
+  profile_name: yyy_ball
+
+runtime:
+  env:
+    media_publisher_dir: MEDIA_PUBLISHER_DIR
+    moneywise_site_dir: MONEYWISE_SITE_DIR
+
+guards:
+  reject_hardcoded_path_prefixes:
+    - /Users/
+    - /home/ubuntu/Codes/

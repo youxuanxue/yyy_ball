@@ -1,5 +1,7 @@
 import importlib.util
 import os
+import subprocess
+import sys
 import tempfile
 import unittest
 from pathlib import Path
@@ -7,6 +9,7 @@ from unittest.mock import patch
 
 
 SCRIPT_PATH = Path(__file__).resolve().parents[1] / "scripts" / "workflow.py"
+WORKSPACE_ROOT = Path(__file__).resolve().parents[4]
 
 
 def load_workflow_module():
@@ -62,10 +65,44 @@ class TestWorkflowScript(unittest.TestCase):
                 self.assertEqual(resolved, Path(env_dir).resolve())
 
     def test_resolve_media_publisher_dir_missing_returns_none(self):
-        with patch.object(self.workflow, "DEFAULT_MEDIA_PUBLISHER_DIR", Path("/tmp/definitely_missing_media_publisher")):
-            with patch.dict(os.environ, {}, clear=True):
-                resolved = self.workflow.resolve_media_publisher_dir(None)
-                self.assertIsNone(resolved)
+        with patch.dict(os.environ, {}, clear=True):
+            resolved = self.workflow.resolve_media_publisher_dir(None)
+            self.assertIsNone(resolved)
+
+    def test_cli_invalid_render_all_returns_non_zero(self):
+        proc = subprocess.run(
+            [
+                sys.executable,
+                str(SCRIPT_PATH),
+                "--series",
+                "sunzi",
+                "render-all",
+                "10",
+                "06",
+            ],
+            cwd=WORKSPACE_ROOT,
+            capture_output=True,
+            text=True,
+        )
+        self.assertNotEqual(proc.returncode, 0)
+        self.assertIn("起始课程编号不能大于结束课程编号", proc.stdout + proc.stderr)
+
+    def test_cli_invalid_lesson_returns_non_zero(self):
+        proc = subprocess.run(
+            [
+                sys.executable,
+                str(SCRIPT_PATH),
+                "--series",
+                "zsxq",
+                "status",
+                "abc",
+            ],
+            cwd=WORKSPACE_ROOT,
+            capture_output=True,
+            text=True,
+        )
+        self.assertNotEqual(proc.returncode, 0)
+        self.assertIn("非法课程编号", proc.stdout + proc.stderr)
 
 
 if __name__ == "__main__":
