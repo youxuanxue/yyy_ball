@@ -35,12 +35,9 @@ jobs:
         with:
           python-version: "3.13"
 
-      - name: Setup uv
-        uses: astral-sh/setup-uv@v4
-
       - name: Python syntax checks
         run: |
-          uv run python -m py_compile \
+          python3 -m py_compile \
             scripts/sync_skills.py \
             scripts/rehearse_skill_migration.py \
             scripts/rollback_skills.py \
@@ -54,20 +51,20 @@ jobs:
 
       - name: Run workflow skill tests
         run: |
-          uv run python -m unittest discover -s .cursor/skills/video-workflow/tests -p "test_*.py"
+          python3 -m unittest discover -s .cursor/skills/video-workflow/tests -p "test_*.py"
 
       - name: Run sync tooling tests
         run: |
-          uv run python -m unittest discover -s scripts/tests -p "test_*.py"
+          python3 -m unittest discover -s scripts/tests -p "test_*.py"
 
       - name: Run local skill consistency checks
         run: |
-          uv run python scripts/sync_skills.py check-local
+          python3 scripts/sync_skills.py check-local
 
       - name: Export smoke test (agent-skills layout)
         run: |
           tmp_dir="$(mktemp -d)"
           mkdir -p "$tmp_dir/agent-skills"
-          uv run python scripts/sync_skills.py export --agent-dir "$tmp_dir/agent-skills"
+          python3 scripts/sync_skills.py export --agent-dir "$tmp_dir/agent-skills"
           test -f "$tmp_dir/agent-skills/skills/video-workflow/SKILL.md"
           test -f "$tmp_dir/agent-skills/skills/moneywise-workflow/SKILL.md"
