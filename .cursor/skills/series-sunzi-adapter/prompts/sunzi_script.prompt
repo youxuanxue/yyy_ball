@@ -99,9 +99,9 @@
 
 # Output Format
 严格按照以下 JSON 结构生成 series/book_sunzibingfa/lessonXX/script.json：
-icons 提供 **6-20个高相关建议配图**（描述具体的画面元素，如：战争、大脑、盾牌等），**必须存在于 `assets/icons8/icons_education.txt` 中**。
-**文件格式**：每行为 `图标名\t绝对路径`，只需使用**第一列**（图标名，不带 .png 扩展名）。严禁编造文件名。
-**本地 fallback**：如果当前工作区缺少 `assets/icons8/icons_education.txt`，则必须复用同系列已存在 `series/book_sunzibingfa/lesson*/script.json` 中已经验证过的 icon 名称，仍然严禁编造文件名。
+icons 提供 **6-20个高相关建议配图**（描述具体的画面元素，如：战争、大脑、盾牌等），**必须存在于 `.cursor/skills/series-sunzi-adapter/icons_education.txt` 中**。
+**文件格式**：每行一个图标名（不带 .png 扩展名）。严禁编造文件名。
+**本地 fallback**：如果当前工作区缺少该图标列表文件，则必须复用同系列已存在 `series/book_sunzibingfa/lesson*/script.json` 中已经验证过的 icon 名称，仍然严禁编造文件名。
 
 ```json
 {

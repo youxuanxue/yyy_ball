@@ -37,7 +37,6 @@ def generate_cover(
         decoration_icons = ["🔍", "💡", "📚"]
 
     # 1. Setup paths
-    # 模板文件已移动到 series/template/sunzi/ 目录
     base_dir = os.path.dirname(os.path.abspath(__file__))
     project_root = os.path.abspath(os.path.join(base_dir, "../.."))
     

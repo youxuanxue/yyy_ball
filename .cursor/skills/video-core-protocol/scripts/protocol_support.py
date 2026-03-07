@@ -13,27 +13,27 @@ REFERENCE_DOCS_BY_SKILL = {
     "video-core-protocol": (Path(".cursor/skills/video-core-protocol/REFERENCE.md"),),
     "lesson-content-planning": (Path(".cursor/skills/lesson-content-planning/REFERENCE.md"),),
     "lesson-animation-authoring": (Path(".cursor/skills/lesson-animation-authoring/REFERENCE.md"),),
-    "lesson-render-publish": (Path(".cursor/skills/lesson-render-publish/REFERENCE.md"),),
     "series-zsxq-adapter": (Path(".cursor/skills/series-zsxq-adapter/REFERENCE.md"),),
     "series-sunzi-adapter": (Path(".cursor/skills/series-sunzi-adapter/REFERENCE.md"),),
     "series-moneywise-adapter": (Path(".cursor/skills/series-moneywise-adapter/REFERENCE.md"),),
     "skill-evolver": (Path(".cursor/skills/skill-evolver/REFERENCE.md"),),
     "chinese-series-orchestrator": (Path(".cursor/skills/chinese-series-orchestrator/REFERENCE.md"),),
     "moneywise-series-orchestrator": (Path(".cursor/skills/moneywise-series-orchestrator/REFERENCE.md"),),
+    "content-creator": (Path(".cursor/skills/content-creator/REFERENCE.md"),),
 }
 ASSET_PATHS_BY_SKILL = {
-    "lesson-content-planning": (
-        Path("series/prompts/zsxq_100ke_script.prompt"),
-        Path("series/prompts/sunzi_script.prompt"),
-        Path("series/prompts/moneywise_script.prompt"),
-    ),
-    "lesson-animation-authoring": (
-        Path("series/prompts/zsxq_100ke_annimate.prompt"),
-        Path("series/prompts/sunzi_annimate.prompt"),
-        Path("series/prompts/moneywise_annimate.prompt"),
+    "series-zsxq-adapter": (
+        Path(".cursor/skills/series-zsxq-adapter/prompts/zsxq_100ke_script.prompt"),
+        Path(".cursor/skills/series-zsxq-adapter/prompts/zsxq_100ke_annimate.prompt"),
     ),
     "series-sunzi-adapter": (
-        Path("series/template/sunzi/cover_template.html"),
+        Path(".cursor/skills/series-sunzi-adapter/prompts/sunzi_script.prompt"),
+        Path(".cursor/skills/series-sunzi-adapter/prompts/sunzi_annimate.prompt"),
+        Path(".cursor/skills/series-sunzi-adapter/templates/cover_template.html"),
+    ),
+    "series-moneywise-adapter": (
+        Path(".cursor/skills/series-moneywise-adapter/prompts/moneywise_script.prompt"),
+        Path(".cursor/skills/series-moneywise-adapter/prompts/moneywise_annimate.prompt"),
     ),
 }
 SOURCE_PATHS_BY_SKILL = {
@@ -41,21 +41,9 @@ SOURCE_PATHS_BY_SKILL = {
         Path("src/animate/__init__.py"),
         Path("src/animate/lesson_vertical.py"),
         Path("src/utils/anim_helper.py"),
-    ),
-    "lesson-animation-authoring": (
-        Path("src/animate/__init__.py"),
-        Path("src/animate/lesson_vertical.py"),
-        Path("src/utils/anim_helper.py"),
-    ),
-    "lesson-render-publish": (
-        Path("src/animate/lesson_vertical.py"),
-        Path("src/utils/anim_helper.py"),
         Path("src/utils/voice_edgetts.py"),
         Path("src/utils/cover_generator.py"),
         Path("src/utils/icon_helper.py"),
-    ),
-    "series-sunzi-adapter": (
-        Path("src/utils/cover_generator.py"),
     ),
 }
 
@@ -196,15 +184,8 @@ def validate_local_skills(
     scan_targets = []
     if cursor_skills_dir.exists():
         scan_targets.extend(cursor_skills_dir.rglob("*.md"))
-
-    prompts_dir = workspace_root / "series" / "prompts"
-    if prompts_dir.exists():
-        scan_targets.extend(prompts_dir.rglob("*.prompt"))
-
-    template_dir = workspace_root / "series" / "template"
-    if template_dir.exists():
-        for pattern in ("*.html", "*.json", "*.py", "*.md"):
-            scan_targets.extend(template_dir.rglob(pattern))
+        scan_targets.extend(cursor_skills_dir.rglob("*.prompt"))
+        scan_targets.extend(cursor_skills_dir.rglob("*.html"))
 
     for rel_path in source_paths_for_managed_skills(profile_path):
         path = workspace_root / rel_path

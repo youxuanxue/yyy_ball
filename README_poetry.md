@@ -8,7 +8,7 @@
 |------|------|------|
 | **Markdown完整版** | `assets/books/小学生必备古诗词94首_完整版.md` | 格式优美，适合阅读打印 |
 | **JSON数据** | `assets/data/bilibili_poetry_94.json` | 结构化数据，方便程序调用 |
-| **原始文本** | `src/crawlers/bilibili_poetry_raw.txt` | 纯文本格式 |
+| **原始文本** | `tools/crawlers/bilibili_poetry_raw.txt` | 纯文本格式 |
 
 ## 🚀 快速开始
 
@@ -19,13 +19,13 @@
 
 ```bash
 # 自动模式（推荐）：先在线爬取，失败则使用本地文件
-python3 src/crawlers/crawler_poetry_bilibili.py
+python3 tools/crawlers/crawler_poetry_bilibili.py
 
 # 仅本地解析模式
-python3 src/crawlers/crawler_poetry_bilibili.py --local
+python3 tools/crawlers/crawler_poetry_bilibili.py --local
 
 # 查看帮助
-python3 src/crawlers/crawler_poetry_bilibili.py --help
+python3 tools/crawlers/crawler_poetry_bilibili.py --help
 ```
 
 ## 📋 内容概览
@@ -65,7 +65,7 @@ python3 src/crawlers/crawler_poetry_bilibili.py --help
 
 ## 🛠️ 工具说明
 
-**主脚本**: `src/crawlers/crawler_poetry_bilibili.py`
+**主脚本**: `tools/crawlers/crawler_poetry_bilibili.py`
 
 **功能特性**:
 - ✅ 在线爬取B站动态
@@ -75,8 +75,8 @@ python3 src/crawlers/crawler_poetry_bilibili.py --help
 - ✅ 输出JSON和Markdown
 
 **本地文件**: 如需本地解析，准备以下任一文件
-- `src/crawlers/bilibili_poetry_raw.txt` (纯文本)
-- `src/crawlers/bilibili_poetry_api.json` (API JSON)
+- `tools/crawlers/bilibili_poetry_raw.txt` (纯文本)
+- `tools/crawlers/bilibili_poetry_api.json` (API JSON)
 
 ## 💡 适用场景
 

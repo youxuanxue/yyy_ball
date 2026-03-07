@@ -12,8 +12,9 @@ description: 孙子兵法系列适配层，提供目录、编号、prompt、orig
 - `series`: `sunzi`
 - 目录：`series/book_sunzibingfa`
 - lesson 编号：2 位数，如 `06`
-- script prompt：`series/prompts/sunzi_script.prompt`
-- animate prompt：`series/prompts/sunzi_annimate.prompt`
+- script prompt：`prompts/sunzi_script.prompt`（本 skill 目录下）
+- animate prompt：`prompts/sunzi_annimate.prompt`（本 skill 目录下）
+- cover template：`templates/cover_template.html`（本 skill 目录下）
 - 数据源：lesson 目录下的 `origin.md`
 
 ## 特异规则
@@ -25,4 +26,5 @@ description: 孙子兵法系列适配层，提供目录、编号、prompt、orig
 ## 与其他 skill 的关系
 
 - 先由本 Skill 提供 `origin.md` / prompt / lesson 位数等约束
-- 再由 `lesson-content-planning`、`lesson-animation-authoring`、`lesson-render-publish` 执行通用链路
+- 再由 `lesson-content-planning`、`lesson-animation-authoring` 执行通用链路（含渲染验证）
+- 发布由 orchestrator 直接调用 `workflow.py publish`
