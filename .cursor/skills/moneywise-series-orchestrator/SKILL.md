@@ -19,8 +19,9 @@ description: MoneyWise Global 总编排器，负责串起英文 lesson 的完整
    - 生成 `script.json`
 4. 调用 `lesson-animation-authoring`
    - 生成 `animate.py`
-5. 调用 `lesson-render-publish`
-   - 使用 core workflow 做 `status` / `render` / `publish`
+   - 渲染视频并验证产物
+5. 发布视频（直接调用 workflow CLI）：
+   - `uv run python .cursor/skills/video-core-protocol/scripts/workflow.py --series moneywise publish <lesson>`
 6. 第二次调用 `lesson-content-planning`
    - 在拿到 `videoId`、时长等发布元数据后生成 website MDX
 7. 如有失败或反复返工，调用 `skill-evolver`

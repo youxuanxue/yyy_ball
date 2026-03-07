@@ -4,8 +4,9 @@
 
 | Asset type | Path | Used by |
 |---|---|---|
-| Script prompt | `series/prompts/moneywise_script.prompt` | `lesson-content-planning` |
-| Animation prompt | `series/prompts/moneywise_annimate.prompt` | `lesson-animation-authoring` |
+| Script prompt | `.cursor/skills/series-moneywise-adapter/prompts/moneywise_script.prompt` | `lesson-content-planning` |
+| Animation prompt | `.cursor/skills/series-moneywise-adapter/prompts/moneywise_annimate.prompt` | `lesson-animation-authoring` |
+| Icon list | `.cursor/skills/series-moneywise-adapter/icons_finance.txt` | `lesson_vertical.py` icon lookup; fallback to `assets/icons8/` |
 | Source content | `assets/zsxq/jingpin_100ke_posts.json` | `lesson-content-planning` |
 
 ## Content contract

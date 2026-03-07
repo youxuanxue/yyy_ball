@@ -2,15 +2,13 @@
 
 ## Animation prompt asset map
 
-| Series | Prompt asset | Expected base class | Template source of truth |
-|---|---|---|---|
-| `zsxq` | `series/prompts/zsxq_100ke_annimate.prompt` | `Zsxq100keLessonVertical` | The full code template embedded inside the prompt |
-| `sunzi` | `series/prompts/sunzi_annimate.prompt` | `SunziLessonVertical` | The full code template embedded inside the prompt |
-| `moneywise` | `series/prompts/moneywise_annimate.prompt` | `MoneyWiseLessonVertical` | The full code template embedded inside the prompt |
+| Series | Prompt asset (in adapter skill dir) | Expected base class |
+|---|---|---|
+| `zsxq` | `.cursor/skills/series-zsxq-adapter/prompts/zsxq_100ke_annimate.prompt` | `Zsxq100keLessonVertical` |
+| `sunzi` | `.cursor/skills/series-sunzi-adapter/prompts/sunzi_annimate.prompt` | `SunziLessonVertical` |
+| `moneywise` | `.cursor/skills/series-moneywise-adapter/prompts/moneywise_annimate.prompt` | `MoneyWiseLessonVertical` |
 
-## Important clarification
-
-The Chinese animation prompts refer to `animate_template.py`, but there is currently **no tracked standalone file under `series/template/`** for that template. The large code block embedded in each prompt is the canonical template contract.
+Each prompt embeds the full animate.py code template as a code block — there is no separate standalone template file.
 
 ## Shared output constraints
 
@@ -18,16 +16,28 @@ The Chinese animation prompts refer to `animate_template.py`, but there is curre
 - Runtime path assumptions: project root added to `sys.path`, imports from `src.animate` / `src.utils`
 - Render entrypoint: `.cursor/skills/video-core-protocol/scripts/workflow.py`
 
-## Runtime source dependencies
+## Render & status execution entrypoints
 
-| Src asset | Why this skill depends on it |
-|---|---|
-| `src/animate/__init__.py` | Unified re-export surface for lesson base classes, including `SunziLessonVertical`, `Zsxq100keLessonVertical`, and `MoneyWiseLessonVertical` |
-| `src/animate/lesson_vertical.py` | Defines `SunziLessonVertical`, `Zsxq100keLessonVertical`, and `MoneyWiseLessonVertical` |
-| `src/utils/anim_helper.py` | Provides `get_audio_duration()` used by all animation prompt templates |
+| Command surface | Path | Role |
+|---|---|---|
+| Shared workflow CLI | `.cursor/skills/video-core-protocol/scripts/workflow.py` | `status`, `render`, `render-all` |
+| Lesson bootstrap CLI | `.cursor/skills/video-core-protocol/scripts/create_lesson.py` | Creates lesson folder and prints layered execution order |
+
+## Runtime dependencies
+
+This skill consumes the shared runtime owned by `video-core-protocol`. See its REFERENCE.md § "Shared runtime" for the full `src/` module list and call chain.
+
+The key constraint: `src/animate/` and `src/utils/` modules are imported by every lesson `animate.py` at render time via Python's import system. They live in `src/` (not in a skill directory) because all 41+ lesson files use `from src.animate import ...` — moving them would break every lesson.
+
+## Non-git asset caveats
+
+- Icon list files (e.g. `icons_education.txt`) may be absent; icon loading degrades to fallbacks from existing `script.json`
+- `series/cover/<series_name>/` may be absent; cover generation then warns and skips
+- `series/bgm/<series_name>/bgm.wav` may be absent; BGM is skipped without blocking render
+- Edge TTS needs network access for fresh voice generation
 
 ## Failure ownership
 
-- Prompt structure mismatch or title/scene mapping drift: fix in the prompt asset above
+- Prompt structure mismatch or title/scene mapping drift: fix in the adapter's prompt asset
 - Cross-series animation rule: fix in `video-core-protocol`
 - Series-specific layout/color/icon convention: fix in the corresponding series adapter

@@ -93,11 +93,11 @@ Transform the source material using this structure—don't just summarize, extra
 Generate JSON following this structure for `series/moneywise_global/lessonXXX/script.json`:
 
 **ICONS REQUIREMENT**:
-- You **MUST** select 12-30 relevant icon names from `assets/icons8/icons_finance.txt`.
-- **FILE FORMAT**: Each line is `icon_name\tabsolute_path`. Use only the **first column** (icon_name, without .png extension).
+- You **MUST** select 12-30 relevant icon names from `.cursor/skills/series-moneywise-adapter/icons_finance.txt`.
+- **FILE FORMAT**: One icon name per line (without .png extension).
 - **DO NOT LEAVE "icons" EMPTY.**
 - **DO NOT INVENT FILENAMES.** Only use icon names that actually exist in the list.
-- **Local fallback**: if `assets/icons8/icons_finance.txt` is unavailable, reuse icon names already validated in existing `series/moneywise_global/lesson*/script.json`.
+- **Local fallback**: if the icon list file is unavailable, reuse icon names already validated in existing `series/moneywise_global/lesson*/script.json`.
 
 ```json
 {

@@ -90,11 +90,11 @@ def create_lesson_dir(series: str, lesson_num: str):
     )
     print(
         f"   2. `lesson-animation-authoring`：读取 script.json + {config['animate_prompt']}，"
-        "生成 animate.py"
+        "生成 animate.py，渲染视频并验证产物"
     )
     print(
-        "   3. `lesson-render-publish`：调用 "
-        "`.cursor/skills/video-core-protocol/scripts/workflow.py` 做 status/render/publish"
+        "   3. 发布：调用 "
+        "`.cursor/skills/video-core-protocol/scripts/workflow.py` 做 publish"
     )
     if config["post_publish_content_outputs"]:
         print(

@@ -1,0 +1,28 @@
+{
+  "target": {
+    "name": "你的公众号名称",
+    "positioning": "账号定位描述",
+    "style_notes": "写作风格要求",
+    "family": {}
+  },
+  "references": [
+    {"name": "参考账号1"},
+    {"name": "参考账号2"}
+  ],
+  "plan_config": {
+    "duration_days": 30,
+    "articles_per_day": 1,
+    "total_articles": 30,
+    "spare_topics": 5,
+    "start_date": "auto"
+  },
+  "columns": [
+    {"weekday": 1, "name": "栏目一", "focus": "内容方向描述"},
+    {"weekday": 2, "name": "栏目二", "focus": "内容方向描述"},
+    {"weekday": 3, "name": "栏目三", "focus": "内容方向描述"},
+    {"weekday": 4, "name": "栏目四", "focus": "内容方向描述"},
+    {"weekday": 5, "name": "栏目五", "focus": "内容方向描述"},
+    {"weekday": 6, "name": "栏目六", "focus": "内容方向描述"},
+    {"weekday": 7, "name": "栏目七", "focus": "内容方向描述"}
+  ]
+}

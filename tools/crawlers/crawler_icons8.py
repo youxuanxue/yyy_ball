@@ -8,7 +8,7 @@ Icons8 图标下载爬虫（支持多种风格）
 从 assets/icons8/icons8_categories.json 读取分类信息，动态生成 URL 和路径。
 
 使用方法:
-    python src/crawlers/crawler_icons8.py
+    python tools/crawlers/crawler_icons8.py
 """
 
 import json

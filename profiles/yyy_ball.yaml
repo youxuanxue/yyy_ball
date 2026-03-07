@@ -3,13 +3,13 @@ managed_skills:
   - video-core-protocol
   - lesson-content-planning
   - lesson-animation-authoring
-  - lesson-render-publish
   - series-zsxq-adapter
   - series-sunzi-adapter
   - series-moneywise-adapter
   - skill-evolver
   - chinese-series-orchestrator
   - moneywise-series-orchestrator
+  - content-creator
 
 local:
   cursor_skills_dir: .cursor/skills

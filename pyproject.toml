@@ -59,5 +59,7 @@ dependencies = [
     "google-api-python-client>=2.0.0",
     "google-auth-httplib2>=0.2.0",
     "google-auth-oauthlib>=1.2.0",
+    "openai>=1.0.0",
+    "rich>=13.0.0",
     # "cosyvoice>=0.0.8",  # 注意：包构建有问题，需要使用 uv run pip install cosyvoice 手动安装
 ]

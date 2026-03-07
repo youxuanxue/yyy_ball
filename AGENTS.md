@@ -32,12 +32,12 @@ Two content-only series (`book_lunyu/`, `book_yijing/`) have `origin.md` / `scri
 
 ### Workflow skills
 
-The skill system is now layered:
+The skill system is layered:
 - Core contract: `.cursor/skills/video-core-protocol/SKILL.md`
 - Planning: `.cursor/skills/lesson-content-planning/SKILL.md`
-- Animation: `.cursor/skills/lesson-animation-authoring/SKILL.md`
-- Render/publish: `.cursor/skills/lesson-render-publish/SKILL.md`
+- Animation + render: `.cursor/skills/lesson-animation-authoring/SKILL.md`
 - Series adapters: `.cursor/skills/series-zsxq-adapter/`, `.cursor/skills/series-sunzi-adapter/`, `.cursor/skills/series-moneywise-adapter/`
+- Content research: `.cursor/skills/content-creator/SKILL.md`
 - Evolver: `.cursor/skills/skill-evolver/SKILL.md`
 - Top-level orchestrators:
   - `.cursor/skills/chinese-series-orchestrator/SKILL.md`
@@ -61,7 +61,10 @@ src/utils/anim_helper.py         # Audio timeline, icon loading, ffmpeg helpers
 src/utils/voice_edgetts.py       # Edge TTS voice synthesis
 src/utils/cover_generator.py     # Playwright-based HTML→PNG cover generator
 src/utils/icon_helper.py         # Icons8 PNG icon utilities
-src/crawlers/                    # Data crawlers (ZSXQ, Lunyu, Yijing) — optional
+tools/crawlers/                  # Data crawlers (ZSXQ, Lunyu, Yijing) — standalone
+tools/optional_voice/            # CosyVoice voice cloning — optional
+tools/optional_video/            # SadTalker talking head — optional
+tools/optional_music/            # Local BGM generation — optional
 ```
 
 ### Prerequisites (already in VM snapshot)

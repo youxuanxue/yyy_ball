@@ -41,7 +41,9 @@ class LessonVertical(Scene, ABC):
     font_style = "modern"    # "classical" 或 "modern"
     default_decoration_icons = ["🔍", "💡", "📚"]  # 默认装饰图标
     voice_name = "zh-CN-YunxiNeural"  # Edge TTS 语音，子类可覆盖
-    icon_list_file = "icons_finance.txt"  # 图标列表文件，子类可覆盖 (icons_finance.txt / icons_education.txt)
+    icon_list_file = "icons_finance.txt"  # 图标列表文件，子类可覆盖
+    icon_list_dir = None  # 图标列表目录，子类可覆盖（None 则回退到 assets/icons8/）
+    cover_template_dir = None  # 封面 HTML 模板目录，子类可覆盖（None 则用 source_images_dir）
     
     def construct(self):
         # 获取子类的文件路径（通过模块获取）
@@ -115,26 +117,35 @@ class LessonVertical(Scene, ABC):
     _icon_index_cache = {}
     
     @classmethod
-    def _load_icon_index(cls, project_root, icon_list_file):
+    def _load_icon_index(cls, project_root, icon_list_file, icon_list_dir=None):
         """加载图标索引（带缓存，按文件名区分）"""
-        if icon_list_file in cls._icon_index_cache:
-            return cls._icon_index_cache[icon_list_file]
+        cache_key = f"{icon_list_dir or ''}:{icon_list_file}"
+        if cache_key in cls._icon_index_cache:
+            return cls._icon_index_cache[cache_key]
         
         from pathlib import Path
-        icons8_dir = Path(project_root) / "assets" / "icons8"
         index = {}
         
-        # 从指定的图标列表加载（格式：icon_name\tabsolute_path）
-        list_path = icons8_dir / icon_list_file
-        if list_path.exists():
-            with open(list_path, 'r', encoding='utf-8') as f:
-                for line in f:
-                    line = line.strip()
-                    if '\t' in line:
-                        name, path = line.split('\t', 1)
-                        index[name] = path
+        candidates = []
+        if icon_list_dir:
+            candidates.append(Path(icon_list_dir) / icon_list_file)
+        candidates.append(Path(project_root) / "assets" / "icons8" / icon_list_file)
         
-        cls._icon_index_cache[icon_list_file] = index
+        for list_path in candidates:
+            if list_path.exists():
+                with open(list_path, 'r', encoding='utf-8') as f:
+                    for line in f:
+                        line = line.strip()
+                        if not line:
+                            continue
+                        if '\t' in line:
+                            name, path = line.split('\t', 1)
+                            index[name] = path
+                        else:
+                            index[line] = ""
+                break
+        
+        cls._icon_index_cache[cache_key] = index
         return index
     
     def find_icon_file_path(self, icon_name):
@@ -154,7 +165,7 @@ class LessonVertical(Scene, ABC):
             icon_name = icon_name[:-4]
         
         # 方法1: 从子类指定的图标列表查找（高效）
-        index = self._load_icon_index(self.project_root, self.icon_list_file)
+        index = self._load_icon_index(self.project_root, self.icon_list_file, self.icon_list_dir)
         if icon_name in index:
             path = index[icon_name]
             if Path(path).exists():
@@ -228,9 +239,10 @@ class LessonVertical(Scene, ABC):
                     else:
                         decoration_icons_processed.append(icon)
                 
+                resolved_template_dir = self.cover_template_dir or self.source_images_dir
                 generate_cover(
                     output_path=self.cover_path,
-                    template_dir=self.source_images_dir,
+                    template_dir=resolved_template_dir,
                     title_main=meta.get("lesson_title", "未命名课程"),
                     title_sub=meta.get("lesson_sub_title", ""),
                     main_image_path=os.path.abspath(main_image),
@@ -326,7 +338,13 @@ class SunziLessonVertical(LessonVertical):
     font_style = "classical"  # 楷体（古典风格）
     default_decoration_icons = ["🔍", "💡", "📚"]
     voice_name = "zh-CN-YunxiNeural"  # 云希 - 年轻男性，清晰自然
-    icon_list_file = "icons_education.txt"  # 教育类图标
+    icon_list_file = "icons_education.txt"
+    _adapter_dir = os.path.join(
+        os.path.dirname(os.path.abspath(__file__)), "..", "..",
+        ".cursor", "skills", "series-sunzi-adapter",
+    )
+    icon_list_dir = _adapter_dir
+    cover_template_dir = os.path.join(_adapter_dir, "templates")
     
     def build_scene_6(self, scene):
         """场景6: 懿爸锦囊（默认实现：处理互动内容）"""
@@ -388,14 +406,22 @@ class Zsxq100keLessonVertical(LessonVertical):
     font_style = "modern"  # 黑体（现代风格）
     default_decoration_icons = ["💰", "📈", "🏦"]
     voice_name = "zh-CN-XiaoxiaoNeural"  # 晓晓 - 年轻女性，活泼甜美
-    icon_list_file = "icons_finance.txt"  # 理财类图标
+    icon_list_file = "icons_finance.txt"
+    icon_list_dir = os.path.join(
+        os.path.dirname(os.path.abspath(__file__)), "..", "..",
+        ".cursor", "skills", "series-zsxq-adapter",
+    )
 
 class MoneyWiseLessonVertical(LessonVertical):
     """MoneyWise (Global/Western) Series Base Class"""
     series_name = "moneywise_global"
     font_style = "modern"  # Maps to Helvetica/Arial in base class
     voice_name = "en-US-AriaNeural" # Standard English Voice
-    icon_list_file = "icons_finance.txt"  # Finance icons
+    icon_list_file = "icons_finance.txt"
+    icon_list_dir = os.path.join(
+        os.path.dirname(os.path.abspath(__file__)), "..", "..",
+        ".cursor", "skills", "series-moneywise-adapter",
+    )
     
     # Override default colors if needed
     COLOR_WEALTH = GOLD

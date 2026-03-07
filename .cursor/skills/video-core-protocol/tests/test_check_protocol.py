@@ -32,7 +32,6 @@ def make_profile(path: Path) -> None:
                 "  - video-core-protocol",
                 "  - lesson-content-planning",
                 "  - lesson-animation-authoring",
-                "  - lesson-render-publish",
                 "  - series-sunzi-adapter",
                 "  - chinese-series-orchestrator",
                 "",
@@ -58,7 +57,6 @@ class TestCheckProtocol(unittest.TestCase):
                     "video-core-protocol",
                     "lesson-content-planning",
                     "lesson-animation-authoring",
-                    "lesson-render-publish",
                     "series-sunzi-adapter",
                     "chinese-series-orchestrator",
                 ),
@@ -69,9 +67,9 @@ class TestCheckProtocol(unittest.TestCase):
             profile = Path(tmp) / "profile.yaml"
             make_profile(profile)
             self.assertIn(Path(".cursor/skills/lesson-content-planning/REFERENCE.md"), reference_docs_for_managed_skills(profile))
-            self.assertIn(Path(".cursor/skills/lesson-render-publish/REFERENCE.md"), reference_docs_for_managed_skills(profile))
-            self.assertIn(Path("series/prompts/sunzi_script.prompt"), asset_paths_for_managed_skills(profile))
-            self.assertIn(Path("series/template/sunzi/cover_template.html"), asset_paths_for_managed_skills(profile))
+            self.assertIn(Path(".cursor/skills/lesson-animation-authoring/REFERENCE.md"), reference_docs_for_managed_skills(profile))
+            self.assertIn(Path(".cursor/skills/series-sunzi-adapter/prompts/sunzi_script.prompt"), asset_paths_for_managed_skills(profile))
+            self.assertIn(Path(".cursor/skills/series-sunzi-adapter/templates/cover_template.html"), asset_paths_for_managed_skills(profile))
             self.assertIn(Path("src/utils/voice_edgetts.py"), source_paths_for_managed_skills(profile))
 
     def _make_closed_loop_workspace(self, root: Path, profile: Path) -> Path:
