@@ -64,9 +64,7 @@ yyy_ball/
 │   │   └── sunzi_annimate.prompt
 │   └── template/           # 📄 模板文件目录
 │       └── sunzi/          # 孙子兵法系列模板
-│           ├── cover_template.html  # HTML 封面模板
-│           ├── animate_template.py  # 动画模板
-│           └── script_template.json # 脚本模板
+│           └── cover_template.html  # HTML 封面模板（当前唯一 tracked template 资产）
 ├── external/               # 🔌 外部依赖：第三方库和工具
 │   ├── CosyVoice/          # CosyVoice AI 语音合成
 │   └── SadTalker/          # SadTalker 说话头像生成
@@ -180,11 +178,11 @@ uv run python src/publish/publish_lesson.py book_sunzibingfa/lesson05
 
 ## 🧩 Skills 维护（agent-skills）
 
-项目内工作流技能位于 `.cursor/skills/`，可通过脚本进行一致性检查和导入导出：
+项目内工作流技能位于 `.cursor/skills/`，当前采用“分层能力 + 系列 adapter + 顶层 orchestrator”结构，可通过脚本进行一致性检查和导入导出：
 
 ```bash
-# 1) 本地一致性检查（硬编码路径、必需 skill 文件、禁用 .claude/skills）
-uv run python scripts/sync_skills.py check-local
+# 1) Video core protocol 自检（硬编码路径、必需 skill 文件）
+uv run python .cursor/skills/video-core-protocol/scripts/check_protocol.py
 
 # 2) 将本地 skills 导出到 agent-skills 仓库
 uv run python scripts/sync_skills.py export --agent-dir /path/to/agent-skills
@@ -203,12 +201,27 @@ uv run python scripts/rollback_skills.py --backup-dir /tmp/skill_migration_backu
 ```
 
 CI 已内置自动校验（`.github/workflows/skills_consistency.yml`），在修改 skills 相关文件时会自动执行：
-- 语法检查（workflow/sync 脚本）
-- workflow skill 单元测试
-- 本地一致性检查（必需 skill 文件 + 硬编码路径 + 禁用 `.claude/skills`）
+- 语法检查（workflow/protocol/sync 脚本）
+- protocol 自检单元测试
+- core workflow 单元测试
+- 本地一致性检查（必需 skill 文件 + 硬编码路径）
 - 导出到 `agent-skills` 目录结构的 smoke test
 
 技能维护 profile：`profiles/yyy_ball.yaml`。
+
+当前 managed skills 包括：
+- `video-core-protocol`
+- `lesson-content-planning`
+- `lesson-animation-authoring`
+- `lesson-render-publish`
+- `series-zsxq-adapter`
+- `series-sunzi-adapter`
+- `series-moneywise-adapter`
+- `skill-evolver`
+- `chinese-series-orchestrator`
+- `moneywise-series-orchestrator`
+
+Prompt/template/src runtime 资产的闭环说明位于各 skill 目录下的 `REFERENCE.md`；其中 `series/template/` 当前只有 `series/template/sunzi/cover_template.html` 为 tracked 资产，动画模板结构以各 `*_annimate.prompt` 内嵌代码块为准。
 
 ## 📄 许可证
 

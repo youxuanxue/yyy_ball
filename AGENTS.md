@@ -32,9 +32,18 @@ Two content-only series (`book_lunyu/`, `book_yijing/`) have `origin.md` / `scri
 
 ### Workflow skills
 
-Two `.cursor/skills/` files document the full production workflows — read them before creating new lessons:
-- `.cursor/skills/video-workflow/SKILL.md` — 日日生金 + 孙子兵法 workflow (Chinese)
-- `.cursor/skills/moneywise-workflow/SKILL.md` — MoneyWise Global workflow (English)
+The skill system is now layered:
+- Core contract: `.cursor/skills/video-core-protocol/SKILL.md`
+- Planning: `.cursor/skills/lesson-content-planning/SKILL.md`
+- Animation: `.cursor/skills/lesson-animation-authoring/SKILL.md`
+- Render/publish: `.cursor/skills/lesson-render-publish/SKILL.md`
+- Series adapters: `.cursor/skills/series-zsxq-adapter/`, `.cursor/skills/series-sunzi-adapter/`, `.cursor/skills/series-moneywise-adapter/`
+- Evolver: `.cursor/skills/skill-evolver/SKILL.md`
+- Top-level orchestrators:
+  - `.cursor/skills/chinese-series-orchestrator/SKILL.md`
+  - `.cursor/skills/moneywise-series-orchestrator/SKILL.md`
+
+Prompt/template/src runtime asset closure now lives in the corresponding `REFERENCE.md` files inside these skill directories.
 
 ### External skills (auto-synced)
 

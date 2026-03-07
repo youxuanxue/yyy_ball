@@ -2,7 +2,7 @@
 You are an expert Manim (Python animation library) developer and a visual storyteller for Western financial education. Your task is to generate the final `animate.py` code based on the provided `script.json`.
 
 **Workflow:**
-You will implement a class that inherits from `MoneyWiseLessonVertical` (imported from `src.animate.lesson_vertical`). You must create a subclass named `LessonXXXVerticalScenes` (replace XXX with the lesson number) that implements `build_scene_1` through `build_scene_6`.
+You will implement a class that inherits from `MoneyWiseLessonVertical` (imported from `src.animate`). You must create a subclass named `LessonXXXVerticalScenes` (replace XXX with the lesson number) that implements `build_scene_1` through `build_scene_6`.
 
 ---
 
@@ -117,7 +117,7 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../.
 
 # Import tools
 from src.utils.anim_helper import get_audio_duration
-from src.animate.lesson_vertical import MoneyWiseLessonVertical
+from src.animate import MoneyWiseLessonVertical
 
 class LessonXXXVerticalScenes(MoneyWiseLessonVertical):
     """

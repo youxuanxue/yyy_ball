@@ -41,17 +41,28 @@ jobs:
             scripts/sync_skills.py \
             scripts/rehearse_skill_migration.py \
             scripts/rollback_skills.py \
-            .cursor/skills/video-workflow/scripts/workflow.py \
-            .cursor/skills/video-workflow/scripts/create_lesson.py \
-            .cursor/skills/video-workflow/scripts/lesson_num.py \
-            .cursor/skills/video-workflow/tests/test_create_lesson.py \
-            .cursor/skills/video-workflow/tests/test_workflow.py \
-            .cursor/skills/video-workflow/tests/test_skill_docs_consistency.py \
-            scripts/tests/test_sync_skills.py
+            .cursor/skills/video-core-protocol/scripts/protocol_support.py \
+            .cursor/skills/video-core-protocol/scripts/check_protocol.py \
+            .cursor/skills/video-core-protocol/scripts/workflow.py \
+            .cursor/skills/video-core-protocol/scripts/create_lesson.py \
+            .cursor/skills/video-core-protocol/scripts/lesson_num.py \
+            .cursor/skills/lesson-content-planning/scripts/audit_content.py \
+            .cursor/skills/skill-evolver/scripts/evolve.py \
+            .cursor/skills/video-core-protocol/tests/test_check_protocol.py \
+            .cursor/skills/video-core-protocol/tests/test_create_lesson.py \
+            .cursor/skills/video-core-protocol/tests/test_workflow.py \
+            .cursor/skills/video-core-protocol/tests/test_skill_docs_consistency.py \
+            .cursor/skills/lesson-content-planning/tests/test_audit_content.py \
+            scripts/tests/test_sync_skills.py \
+            scripts/tests/test_skill_evolver.py
 
-      - name: Run workflow skill tests
+      - name: Run protocol skill tests
         run: |
-          python3 -m unittest discover -s .cursor/skills/video-workflow/tests -p "test_*.py"
+          python3 -m unittest discover -s .cursor/skills/video-core-protocol/tests -p "test_*.py"
+
+      - name: Run content planning skill tests
+        run: |
+          python3 -m unittest discover -s .cursor/skills/lesson-content-planning/tests -p "test_*.py"
 
       - name: Run sync tooling tests
         run: |
@@ -59,12 +70,23 @@ jobs:
 
       - name: Run local skill consistency checks
         run: |
-          python3 scripts/sync_skills.py check-local
+          python3 .cursor/skills/video-core-protocol/scripts/check_protocol.py
 
       - name: Export smoke test (agent-skills layout)
         run: |
           tmp_dir="$(mktemp -d)"
           mkdir -p "$tmp_dir/agent-skills"
           python3 scripts/sync_skills.py export --agent-dir "$tmp_dir/agent-skills"
-          test -f "$tmp_dir/agent-skills/skills/video-workflow/SKILL.md"
-          test -f "$tmp_dir/agent-skills/skills/moneywise-workflow/SKILL.md"
+          python3 - "$tmp_dir/agent-skills" <<'PY'
+from pathlib import Path
+import sys
+
+sys.path.insert(0, str(Path.cwd() / ".cursor" / "skills" / "video-core-protocol" / "scripts"))
+from protocol_support import load_managed_skills
+
+root = Path(sys.argv[1]) / "skills"
+for skill in load_managed_skills():
+    path = root / skill / "SKILL.md"
+    if not path.exists():
+        raise SystemExit(f"missing exported skill: {path}")
+PY

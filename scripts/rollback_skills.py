@@ -8,12 +8,15 @@ import shutil
 import sys
 from pathlib import Path
 
+PROTOCOL_SCRIPTS_DIR = Path(__file__).resolve().parent.parent / ".cursor" / "skills" / "video-core-protocol" / "scripts"
+if str(PROTOCOL_SCRIPTS_DIR) not in sys.path:
+    sys.path.insert(0, str(PROTOCOL_SCRIPTS_DIR))
+
+from protocol_support import managed_skill_targets
+
 
 WORKSPACE_ROOT = Path(__file__).resolve().parent.parent
-MANAGED_TARGETS = [
-    Path(".cursor/skills/video-workflow"),
-    Path(".cursor/skills/moneywise-workflow"),
-]
+MANAGED_TARGETS = managed_skill_targets()
 
 
 def rollback(backup_dir: Path) -> int:

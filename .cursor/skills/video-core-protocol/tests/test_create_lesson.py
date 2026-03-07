@@ -8,7 +8,7 @@ HELPER_PATH = Path(__file__).resolve().parents[1] / "scripts" / "lesson_num.py"
 
 
 def load_create_lesson_module():
-    spec = importlib.util.spec_from_file_location("video_create_lesson_script", SCRIPT_PATH)
+    spec = importlib.util.spec_from_file_location("core_create_lesson_script", SCRIPT_PATH)
     module = importlib.util.module_from_spec(spec)
     assert spec and spec.loader
     spec.loader.exec_module(module)
@@ -16,7 +16,7 @@ def load_create_lesson_module():
 
 
 def load_lesson_num_module():
-    spec = importlib.util.spec_from_file_location("video_lesson_num_script", HELPER_PATH)
+    spec = importlib.util.spec_from_file_location("core_lesson_num_script", HELPER_PATH)
     module = importlib.util.module_from_spec(spec)
     assert spec and spec.loader
     spec.loader.exec_module(module)
@@ -32,6 +32,11 @@ class TestCreateLessonScript(unittest.TestCase):
     def test_zsxq_data_source_path_is_precise(self):
         cfg = self.mod.get_series_config("zsxq")
         self.assertEqual(cfg["data_source"], "assets/zsxq/jingpin_100ke_posts.json")
+
+    def test_moneywise_content_is_split_pre_and_post_publish(self):
+        cfg = self.mod.get_series_config("moneywise")
+        self.assertEqual(cfg["pre_render_content_outputs"], ("script.json",))
+        self.assertEqual(cfg["post_publish_content_outputs"], ("website_mdx",))
 
     def test_normalize_lesson_num_accepts_prefix(self):
         normalized = self.helper.normalize_lesson_num("lesson9", 3)

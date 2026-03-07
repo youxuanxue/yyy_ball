@@ -17,6 +17,7 @@ Read the provided JSON data (especially the `text` field) and transform it into 
 - **Tone**: Conversational, friendly, and authoritative—like a knowledgeable friend at a coffee shop. Avoid jargon (if technical terms like "quantitative easing" are needed, immediately explain in plain English).
 - **Goal**: Help readers understand core financial concepts, debunk common myths, and inspire actionable next steps.
 - **Cultural Fit**: Use Western examples (401k, IRA, S&P 500, dollar references), relatable scenarios (mortgage, student loans, healthcare costs), and familiar analogies.
+- **Tone guardrail**: Avoid hype-funnel phrasing like "ultimate safety net", "outdated myths", or aggressive conversion copy that weakens trust.
 
 # SEO Strategy
 - **Primary Keyword**: Include in H1, meta title, first paragraph, and naturally throughout (2-3% density)
@@ -75,15 +76,16 @@ Transform the source material using this structure—don't just summarize, extra
 - **Conversational**: Avoid formal language, use short sentences, contractions welcome
 - **Rhythm**: Each scene ends with a memorable line or thought-provoking statement
 - **word_count**: Accurately count words for each scene
+- **Evergreen**: Do not include exact years, dated prices, or "current year" style CTAs in titles, descriptions, related posts, or scene narration
 
 # Taxonomy Constraints (CRITICAL)
 
-**Source of Truth**: `/Users/xuejiao/Codes/yyy-oversea/money-site/src/config/taxonomy.ts`
+**Primary Source of Truth**: `$MONEYWISE_SITE_DIR/src/config/taxonomy.ts`
 
-- `blog.category` MUST match one of the values in `CATEGORIES` array from `taxonomy.ts`.
-- `blog.tags` MUST use ONLY values from the `TAGS` array in `taxonomy.ts`.
-- **If a needed category or tag does not exist**, add it to `taxonomy.ts` first, then use it.
-- **DO NOT INVENT** categories or tags that are not in `taxonomy.ts`.
+- When `MONEYWISE_SITE_DIR` is available, `blog.category` MUST match one of the values in the `CATEGORIES` array from `taxonomy.ts`.
+- When `MONEYWISE_SITE_DIR` is available, `blog.tags` MUST use ONLY values from the `TAGS` array in `taxonomy.ts`.
+- If `MONEYWISE_SITE_DIR` is unavailable in the current workspace, reuse the category/tag families already validated in existing `series/moneywise_global/lesson*/script.json`.
+- **DO NOT INVENT** category or tag families outside the available taxonomy source.
 
 ---
 
@@ -91,10 +93,11 @@ Transform the source material using this structure—don't just summarize, extra
 Generate JSON following this structure for `series/moneywise_global/lessonXXX/script.json`:
 
 **ICONS REQUIREMENT**:
-- You **MUST** select at least 50 relevant icon names from `assets/icons8/icons_finance.txt`.
+- You **MUST** select 12-30 relevant icon names from `assets/icons8/icons_finance.txt`.
 - **FILE FORMAT**: Each line is `icon_name\tabsolute_path`. Use only the **first column** (icon_name, without .png extension).
 - **DO NOT LEAVE "icons" EMPTY.**
 - **DO NOT INVENT FILENAMES.** Only use icon names that actually exist in the list.
+- **Local fallback**: if `assets/icons8/icons_finance.txt` is unavailable, reuse icon names already validated in existing `series/moneywise_global/lesson*/script.json`.
 
 ```json
 {

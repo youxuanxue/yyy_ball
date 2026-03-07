@@ -13,7 +13,7 @@ WORKSPACE_ROOT = Path(__file__).resolve().parents[4]
 
 
 def load_workflow_module():
-    spec = importlib.util.spec_from_file_location("video_workflow_script", SCRIPT_PATH)
+    spec = importlib.util.spec_from_file_location("core_workflow_script", SCRIPT_PATH)
     module = importlib.util.module_from_spec(spec)
     assert spec and spec.loader
     spec.loader.exec_module(module)

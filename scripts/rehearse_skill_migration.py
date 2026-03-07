@@ -10,14 +10,18 @@ import sys
 import tempfile
 from pathlib import Path
 
+PROTOCOL_SCRIPTS_DIR = Path(__file__).resolve().parent.parent / ".cursor" / "skills" / "video-core-protocol" / "scripts"
+if str(PROTOCOL_SCRIPTS_DIR) not in sys.path:
+    sys.path.insert(0, str(PROTOCOL_SCRIPTS_DIR))
+
+from protocol_support import managed_skill_targets
+
 
 WORKSPACE_ROOT = Path(__file__).resolve().parent.parent
 SYNC_SCRIPT = WORKSPACE_ROOT / "scripts" / "sync_skills.py"
 ROLLBACK_SCRIPT = WORKSPACE_ROOT / "scripts" / "rollback_skills.py"
-MANAGED_TARGETS = [
-    Path(".cursor/skills/video-workflow"),
-    Path(".cursor/skills/moneywise-workflow"),
-]
+CHECK_PROTOCOL_SCRIPT = WORKSPACE_ROOT / ".cursor" / "skills" / "video-core-protocol" / "scripts" / "check_protocol.py"
+MANAGED_TARGETS = managed_skill_targets()
 
 
 def run_cmd(args: list[str], cwd: Path) -> None:
@@ -50,7 +54,7 @@ def rehearse(agent_dir: Path, keep_backup: bool) -> int:
     try:
         run_cmd([sys.executable, str(SYNC_SCRIPT), "export", "--agent-dir", str(agent_dir)], WORKSPACE_ROOT)
         run_cmd([sys.executable, str(SYNC_SCRIPT), "import", "--agent-dir", str(agent_dir)], WORKSPACE_ROOT)
-        run_cmd([sys.executable, str(SYNC_SCRIPT), "check-local"], WORKSPACE_ROOT)
+        run_cmd([sys.executable, str(CHECK_PROTOCOL_SCRIPT)], WORKSPACE_ROOT)
         run_cmd(
             [
                 sys.executable,

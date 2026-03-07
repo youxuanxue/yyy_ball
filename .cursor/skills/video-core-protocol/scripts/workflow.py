@@ -1,13 +1,12 @@
 #!/usr/bin/env python3
 """
-视频制作工作流脚本（支持日日生金、孙子兵法、MoneyWise 三个系列）
+Core execution workflow for managed video series.
 
-用法:
-    python workflow.py render --series zsxq 002
+Usage:
+    python workflow.py status --series zsxq 002
     python workflow.py render --series sunzi 06 --quality ql
     python workflow.py publish --series moneywise 001 --media-publisher-dir /path/to/media-publisher
     python workflow.py render-all --series zsxq 002 005
-    python workflow.py status --series moneywise 001
 """
 
 import argparse
@@ -23,58 +22,52 @@ if str(SCRIPT_DIR) not in sys.path:
 
 from lesson_num import normalize_lesson_num
 
-# 项目路径
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent.parent.parent
 
-# 系列配置
 SERIES_CONFIG = {
     "zsxq": {
         "name": "日日生金",
         "dir": PROJECT_ROOT / "series" / "book_zsxq_100ke",
         "lesson_prefix": "lesson",
-        "num_digits": 3,  # 3位数编号 (001-999)
+        "num_digits": 3,
         "class_suffix": "VerticalScenes",
     },
     "sunzi": {
         "name": "孙子兵法",
         "dir": PROJECT_ROOT / "series" / "book_sunzibingfa",
         "lesson_prefix": "lesson",
-        "num_digits": 2,  # 2位数编号 (01-99)
+        "num_digits": 2,
         "class_suffix": "VerticalScenes",
     },
     "moneywise": {
         "name": "MoneyWise Global",
         "dir": PROJECT_ROOT / "series" / "moneywise_global",
         "lesson_prefix": "lesson",
-        "num_digits": 3,  # 3位数编号 (001-999)
+        "num_digits": 3,
         "class_suffix": "VerticalScenes",
     },
 }
 
 
 def get_series_config(series: str) -> dict:
-    """获取系列配置"""
     if series not in SERIES_CONFIG:
         raise ValueError(f"未知系列 '{series}'，可选: {list(SERIES_CONFIG.keys())}")
     return SERIES_CONFIG[series]
 
 
 def get_lesson_dir(series: str, lesson_num: str) -> Path:
-    """获取课程目录路径"""
     config = get_series_config(series)
     lesson_num = normalize_lesson_num(lesson_num, config["num_digits"])
     return config["dir"] / f"{config['lesson_prefix']}{lesson_num}"
 
 
 def get_class_name(series: str, lesson_num: str) -> str:
-    """获取 Manim 类名"""
     config = get_series_config(series)
     lesson_num = normalize_lesson_num(lesson_num, config["num_digits"])
     return f"Lesson{lesson_num}{config['class_suffix']}"
 
 
 def resolve_media_publisher_dir(media_publisher_dir: Optional[str] = None) -> Optional[Path]:
-    """解析 media-publisher 目录，优先级：CLI 参数 > 环境变量"""
     candidates = []
 
     if media_publisher_dir:
@@ -92,7 +85,6 @@ def resolve_media_publisher_dir(media_publisher_dir: Optional[str] = None) -> Op
 
 
 def check_lesson_status(series: str, lesson_num: str) -> dict:
-    """检查课程各资源的状态"""
     config = get_series_config(series)
     lesson_dir = get_lesson_dir(series, lesson_num)
     lesson_num = normalize_lesson_num(lesson_num, config["num_digits"])
@@ -105,13 +97,11 @@ def check_lesson_status(series: str, lesson_num: str) -> dict:
         "origin.md": (lesson_dir / "origin.md").exists() if series == "sunzi" else None,
         "script.json": (lesson_dir / "script.json").exists(),
         "animate.py": (lesson_dir / "animate.py").exists(),
-        "wechat.md": (lesson_dir / "wechat.md").exists(),
         "voice": (lesson_dir / "voice").exists() and any((lesson_dir / "voice").iterdir()) if (lesson_dir / "voice").exists() else False,
         "cover": (lesson_dir / "images" / "cover_design.png").exists(),
         "video": False,
     }
 
-    # 检查视频
     video_dir = lesson_dir / "media" / "videos" / "animate" / "1920p60"
     if video_dir.exists():
         videos = list(video_dir.glob("*VerticalScenes.mp4"))
@@ -129,7 +119,6 @@ def render_lesson(
     force_voice: bool = False,
     quality: str = "qh",
 ):
-    """渲染课程视频"""
     config = get_series_config(series)
     lesson_num = normalize_lesson_num(lesson_num, config["num_digits"])
     lesson_dir = get_lesson_dir(series, lesson_num)
@@ -149,19 +138,17 @@ def render_lesson(
 
     print(f"🎬 开始渲染 [{config['name']}] 第{lesson_num}课...")
 
-    # 构建环境变量
     env = {}
     if force_cover:
         env["FORCE_COVER"] = "true"
     if force_voice:
         env["FORCE_VOICE"] = "true"
 
-    # 构建命令
     cmd = [
         "uv", "run", "manim",
         f"-{quality}",
-        "-r", "1080,1920",  # 竖屏分辨率
-        "--fps", "60",  # 60帧
+        "-r", "1080,1920",
+        "--fps", "60",
         "--disable_caching",
         "animate.py",
         class_name,
@@ -191,7 +178,6 @@ def publish_lesson(
     privacy: str = "private",
     media_publisher_dir: Optional[str] = None,
 ):
-    """发布课程视频"""
     config = get_series_config(series)
     lesson_num = normalize_lesson_num(lesson_num, config["num_digits"])
 
@@ -246,25 +232,22 @@ def publish_lesson(
 
 
 def print_status(series: str, lesson_num: str):
-    """打印课程状态"""
     config = get_series_config(series)
     lesson_num = normalize_lesson_num(lesson_num, config["num_digits"])
     status = check_lesson_status(series, lesson_num)
 
-    print(f"\n📊 [{config['name']}] 第{lesson_num}课 状态:")
+    print(f"\n📊 [{config['name']}] 第{lesson_num}课 执行状态:")
     print("-" * 40)
 
     items = [
         ("lesson_dir", "📁 课程目录"),
         ("script.json", "📝 脚本文件"),
         ("animate.py", "🎨 动画代码"),
-        ("wechat.md", "📱 微信文章"),
         ("voice", "🎤 语音文件"),
         ("cover", "🖼️  封面图片"),
         ("video", "🎬 视频文件"),
     ]
 
-    # 孙子兵法特有
     if series == "sunzi":
         items.insert(1, ("origin.md", "📄 原始素材"))
 
@@ -283,27 +266,20 @@ def print_status(series: str, lesson_num: str):
 
 def main():
     parser = argparse.ArgumentParser(
-        description="视频制作工作流（支持日日生金、孙子兵法、MoneyWise）",
+        description="视频制作共享执行工作流（支持日日生金、孙子兵法、MoneyWise）",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 示例:
-  %(prog)s status --series zsxq 002                      查看日日生金第002课状态
-  %(prog)s status --series sunzi 06                      查看孙子兵法第06课状态
-  %(prog)s status --series moneywise 001                 查看MoneyWise第001课状态
-  %(prog)s render --series sunzi 06 --quality ql         快速渲染孙子兵法第06课
-  %(prog)s render --series zsxq 002 --force-voice        重新生成语音
-  %(prog)s publish --series sunzi 06                     发布到YouTube（私有）
+  %(prog)s status --series zsxq 002
+  %(prog)s status --series sunzi 06
+  %(prog)s status --series moneywise 001
+  %(prog)s render --series sunzi 06 --quality ql
+  %(prog)s render --series zsxq 002 --force-voice
+  %(prog)s publish --series sunzi 06
   %(prog)s publish --series zsxq 002 --platform both --privacy public
-  %(prog)s publish --series moneywise 001 --media-publisher-dir /path/to/media-publisher
-
-系列代号:
-  zsxq      - 日日生金（精品100课），3位数编号
-  sunzi     - 孙子兵法（小小谋略家），2位数编号
-  moneywise - MoneyWise Global，3位数编号
         """,
     )
 
-    # 全局参数
     parser.add_argument(
         "--series",
         "-s",
@@ -318,18 +294,15 @@ def main():
 
     subparsers = parser.add_subparsers(dest="command", required=True)
 
-    # status 命令
     status_parser = subparsers.add_parser("status", help="检查课程状态")
     status_parser.add_argument("lesson", help="课程编号 (如 002 / 06 / 001)")
 
-    # render 命令
     render_parser = subparsers.add_parser("render", help="渲染视频")
     render_parser.add_argument("lesson", help="课程编号 (如 002 / 06 / 001)")
     render_parser.add_argument("--force-cover", action="store_true", help="强制重新生成封面")
     render_parser.add_argument("--force-voice", action="store_true", help="强制重新生成语音")
     render_parser.add_argument("--quality", choices=["ql", "qh"], default="qh", help="渲染质量")
 
-    # render-all 命令
     render_all_parser = subparsers.add_parser("render-all", help="批量渲染")
     render_all_parser.add_argument("start", help="起始课程编号")
     render_all_parser.add_argument("end", help="结束课程编号")
@@ -337,7 +310,6 @@ def main():
     render_all_parser.add_argument("--force-voice", action="store_true", help="强制重新生成语音")
     render_all_parser.add_argument("--quality", choices=["ql", "qh"], default="qh", help="渲染质量")
 
-    # publish 命令
     publish_parser = subparsers.add_parser("publish", help="发布视频")
     publish_parser.add_argument("lesson", help="课程编号 (如 002 / 06 / 001)")
     publish_parser.add_argument("--platform", choices=["youtube", "wechat", "both"], default="youtube")
@@ -349,7 +321,6 @@ def main():
     try:
         if args.command == "status":
             print_status(args.series, args.lesson)
-
         elif args.command == "render":
             success = render_lesson(
                 args.series,
@@ -358,7 +329,6 @@ def main():
                 args.force_voice,
                 args.quality,
             )
-
         elif args.command == "render-all":
             cfg = get_series_config(args.series)
             start = int(normalize_lesson_num(args.start, cfg["num_digits"]))
@@ -376,7 +346,6 @@ def main():
                     args.quality,
                 )
                 success = success and item_success
-
         elif args.command == "publish":
             success = publish_lesson(
                 args.series,
