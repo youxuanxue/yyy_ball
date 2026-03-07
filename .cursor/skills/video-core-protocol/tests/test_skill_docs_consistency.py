@@ -19,15 +19,15 @@ class TestSkillDocsConsistency(unittest.TestCase):
             self.assertTrue(path.exists(), f"Missing file: {path}")
 
     def test_no_disallowed_hardcoded_path_prefixes(self):
-        roots = [WORKSPACE_ROOT / ".cursor" / "skills"]
+        root = WORKSPACE_ROOT / ".cursor" / "skills"
         reject_tokens = load_reject_hardcoded_path_prefixes()
         offenders = []
-        for root in roots:
-            for path in root.rglob("*.md"):
-                text = path.read_text(encoding="utf-8")
-                for token in reject_tokens:
-                    if token in text:
-                        offenders.append(f"{path} ({token})")
+        scan_paths = list(root.rglob("*.md")) + list(root.rglob("scripts/*.py"))
+        for path in scan_paths:
+            text = path.read_text(encoding="utf-8")
+            for token in reject_tokens:
+                if token in text:
+                    offenders.append(f"{path} ({token})")
         self.assertEqual(offenders, [], f"Disallowed hardcoded path found in: {offenders}")
 
 

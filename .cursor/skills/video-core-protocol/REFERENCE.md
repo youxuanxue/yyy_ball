@@ -13,6 +13,14 @@ This document closes the shared execution layer around concrete repo assets.
 | Shared execution workflow | `.cursor/skills/video-core-protocol/scripts/workflow.py` | `status`, `render`, `render-all`, `publish` for all series |
 | Protocol self-check | `.cursor/skills/video-core-protocol/scripts/check_protocol.py` | Verifies managed skills, reference docs, prompt/template assets, and path hygiene |
 
+## Skill-owned scripts covered by protocol checks
+
+| Skill | Script path | Role |
+|---|---|---|
+| `lesson-content-planning` | `.cursor/skills/lesson-content-planning/scripts/audit_content.py` | Lesson output audit entrypoint |
+| `series-zsxq-adapter` | `.cursor/skills/series-zsxq-adapter/scripts/crawler_zsxq_100.py` | Adapter-owned source refresh entrypoint |
+| `skill-evolver` | `.cursor/skills/skill-evolver/scripts/evolve.py` | Observation recording and summary entrypoint |
+
 ## Shared runtime source dependencies
 
 | Src asset | Why it matters |
@@ -35,9 +43,10 @@ This document closes the shared execution layer around concrete repo assets.
 
 1. Every managed skill has `SKILL.md`
 2. Required `REFERENCE.md` files exist for managed skills that own repo assets
-3. Required prompt/template assets exist
-4. Required `src` runtime assets exist
-5. Skill docs, prompt/template files, and required runtime source files do not contain disallowed absolute paths
+3. Required skill-owned scripts exist
+4. Required prompt/template assets exist
+5. Required `src` runtime assets exist
+6. Skill docs, skill-owned scripts, prompt/template files, and required runtime source files do not contain disallowed absolute paths
 
 ## Current managed entrypoints
 

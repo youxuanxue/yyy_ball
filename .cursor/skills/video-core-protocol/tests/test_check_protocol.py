@@ -13,6 +13,7 @@ from protocol_support import (
     load_managed_skills,
     reference_docs_for_managed_skills,
     run_local_skill_checks,
+    script_paths_for_managed_skills,
     source_paths_for_managed_skills,
     validate_local_skills,
 )
@@ -33,7 +34,9 @@ def make_profile(path: Path) -> None:
                 "  - lesson-content-planning",
                 "  - lesson-animation-authoring",
                 "  - lesson-render-publish",
+                "  - series-zsxq-adapter",
                 "  - series-sunzi-adapter",
+                "  - skill-evolver",
                 "  - chinese-series-orchestrator",
                 "",
                 "guards:",
@@ -59,17 +62,27 @@ class TestCheckProtocol(unittest.TestCase):
                     "lesson-content-planning",
                     "lesson-animation-authoring",
                     "lesson-render-publish",
+                    "series-zsxq-adapter",
                     "series-sunzi-adapter",
+                    "skill-evolver",
                     "chinese-series-orchestrator",
                 ),
             )
 
-    def test_reference_and_asset_sets_follow_profile(self):
+    def test_reference_asset_and_script_sets_follow_profile(self):
         with tempfile.TemporaryDirectory() as tmp:
             profile = Path(tmp) / "profile.yaml"
             make_profile(profile)
             self.assertIn(Path(".cursor/skills/lesson-content-planning/REFERENCE.md"), reference_docs_for_managed_skills(profile))
             self.assertIn(Path(".cursor/skills/lesson-render-publish/REFERENCE.md"), reference_docs_for_managed_skills(profile))
+            self.assertIn(
+                Path(".cursor/skills/series-zsxq-adapter/scripts/crawler_zsxq_100.py"),
+                script_paths_for_managed_skills(profile),
+            )
+            self.assertIn(
+                Path(".cursor/skills/skill-evolver/scripts/evolve.py"),
+                script_paths_for_managed_skills(profile),
+            )
             self.assertIn(Path("series/prompts/sunzi_script.prompt"), asset_paths_for_managed_skills(profile))
             self.assertIn(Path("series/template/sunzi/cover_template.html"), asset_paths_for_managed_skills(profile))
             self.assertIn(Path("src/utils/voice_edgetts.py"), source_paths_for_managed_skills(profile))
@@ -80,6 +93,8 @@ class TestCheckProtocol(unittest.TestCase):
             write_text(cursor / skill / "SKILL.md", skill)
         for rel in reference_docs_for_managed_skills(profile):
             write_text(root / rel, f"# {rel.name}")
+        for rel in script_paths_for_managed_skills(profile):
+            write_text(root / rel, f"script: {rel.name}")
         for rel in asset_paths_for_managed_skills(profile):
             write_text(root / rel, f"asset: {rel.name}")
         for rel in source_paths_for_managed_skills(profile):
@@ -123,6 +138,21 @@ class TestCheckProtocol(unittest.TestCase):
             make_profile(profile)
             cursor = self._make_closed_loop_workspace(root, profile)
             (cursor / "lesson-animation-authoring" / "SKILL.md").unlink()
+
+            code = run_local_skill_checks(
+                cursor_skills_dir=cursor,
+                profile_path=profile,
+                workspace_root=root,
+            )
+            self.assertEqual(code, 1)
+
+    def test_run_local_skill_checks_fails_when_skill_script_missing(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            profile = root / "profile.yaml"
+            make_profile(profile)
+            cursor = self._make_closed_loop_workspace(root, profile)
+            (root / ".cursor" / "skills" / "series-zsxq-adapter" / "scripts" / "crawler_zsxq_100.py").unlink()
 
             code = run_local_skill_checks(
                 cursor_skills_dir=cursor,

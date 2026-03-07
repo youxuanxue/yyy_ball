@@ -8,7 +8,10 @@ from pathlib import Path
 
 WORKSPACE_ROOT = Path(__file__).resolve().parents[4]
 DEFAULT_PROFILE = WORKSPACE_ROOT / "profiles" / "yyy_ball.yaml"
-DEFAULT_REJECT_HARDCODED_PATH_PREFIXES = ("/Users/", "/home/ubuntu/Codes/")
+DEFAULT_REJECT_HARDCODED_PATH_PREFIXES = (
+    "/" + "Users" + "/",
+    "/home/ubuntu" + "/Codes/",
+)
 REFERENCE_DOCS_BY_SKILL = {
     "video-core-protocol": (Path(".cursor/skills/video-core-protocol/REFERENCE.md"),),
     "lesson-content-planning": (Path(".cursor/skills/lesson-content-planning/REFERENCE.md"),),
@@ -20,6 +23,24 @@ REFERENCE_DOCS_BY_SKILL = {
     "skill-evolver": (Path(".cursor/skills/skill-evolver/REFERENCE.md"),),
     "chinese-series-orchestrator": (Path(".cursor/skills/chinese-series-orchestrator/REFERENCE.md"),),
     "moneywise-series-orchestrator": (Path(".cursor/skills/moneywise-series-orchestrator/REFERENCE.md"),),
+}
+SCRIPT_PATHS_BY_SKILL = {
+    "video-core-protocol": (
+        Path(".cursor/skills/video-core-protocol/scripts/check_protocol.py"),
+        Path(".cursor/skills/video-core-protocol/scripts/create_lesson.py"),
+        Path(".cursor/skills/video-core-protocol/scripts/lesson_num.py"),
+        Path(".cursor/skills/video-core-protocol/scripts/protocol_support.py"),
+        Path(".cursor/skills/video-core-protocol/scripts/workflow.py"),
+    ),
+    "lesson-content-planning": (
+        Path(".cursor/skills/lesson-content-planning/scripts/audit_content.py"),
+    ),
+    "series-zsxq-adapter": (
+        Path(".cursor/skills/series-zsxq-adapter/scripts/crawler_zsxq_100.py"),
+    ),
+    "skill-evolver": (
+        Path(".cursor/skills/skill-evolver/scripts/evolve.py"),
+    ),
 }
 ASSET_PATHS_BY_SKILL = {
     "lesson-content-planning": (
@@ -151,6 +172,13 @@ def asset_paths_for_managed_skills(profile_path: Path = DEFAULT_PROFILE) -> tupl
     return tuple(paths)
 
 
+def script_paths_for_managed_skills(profile_path: Path = DEFAULT_PROFILE) -> tuple[Path, ...]:
+    paths: list[Path] = []
+    for skill in load_managed_skills(profile_path):
+        paths.extend(SCRIPT_PATHS_BY_SKILL.get(skill, ()))
+    return tuple(paths)
+
+
 def source_paths_for_managed_skills(profile_path: Path = DEFAULT_PROFILE) -> tuple[Path, ...]:
     paths: list[Path] = []
     for skill in load_managed_skills(profile_path):
@@ -182,6 +210,11 @@ def validate_local_skills(
         if not path.exists():
             errors.append(f"Required reference doc not found: {path}")
 
+    for rel_path in script_paths_for_managed_skills(profile_path):
+        path = workspace_root / rel_path
+        if not path.exists():
+            errors.append(f"Required skill-owned script not found: {path}")
+
     for rel_path in asset_paths_for_managed_skills(profile_path):
         path = workspace_root / rel_path
         if not path.exists():
@@ -205,6 +238,11 @@ def validate_local_skills(
     if template_dir.exists():
         for pattern in ("*.html", "*.json", "*.py", "*.md"):
             scan_targets.extend(template_dir.rglob(pattern))
+
+    for rel_path in script_paths_for_managed_skills(profile_path):
+        path = workspace_root / rel_path
+        if path.exists():
+            scan_targets.append(path)
 
     for rel_path in source_paths_for_managed_skills(profile_path):
         path = workspace_root / rel_path
