@@ -53,6 +53,8 @@
 - **口语化**：避免书面语，多用短句，像爸爸讲故事
 - **节奏感**：每个scene都要有"转折"或"金句"收尾
 - **voiceover_words**：必须精确统计每个scene的实际字数
+- **紧扣原始兵法逻辑**：必须保留 origin.md 中真正的战略因果，不要只输出泛泛的励志建议
+- **少空话**：避免“别傻傻地…/讨好别人…”这类偏成人鸡汤的表达，优先给儿童可执行的行为建议
 
 # WeChat 模块规范
 
@@ -63,7 +65,7 @@
   * 对比式：「别让XX成为孩子的绊脚石」
   * 数字式：「3个魔法咒语，让孩子XX」
   * 痛点式：「孩子XX总是失败？孙武早就说过...」
-- **可选 emoji**：🎯 💡 ⚠️ 🔥 📚 等，要自然融入
+- **禁止 emoji**：标题字段不能包含 emoji 或其他花哨符号
 
 ## description（描述，50字左右）
 - **核心要求**：抓人眼球、引发共鸣、突出价值
@@ -97,8 +99,9 @@
 
 # Output Format
 严格按照以下 JSON 结构生成 series/book_sunzibingfa/lessonXX/script.json：
-icons 至少50个建议的配图（描述具体的画面元素，如：战争、大脑、盾牌等），**必须存在于 `assets/icons8/icons_education.txt` 中**。
+icons 提供 **6-20个高相关建议配图**（描述具体的画面元素，如：战争、大脑、盾牌等），**必须存在于 `assets/icons8/icons_education.txt` 中**。
 **文件格式**：每行为 `图标名\t绝对路径`，只需使用**第一列**（图标名，不带 .png 扩展名）。严禁编造文件名。
+**本地 fallback**：如果当前工作区缺少 `assets/icons8/icons_education.txt`，则必须复用同系列已存在 `series/book_sunzibingfa/lesson*/script.json` 中已经验证过的 icon 名称，仍然严禁编造文件名。
 
 ```json
 {

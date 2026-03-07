@@ -2,7 +2,6 @@
 """Sync skill files between local workspace and agent-skills repository.
 
 Usage examples:
-  uv run python scripts/sync_skills.py check-local
   uv run python scripts/sync_skills.py export --agent-dir /path/to/agent-skills
   uv run python scripts/sync_skills.py import --agent-dir /path/to/agent-skills
   uv run python scripts/sync_skills.py report --agent-dir /path/to/agent-skills --fail-on-diff
@@ -16,11 +15,17 @@ import shutil
 import sys
 from pathlib import Path
 
+PROTOCOL_SCRIPTS_DIR = Path(__file__).resolve().parent.parent / ".cursor" / "skills" / "video-core-protocol" / "scripts"
+if str(PROTOCOL_SCRIPTS_DIR) not in sys.path:
+    sys.path.insert(0, str(PROTOCOL_SCRIPTS_DIR))
+
+from protocol_support import DEFAULT_PROFILE, load_managed_skills
+
 
 WORKSPACE_ROOT = Path(__file__).resolve().parent.parent
 CURSOR_SKILLS_DIR = WORKSPACE_ROOT / ".cursor" / "skills"
-CLAUDE_SKILLS_DIR = WORKSPACE_ROOT / ".claude" / "skills"
-SKILLS = ("video-workflow", "moneywise-workflow")
+PROFILE_PATH = DEFAULT_PROFILE
+SKILLS = load_managed_skills(PROFILE_PATH)
 
 
 def ensure_path_exists(path: Path, description: str) -> None:
@@ -103,37 +108,6 @@ def report_agent_diff(agent_dir: Path, fail_on_diff: bool = False) -> int:
     return 0
 
 
-def check_local() -> int:
-    """Validate local skill consistency."""
-    errors = []
-
-    for skill in SKILLS:
-        try:
-            ensure_path_exists(CURSOR_SKILLS_DIR / skill / "SKILL.md", f"Cursor skill {skill}")
-        except FileNotFoundError as exc:
-            errors.append(str(exc))
-
-    if CLAUDE_SKILLS_DIR.exists():
-        errors.append(f".claude/skills should be removed, but still exists: {CLAUDE_SKILLS_DIR}")
-
-    legacy_tokens = ["/Users/", "/home/ubuntu/Codes/"]
-    for root in (CURSOR_SKILLS_DIR,):
-        for md_file in root.rglob("*.md"):
-            text = md_file.read_text(encoding="utf-8")
-            for token in legacy_tokens:
-                if token in text:
-                    errors.append(f"legacy hardcoded path in {md_file}: contains {token}")
-
-    if errors:
-        print("❌ Local skill checks failed:")
-        for item in errors:
-            print(f"  - {item}")
-        return 1
-
-    print("✅ Local skill checks passed")
-    return 0
-
-
 def export_to_agent_repo(agent_dir: Path) -> int:
     """Export local .cursor skills into agent-skills repo layout."""
     ensure_path_exists(agent_dir, "agent-skills repo dir")
@@ -174,7 +148,6 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Sync skills with agent-skills repository")
     subparsers = parser.add_subparsers(dest="command", required=True)
 
-    subparsers.add_parser("check-local", help="check local skill consistency")
     export_parser = subparsers.add_parser("export", help="export local skills to agent-skills repo")
     export_parser.add_argument("--agent-dir", required=True, help="path to local clone of agent-skills")
 
@@ -196,9 +169,7 @@ def main() -> None:
     args = parse_args()
 
     try:
-        if args.command == "check-local":
-            code = check_local()
-        elif args.command == "export":
+        if args.command == "export":
             code = export_to_agent_repo(Path(args.agent_dir).expanduser().resolve())
         elif args.command == "import":
             code = import_from_agent_repo(Path(args.agent_dir).expanduser().resolve())
